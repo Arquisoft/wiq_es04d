@@ -5,14 +5,22 @@ const historySchema = new mongoose.Schema({
       type: String,
       required: true,
     },
-    password: {
+    NumJugadas: {
       type: String,
       required: true,
     },
-    createdAt: {
-      type: Date,
-      default: Date.now, 
+    NumPreguntasJugadas: {
+        type: String,
+        required: true,
     },
+    NumAcertadas: {
+        type: String,
+        required: true,
+    },
+    NumFalladas: {
+        type: String,
+        required: true,
+    }
 });
 
 const History = mongoose.model('History', historySchema);
