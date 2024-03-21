@@ -52,7 +52,7 @@ app.post('/savehistory', async (req, res) => {
     const historyResponse = await axios.post(historyServiceUrl+'/savehistory', req.body);
     res.json(historyResponse.data);
   } catch(error){
-    //res.status(error.response.status).json({ error: error.response.data.error });
+    res.status(error.response.status).json({ error: error.response.data.error });
   }
 });
 
