@@ -1,0 +1,119 @@
+/* Estilos generales */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6; /* Mejora la legibilidad */
+  }
+  
+  /* Fondo de video */
+  .video-background video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100vw; /* Garantiza cobertura completa sin sobrepasar la ventana */
+    height: 100vh; /* Idem */
+    object-fit: cover; /* Mantiene las proporciones sin recortar */
+  }
+  
+  /* Contenedor del quiz y del resultado */
+  .quiz-container, .result-container {
+    background-color: #fff;
+    max-width: 600px;
+    margin: 5% auto;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    position: relative;
+    z-index: 2;
+    display: flex; /* Asegura que align-items funcione */
+    flex-direction: column; /* Alinea los elementos en columna */
+  }
+  
+  /* Cabecera del quiz */
+  .quiz-header h2, .result-container h2,.result-container p,.quiz-header div {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .quiz-header h2 {
+    margin-top: 0; /* Remueve el margen superior para uniformidad */
+  }
+  
+  .quiz-header div {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  /* Barra de tiempo */
+  .timer-bar {
+    width: 100%; /* Añade un valor inicial para la animación */
+    background-color: #ddd; /* Color de fondo */
+    height: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: width 1s ease-in-out;
+  }
+  
+  /* Lista de respuestas */
+  .answers-list {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Elimina el margen por defecto */
+  }
+  
+  .answers-list li {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .answers-list li:hover,
+  .answers-list li.selected {
+    background-color: #007bff;
+    color: #fff;
+    transform: scale(1.05); /* Hace la transformación más notoria */
+  }
+  
+  /* Botón Siguiente */
+  .quiz-next button {
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block; /* Asegura que el botón sea un bloque */
+    width: 100%; /* Hace que el botón ocupe todo el ancho disponible */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho final */
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .quiz-next button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  /* Ajustes de responsividad */
+  @media (max-width: 640px) {
+    .quiz-container, .result-container {
+      margin: 10% auto;
+      padding: 15px; /* Ajusta el padding para más espacio */
+    }
+  
+    .quiz-header h2 {
+      font-size: 20px; /* Aumenta ligeramente para mejorar la legibilidad */
+    }
+  
+    .quiz-header div {
+      font-size: 15px; /* Idem */
+    }
+  }
+  

@@ -1,31 +1,32 @@
-// src/components/Login.js
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import { Container, Typography, TextField, Button, Snackbar } from '@mui/material';
+import { Container, Typography, Button,TextField, Snackbar } from '@mui/material';
+import { AuthContext } from '../AuthContext';
+import {Link, useNavigate} from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loginSuccess, setLoginSuccess] = useState(false);
-  const [createdAt, setCreatedAt] = useState('');
   const [openSnackbar, setOpenSnackbar] = useState(false);
+  const navigate = useNavigate();
+  // Consumir AuthContext
+  const { handleLogin } = useContext(AuthContext);
 
   const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:8000';
 
   const loginUser = async () => {
     try {
-      const response = await axios.post(`${apiEndpoint}/login`, { username, password });
+      await axios.post(`${apiEndpoint}/login`, { username, password });
 
-      // Extract data from the response
-      const { createdAt: userCreatedAt } = response.data;
-
-      setCreatedAt(userCreatedAt);
       setLoginSuccess(true);
-
+      handleLogin(username);
       setOpenSnackbar(true);
+      navigate('/');
     } catch (error) {
       setError(error.response.data.error);
+      setOpenSnackbar(true);
     }
   };
 
@@ -34,46 +35,37 @@ const Login = () => {
   };
 
   return (
-    <Container component="main" maxWidth="xs" sx={{ marginTop: 4 }}>
-      {loginSuccess ? (
-        <div>
-          <Typography component="h1" variant="h5" sx={{ textAlign: 'center' }}>
-            Hello {username}!
-          </Typography>
-          <Typography component="p" variant="body1" sx={{ textAlign: 'center', marginTop: 2 }}>
-            Your account was created on {new Date(createdAt).toLocaleDateString()}.
-          </Typography>
-        </div>
-      ) : (
+      <Container component="main" maxWidth="xs" sx={{ marginTop: 4 }}>
         <div>
           <Typography component="h1" variant="h5">
             Login
           </Typography>
           <TextField
-            margin="normal"
-            fullWidth
-            label="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+              margin="normal"
+              fullWidth
+              label="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
           />
           <TextField
-            margin="normal"
-            fullWidth
-            label="Password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+              margin="normal"
+              fullWidth
+              label="Password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
           />
-          <Button variant="contained" color="primary" onClick={loginUser}>
+          <Button variant="contained" color="primary" onClick={loginUser} sx={{ mt: 3, mb: 2 }}>
             Login
           </Button>
-          <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar} message="Login successful" />
-          {error && (
-            <Snackbar open={!!error} autoHideDuration={6000} onClose={() => setError('')} message={`Error: ${error}`} />
-          )}
+          <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar} message={loginSuccess ? "Inicio de sesión exitoso" : `Error: ${error}`} />
+          <Container style={{ textAlign: 'center', marginTop: '15%' }}>
+            <Link name="gotoregister" component="button" variant="body2" to="/sign-up">
+              Don't have an account? Register here.
+            </Link>
+          </Container>
         </div>
-      )}
-    </Container>
+      </Container>
   );
 };
 

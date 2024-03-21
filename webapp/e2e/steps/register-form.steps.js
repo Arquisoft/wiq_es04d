@@ -7,21 +7,18 @@ let page;
 let browser;
 
 defineFeature(feature, test => {
-  
+
   beforeAll(async () => {
     browser = process.env.GITHUB_ACTIONS
-      ? await puppeteer.launch()
-      : await puppeteer.launch({ headless: false, slowMo: 100 });
+        ? await puppeteer.launch()
+        : await puppeteer.launch({ headless: false, slowMo: 100 });
     page = await browser.newPage();
-    //Way of setting up the timeout
-    setDefaultOptions({ timeout: 10000 })
+    setDefaultOptions({ timeout: 10000 });
 
-    await page
-      .goto("http://localhost:3000", {
-        waitUntil: "networkidle0",
-      })
-      .catch(() => {});
-  });
+    await page.goto("http://localhost:3000/login", {
+      waitUntil: "networkidle0",
+    }).catch(() => {});
+  }, 60000);
 
   test('The user is not registered in the site', ({given,when,then}) => {
     
@@ -31,7 +28,7 @@ defineFeature(feature, test => {
     given('An unregistered user', async () => {
       username = "pablo"
       password = "pabloasw"
-      await expect(page).toClick("button", { text: "Don't have an account? Register here." });
+      await expect(page).toClick("a", { text: "Don't have an account? Register here." });
     });
 
     when('I fill the data in the form and press submit', async () => {
