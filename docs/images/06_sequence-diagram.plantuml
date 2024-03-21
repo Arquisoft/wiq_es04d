@@ -1,0 +1,21 @@
+@startuml Diagrama de secuencia plantuml
+actor usuario
+actor system
+actor juego
+database bbdd as "bbdd"
+usuario -> system: inicio sesión
+system --> usuario: pedir nombre/contraseña
+usuario -> system: dar nombre/contraseña
+system -> bbdd: verificar usuario
+bbdd --> system: verificación correcta
+system --> usuario: inicio sesión correcto
+usuario -> system: acceder al juego
+system -> juego: iniciar juego
+juego --> system: generar pregunta/respuestas
+system --> usuario: mostrar pregunta/respuestas
+usuario -> system: responder
+system -> juego: verificar respuesta
+juego --> system: respuesta correcta
+system --> usuario: correcta
+system -> juego: generar siguiente pregunta/respuestas
+@enduml
