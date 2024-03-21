@@ -1,0 +1,8 @@
+{
+    "capital_of": {
+        "question": "¿Cuál es la capital de __x__?",
+        "questionVariable": "wd:Q6256",
+        "answerVariable": "wdt:P36",
+        "questionCategory": "Geografia"
+    }
+}
