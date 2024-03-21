@@ -17,7 +17,6 @@ mongoose.connect(mongoUri);
 
 app.post('/savehistory', async (req, res) => {
     try {
-        
         let username = "prueba"; //necesitamos el username
 
         // Extraer los datos de la solicitud
@@ -25,7 +24,7 @@ app.post('/savehistory', async (req, res) => {
     
         // Buscar si ya existe una entrada en la base de datos con el mismo nombre de usuario
         let historyEntry = await History.findOne({ username });
-    
+
         if (historyEntry) {
           // Si la entrada ya existe, actualizamos los datos
           historyEntry.NumJugadas = historyEntry.NumJugadas + 1;
@@ -46,13 +45,11 @@ app.post('/savehistory', async (req, res) => {
         // Guardar la entrada en la base de datos
         await historyEntry.save();
         
-    
         // Respuesta exitosa
-        res.status(200).json({ message: 'Datos de historial guardados exitosamente' });
+        res.json(historyEntry);
       } catch (error) {
         // Manejo de errores
-        console.error('Error al guardar el historial:', error);
-        res.status(500).json({ error: 'Error al guardar el historial' });
+        res.status(400).json({ error: 'Error al guardar el historial' });
       }
 });
 
