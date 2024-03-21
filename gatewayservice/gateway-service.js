@@ -13,6 +13,7 @@ const port = 8000;
 
 const authServiceUrl = process.env.AUTH_SERVICE_URL || 'http://localhost:8002';
 const userServiceUrl = process.env.USER_SERVICE_URL || 'http://localhost:8001';
+const historyServiceUrl = process.env.HISTORY_SERVICE_URL || 'http://localhost:8004';
 
 app.use(cors());
 app.use(express.json());
@@ -45,6 +46,15 @@ app.post('/adduser', async (req, res) => {
     res.status(error.response.status).json({ error: error.response.data.error });
   }
 });
+
+app.post('/savehistory', async(req, res) => {
+  try{
+    const historyResponse = await axios.post(historyServiceUrl+'/savehistory', req.body);
+    res.json(historyResponse.data);
+  } catch(error){
+    res.status(error.response.status).json({ error: error.response.data.error });
+  }
+})
 
 // Read the OpenAPI YAML file synchronously
 openapiPath='./openapi.yaml'

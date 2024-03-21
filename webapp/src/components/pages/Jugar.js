@@ -95,6 +95,8 @@ function Jugar() {
     setSelectedAnswerIndex(index);
   };
 
+  const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:8000';
+
   const handleNextQuestion = (timeExpired = false) => {
     setTimer(INITIAL_TIMER);
     if (selectedAnswerIndex !== null || timeExpired) {
@@ -113,7 +115,7 @@ function Jugar() {
       setQuizFinished(true);
       
       //Guardamos en el historial los datos de la partida
-      axios.post('/savehistory',{
+      axios.post(`${apiEndpoint}/savehistory`,{
         NumPreguntasJugadas: questions.length, // Número total de preguntas jugadas (la longitud de la matriz de preguntas)
         NumAcertadas: correctAnswers, // Número de preguntas respondidas correctamente
       })
