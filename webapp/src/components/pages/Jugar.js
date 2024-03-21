@@ -68,7 +68,7 @@ function Jugar() {
   const [quizFinished, setQuizFinished] = useState(false);
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
   const navigate = useNavigate();
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, username } = useContext(AuthContext);
 
   useEffect(() => {
     if (!isLoggedIn) {
@@ -116,6 +116,7 @@ function Jugar() {
       
       //Guardamos en el historial los datos de la partida
       axios.post(`${apiEndpoint}/savehistory`,{
+        username: username,
         NumPreguntasJugadas: questions.length, // Número total de preguntas jugadas (la longitud de la matriz de preguntas)
         NumAcertadas: correctAnswers, // Número de preguntas respondidas correctamente
       })

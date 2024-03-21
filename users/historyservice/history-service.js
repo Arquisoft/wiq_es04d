@@ -17,13 +17,13 @@ mongoose.connect(mongoUri);
 
 app.post('/savehistory', async (req, res) => {
     try {
-        let username = "prueba"; //necesitamos el username
+        let username = req.body.username;//necesitamos el username
 
         //Extraer los datos de la solicitud
         const { NumPreguntasJugadas, NumAcertadas } = req.body;
     
         // Buscar si ya existe una entrada en la base de datos con el mismo nombre de usuario
-        let historyEntry = await History.findOne({ username: "prueba" });
+        let historyEntry = await History.findOne({ username: username });
 
         if (historyEntry !== null) {
           // Si la entrada ya existe, actualizamos los datos
