@@ -37,10 +37,8 @@ El equipo estara dividido en 2 grupos. Los equipos son de documentación y de de
 [options="header",cols="1,2"]
 |===
 |Equipo|Miembros
-|Equipo documentación|Sara Lamuño García -> UO283706@uniovi.es + 
-Yago Navajas Gonzalez -> UO287746@uniovi.es
-|Equipo desarrollo del proyecto|David Álvarez Díaz -> UO283196@uniovi.es +
-Zohaib Akhtar Kausar -> UO291060@uniovi.es + 
+|Equipo documentación| Yago Navajas Gonzalez -> UO287746@uniovi.es
+|Equipo desarrollo del proyecto|Zohaib Akhtar Kausar -> UO291060@uniovi.es + 
 Santiago Lopez Laso -> UO277369@uniovi.es
 |===
 

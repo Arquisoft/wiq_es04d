@@ -5,7 +5,7 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 El proyecto de wiq_es04d es un proyecto desarrollado en la asignatura Arquitectura del Software. Consiste en la creación de una aplicación web al estilo "Saber y Ganar". Es decir, es un juego de preguntas de cultura general.
 
-Los desarrolladores de la aplicacion son por David Álvarez Díaz, Zohaib Akhtar Kausar, Sara Lamuño García, Yago Navajas González y Santiago López Laso.
+Los desarrolladores de la aplicacion son por Zohaib Akhtar Kausar, Yago Navajas González y Santiago López Laso.
 
 La aplicación tendrá su base para las preguntas y las respuestas en Wikidata, la base de conocimiento editada en colaboración.
 
@@ -41,9 +41,7 @@ La aplicación tendrá su base para las preguntas y las respuestas en Wikidata, 
 |===
 |Role/Name|Contact|Expectations
 | Equipo de Desarrollo | Yago Navajas Gonzalez -> UO287746@uniovi.es +
-David Álvarez Díaz -> UO283196@uniovi.es +
 Zohaib Akhtar Kausar -> UO291060@uniovi.es +
-Sara Lamuño García -> UO283706@uniovi.es +
 Santiago Lopez Laso -> UO277369@uniovi.es | Los estudiantes que llevarán a cabo el desarrollo de la aplicación. Serán los encargados de la arquitectura, la documentación y la codificación.
 | Profesores | Jose Emilio Labra Gayo | Supervisores de los avances y encargados de evaluar la aplicación final y el desarrollo de la misma.
 | Usuario | Jugador de la aplicación | Personas que puedan interactuar tanto con el registro de usuarios como con el juego en sí y pueda completar correctamente una partida.
