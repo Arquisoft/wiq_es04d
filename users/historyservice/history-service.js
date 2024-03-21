@@ -19,13 +19,13 @@ app.post('/savehistory', async (req, res) => {
     try {
         let username = "prueba"; //necesitamos el username
 
-        // Extraer los datos de la solicitud
+        //Extraer los datos de la solicitud
         const { NumPreguntasJugadas, NumAcertadas } = req.body;
     
         // Buscar si ya existe una entrada en la base de datos con el mismo nombre de usuario
-        let historyEntry = await History.findOne({ username });
+        let historyEntry = await History.findOne({ username: "prueba" });
 
-        if (historyEntry) {
+        if (historyEntry !== null) {
           // Si la entrada ya existe, actualizamos los datos
           historyEntry.NumJugadas = historyEntry.NumJugadas + 1;
           historyEntry.NumPreguntasJugadas = historyEntry.NumPreguntasJugadas + NumPreguntasJugadas;
@@ -54,7 +54,7 @@ app.post('/savehistory', async (req, res) => {
 });
 
 const server = app.listen(port, () => {
-  console.log(`User Service listening at http://localhost:${port}`);
+  console.log(`History Service listening at http://localhost:${port}`);
 });
 
 // Listen for the 'close' event on the Express.js server
