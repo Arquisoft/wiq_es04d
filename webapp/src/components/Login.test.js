@@ -3,6 +3,8 @@ import { render, fireEvent, screen, waitFor, act } from '@testing-library/react'
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import Login from './Login';
+import {AuthProvider} from "../AuthContext";
+import {MemoryRouter} from "react-router-dom";
 
 const mockAxios = new MockAdapter(axios);
 
@@ -12,7 +14,13 @@ describe('Login component', () => {
   });
 
   it('should log in successfully', async () => {
-    render(<Login />);
+    render(
+        <MemoryRouter>
+          <AuthProvider>
+            <Login />
+          </AuthProvider>
+        </MemoryRouter>
+    );
 
     const usernameInput = screen.getByLabelText(/Username/i);
     const passwordInput = screen.getByLabelText(/Password/i);
@@ -23,18 +31,24 @@ describe('Login component', () => {
 
     // Simulate user input
     await act(async () => {
-        fireEvent.change(usernameInput, { target: { value: 'testUser' } });
-        fireEvent.change(passwordInput, { target: { value: 'testPassword' } });
-        fireEvent.click(loginButton);
-      });
+      fireEvent.change(usernameInput, { target: { value: 'testUser' } });
+      fireEvent.change(passwordInput, { target: { value: 'testPassword' } });
+      fireEvent.click(loginButton);
+    });
 
-    // Verify that the user information is displayed
-    expect(screen.getByText(/Hello testUser!/i)).toBeInTheDocument();
-    expect(screen.getByText(/Your account was created on 1\/1\/2024/i)).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText(/Inicio de sesión exitoso/i)).toBeInTheDocument();
+    });
   });
 
   it('should handle error when logging in', async () => {
-    render(<Login />);
+    render(
+        <MemoryRouter>
+          <AuthProvider>
+            <Login />
+          </AuthProvider>
+        </MemoryRouter>
+    );
 
     const usernameInput = screen.getByLabelText(/Username/i);
     const passwordInput = screen.getByLabelText(/Password/i);
@@ -55,8 +69,5 @@ describe('Login component', () => {
       expect(screen.getByText(/Error: Unauthorized/i)).toBeInTheDocument();
     });
 
-    // Verify that the user information is not displayed
-    expect(screen.queryByText(/Hello testUser!/i)).toBeNull();
-    expect(screen.queryByText(/Your account was created on/i)).toBeNull();
   });
 });
