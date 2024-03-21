@@ -6,19 +6,19 @@ const historySchema = new mongoose.Schema({
       required: true,
     },
     NumJugadas: {
-      type: String,
+      type: Number,
       required: true,
     },
     NumPreguntasJugadas: {
-        type: String,
+        type: Number,
         required: true,
     },
     NumAcertadas: {
-        type: String,
+        type: Number,
         required: true,
     },
     NumFalladas: {
-        type: String,
+        type: Number,
         required: true,
     }
 });
