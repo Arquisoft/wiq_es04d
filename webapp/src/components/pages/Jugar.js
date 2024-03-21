@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthContext';
 import "./Jugar.css";
+import axios from 'axios';
 
 // Configuración inicial y datos
 const INITIAL_TIMER = 20;
@@ -108,7 +109,20 @@ function Jugar() {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setSelectedAnswerIndex(null);
     } else {
+      //Finaliza el quiz
       setQuizFinished(true);
+      
+      //Guardamos en el historial los datos de la partida
+      axios.post('/savehistory',{
+        NumPreguntasJugadas: questions.length, // Número total de preguntas jugadas (la longitud de la matriz de preguntas)
+        NumAcertadas: correctAnswers, // Número de preguntas respondidas correctamente
+      })
+      .then(response => {
+        console.log(response.data); // Mensaje de confirmación del servidor
+      })
+    .catch(error => {
+        console.error('Error al guardar el historial:', error);
+      });
     }
   };
   const videoSource = quizFinished ? "/videos/celebracion.mp4" : "/videos/question.mp4";
