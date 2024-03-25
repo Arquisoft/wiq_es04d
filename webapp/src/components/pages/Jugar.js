@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, {useContext, useState, useEffect, useCallback} from "react";
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthContext';
 import "./Jugar.css";
@@ -6,7 +6,7 @@ import axios from 'axios';
 
 // Configuración inicial y datos
 const INITIAL_TIMER = 20;
-
+const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:8000';
 
 
 
@@ -35,8 +35,9 @@ function Jugar() {
     ]
   }]);
 
+
   useEffect(() => {
-    const getQuestions = async() => {
+    const getQuestions = async () => {
       try {
         console.log("Requesting random questions to " + apiEndpoint);
         const response = await axios.get(`${apiEndpoint}/getquestions`);
@@ -51,11 +52,12 @@ function Jugar() {
     if (!isLoggedIn) {
       navigate('/login');
     } else {
-      getQuestions().then(r =>{});
+      getQuestions();
     }
-  }, [isLoggedIn, navigate]);
+  }, [isLoggedIn, navigate]); // Asegúrate de incluir apiEndpoint en las dependencias si su valor puede cambiar.
 
-  const handleNextQuestion = (timeExpired = false) => {
+
+  const handleNextQuestion = useCallback((timeExpired = false) => {
     setTimer(INITIAL_TIMER);
     if (selectedAnswerIndex !== null || timeExpired) {
       const isCorrect =
@@ -69,23 +71,24 @@ function Jugar() {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setSelectedAnswerIndex(null);
     } else {
-      //Finaliza el quiz
+      // Finaliza el quiz
       setQuizFinished(true);
 
-      //Guardamos en el historial los datos de la partida
+      // Guardamos en el historial los datos de la partida
       axios.post(`${apiEndpoint}/savehistory`, {
         username: username,
-        NumPreguntasJugadas: questions.length, // Número total de preguntas jugadas (la longitud de la matriz de preguntas)
-        NumAcertadas: correctAnswers, // Número de preguntas respondidas correctamente
+        NumPreguntasJugadas: questions.length,
+        NumAcertadas: correctAnswers,
       })
           .then(response => {
-            console.log(response.data); // Mensaje de confirmación del servidor
+            console.log(response.data);
           })
           .catch(error => {
             console.error('Error al guardar el historial:', error);
           });
     }
-  };
+  }, [currentQuestionIndex, selectedAnswerIndex, correctAnswers, questions, username]);
+
 
   useEffect(() => {
     if (!quizFinished && questionsLoaded) {
@@ -105,8 +108,6 @@ function Jugar() {
   const handleAnswerSelect = (index) => {
     setSelectedAnswerIndex(index);
   };
-
-  const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:8000';
 
 
   const videoSource = quizFinished ? "/videos/celebracion.mp4" : "/videos/question.mp4";
