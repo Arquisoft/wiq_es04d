@@ -54,6 +54,37 @@ function Jugar() {
       getQuestions();
     }
   }, [isLoggedIn, navigate, getQuestions]);
+  const handleNextQuestion = (timeExpired = false) => {
+    setTimer(INITIAL_TIMER);
+    if (selectedAnswerIndex !== null || timeExpired) {
+      const isCorrect =
+          selectedAnswerIndex !== null &&
+          questions[currentQuestionIndex].answers[selectedAnswerIndex]?.correct;
+      if (isCorrect) {
+        setCorrectAnswers(correctAnswers + 1);
+      }
+    }
+    if (currentQuestionIndex < questions.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setSelectedAnswerIndex(null);
+    } else {
+      //Finaliza el quiz
+      setQuizFinished(true);
+
+      //Guardamos en el historial los datos de la partida
+      axios.post(`${apiEndpoint}/savehistory`, {
+        username: username,
+        NumPreguntasJugadas: questions.length, // Número total de preguntas jugadas (la longitud de la matriz de preguntas)
+        NumAcertadas: correctAnswers, // Número de preguntas respondidas correctamente
+      })
+          .then(response => {
+            console.log(response.data); // Mensaje de confirmación del servidor
+          })
+          .catch(error => {
+            console.error('Error al guardar el historial:', error);
+          });
+    }
+  };
 
   useEffect(() => {
     if (!quizFinished && questionsLoaded) {
@@ -76,37 +107,7 @@ function Jugar() {
 
   const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:8000';
 
-  const handleNextQuestion = (timeExpired = false) => {
-    setTimer(INITIAL_TIMER);
-    if (selectedAnswerIndex !== null || timeExpired) {
-      const isCorrect =
-        selectedAnswerIndex !== null &&
-        questions[currentQuestionIndex].answers[selectedAnswerIndex]?.correct;
-      if (isCorrect) {
-        setCorrectAnswers(correctAnswers + 1);
-      }
-    }
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setSelectedAnswerIndex(null);
-    } else {
-      //Finaliza el quiz
-      setQuizFinished(true);
 
-      //Guardamos en el historial los datos de la partida
-      axios.post(`${apiEndpoint}/savehistory`, {
-        username: username,
-        NumPreguntasJugadas: questions.length, // Número total de preguntas jugadas (la longitud de la matriz de preguntas)
-        NumAcertadas: correctAnswers, // Número de preguntas respondidas correctamente
-      })
-        .then(response => {
-          console.log(response.data); // Mensaje de confirmación del servidor
-        })
-        .catch(error => {
-          console.error('Error al guardar el historial:', error);
-        });
-    }
-  };
   const videoSource = quizFinished ? "/videos/celebracion.mp4" : "/videos/question.mp4";
   // Renderizado del componente
   return (
