@@ -14,7 +14,7 @@ const Question = require('./question-model');
 
 async function generateQuestions() {
     const template = templates.capital_of;
-    const newQuestions = await WikiQuery.getQuestions(template, 10);
+    const newQuestions = await WikiQuery.getQuestions(template, 20);
     newQuestions.forEach(q => {
         console.log(q.question);
         console.log(q.answers);
@@ -22,28 +22,28 @@ async function generateQuestions() {
     Question.insertMany(newQuestions);
 }
 
-app.get('/getquestion', async (req, res) => {
+app.get('/getquestions', async (req, res) => {
     try {
 
         // Realizar consulta de agregación para obtener una pregunta aleatoria
-        const randomQuestion = await Question.aggregate([
-            { $sample: { size: 1 } } // Selecciona una pregunta aleatoria
+        const randomQuestions = await Question.aggregate([
+            { $sample: { size: 5 } } // Selecciona una pregunta aleatoria
         ]);
 
         //const questionAndAnswer = await getQuestionTemplate(); // Obtenemos el json de pregunta y sus respuestas
-        console.log(randomQuestion); // Imprime questionAndAnswer en la consola
+        console.log(randomQuestions); // Imprime questionAndAnswer en la consola
 
-        res.json(randomQuestion); //Devolvemos a la gateway el json
+        res.json(randomQuestions); //Devolvemos a la gateway el json
     } catch (error) {
         console.log("Error getting question from database: " + error);
         console.log("Adding new questions to database...");
         await generateQuestions();
         console.log("Questions added. Getting random question...");
-        const randomQuestion = await Question.aggregate([
-            { $sample: { size: 1 } } // Selecciona una pregunta aleatoria
+        const randomQuestions = await Question.aggregate([
+            { $sample: { size: 5 } } // Selecciona una pregunta aleatoria
         ]);
-        console.log("Random question selected: " + randomQuestion); // Imprime questionAndAnswer en la consola
-        res.json(randomQuestion); //Devolvemos a la gateway el json
+        console.log("Random questions selected: " + randomQuestions); // Imprime questionAndAnswer en la consola
+        res.json(randomQuestions); //Devolvemos a la gateway el json
     }
 
 });

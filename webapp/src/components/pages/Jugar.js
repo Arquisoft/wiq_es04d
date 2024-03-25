@@ -6,7 +6,7 @@ import axios from 'axios';
 
 // Configuración inicial y datos
 const INITIAL_TIMER = 20;
-const questions = [
+let questions = [
   {
     question: "¿Cuál es la capital de Francia?",
     answers: [
@@ -55,6 +55,8 @@ const questions = [
   // Resto de las preguntas...
 ];
 
+
+
 function calculateColor(percent) {
   const green = Math.min(255, Math.floor(255 * (percent / 100)));
   const red = Math.min(255, Math.floor(255 * ((100 - percent) / 100)));
@@ -67,17 +69,31 @@ function Jugar() {
   const [timer, setTimer] = useState(INITIAL_TIMER);
   const [quizFinished, setQuizFinished] = useState(false);
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
+  const [questionsLoaded, setQuestionsLoaded] = useState(false);
   const navigate = useNavigate();
   const { isLoggedIn, username } = useContext(AuthContext);
+
+  const getQuestions = async() => {
+    try {
+      console.log("Requesting random questions to " + apiEndpoint);
+      const response = await axios.get(`${apiEndpoint}/getquestions`);
+      questions = response;
+      setQuestionsLoaded(true);
+    } catch (error) {
+      console.error('Error getting questions', error);
+    }
+  }
 
   useEffect(() => {
     if (!isLoggedIn) {
       navigate('/login');
+    } else {
+      getQuestions();
     }
   }, [isLoggedIn, navigate]);
 
   useEffect(() => {
-    if (!quizFinished) {
+    if (!quizFinished && questionsLoaded) {
       const countdown = setInterval(() => {
         setTimer((prevTimer) => {
           if (prevTimer === 1) {
@@ -89,7 +105,7 @@ function Jugar() {
       }, 1000);
       return () => clearInterval(countdown);
     }
-  }, [quizFinished, currentQuestionIndex, timer]);
+  }, [quizFinished, questionsLoaded, currentQuestionIndex, timer]);
 
   const handleAnswerSelect = (index) => {
     setSelectedAnswerIndex(index);
@@ -113,19 +129,19 @@ function Jugar() {
     } else {
       //Finaliza el quiz
       setQuizFinished(true);
-      
+
       //Guardamos en el historial los datos de la partida
-      axios.post(`${apiEndpoint}/savehistory`,{
+      axios.post(`${apiEndpoint}/savehistory`, {
         username: username,
         NumPreguntasJugadas: questions.length, // Número total de preguntas jugadas (la longitud de la matriz de preguntas)
         NumAcertadas: correctAnswers, // Número de preguntas respondidas correctamente
       })
-      .then(response => {
-        console.log(response.data); // Mensaje de confirmación del servidor
-      })
-    .catch(error => {
-        console.error('Error al guardar el historial:', error);
-      });
+        .then(response => {
+          console.log(response.data); // Mensaje de confirmación del servidor
+        })
+        .catch(error => {
+          console.error('Error al guardar el historial:', error);
+        });
     }
   };
   const videoSource = quizFinished ? "/videos/celebracion.mp4" : "/videos/question.mp4";
@@ -173,7 +189,7 @@ function Jugar() {
             ))}
           </ul>
           <div className="quiz-next">
-          <button onClick={handleNextQuestion}>Siguiente</button>
+            <button onClick={handleNextQuestion}>Siguiente</button>
           </div>
         </div>
       )}
