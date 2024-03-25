@@ -6,54 +6,7 @@ import axios from 'axios';
 
 // Configuración inicial y datos
 const INITIAL_TIMER = 20;
-let questions = [
-  {
-    question: "¿Cuál es la capital de Francia?",
-    answers: [
-      { answer: "París", correct: true },
-      { answer: "Londres", correct: false },
-      { answer: "Madrid", correct: false },
-      { answer: "Berlín", correct: false },
-    ],
-  },
-  {
-    question: "¿Cuántos continentes hay en el mundo?",
-    answers: [
-      { answer: "5", correct: false },
-      { answer: "6", correct: false },
-      { answer: "7", correct: true },
-      { answer: "8", correct: false },
-    ],
-  },
-  {
-    question: "¿Cuál es el río más largo del mundo?",
-    answers: [
-      { answer: "Amazonas", correct: true },
-      { answer: "Nilo", correct: false },
-      { answer: "Yangtsé", correct: false },
-      { answer: "Misisipi", correct: false },
-    ],
-  },
-  {
-    question: "¿Cuál es el país más grande del mundo?",
-    answers: [
-      { answer: "China", correct: false },
-      { answer: "Estados Unidos", correct: false },
-      { answer: "Canadá", correct: false },
-      { answer: "Rusia", correct: true },
-    ],
-  },
-  {
-    question: "¿En qué año llegó el hombre a la Luna?",
-    answers: [
-      { answer: "1965", correct: false },
-      { answer: "1969", correct: true },
-      { answer: "1971", correct: false },
-      { answer: "1973", correct: false },
-    ],
-  },
-  // Resto de las preguntas...
-];
+
 
 
 
@@ -72,12 +25,22 @@ function Jugar() {
   const [questionsLoaded, setQuestionsLoaded] = useState(false);
   const navigate = useNavigate();
   const { isLoggedIn, username } = useContext(AuthContext);
+  const [questions, setQuestions] = useState([{
+    question: "¿Cuál es la capital de Francia?",
+    answers: [
+      { answer: "París", correct: true },
+      { answer: "Londres", correct: false },
+      { answer: "Madrid", correct: false },
+      { answer: "Berlín", correct: false },
+    ]
+  }]);
 
   const getQuestions = async() => {
     try {
       console.log("Requesting random questions to " + apiEndpoint);
       const response = await axios.get(`${apiEndpoint}/getquestions`);
-      questions = response;
+      console.log(response);
+      setQuestions(response.data);
       setQuestionsLoaded(true);
     } catch (error) {
       console.error('Error getting questions', error);
