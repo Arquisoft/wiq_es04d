@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, {useContext, useState, useEffect, useCallback} from "react";
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthContext';
 import "./Jugar.css";
@@ -6,7 +6,7 @@ import axios from 'axios';
 
 // Configuración inicial y datos
 const INITIAL_TIMER = 20;
-
+const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:8000';
 
 
 
@@ -35,25 +35,60 @@ function Jugar() {
     ]
   }]);
 
-  const getQuestions = async() => {
-    try {
-      console.log("Requesting random questions to " + apiEndpoint);
-      const response = await axios.get(`${apiEndpoint}/getquestions`);
-      console.log(response);
-      setQuestions(response.data);
-      setQuestionsLoaded(true);
-    } catch (error) {
-      console.error('Error getting questions', error);
-    }
-  }
 
   useEffect(() => {
+    const getQuestions = async () => {
+      try {
+        console.log("Requesting random questions to " + apiEndpoint);
+        const response = await axios.get(`${apiEndpoint}/getquestions`);
+        console.log(response);
+        setQuestions(response.data);
+        setQuestionsLoaded(true);
+      } catch (error) {
+        console.error('Error getting questions', error);
+      }
+    };
+
     if (!isLoggedIn) {
       navigate('/login');
     } else {
       getQuestions();
     }
-  }, [isLoggedIn, navigate]);
+  }, [isLoggedIn, navigate]); // Asegúrate de incluir apiEndpoint en las dependencias si su valor puede cambiar.
+
+
+  const handleNextQuestion = useCallback((timeExpired = false) => {
+    setTimer(INITIAL_TIMER);
+    if (selectedAnswerIndex !== null || timeExpired) {
+      const isCorrect =
+          selectedAnswerIndex !== null &&
+          questions[currentQuestionIndex].answers[selectedAnswerIndex]?.correct;
+      if (isCorrect) {
+        setCorrectAnswers(correctAnswers + 1);
+      }
+    }
+    if (currentQuestionIndex < questions.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setSelectedAnswerIndex(null);
+    } else {
+      // Finaliza el quiz
+      setQuizFinished(true);
+
+      // Guardamos en el historial los datos de la partida
+      axios.post(`${apiEndpoint}/savehistory`, {
+        username: username,
+        NumPreguntasJugadas: questions.length,
+        NumAcertadas: correctAnswers,
+      })
+          .then(response => {
+            console.log(response.data);
+          })
+          .catch(error => {
+            console.error('Error al guardar el historial:', error);
+          });
+    }
+  }, [currentQuestionIndex, selectedAnswerIndex, correctAnswers, questions, username]);
+
 
   useEffect(() => {
     if (!quizFinished && questionsLoaded) {
@@ -68,45 +103,13 @@ function Jugar() {
       }, 1000);
       return () => clearInterval(countdown);
     }
-  }, [quizFinished, questionsLoaded, currentQuestionIndex, timer]);
+  }, [quizFinished, questionsLoaded, currentQuestionIndex, timer, handleNextQuestion]);
 
   const handleAnswerSelect = (index) => {
     setSelectedAnswerIndex(index);
   };
 
-  const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:8000';
 
-  const handleNextQuestion = (timeExpired = false) => {
-    setTimer(INITIAL_TIMER);
-    if (selectedAnswerIndex !== null || timeExpired) {
-      const isCorrect =
-        selectedAnswerIndex !== null &&
-        questions[currentQuestionIndex].answers[selectedAnswerIndex]?.correct;
-      if (isCorrect) {
-        setCorrectAnswers(correctAnswers + 1);
-      }
-    }
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setSelectedAnswerIndex(null);
-    } else {
-      //Finaliza el quiz
-      setQuizFinished(true);
-
-      //Guardamos en el historial los datos de la partida
-      axios.post(`${apiEndpoint}/savehistory`, {
-        username: username,
-        NumPreguntasJugadas: questions.length, // Número total de preguntas jugadas (la longitud de la matriz de preguntas)
-        NumAcertadas: correctAnswers, // Número de preguntas respondidas correctamente
-      })
-        .then(response => {
-          console.log(response.data); // Mensaje de confirmación del servidor
-        })
-        .catch(error => {
-          console.error('Error al guardar el historial:', error);
-        });
-    }
-  };
   const videoSource = quizFinished ? "/videos/celebracion.mp4" : "/videos/question.mp4";
   // Renderizado del componente
   return (
