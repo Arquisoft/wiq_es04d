@@ -53,7 +53,7 @@ function Jugar() {
     } else {
       getQuestions();
     }
-  }, [isLoggedIn, navigate]);
+  }, [isLoggedIn, navigate, getQuestions]);
 
   useEffect(() => {
     if (!quizFinished && questionsLoaded) {
@@ -68,7 +68,7 @@ function Jugar() {
       }, 1000);
       return () => clearInterval(countdown);
     }
-  }, [quizFinished, questionsLoaded, currentQuestionIndex, timer]);
+  }, [quizFinished, questionsLoaded, currentQuestionIndex, timer, handleNextQuestion]);
 
   const handleAnswerSelect = (index) => {
     setSelectedAnswerIndex(index);
