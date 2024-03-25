@@ -4,7 +4,7 @@
   "description": "Microservicio de generar preguntas",
   "main": "service.js",
   "scripts": {
-    "start": "node question-Service.js",
+    "start": "node question-service.js",
     "test": "jest"
   },
   "repository": {

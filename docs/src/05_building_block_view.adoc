@@ -3,210 +3,104 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-building-block-view]]
 
 
-== Building Block View
-
-[role="arc42help"]
-****
-.Content
-The building block view shows the static decomposition of the system into building blocks (modules, components, subsystems, classes, interfaces, packages, libraries, frameworks, layers, partitions, tiers, functions, macros, operations, data structures, ...) as well as their dependencies (relationships, associations, ...)
-
-This view is mandatory for every architecture documentation.
-In analogy to a house this is the _floor plan_.
-
-.Motivation
-Maintain an overview of your source code by making its structure understandable through
-abstraction.
-
-This allows you to communicate with your stakeholder on an abstract level without disclosing implementation details.
-
-.Form
-The building block view is a hierarchical collection of black boxes and white boxes
-(see figure below) and their descriptions.
-
-image::05_building_blocks-EN.png["Hierarchy of building blocks"]
-
-*Level 1* is the white box description of the overall system together with black
-box descriptions of all contained building blocks.
-
-*Level 2* zooms into some building blocks of level 1.
-Thus it contains the white box description of selected building blocks of level 1, together with black box descriptions of their internal building blocks.
-
-*Level 3* zooms into selected building blocks of level 2, and so on.
+== Vista de Bloque de Construcción  (EN desarollo) 🗳️
+image::Building Block View.jpg["Building Block View"]
 
 
-.Further Information
+=== Sistema general de caja blanca 📏
 
-See https://docs.arc42.org/section-5/[Building Block View] in the arc42 documentation.
+Este diagrama del sistema general muestra una descripción del sistema con los componentes básicos.
 
-****
-
-=== Whitebox Overall System
-
-[role="arc42help"]
-****
-Here you describe the decomposition of the overall system using the following white box template. It contains
-
- * an overview diagram
- * a motivation for the decomposition
- * black box descriptions of the contained building blocks. For these we offer you alternatives:
-
-   ** use _one_ table for a short and pragmatic overview of all contained building blocks and their interfaces
-   ** use a list of black box descriptions of the building blocks according to the black box template (see below).
-   Depending on your choice of tool this list could be sub-chapters (in text files), sub-pages (in a Wiki) or nested elements (in a modeling tool).
+image::Whitebox Overall System.jpg["Whitebox Overall System"]
 
 
- * (optional:) important interfaces, that are not explained in the black box templates of a building block, but are very important for understanding the white box.
-Since there are so many ways to specify interfaces why do not provide a specific template for them.
- In the worst case you have to specify and describe syntax, semantics, protocols, error handling,
- restrictions, versions, qualities, necessary compatibilities and many things more.
-In the best case you will get away with examples or simple signatures.
-
-****
-
-_**<Overview Diagram>**_
-
-Motivation::
-
-_<text explanation>_
 
 
-Contained Building Blocks::
-_<Description of contained building block (black boxes)>_
+Bloques de Construcción Contenidos::
 
-Important Interfaces::
-_<Description of important interfaces>_
+* User Interface (Frontend)
 
-[role="arc42help"]
-****
-Insert your explanations of black boxes from level 1:
+* Logica de Negocio(Backend)
 
-If you use tabular form you will only describe your black boxes with name and
-responsibility according to the following schema:
+* Base datos
 
-[cols="1,2" options="header"]
+* API Preguntas 
+
+
+Interfaces Importantes::
+
+
+EN DESARROLLO.
+
+
+==== <Interfaz Gráfica>
+[options="header",cols="1,2"]
 |===
-| **Name** | **Responsibility**
-| _<black box 1>_ | _<Text>_
-| _<black box 2>_ | _<Text>_
+| UI | Descripción
+| Proposito / Responsabilidad | La Interfaz de Usuario (UI) - Black Box 1 es responsable de proporcionar una interfaz interactiva y amigable para los usuarios finales. Sirve como el punto principal de interacción entre la aplicación y los usuarios, y facilita la experiencia general del usuario.
+| Interface(s) | Interfaz de Entrada del Usuario: Acepta la entrada del usuario a través de varios controles, como botones, formularios y campos de entrada.
+Interfaz de Visualización: Renderiza y muestra información al usuario, incluyendo datos, mensajes y elementos visuales.
+| Caracteristicas de Calidad / Rendimiento | Capacidad de Respuesta: La UI debe responder de manera rápida a las interacciones del usuario para garantizar una experiencia fluida y eficiente.
+Accesibilidad: Adhiere a los estándares de accesibilidad para proporcionar una experiencia inclusiva para los usuarios.
 |===
 
 
 
-If you use a list of black box descriptions then you fill in a separate black box template for every important building block .
-Its headline is the name of the black box.
-****
+=== <Loggin>
 
-
-==== <Name black box 1>
-
-[role="arc42help"]
-****
-Here you describe <black box 1>
-according the the following black box template:
-
-* Purpose/Responsibility
-* Interface(s), when they are not extracted as separate paragraphs. This interfaces may include qualities and performance characteristics.
-* (Optional) Quality-/Performance characteristics of the black box, e.g.availability, run time behavior, ....
-* (Optional) directory/file location
-* (Optional) Fulfilled requirements (if you need traceability to requirements).
-* (Optional) Open issues/problems/risks
-
-****
-
-_<Purpose/Responsibility>_
-
-_<Interface(s)>_
-
-_<(Optional) Quality/Performance Characteristics>_
-
-_<(Optional) Directory/File Location>_
-
-_<(Optional) Fulfilled Requirements>_
-
-_<(optional) Open Issues/Problems/Risks>_
+Su función principal es permitir el acceso a los usuarios a la aplicación , y guardar los resultados de estos.
 
 
 
-
-==== <Name black box 2>
-
-_<black box template>_
-
-==== <Name black box n>
-
-_<black box template>_
+==== <Api de preguntas>
+Su propósito es proporcionar preguntas de manera dinámica al usuario.
 
 
-==== <Name interface 1>
+EN DESARROLLO.
 
-...
+==== <Lógica de negocio >
+Se encargará de gestionar toda la programación necesaria de cara a la lógica.
 
-==== <Name interface m>
+EN DESARROLLO.
 
+==== <Base de datos>
+Dará almacenamiento al sistema de manera persistente y a los récords de los usuarios.
 
+EN DESARROLLO.
 
 === Level 2
 
-[role="arc42help"]
-****
-Here you can specify the inner structure of (some) building blocks from level 1 as white boxes.
+==== White Box _<Interfaz de usuario>_
 
-You have to decide which building blocks of your system are important enough to justify such a detailed description.
-Please prefer relevance over completeness. Specify important, surprising, risky, complex or volatile building blocks.
-Leave out normal, simple, boring or standardized parts of your system
-****
+En desarollo.
 
-==== White Box _<building block 1>_
+==== White Box _<Login>_
 
-[role="arc42help"]
-****
-...describes the internal structure of _building block 1_.
-****
-
-_<white box template>_
-
-==== White Box _<building block 2>_
+En desarollo.
 
 
-_<white box template>_
+==== White Box _<Api preguntas>_
 
-...
+En desarollo.
 
-==== White Box _<building block m>_
+==== White Box _<Logica de negocio >_
 
-
-_<white box template>_
-
+En desarollo.
 
 
-=== Level 3
-
-[role="arc42help"]
-****
-Here you can specify the inner structure of (some) building blocks from level 2 as white boxes.
-
-When you need more detailed levels of your architecture please copy this
-part of arc42 for additional levels.
-****
+=== Level 3 En desarrollo.
 
 
 ==== White Box <_building block x.1_>
 
-[role="arc42help"]
-****
-Specifies the internal structure of _building block x.1_.
-****
-
-
-_<white box template>_
+En desarollo.
 
 
 ==== White Box <_building block x.2_>
 
-_<white box template>_
-
+En desarollo.
 
 
 ==== White Box <_building block y.1_>
 
-_<white box template>_
+En desarollo.

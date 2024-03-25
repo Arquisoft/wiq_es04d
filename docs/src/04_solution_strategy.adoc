@@ -1,32 +1,47 @@
 ifndef::imagesdir[:imagesdir: ../images]
 
 [[section-solution-strategy]]
-== Solution Strategy
+== Estrategia de Solución 📚
 
+=== Decisiones tecnológicas 💻
 
-[role="arc42help"]
-****
-.Contents
-A short summary and explanation of the fundamental decisions and solution strategies, that shape system architecture. It includes
+[options="header",cols="1,2"]
+|===
+|Aplicación|Breve explicación
+|React / JS|Biblioteca de JavaScript que nos servirá para realizar las interfaces de usuario necesarias para el Front-End. Esto nos indica que el lenguaje principal usado en el proyecto es JavaScript.
+|Microservicios|Se usaran microservicios diferentes para los diferentes componentes del proyecto como la generacion de preguntas o el registro de usuarios en el sistema. 
+|Azure|Para el alojamiemto de la pagina web se usara una maquina virtual Azure con el credito de estudiante proporcionado
+|Docker
+|Encargado de dividir el contenido del proyecto en diversos contenedores (en nuestro caso 4) y sea más fácil de manipular el contenido de dicho proyecto.
+|GitHub Actions
+|Nos servirá para el despliegue del proyecto, pero de forma automática en vez de desplegarlo todo a mano. Cabe a destacar que también están implementados
+unos test para asegurar el correcto despliegue del proyecto.
+|===
 
-* technology decisions
-* decisions about the top-level decomposition of the system, e.g. usage of an architectural pattern or design pattern
-* decisions on how to achieve key quality goals
-* relevant organizational decisions, e.g. selecting a development process or delegating certain tasks to third parties.
+Decisiones de cómo llegar a las metas principales (En desarrollo):
+[options="header",cols="1,2"]
+|===
+| Decision | Como llegar
+| Usabilidad | La aplicacion seguira los principios basicos de usabilidad y estos seran testeados en diferentes escenarios.
+| Mantenibilidad | El sistema sera mantenible gracias a la mantenibilidad de sus subsistemas. 
+| Eficiciencia | Para que la aplicacion sea rapida se usaran la base de datos y no se tendran que generar datos en caliente que pueden perjudicar a los tiempo de carga.
+| Fiabilidad | Todos los datos mostrados seran correctos y para esta comprobacion se usara la base de datos de Wikidata y sus entidades e ID's asociados. 
+| Privacidad | Los datos de los usuarios seran privados y no seran accesibles a ningun usuario. 
 
-.Motivation
-These decisions form the cornerstones for your architecture. They are the foundation for many other detailed decisions or implementation rules.
+|===
 
-.Form
-Keep the explanations of such key decisions short.
+=== Decisiones organizativas 👥
 
-Motivate what was decided and why it was decided that way,
-based upon problem statement, quality goals and key constraints.
-Refer to details in the following sections.
+El equipo estara dividido en 2 grupos. Los equipos son de documentación y de desarrollo. Los miembros de los grupos podran ir cambiando de rol si el proyecto asi lo necesita. Esta es la distribucion inicial.
 
+[options="header",cols="1,2"]
+|===
+|Equipo|Miembros
+|Equipo documentación| Yago Navajas Gonzalez -> UO287746@uniovi.es
+|Equipo desarrollo del proyecto|Zohaib Akhtar Kausar -> UO291060@uniovi.es + 
+Santiago Lopez Laso -> UO277369@uniovi.es
+|===
 
-.Further Information
+La realización de las actas de las reuniones diarias se le ha asignado la tarea a Sara Lamuño García.
 
-See https://docs.arc42.org/section-4/[Solution Strategy] in the arc42 documentation.
-
-****
+La división se ha realizado considerando la experiencia y los conocimientos previos de los integrantes del grupo. De esta manera, el trabajo se puede distribuir de manera realista y los integrantes podrán aportar de manera equitativa al proyecto. Todos los miembros comprenderán cómo funcionan las diferentes partes del proyecto; sin embargo, no todos tendrán las habilidades necesarias para realizar todas las tareas. Por lo tanto, esta es la forma más equilibrada de organizar al equipo.

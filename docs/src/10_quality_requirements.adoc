@@ -1,73 +1,42 @@
 ifndef::imagesdir[:imagesdir: ../images]
-
 [[section-quality-scenarios]]
-== Quality Requirements
+== Requisitos de Calidad 🌟
 
+=== Árbol de Calidad 🌳
 
-[role="arc42help"]
-****
+El árbol de calidad se organiza con "calidad" como raíz, desglosándose en varias ramas principales, que representan categorías de calidad relevantes para el proyecto WIQ. Estas ramas incluyen:
 
-.Content
-This section contains all quality requirements as quality tree with scenarios. The most important ones have already been described in section 1.2. (quality goals)
+- *Usabilidad*: Se refiere a la facilidad con la que los usuarios pueden utilizar un sistema para alcanzar sus objetivos de manera eficiente y satisfactoria. La usabilidad implica interfaces intuitivas, accesibilidad y una experiencia de usuario agradable.
+- *Rendimiento*: Evalúa la eficiencia del sistema en términos de velocidad de respuesta, consumo de recursos y escalabilidad. Un buen rendimiento asegura que el sistema puede manejar cargas de trabajo elevadas con tiempos de respuesta rápidos.
+- *Seguridad*: Implica proteger la información y los sistemas contra accesos no autorizados, divulgación, alteración o destrucción, garantizando la confidencialidad, integridad y disponibilidad de los datos.
+- *Fiabilidad*: La capacidad del sistema de funcionar correctamente y sin fallos durante un período determinado bajo condiciones específicas. La fiabilidad se centra en la consistencia del rendimiento y la prevención de fallos.
+- *Mantenibilidad*: Se refiere a la facilidad con la que un sistema puede ser modificado para corregir fallos, mejorar su funcionamiento o adaptarse a un entorno cambiante. Una alta mantenibilidad facilita las actualizaciones y reduce los costos a largo plazo.
+- *Portabilidad*: La capacidad de un sistema para ser utilizado en diferentes entornos operativos con mínimas modificaciones. La portabilidad permite que el software sea compatible con diversos dispositivos, sistemas operativos o navegadores web.
 
-Here you can also capture quality requirements with lesser priority,
-which will not create high risks when they are not fully achieved.
+image::10_Arbol_de_calidad.jpg[Árbol de Calidad,align="center"]
 
-.Motivation
-Since quality requirements will have a lot of influence on architectural
-decisions you should know for every stakeholder what is really important to them,
-concrete and measurable.
+=== Escenarios de Calidad 🕹️
 
+==== Usabilidad 
 
-.Further Information
+- *Escenario*: Un nuevo usuario puede registrarse e iniciar a jugar en menos de 5 minutos después de su primer acceso al sitio web. La interfaz intuitiva y la guía de inicio rápido facilitan este proceso. 
 
-See https://docs.arc42.org/section-10/[Quality Requirements] in the arc42 documentation.
+==== Rendimiento 
 
-****
+- *Escenario*: El sistema responde a las solicitudes de los usuarios en menos de 2 segundos bajo condiciones normales de carga, asegurando una experiencia de juego fluida. 
 
-=== Quality Tree
+==== Seguridad 
 
-[role="arc42help"]
-****
-.Content
-The quality tree (as defined in ATAM – Architecture Tradeoff Analysis Method) with quality/evaluation scenarios as leafs.
+- *Escenario*: Todos los datos personales de los usuarios están cifrados tanto en tránsito como en reposo, utilizando estándares de seguridad actuales para prevenir accesos no autorizados. 
 
-.Motivation
-The tree structure with priorities provides an overview for a sometimes large number of quality requirements.
+==== Mantenibilidad 
 
-.Form
-The quality tree is a high-level overview of the quality goals and requirements:
+- *Escenario*: El sistema permite la adición de nuevas funcionalidades (como tipos de preguntas o temáticas) sin necesidad de una reestructuración mayor, promoviendo una arquitectura modular.
 
-* tree-like refinement of the term "quality". Use "quality" or "usefulness" as a root
-* a mind map with quality categories as main branches
+==== Fiabilidad 
 
-In any case the tree should include links to the scenarios of the following section.
+- *Escenario*: En caso de fallo del sistema, este debe ser capaz de recuperarse y volver a estar operativo en menos de 5 minutos, garantizando una alta disponibilidad.
 
+==== Portabilidad
 
-****
-
-=== Quality Scenarios
-
-[role="arc42help"]
-****
-.Contents
-Concretization of (sometimes vague or implicit) quality requirements using (quality) scenarios.
-
-These scenarios describe what should happen when a stimulus arrives at the system.
-
-For architects, two kinds of scenarios are important:
-
-* Usage scenarios (also called application scenarios or use case scenarios) describe the system’s runtime reaction to a certain stimulus. This also includes scenarios that describe the system’s efficiency or performance. Example: The system reacts to a user’s request within one second.
-* Change scenarios describe a modification of the system or of its immediate environment. Example: Additional functionality is implemented or requirements for a quality attribute change.
-
-.Motivation
-Scenarios make quality requirements concrete and allow to
-more easily measure or decide whether they are fulfilled.
-
-Especially when you want to assess your architecture using methods like
-ATAM you need to describe your quality goals (from section 1.2)
-more precisely down to a level of scenarios that can be discussed and evaluated.
-
-.Form
-Tabular or free form text.
-****
+- *Escenario*: La aplicación web es compatible con los navegadores web más utilizados (Chrome, Firefox, Safari, Edge) en sus últimas dos versiones principales, asegurando un amplio acceso.

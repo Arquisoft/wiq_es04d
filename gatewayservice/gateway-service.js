@@ -13,6 +13,8 @@ const port = 8000;
 
 const authServiceUrl = process.env.AUTH_SERVICE_URL || 'http://localhost:8002';
 const userServiceUrl = process.env.USER_SERVICE_URL || 'http://localhost:8001';
+const generateServiceURL = process.env.GENERATE_SERVICE_URL || 'http://localhost:8003';
+const historyServiceUrl = process.env.HISTORY_SERVICE_URL || 'http://localhost:8004';
 
 app.use(cors());
 app.use(express.json());
@@ -42,6 +44,32 @@ app.post('/adduser', async (req, res) => {
     const userResponse = await axios.post(userServiceUrl+'/adduser', req.body);
     res.json(userResponse.data);
   } catch (error) {
+    res.status(error.response.status).json({ error: error.response.data.error });
+  }
+});
+
+app.get('/getquestions', async(req,res)=> {
+  try{
+    // Redirige la solicitud al servicio de generación de preguntas sin enviar un cuerpo de solicitud.
+    const response = await axios.get(`${generateServiceURL}/getquestions`);
+
+    // Devuelve la respuesta del servicio de generación de preguntas al cliente original.
+    res.json(response.data);
+
+  } catch(error) {
+    if (error.response) {
+      res.status(error.response.status).json({ error: error.response.data.error });
+    } else {
+      res.status(500).json({ error: 'An unexpected error occurred' });
+    }
+  }
+});
+
+app.post('/savehistory', async (req, res) => {
+  try{
+    const historyResponse = await axios.post(historyServiceUrl+'/savehistory', req.body);
+    res.json(historyResponse.data);
+  } catch(error){
     res.status(error.response.status).json({ error: error.response.data.error });
   }
 });
