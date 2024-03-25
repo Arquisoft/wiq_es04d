@@ -35,25 +35,26 @@ function Jugar() {
     ]
   }]);
 
-  const getQuestions = async() => {
-    try {
-      console.log("Requesting random questions to " + apiEndpoint);
-      const response = await axios.get(`${apiEndpoint}/getquestions`);
-      console.log(response);
-      setQuestions(response.data);
-      setQuestionsLoaded(true);
-    } catch (error) {
-      console.error('Error getting questions', error);
-    }
-  }
-
   useEffect(() => {
+    const getQuestions = async() => {
+      try {
+        console.log("Requesting random questions to " + apiEndpoint);
+        const response = await axios.get(`${apiEndpoint}/getquestions`);
+        console.log(response);
+        setQuestions(response.data);
+        setQuestionsLoaded(true);
+      } catch (error) {
+        console.error('Error getting questions', error);
+      }
+    };
+
     if (!isLoggedIn) {
       navigate('/login');
     } else {
-      getQuestions();
+      getQuestions().then(r =>{});
     }
-  }, [isLoggedIn, navigate, getQuestions]);
+  }, [isLoggedIn, navigate]);
+
   const handleNextQuestion = (timeExpired = false) => {
     setTimer(INITIAL_TIMER);
     if (selectedAnswerIndex !== null || timeExpired) {
