@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout'; // Asegúrate de importar el nuevo componente Layout
 import Home from './components/pages/Home';
@@ -12,7 +12,12 @@ import AboutUS from "./components/pages/AboutUS";
 import Error404Page from "./components/pages/Error404Page";
 
 function App() {
+    useEffect(() => {
+        document.title = "WIQ"; // Titulo de la paginma
+    }, []);
+
     return (
+
         <AuthProvider> {/* Envolver con AuthProvider */}
             <Router>
                 <Routes>
