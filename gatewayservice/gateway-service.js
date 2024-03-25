@@ -51,7 +51,7 @@ app.post('/adduser', async (req, res) => {
 app.get('/getquestions', async(req,res)=> {
   try{
     // Redirige la solicitud al servicio de generación de preguntas sin enviar un cuerpo de solicitud.
-    const response = await axios.post(`${generateServiceURL}/getquestions`);
+    const response = await axios.get(`${generateServiceURL}/getquestions`);
 
     // Devuelve la respuesta del servicio de generación de preguntas al cliente original.
     res.json(response.data);
