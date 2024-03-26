@@ -54,7 +54,7 @@ function Jugar() {
     } else {
       getQuestions();
     }
-  }, [isLoggedIn, navigate]); // Asegúrate de incluir apiEndpoint en las dependencias si su valor puede cambiar.
+  }, [isLoggedIn, navigate]);
 
 
   const handleNextQuestion = useCallback((timeExpired = false) => {

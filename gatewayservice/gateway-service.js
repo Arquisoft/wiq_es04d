@@ -65,6 +65,7 @@ app.get('/getquestions', async(req,res)=> {
   }
 });
 
+//Guardar el historial
 app.post('/savehistory', async (req, res) => {
   try{
     const historyResponse = await axios.post(historyServiceUrl+'/savehistory', req.body);
@@ -73,6 +74,19 @@ app.post('/savehistory', async (req, res) => {
     res.status(error.response.status).json({ error: error.response.data.error });
   }
 });
+
+//Obtener el historial
+app.get('/gethistory', async (req, res) => {
+  try{
+    const historyResponse = await axios.get(historyServiceUrl+'/gethistory', {
+      params: { username: req.query.username }
+    });
+    res.json(historyResponse.data);
+  }catch(error){
+    res.status(error.response.status).json({ error: error.response.data.error });
+  }
+});
+
 
 // Read the OpenAPI YAML file synchronously
 openapiPath='./openapi.yaml'
