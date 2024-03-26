@@ -17,7 +17,7 @@ mongoose.connect(mongoUri);
 
 app.post('/savehistory', async (req, res) => {
     try {
-        let username = req.body.username;//necesitamos el username
+        let username = req.body.username; //necesitamos el username
 
         //Extraer los datos de la solicitud
         const { NumPreguntasJugadas, NumAcertadas } = req.body;
@@ -55,15 +55,15 @@ app.post('/savehistory', async (req, res) => {
 
 app.get('/gethistory', async (req, res) => {
   try {
-      //let username = req.body.username;
-      let username = "noexiste";
+    
+      let username = req.body.username;
 
+      console.log(username);
       // Buscar el historial en la base de datos basado en el nombre de usuario
       let historyEntry = await History.findOne({ username: username });
 
       if (historyEntry === null) {
         
-        console.log('Entro');
         // Si no se encuentra ningún historial para el usuario, crear un nuevo historial con valores igualados a 0
         historyEntry = new History({
           username: username,
@@ -81,7 +81,6 @@ app.get('/gethistory', async (req, res) => {
       res.json(historyEntry);
 
   } catch (error) {
-      // Manejo de errores
       res.status(500).json({ error: 'Error al obtener el historial' });
   }
 });
