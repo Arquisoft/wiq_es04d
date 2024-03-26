@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {useCallback, useContext, useEffect, useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthContext'; 
@@ -12,18 +12,10 @@ export default function Historial() {
 
   const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:8000';
 
-  useEffect(() => {
-    if (!isLoggedIn) {
-      navigate('/login');
-    } else {
-      fetchHistorialData();
-    }
-  }, [isLoggedIn, navigate]);
-
-  const fetchHistorialData = async () => {
+  const fetchHistorialData = useCallback(async () => {
     try {
       let response = await axios.get(`${apiEndpoint}/gethistory`, {
-        username: username
+        params: { username: username }
       });
 
       console.log(response.data);
@@ -33,7 +25,16 @@ export default function Historial() {
     } catch (error) {
       console.error('Error al obtener el historial:', error);
     }
-  };
+  }, [apiEndpoint, username]);
+
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate('/login');
+    } else {
+      fetchHistorialData();
+    }
+  }, [isLoggedIn, navigate, fetchHistorialData]);
 
   return (
     <div className="historial-container">

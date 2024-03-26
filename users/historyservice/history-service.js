@@ -56,7 +56,7 @@ app.post('/savehistory', async (req, res) => {
 app.get('/gethistory', async (req, res) => {
   try {
     
-      let username = req.body.username;
+      let username = req.query.username;
 
       console.log(username);
       // Buscar el historial en la base de datos basado en el nombre de usuario

@@ -78,12 +78,15 @@ app.post('/savehistory', async (req, res) => {
 //Obtener el historial
 app.get('/gethistory', async (req, res) => {
   try{
-    const historyResponse = await axios.get(historyServiceUrl+'/gethistory', req.body);
+    const historyResponse = await axios.get(historyServiceUrl+'/gethistory', {
+      params: { username: req.query.username }
+    });
     res.json(historyResponse.data);
   }catch(error){
     res.status(error.response.status).json({ error: error.response.data.error });
   }
 });
+
 
 // Read the OpenAPI YAML file synchronously
 openapiPath='./openapi.yaml'
