@@ -1,4 +1,5 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthContext'; 
 import '../../App.css';
@@ -6,33 +7,46 @@ import './Historial.css';
 
 export default function Historial() {
   const navigate = useNavigate();
-  const { isLoggedIn } = useContext(AuthContext); 
+  const { isLoggedIn, username } = useContext(AuthContext);
+  const [historialData, setHistorialData] = useState(false);
+
+  const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:8000';
 
   useEffect(() => {
     if (!isLoggedIn) {
       navigate('/login');
+    } else {
+      fetchHistorialData();
     }
   }, [isLoggedIn, navigate]);
 
-  // Datos de ejemplo
-  const example_data = {
-    username: 'nombre',
-    NumJugadas: '20',
-    NumPreguntasJugadas: '100',
-    NumAcertadas: '80',
-    NumFalladas: '20',
+  const fetchHistorialData = async () => {
+    try {
+      let response = await axios.get(`${apiEndpoint}/gethistory`, {
+        username: username
+      });
+
+      console.log(response.data);
+
+      setHistorialData(response.data);
+
+    } catch (error) {
+      console.error('Error al obtener el historial:', error);
+    }
   };
 
   return (
     <div className="historial-container">
       <h1 className='services'>HISTORIAL</h1>
-      <div className="user-info">
-        <h2>{example_data.username}</h2>
-        <p>Número de Partidas: {example_data.NumJugadas}</p>
-        <p>Número de Preguntas Jugadas: {example_data.NumPreguntasJugadas}</p>
-        <p>Número de acertadas: {example_data.NumAcertadas}</p>
-        <p>Número de falladas: {example_data.NumFalladas}</p>
-      </div>
+      {historialData && (
+        <div className="user-info">
+          <h2>Nombre de usuario: {historialData.username}</h2>
+          <p>Número de Partidas: {historialData.NumJugadas}</p>
+          <p>Número de Preguntas Jugadas: {historialData.NumPreguntasJugadas}</p>
+          <p>Número de acertadas: {historialData.NumAcertadas}</p>
+          <p>Número de falladas: {historialData.NumFalladas}</p>
+        </div>
+      )}
     </div>
   );
 }

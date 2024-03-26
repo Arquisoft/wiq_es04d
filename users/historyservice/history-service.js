@@ -53,6 +53,39 @@ app.post('/savehistory', async (req, res) => {
       }
 });
 
+app.get('/gethistory', async (req, res) => {
+  try {
+      //let username = req.body.username;
+      let username = "noexiste";
+
+      // Buscar el historial en la base de datos basado en el nombre de usuario
+      let historyEntry = await History.findOne({ username: username });
+
+      if (historyEntry === null) {
+        
+        console.log('Entro');
+        // Si no se encuentra ningún historial para el usuario, crear un nuevo historial con valores igualados a 0
+        historyEntry = new History({
+          username: username,
+          NumJugadas: 0,
+          NumPreguntasJugadas: 0,
+          NumAcertadas: 0,
+          NumFalladas: 0
+        })
+
+        // Guardar el nuevo historial en la base de datos
+        await historyEntry.save();
+
+      }
+
+      res.json(historyEntry);
+
+  } catch (error) {
+      // Manejo de errores
+      res.status(500).json({ error: 'Error al obtener el historial' });
+  }
+});
+
 const server = app.listen(port, () => {
   console.log(`History Service listening at http://localhost:${port}`);
 });
