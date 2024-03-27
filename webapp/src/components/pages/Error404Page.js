@@ -5,7 +5,7 @@ import './Error404Page.css'; // Asegúrate de tener este archivo en el mismo dir
 
 function Error404Page() {
   const navigate = useNavigate();
-  const [countdown, setCountdown] = useState(123123);
+  const [countdown, setCountdown] = useState(15);
 
   useEffect(() => {
     if (countdown === 0) {
@@ -22,10 +22,10 @@ function Error404Page() {
         <source src="videos/Error404.mp4" type="video/mp4" />
       </video>
       <div className="content">
-        <h1>404 - Oops! You ran out of oxygen</h1>
-        <p>The page you're looking for is now beyond our reach. Let's get you</p>
-        <div className="countdown">Back Home in {countdown} segundos...</div>
-        <Button buttonStyle='btn--outline' to='/'>Go Home</Button>
+        <h1>404 - ¡Ups! Te quedaste sin oxígeno</h1>
+        <p>La página que estas buscando está fuera de nuestro alcance. Vamos a por ti.</p>
+        <div className="countdown">Vuelta al inicio en {countdown} segundos...</div>
+        <Button buttonStyle='btn--outline' to='/' sx={{ mt: 3, mb: 2 }}>Volver al Inicio</Button>
       </div>
     </div>
   );

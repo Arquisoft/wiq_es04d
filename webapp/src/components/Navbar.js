@@ -22,7 +22,7 @@ function Navbar() {
   const NavLinks = ({ isLoggedIn }) => (
     <ul className={isClicked ? 'nav-menu active' : 'nav-menu'}>
       <li className='nav-item'>
-        <Link to='/' className='nav-links' onClick={closeMenu}>Home</Link>
+        <Link to='/' className='nav-links' onClick={closeMenu}>Inicio</Link>
       </li>
       {isLoggedIn ? (
         <>
@@ -33,16 +33,16 @@ function Navbar() {
             <Link to='/historial' className='nav-links' onClick={closeMenu}>Historial</Link>
           </li>
           <li className='nav-item'>
-            <Link to='/logout' className='nav-links-mobile' onClick={closeMenu}>Logout</Link>
+            <Link to='/logout' className='nav-links-mobile' onClick={closeMenu}>Salir</Link>
           </li>
         </>
       ) : (
         <>
           <li>
-            <Link to='/sign-up' className='nav-links-mobile' onClick={closeMenu}>Register</Link>
+            <Link to='/sign-up' className='nav-links-mobile' onClick={closeMenu}>Registrarse</Link>
           </li>
           <li>
-            <Link to='/login' className='nav-links-mobile' onClick={closeMenu}>Login</Link>
+            <Link to='/login' className='nav-links-mobile' onClick={closeMenu}>Entrar</Link>
           </li>
         </>
       )}
@@ -58,11 +58,11 @@ function Navbar() {
         </div>
         <NavLinks isLoggedIn={isLoggedIn} />
         {isLoggedIn ? (
-          showButton && <Button buttonStyle='btn--outline' to='/logout'>Logout</Button>
+          showButton && <Button buttonStyle='btn--outline' to='/logout'>Salir</Button>
         ) : (
           <>
-            {showButton && <Button buttonStyle='btn--outline' to='/sign-up'>Register</Button>}
-            {showButton && <Button buttonStyle='btn--outline' to='/login'>Login</Button>}
+            {showButton && <Button buttonStyle='btn--outline' to='/sign-up'>Registrarse</Button>}
+            {showButton && <Button buttonStyle='btn--outline' to='/login'>Entrar</Button>}
           </>
         )}
       </div>
