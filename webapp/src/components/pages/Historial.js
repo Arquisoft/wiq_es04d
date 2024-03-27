@@ -41,7 +41,7 @@ export default function Historial() {
       <h1 className='services'>HISTORIAL</h1>
       {historialData && (
         <div className="user-info">
-          <h2>Nombre de usuario: {historialData.username}</h2>
+          <h2>{historialData.username}</h2>
           <p>Número de Partidas: {historialData.NumJugadas}</p>
           <p>Número de Preguntas Jugadas: {historialData.NumPreguntasJugadas}</p>
           <p>Número de acertadas: {historialData.NumAcertadas}</p>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Container, Typography, TextField, Button, Snackbar } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate} from "react-router-dom";
 
 const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:8000';
 
@@ -17,7 +17,7 @@ const AddUser = () => {
             await axios.post(`${apiEndpoint}/adduser`, { username, password });
             setOpenSnackbar(true);
             // Redirigir al usuario a /login después de mostrar el Snackbar
-            setTimeout(() => navigate('/login'), 1000); // Espera 1 segundos antes de redirigir
+            setTimeout(() => navigate('/login'), 750); // Espera 1 segundos antes de redirigir
         } catch (error) {
             setError(error.response.data.error);
         }
@@ -30,13 +30,13 @@ const AddUser = () => {
     return (
         <Container component="main" maxWidth="xs" sx={{ marginTop: 4 }}>
             <Typography component="h1" variant="h5">
-                Add User
+                Registro de Usuario
             </Typography>
             <TextField
                 name="username"
                 margin="normal"
                 fullWidth
-                label="Username"
+                label="Nombre de Usuario"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
             />
@@ -44,18 +44,23 @@ const AddUser = () => {
                 name="password"
                 margin="normal"
                 fullWidth
-                label="Password"
+                label="Contraseña"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <Button variant="contained" color="primary" onClick={addUser}>
-                Add User
+            <Button variant="contained" color="primary" onClick={addUser} sx={{ mt: 3, mb: 2 }}>
+                Registrarse
             </Button>
-            <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar} message="User added successfully" />
+            <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar} message="Usuario añadido correctamente" />
             {error && (
                 <Snackbar open={!!error} autoHideDuration={6000} onClose={() => setError('')} message={`Error: ${error}`} />
             )}
+            <Container style={{ textAlign: 'center', marginTop: '15%' }}>
+            <Link name="gotologin" component="button" variant="body2" to="/login">
+              ¿Ya tienes una cuenta? Incia sesión aquí.
+            </Link>
+          </Container>
         </Container>
     );
 };
