@@ -1,42 +1,45 @@
 ifndef::imagesdir[:imagesdir: ../images]
 
 [[section-glossary]]
-== Glossary
+== Glosario ⁉️
 
-[role="arc42help"]
-****
-.Contents
-The most important domain and technical terms that your stakeholders use when discussing the system.
-
-You can also see the glossary as source for translations if you work in multi-language teams.
-
-.Motivation
-You should clearly define your terms, so that all stakeholders
-
-* have an identical understanding of these terms
-* do not use synonyms and homonyms
-
-
-.Form
-
-A table with columns <Term> and <Definition>.
-
-Potentially more columns in case you need translations.
-
-
-.Further Information
-
-See https://docs.arc42.org/section-12/[Glossary] in the arc42 documentation.
-
-****
 
 [cols="e,2e" options="header"]
 |===
-|Term |Definition
+|Término 
+|Definicion
 
-|<Term-1>
-|<definition-1>
+|React
+|Biblioteca de Javascript que se encarga en la creación de interfaces de usuario de una manera fácil. Es eficiente y se puede incorporar
+al código de una forma sencilla.
 
-|<Term-2>
-|<definition-2>
+|Node.js
+|Entorno que usa Javascript, donde destaca en la creación de servidores web. Su programación es dirigida por eventos, es multi-plataforma, open-source
+y soporta la concurrencia.
+
+|Microservicio
+|Enfoque arquitectónico, donde el software se va a dividir en servicios de tamaño pequeño, que estarán unidos por la intervención de API's 
+(en nuestro caso Wikidata). Son rápidos, sencillos a la hora de su desarrollo y autonómos cuando estos están en ejecución.
+
+|API
+|También llamado Application Programming Interface, es un intermediario que ayuda a las diferentes aplicaciones del proyecto a posibilitar la comunicación
+entre ellas. Favorece a la eficiencia y agilidad del funcionamiento de dichas aplicaciones.
+
+|MongoDB
+|Es uno de los tantos tipos de bases de datos, como MariaDB. Usa NoSQL, soporta múltiples lenguajes de programación y también soporta su funcionamiento en gran variedad de sistemas operativos. Algo a tener en cuenta es que MongoDB realiza el guardado de datos de una forma distinta a la de las bases de datos de tipo relacional, con tablas de datos, este lo guarda en archivos BSON, que es un derivado de JSON.
+
+|BSON
+|Conocido como Binary JSON, son los archivos que usa la base de datos MongoDB para almacenar los datos de una manera más ágil y sencilla que con las tablas. Una curiosidad de este tipo de archivo es que no tiene un tipo de MIME definido, mientras que JSON sí que lo tiene.
+
+|Mongoose
+|Biblioteca que es encargada de crear una conexión con la base de datos MongoDB con el entorno de Node.js. Hace que el acceso y creación de los datos de MongoDB sea más fácil de realizar que con MongoDB en sí.
+
+|Docker
+|Aplicación que realiza el despliegue de cualquier aplicación en formato de contenedores, similares a los contenedores que tienen los barcos. Es open-source y permite que el proceso de desplegar una aplicación sea bastante más fácil y ordenado. 
+
+|GitHub Actions
+|Plataforma que ayuda a automatizar los proyectos, haciendo posible el despliegue de estos desde el mismo Github. Soporta una gran variedad de lenguajes de programación y sistemas operativos.
+
+|MySql
+|Es un sistema de gestión de bases de datos relacional de código abierto ampliamente utilizado que se destaca por su velocidad, confiabilidad y facilidad de uso. Permite a los usuarios almacenar, organizar y recuperar datos de manera eficiente a través de consultas estructuradas utilizando el lenguaje estándar de SQL. Es compatible con una variedad de plataformas y se utiliza en una amplia gama de aplicaciones.
 |===

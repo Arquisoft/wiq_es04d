@@ -1,93 +1,50 @@
 ifndef::imagesdir[:imagesdir: ../images]
 
 [[section-introduction-and-goals]]
-== Introduction and Goals
+== Introducción y Objetivos (wiq_es04d) 🎇
 
-[role="arc42help"]
+El proyecto de wiq_es04d es un proyecto desarrollado en la asignatura Arquitectura del Software. Consiste en la creación de una aplicación web al estilo "Saber y Ganar". Es decir, es un juego de preguntas de cultura general.
+
+Los desarrolladores de la aplicacion son por Zohaib Akhtar Kausar, Yago Navajas González y Santiago López Laso.
+
+La aplicación tendrá su base para las preguntas y las respuestas en Wikidata, la base de conocimiento editada en colaboración.
+
+
+=== Requisitos Funcionales 🛠️
+
 ****
-Describes the relevant requirements and the driving forces that software architects and development team must consider. 
-These include
+* Los usuarios se deberán loggearse en la página; esto servirá para tener registro de una serie de parámetros, como puede ser las veces que se ha jugado. 
+* Se podrán responder preguntas autogeneradas y se verá si han acertado o fallado, así como la respuesta correcta.
+* Las preguntas deberán ser respondidas en un tiempo límite.
+* Las preguntas seguirán la misma estructura: 1 pregunta correcta y 3 incorrectas, generadas automáticamente.
+* Los usuarios podrán consultar datos sobre su cuentas, como pueden ser las veces que han jugado o el número de preguntas que han acertado o fallado. 
 
-* underlying business goals, 
-* essential features, 
-* essential functional requirements, 
-* quality goals for the architecture and
-* relevant stakeholders and their expectations
-****
-
-=== Requirements Overview
-
-[role="arc42help"]
-****
-.Contents
-Short description of the functional requirements, driving forces, extract (or abstract)
-of requirements. Link to (hopefully existing) requirements documents
-(with version number and information where to find it).
-
-.Motivation
-From the point of view of the end users a system is created or modified to
-improve support of a business activity and/or improve the quality.
-
-.Form
-Short textual description, probably in tabular use-case format.
-If requirements documents exist this overview should refer to these documents.
-
-Keep these excerpts as short as possible. Balance readability of this document with potential redundancy w.r.t to requirements documents.
-
-
-.Further Information
-
-See https://docs.arc42.org/section-1/[Introduction and Goals] in the arc42 documentation.
 
 ****
 
-=== Quality Goals
+=== Atributos de Calidad 👑
 
-[role="arc42help"]
-****
-.Contents
-The top three (max five) quality goals for the architecture whose fulfillment is of highest importance to the major stakeholders. 
-We really mean quality goals for the architecture. Don't confuse them with project goals.
-They are not necessarily identical.
+[options="header",cols="1,2,2"]
+|===
+| Prioridad | Objetivo | Descripción
+| 1 | Usabilidad | Todos los usuarios deben poder usar la aplicación sin tener en cuenta sus limitaciones.
+| 2 | Mantenibilidad | El código y documentación de la aplicación ha de estar conformado de tal forma que sea factible hacer cambios y ampliaciones en la aplicación.
+| 3 | Eficiciencia | Los tiempos entre operaciones han de ser asumibles.
+| 4 | Fiabilidad | Los datos usados en la aplicación deben ser los correctos.
+| 5 | Privacidad |  Los datos sensibles de los usuarios deben estar restringidos al mismo usuario.
+|===
 
-Consider this overview of potential topics (based upon the ISO 25010 standard):
 
-image::01_2_iso-25010-topics-EN.drawio.png["Categories of Quality Requirements"]
-
-.Motivation
-You should know the quality goals of your most important stakeholders, since they will influence fundamental architectural decisions. 
-Make sure to be very concrete about these qualities, avoid buzzwords.
-If you as an architect do not know how the quality of your work will be judged...
-
-.Form
-A table with quality goals and concrete scenarios, ordered by priorities
-****
-
-=== Stakeholders
-
-[role="arc42help"]
-****
-.Contents
-Explicit overview of stakeholders of the system, i.e. all person, roles or organizations that
-
-* should know the architecture
-* have to be convinced of the architecture
-* have to work with the architecture or with code
-* need the documentation of the architecture for their work
-* have to come up with decisions about the system or its development
-
-.Motivation
-You should know all parties involved in development of the system or affected by the system.
-Otherwise, you may get nasty surprises later in the development process.
-These stakeholders determine the extent and the level of detail of your work and its results.
-
-.Form
-Table with role names, person names, and their expectations with respect to the architecture and its documentation.
-****
+=== Stakeholders 👨‍👩‍👦‍👦
 
 [options="header",cols="1,2,2"]
 |===
 |Role/Name|Contact|Expectations
-| _<Role-1>_ | _<Contact-1>_ | _<Expectation-1>_
-| _<Role-2>_ | _<Contact-2>_ | _<Expectation-2>_
+| Equipo de Desarrollo | Yago Navajas Gonzalez -> UO287746@uniovi.es +
+Zohaib Akhtar Kausar -> UO291060@uniovi.es +
+Santiago Lopez Laso -> UO277369@uniovi.es | Los estudiantes que llevarán a cabo el desarrollo de la aplicación. Serán los encargados de la arquitectura, la documentación y la codificación.
+| Profesores | Jose Emilio Labra Gayo | Supervisores de los avances y encargados de evaluar la aplicación final y el desarrollo de la misma.
+| Usuario | Jugador de la aplicación | Personas que puedan interactuar tanto con el registro de usuarios como con el juego en sí y pueda completar correctamente una partida.
+| HappySw | Empresa responsable | Empresa contratada, cuyo trabajo sera el desarrollo del juego de la mano del equipo de desarrollo.
+| RTVE | Empleador | Interesados en la creacion del juego e impulsores de su creacion.
 |===

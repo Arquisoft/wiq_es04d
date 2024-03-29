@@ -1,58 +1,14 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, {useContext, useState, useEffect, useCallback} from "react";
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthContext';
 import "./Jugar.css";
+import axios from 'axios';
 
 // Configuración inicial y datos
 const INITIAL_TIMER = 20;
-const questions = [
-  {
-    question: "¿Cuál es la capital de Francia?",
-    answers: [
-      { answer: "París", correct: true },
-      { answer: "Londres", correct: false },
-      { answer: "Madrid", correct: false },
-      { answer: "Berlín", correct: false },
-    ],
-  },
-  {
-    question: "¿Cuántos continentes hay en el mundo?",
-    answers: [
-      { answer: "5", correct: false },
-      { answer: "6", correct: false },
-      { answer: "7", correct: true },
-      { answer: "8", correct: false },
-    ],
-  },
-  {
-    question: "¿Cuál es el río más largo del mundo?",
-    answers: [
-      { answer: "Amazonas", correct: true },
-      { answer: "Nilo", correct: false },
-      { answer: "Yangtsé", correct: false },
-      { answer: "Misisipi", correct: false },
-    ],
-  },
-  {
-    question: "¿Cuál es el país más grande del mundo?",
-    answers: [
-      { answer: "China", correct: false },
-      { answer: "Estados Unidos", correct: false },
-      { answer: "Canadá", correct: false },
-      { answer: "Rusia", correct: true },
-    ],
-  },
-  {
-    question: "¿En qué año llegó el hombre a la Luna?",
-    answers: [
-      { answer: "1965", correct: false },
-      { answer: "1969", correct: true },
-      { answer: "1971", correct: false },
-      { answer: "1973", correct: false },
-    ],
-  },
-  // Resto de las preguntas...
-];
+const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:8000';
+
+
 
 function calculateColor(percent) {
   const green = Math.min(255, Math.floor(255 * (percent / 100)));
@@ -66,17 +22,76 @@ function Jugar() {
   const [timer, setTimer] = useState(INITIAL_TIMER);
   const [quizFinished, setQuizFinished] = useState(false);
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
+  const [questionsLoaded, setQuestionsLoaded] = useState(false);
   const navigate = useNavigate();
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, username } = useContext(AuthContext);
+  const [questions, setQuestions] = useState([{
+    question: "¿Cuál es la capital de Francia?",
+    answers: [
+      { answer: "París", correct: true },
+      { answer: "Londres", correct: false },
+      { answer: "Madrid", correct: false },
+      { answer: "Berlín", correct: false },
+    ]
+  }]);
+
 
   useEffect(() => {
+    const getQuestions = async () => {
+      try {
+        console.log("Requesting random questions to " + apiEndpoint);
+        const response = await axios.get(`${apiEndpoint}/getquestions`);
+        console.log(response);
+        setQuestions(response.data);
+        setQuestionsLoaded(true);
+      } catch (error) {
+        console.error('Error getting questions', error);
+      }
+    };
+
     if (!isLoggedIn) {
       navigate('/login');
+    } else {
+      getQuestions();
     }
   }, [isLoggedIn, navigate]);
 
+
+  const handleNextQuestion = useCallback((timeExpired = false) => {
+    setTimer(INITIAL_TIMER);
+    if (selectedAnswerIndex !== null || timeExpired) {
+      const isCorrect =
+          selectedAnswerIndex !== null &&
+          questions[currentQuestionIndex].answers[selectedAnswerIndex]?.correct;
+      if (isCorrect) {
+        setCorrectAnswers(correctAnswers + 1);
+      }
+    }
+    if (currentQuestionIndex < questions.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setSelectedAnswerIndex(null);
+    } else {
+      // Finaliza el quiz
+      setQuizFinished(true);
+
+      // Guardamos en el historial los datos de la partida
+      axios.post(`${apiEndpoint}/savehistory`, {
+        username: username,
+        NumPreguntasJugadas: questions.length,
+        NumAcertadas: correctAnswers,
+      })
+          .then(response => {
+            console.log(response.data);
+          })
+          .catch(error => {
+            console.error('Error al guardar el historial:', error);
+          });
+    }
+  }, [currentQuestionIndex, selectedAnswerIndex, correctAnswers, questions, username]);
+
+
   useEffect(() => {
-    if (!quizFinished) {
+    if (!quizFinished && questionsLoaded) {
       const countdown = setInterval(() => {
         setTimer((prevTimer) => {
           if (prevTimer === 1) {
@@ -88,29 +103,13 @@ function Jugar() {
       }, 1000);
       return () => clearInterval(countdown);
     }
-  }, [quizFinished, currentQuestionIndex, timer]);
+  }, [quizFinished, questionsLoaded, currentQuestionIndex, timer, handleNextQuestion]);
 
   const handleAnswerSelect = (index) => {
     setSelectedAnswerIndex(index);
   };
 
-  const handleNextQuestion = (timeExpired = false) => {
-    setTimer(INITIAL_TIMER);
-    if (selectedAnswerIndex !== null || timeExpired) {
-      const isCorrect =
-        selectedAnswerIndex !== null &&
-        questions[currentQuestionIndex].answers[selectedAnswerIndex]?.correct;
-      if (isCorrect) {
-        setCorrectAnswers(correctAnswers + 1);
-      }
-    }
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setSelectedAnswerIndex(null);
-    } else {
-      setQuizFinished(true);
-    }
-  };
+
   const videoSource = quizFinished ? "/videos/celebracion.mp4" : "/videos/question.mp4";
   // Renderizado del componente
   return (
@@ -156,7 +155,7 @@ function Jugar() {
             ))}
           </ul>
           <div className="quiz-next">
-          <button onClick={handleNextQuestion}>Siguiente</button>
+            <button onClick={handleNextQuestion}>Siguiente</button>
           </div>
         </div>
       )}

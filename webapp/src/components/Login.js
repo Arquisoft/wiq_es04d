@@ -38,30 +38,30 @@ const Login = () => {
       <Container component="main" maxWidth="xs" sx={{ marginTop: 4 }}>
         <div>
           <Typography component="h1" variant="h5">
-            Login
+            Entrar
           </Typography>
           <TextField
               margin="normal"
               fullWidth
-              label="Username"
+              label="Nombre de Usuario"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
           />
           <TextField
               margin="normal"
               fullWidth
-              label="Password"
+              label="Contraseña"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
           />
           <Button variant="contained" color="primary" onClick={loginUser} sx={{ mt: 3, mb: 2 }}>
-            Login
+            Entrar
           </Button>
           <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar} message={loginSuccess ? "Inicio de sesión exitoso" : `Error: ${error}`} />
           <Container style={{ textAlign: 'center', marginTop: '15%' }}>
             <Link name="gotoregister" component="button" variant="body2" to="/sign-up">
-              Don't have an account? Register here.
+              ¿No tienes una cuenta? Registrate aquí.
             </Link>
           </Container>
         </div>
