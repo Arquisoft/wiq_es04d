@@ -25,25 +25,24 @@ async function generateQuestions() {
 app.get('/getquestions', async (req, res) => {
     try {
 
-        // Realizar consulta de agregación para obtener una pregunta aleatoria
-        const randomQuestions = await Question.aggregate([
-            { $sample: { size: 5 } } // Selecciona una pregunta aleatoria
+        // Selecciona 'size' preguntas aleatorias
+        let randomQuestions = await Question.aggregate([
+            { $sample: { size: 5 } } 
         ]);
 
-        //const questionAndAnswer = await getQuestionTemplate(); // Obtenemos el json de pregunta y sus respuestas
-        console.log(randomQuestions); // Imprime questionAndAnswer en la consola
+        if (randomQuestions.length === 0) {
+            console.log("Not enough questions in database. Adding new ones...");
+            await generateQuestions();
+            randomQuestions = await Question.aggregate([
+                { $sample: { size: 5 } } 
+            ]);
+        }
 
-        res.json(randomQuestions); //Devolvemos a la gateway el json
+        console.log(randomQuestions);
+        res.status(200).json(randomQuestions);
     } catch (error) {
         console.log("Error getting question from database: " + error);
-        console.log("Adding new questions to database...");
-        await generateQuestions();
-        console.log("Questions added. Getting random question...");
-        const randomQuestions = await Question.aggregate([
-            { $sample: { size: 5 } } // Selecciona una pregunta aleatoria
-        ]);
-        console.log("Random questions selected: " + randomQuestions); // Imprime questionAndAnswer en la consola
-        res.json(randomQuestions); //Devolvemos a la gateway el json
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 
 });
