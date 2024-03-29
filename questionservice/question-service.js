@@ -50,15 +50,19 @@ app.get('/getquestions', async (req, res) => {
 app.get('/generatequestions', async (req, res) => {
     try {
         await generateQuestions();
-        res.json({ status: 'OK' });
+        res.status(200).json({ status: 'OK' });
     } catch (error) {
         res.status(error.response.status).json({ error: error.response.data.error });
     }
 
 });
 
-app.listen(port, () => {
-    console.log(`Server listening on http://localhost:${port}`);
+const server = app.listen(port, () => {
+    console.log(`Question Service listening on http://localhost:${port}`);
 });
 
+server.on('close', () => {
+    mongoose.connection.close();
+  });
 
+module.exports = server
