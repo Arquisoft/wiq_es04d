@@ -6,7 +6,7 @@ const port = 8003;
 // Importamos la función desde questionTemplates.js
 const templates = require('./templates.json')
 // Connect to MongoDB
-const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/userdb';
+const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/questiondb';
 mongoose.connect(mongoUri);
 
 const WikiQuery = require('./wikiUtils/wikiQuery');
