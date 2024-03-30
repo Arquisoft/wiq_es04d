@@ -6,7 +6,7 @@ info:
 servers:
   - url: http://localhost:8000
     description: Development server
-  - url: http://SOMEIP:8000
+  - url: http://${{ secrets.DEPLOY_HOST }}:8000
     description: Production server
 paths:
   /adduser:
@@ -142,3 +142,62 @@ paths:
                     type: string
                     description: Error information.
                     example: Internal Server Error
+  /getquestions:
+    get:
+      summary: Get random questions.
+      operationId: getQuestions
+      responses:
+        '200':
+          description: Returns random questions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  questions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        question:
+                          type: string
+                          description: The question itself.
+                        answers:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              answer:
+                                type: string
+                                description: The answer to the question.
+                              correct:
+                                type: boolean
+                                description: Indicates if the answer is correct.
+                        questionCategory:
+                          type: string
+                          description: The category of the question.
+                example:
+                  questions:
+                    - question: "¿Cuál es la capital de Francia?"
+                      answers:
+                        - answer: "París"
+                          correct: true
+                        - answer: "Londres"
+                          correct: false
+                        - answer: "Madrid"
+                          correct: false
+                        - answer: "Berlín"
+                          correct: false
+                      questionCategory: "Geografía"
+        '500':
+          description: Error getting the questions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message.
+                example:
+                  error: "Error getting the questions occurred"

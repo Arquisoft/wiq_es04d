@@ -54,13 +54,13 @@ app.get('/getquestions', async(req,res)=> {
     const response = await axios.get(`${generateServiceURL}/getquestions`);
 
     // Devuelve la respuesta del servicio de generación de preguntas al cliente original.
-    res.json(response.data);
+    res.status(200).json(response.data);
 
   } catch(error) {
     if (error.response) {
       res.status(error.response.status).json({ error: error.response.data.error });
     } else {
-      res.status(500).json({ error: 'An unexpected error occurred' });
+      res.status(500).json({ error: 'Error getting the questions' });
     }
   }
 });
