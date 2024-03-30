@@ -65,6 +65,47 @@ app.get('/getquestions', async(req,res)=> {
   }
 });
 
+app.post('/createquestion', async (req, res) => {
+  try {
+    const response = await axios.post(`${generateServiceURL}/createquestion`, req.body);
+    res.status(201).json(response.data);
+  } catch (error) {
+    if (error.response) {
+      res.status(error.response.status).json({ error: error.response.data.error });
+    } else {
+      res.status(500).json({ error: 'Error creating the question' });
+    }
+  }
+});
+
+app.put('/updatequestion/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await axios.put(`${generateServiceURL}/updatequestion/${id}`, req.body);
+    res.status(200).json({ status: 'OK' });
+  } catch (error) {
+    if (error.response) {
+      res.status(error.response.status).json({ error: error.response.data.error });
+    } else {
+      res.status(500).json({ error: 'Error updating the question' });
+    }
+  }
+});
+
+app.put('/deletequestion/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await axios.delete(`${generateServiceURL}/deletequestion/${id}`, req.body);
+    res.status(200).json({ status: 'OK' });
+  } catch (error) {
+    if (error.response) {
+      res.status(error.response.status).json({ error: error.response.data.error });
+    } else {
+      res.status(500).json({ error: 'Error deleting the question' });
+    }
+  }
+});
+
 //Guardar el historial
 app.post('/savehistory', async (req, res) => {
   try{
