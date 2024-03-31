@@ -14,8 +14,8 @@ describe('Home Component Tests', () => {
   test('renders Home component correctly', () => {
     renderWithRouter(<Home />);
     expect(screen.getByRole('heading', { name: /wiq/i })).toBeInTheDocument();
-    expect(screen.getByText(/what are you waiting for\?/i)).toBeInTheDocument();
-    expect(screen.getByText(/jugar/i)).toBeInTheDocument();
+    expect(screen.getByText(/¿A que estás esperando?\?/i)).toBeInTheDocument();
+    expect(screen.getByText(/JUGAR/i)).toBeInTheDocument();
   });
 
   test('loads and plays the video automatically', () => {
