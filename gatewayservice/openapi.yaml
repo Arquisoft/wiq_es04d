@@ -6,7 +6,7 @@ info:
 servers:
   - url: http://localhost:8000
     description: Development server
-  - url: http://${{ secrets.DEPLOY_HOST }}:8000
+  - url: http://20.77.40.187:8000
     description: Production server
 paths:
   /adduser:
