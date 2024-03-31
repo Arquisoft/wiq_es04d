@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { Container, Typography, Button,TextField, Snackbar } from '@mui/material';
-import { AuthContext } from '../AuthContext';
+import { AuthContext } from '../../AuthContext';
 import {Link, useNavigate} from "react-router-dom";
 
 const Login = () => {
