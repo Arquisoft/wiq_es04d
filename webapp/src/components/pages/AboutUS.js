@@ -14,14 +14,14 @@ function AboutUS() {
               src='images/design.jpg' // Asegúrate de cambiar esta imagen por una representativa del diseño gráfico
               text='Estudiantes innovadores que transformaron la visión del proyecto con su diseño gráfico.'
               label='Diseño Gráfico'
-              path='/areas/diseno-grafico'
+              path='https://arquisoft.github.io/wiq_es04d/'
             />
             {/* Lógica de API de Wikidata */}
             <CardItem
               src='images/api-logic.jpg' // Asegúrate de cambiar esta imagen por una representativa de la lógica de API
               text='Desarrollo de la lógica de integración con la API de Wikidata para enriquecer nuestro proyecto.'
               label='API de Wikidata'
-              path='/areas/logica-api'
+              path='https://arquisoft.github.io/wiq_es04d/'
             />
           </ul>
           <ul className='cards__items'>
@@ -30,21 +30,21 @@ function AboutUS() {
               src='images/database.jpg' // Asegúrate de cambiar esta imagen por una representativa de bases de datos
               text='Implementación de soluciones de bases de datos para gestionar eficientemente la información.'
               label='Base de Datos'
-              path='/areas/base-de-datos'
+              path='https://arquisoft.github.io/wiq_es04d/'
             />
             {/* Documentación */}
             <CardItem
               src='images/documentation.jpg' // Asegúrate de cambiar esta imagen por una representativa de la documentación
               text='Creación de documentación detallada para facilitar la comprensión y el uso del proyecto.'
               label='Documentación'
-              path='/areas/documentacion'
+              path='https://arquisoft.github.io/wiq_es04d/'
             />
             {/* Despliegue de la Aplicación */}
             <CardItem
               src='images/deployment.jpg' // Asegúrate de cambiar esta imagen por una representativa del despliegue
               text='Técnicas y estrategias de despliegue aplicadas para poner en marcha nuestra aplicación.'
               label='Despliegue'
-              path='/areas/despliegue'
+              path='https://arquisoft.github.io/wiq_es04d/'
             />
           </ul>
         </div>
