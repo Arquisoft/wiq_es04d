@@ -6,7 +6,7 @@ info:
 servers:
   - url: http://localhost:8000
     description: Development server
-  - url: http://SOMEIP:8000
+  - url: http://${{ secrets.DEPLOY_HOST }}:8000
     description: Production server
 paths:
   /adduser:
@@ -142,3 +142,224 @@ paths:
                     type: string
                     description: Error information.
                     example: Internal Server Error
+  /getquestions:
+    get:
+      summary: Get random questions.
+      operationId: getQuestions
+      responses:
+        '200':
+          description: Returns random questions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  questions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        question:
+                          type: string
+                          description: The question itself.
+                        answers:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              answer:
+                                type: string
+                                description: The answer to the question.
+                              correct:
+                                type: boolean
+                                description: Indicates if the answer is correct.
+                        questionCategory:
+                          type: string
+                          description: The category of the question.
+                example:
+                  questions:
+                    - question: "¿Cuál es la capital de Francia?"
+                      answers:
+                        - answer: "París"
+                          correct: true
+                        - answer: "Londres"
+                          correct: false
+                        - answer: "Madrid"
+                          correct: false
+                        - answer: "Berlín"
+                          correct: false
+                      questionCategory: "Geografía"
+        '500':
+          description: Error getting the questions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message.
+                example:
+                  error: "Error getting the questions occurred"
+  /createquestion:
+    post:
+      summary: Create a new question.
+      operationId: createQuestion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                question:
+                  type: string
+                  description: The question itself.
+                answers:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      answer:
+                        type: string
+                        description: The answer to the question.
+                      correct:
+                        type: boolean
+                        description: Indicates if the answer is correct.
+                questionCategory:
+                  type: string
+                  description: The category of the question.
+      responses:
+        '201':
+          description: Question created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    description: The ID of the created question.
+                    example: "65f756db3fa22d227a4b7c7d"
+                  question:
+                    type: string
+                    description: The question itself.
+                    example: "¿Cuál es la capital de Francia?"
+                  answers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        answer:
+                          type: string
+                          description: The answer to the question.
+                        correct:
+                          type: boolean
+                          description: Indicates if the answer is correct.
+                  questionCategory:
+                    type: string
+                    description: The category of the question.
+        '400':
+          description: Bad request. Invalid input data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error information.
+                    example: Invalid input data.
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error information.
+                    example: Internal Server Error
+  /updatequestion/{id}:
+    put:
+      summary: Update a question by ID
+      operationId: updateQuestionById
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID of the question to update
+          schema:
+            type: string
+          example: "605cf8a59c73cc0022563989"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                question:
+                  type: string
+                  description: The text of the question.
+                answers:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      answer:
+                        type: string
+                        description: The text of the answer.
+                      correct:
+                        type: boolean
+                        description: Indicates if the answer is correct.
+                questionCategory:
+                  type: string
+                  description: The category of the question.
+      responses:
+        '200':
+          description: Successful update
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Update status
+                    example: OK
+        '400':
+          description: Bad request, invalid data provided
+        '404':
+          description: Question not found
+        '500':
+          description: Internal server error
+  /deletequestion/{id}:
+    delete:
+      summary: Delete a question by ID
+      operationId: deleteQuestionById
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID of the question to delete
+          schema:
+            type: string
+          example: "605cf8a59c73cc0022563989"
+      responses:
+        '200':
+          description: Question deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Deletion status
+                    example: OK
+        '404':
+          description: Question not found
+        '500':
+          description: Internal server error

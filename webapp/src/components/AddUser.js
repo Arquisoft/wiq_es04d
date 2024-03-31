@@ -58,7 +58,7 @@ const AddUser = () => {
             )}
             <Container style={{ textAlign: 'center', marginTop: '15%' }}>
             <Link name="gotologin" component="button" variant="body2" to="/login">
-              ¿Ya tienes una cuenta? Incia sesión aquí.
+              ¿Ya tienes una cuenta? Inicia sesión aquí.
             </Link>
           </Container>
         </Container>
