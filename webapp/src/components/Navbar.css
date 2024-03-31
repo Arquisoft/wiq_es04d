@@ -86,7 +86,14 @@
     background: #242222;
     transition: all 0.5s ease;
   }
-
+  .menu-icon button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.8rem; /* Adjusted to ensure the icon inside the button matches your design */
+    padding: 0; /* Removes default button padding */
+  }
   .nav-menu.active {
     left: 0;
     opacity: 1;
@@ -100,6 +107,7 @@
     text-align: center;
     transition: all 0.3s ease-out;
   }
+
 
   .nav-links:hover {
     background-color: #fff;

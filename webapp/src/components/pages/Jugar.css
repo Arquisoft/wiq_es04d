@@ -89,7 +89,6 @@ body, html {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
     display: block; /* Asegura que el botón sea un bloque */
     width: 100%; /* Hace que el botón ocupe todo el ancho disponible */
     box-sizing: border-box; /* Asegura que el padding no afecte el ancho final */

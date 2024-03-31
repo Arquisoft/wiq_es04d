@@ -54,11 +54,14 @@ function Navbar() {
       <div className='navbar-container'>
         <Link to='/' className='navbar-logo' onClick={closeMenu}>WIQ<i className='fab fa-typo3' /></Link>
         <div className='menu-icon' onClick={toggleClick}>
-          <i className={isClicked ? 'fas fa-times' : 'fas fa-bars'} />
+          <button aria-label="Menu toggle">
+            <i className={isClicked ? 'fas fa-times' : 'fas fa-bars'}/>
+          </button>
         </div>
-        <NavLinks isLoggedIn={isLoggedIn} />
+
+        <NavLinks isLoggedIn={isLoggedIn}/>
         {isLoggedIn ? (
-          showButton && <Button buttonStyle='btn--outline' to='/logout'>Salir</Button>
+            showButton && <Button buttonStyle='btn--outline' to='/logout'>Salir</Button>
         ) : (
           <>
             {showButton && <Button buttonStyle='btn--outline' to='/sign-up'>Registrarse</Button>}

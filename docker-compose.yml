@@ -51,7 +51,7 @@ services:
     networks:
       - mynetwork
     environment:
-      MONGODB_URI: mongodb://mongodb:27017/userdb
+      MONGODB_URI: mongodb://mongodb:27017/questiondb
   
   historyservice:
     container_name: historyservice-${teamname:-wiq_es04d}
@@ -65,7 +65,7 @@ services:
     networks:
       - mynetwork
     environment:
-      MONGODB_URI: mongodb://mongodb:27017/userdb
+      MONGODB_URI: mongodb://mongodb:27017/historydb
 
   gatewayservice:
     container_name: gatewayservice-${teamname:-defaultASW}
