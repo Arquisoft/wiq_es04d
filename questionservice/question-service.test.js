@@ -5,10 +5,6 @@ const Question = require('./question-model');
 let mongoServer;
 let app;
 
-async function loadTestData() {
-  const questions = require('./test-data');
-  Question.insertMany(questions);
-}
 
 beforeAll(async () => {
   mongoServer = await MongoMemoryServer.create();
