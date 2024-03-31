@@ -4,8 +4,8 @@ import Layout from './components/Layout'; // Asegúrate de importar el nuevo com
 import Home from './components/pages/Home';
 import Historial from './components/pages/Historial';
 import Jugar from './components/pages/Jugar';
-import SignUp from './components/AddUser';
-import LogIn from './components/Login';
+import SignUp from './components/pages/AddUser';
+import LogIn from './components/pages/Login';
 import { AuthProvider } from './AuthContext';
 import Logout from "./components/Logout";
 import AboutUS from "./components/pages/AboutUS";
