@@ -26,24 +26,31 @@ function Navbar() {
       </li>
       {isLoggedIn ? (
         <>
-          <li className='nav-item'>
-            <Link to='/jugar' className='nav-links' onClick={closeMenu}>Jugar</Link>
-          </li>
-          <li className='nav-item'>
-            <Link to='/historial' className='nav-links' onClick={closeMenu}>Historial</Link>
-          </li>
-          <li className='nav-item'>
-            <Link to='/logout' className='nav-links-mobile' onClick={closeMenu}>Salir</Link>
-          </li>
+
+            <li className='nav-item'>
+                <Link to='/jugar' className='nav-links' onClick={closeMenu}>Jugar</Link>
+            </li>
+            <li className='nav-item'>
+                <Link to='/historial' className='nav-links' onClick={closeMenu}>Historial</Link>
+            </li>
+            <li className='nav-item'>
+                <Link to='/aboutus' className='nav-links' onClick={closeMenu}>About US</Link>
+            </li>
+            <li className='nav-item'>
+                <Link to='/logout' className='nav-links-mobile' onClick={closeMenu}>Salir</Link>
+            </li>
         </>
       ) : (
         <>
-          <li>
-            <Link to='/sign-up' className='nav-links-mobile' onClick={closeMenu}>Registrarse</Link>
-          </li>
-          <li>
-            <Link to='/login' className='nav-links-mobile' onClick={closeMenu}>Entrar</Link>
-          </li>
+            <li className='nav-item'>
+                <Link to='/aboutus' className='nav-links' onClick={closeMenu}>About US</Link>
+            </li>
+            <li>
+                <Link to='/sign-up' className='nav-links-mobile' onClick={closeMenu}>Registrarse</Link>
+            </li>
+            <li>
+                <Link to='/login' className='nav-links-mobile' onClick={closeMenu}>Entrar</Link>
+            </li>
         </>
       )}
     </ul>
