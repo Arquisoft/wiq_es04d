@@ -23,7 +23,7 @@ function Error404Page({ initialCountdown = 15 }) {
   return (
       <div className="error-page-container">
         <video autoPlay loop muted className="background-video">
-          <source src="videos/Error404.mp4" type="video/mp4" />
+          <source src="/videos/Error404.mp4" type="video/mp4" />
         </video>
         <div className="content">
           <h1>404 - ¡Ups! Te quedaste sin oxígeno</h1>
