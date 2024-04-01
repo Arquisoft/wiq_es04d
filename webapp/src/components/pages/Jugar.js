@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect, useCallback} from "react";
+import React, {useContext, useState, useEffect, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthContext';
 import "./Jugar.css";
@@ -35,7 +35,8 @@ function Jugar() {
     ]
   }]);
 
-
+  const timerIntervalRef = useRef(null);
+  const handleNextQuestionRef = useRef(null);
   useEffect(() => {
     const getQuestions = async () => {
       try {
@@ -57,7 +58,7 @@ function Jugar() {
   }, [isLoggedIn, navigate]);
 
 
-  const handleNextQuestion = useCallback((timeExpired = false) => {
+  const handleNextQuestion = (timeExpired = false) => {
     setTimer(INITIAL_TIMER);
     if (selectedAnswerIndex !== null || timeExpired) {
       const isCorrect =
@@ -87,27 +88,30 @@ function Jugar() {
             console.error('Error al guardar el historial:', error);
           });
     }
-  }, [currentQuestionIndex, selectedAnswerIndex, correctAnswers, questions, username]);
+  };
 
-
+  handleNextQuestionRef.current = handleNextQuestion;
   useEffect(() => {
     if (!quizFinished && questionsLoaded) {
-      const countdown = setInterval(() => {
+      if (timerIntervalRef.current) clearInterval(timerIntervalRef.current); // Limpia el intervalo si ya existe
+
+      timerIntervalRef.current = setInterval(() => {
         setTimer((prevTimer) => {
           if (prevTimer === 1) {
-            handleNextQuestion(true); // Agrega un indicador de que el cambio fue por tiempo
+            handleNextQuestionRef.current(true); // Tiempo expirado
             return INITIAL_TIMER;
           }
           return prevTimer - 1;
         });
       }, 1000);
-      return () => clearInterval(countdown);
     }
-  }, [quizFinished, questionsLoaded, currentQuestionIndex, timer, handleNextQuestion]);
 
-  const handleAnswerSelect = (index) => {
-    setSelectedAnswerIndex(index);
-  };
+    // Limpia el intervalo cuando el componente se desmonta o el quiz finaliza
+    return () => {
+      if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
+    };
+  }, [quizFinished, questionsLoaded]);
+
 
 
   const videoSource = quizFinished ? "/videos/celebracion.mp4" : "/videos/question.mp4";
@@ -147,7 +151,7 @@ function Jugar() {
             {questions[currentQuestionIndex].answers.map((answer, index) => (
               <li
                 key={index}
-                onClick={() => handleAnswerSelect(index)}
+                onClick={() => setSelectedAnswerIndex(index)}
                 className={selectedAnswerIndex === index ? "selected" : ""}
               >
                 {answer.answer}

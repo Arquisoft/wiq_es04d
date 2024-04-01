@@ -26,7 +26,6 @@ function Navbar() {
       </li>
       {isLoggedIn ? (
         <>
-
             <li className='nav-item'>
                 <Link to='/jugar' className='nav-links' onClick={closeMenu}>Jugar</Link>
             </li>
@@ -35,6 +34,9 @@ function Navbar() {
             </li>
             <li className='nav-item'>
                 <Link to='/aboutus' className='nav-links' onClick={closeMenu}>About US</Link>
+            </li>
+            <li>
+                <Link to='/logout' className='nav-links-mobile' onClick={closeMenu}>Salir</Link>
             </li>
         </>
       ) : (
@@ -65,7 +67,9 @@ function Navbar() {
 
         <NavLinks isLoggedIn={isLoggedIn}/>
         {isLoggedIn ? (
-            showButton && <Button buttonStyle='btn--outline' to='/logout'>Salir</Button>
+            <>
+              {showButton && <Button buttonStyle='btn--outline' to='/logout'>Salir</Button>}
+            </>
         ) : (
           <>
             {showButton && <Button buttonStyle='btn--outline' to='/sign-up'>Registrarse</Button>}
