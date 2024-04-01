@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../Button';
 import './Error404Page.css';
 
-function Error404Page({ initialCountdown = 15 }) {
+function Error404Page({ initialCountdown = 12 }) {
   const navigate = useNavigate(); // Hook para navegar programáticamente.
   const [countdown, setCountdown] = useState(initialCountdown); // Estado para la cuenta regresiva
 
