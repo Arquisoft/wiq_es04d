@@ -16,6 +16,14 @@ video {
   left: 0;
   z-index: -1;
 }
+.historial-container video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100vw; /* Garantiza cobertura completa sin sobrepasar la ventana */
+  height: 100vh; /* Idem */
+  object-fit: cover; /* Mantiene las proporciones sin recortar */
+}
 
 .services{
   color: #ffffff; 
