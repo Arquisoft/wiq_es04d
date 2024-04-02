@@ -74,23 +74,29 @@ function Jugar() {
     } else {
       // Finaliza el quiz
       setQuizFinished(true);
-
-      // Guardamos en el historial los datos de la partida
-      axios.post(`${apiEndpoint}/savehistory`, {
-        username: username,
-        NumPreguntasJugadas: questions.length,
-        NumAcertadas: correctAnswers,
-      })
-          .then(response => {
-            console.log(response.data);
-          })
-          .catch(error => {
-            console.error('Error al guardar el historial:', error);
-          });
+      
     }
   };
 
+  const handleSaveHistory = () => {
+    // Guardamos en el historial los datos de la partida
+    axios.post(`${apiEndpoint}/savehistory`, {
+      username: username,
+      NumPreguntasJugadas: questions.length,
+      NumAcertadas: correctAnswers,
+    }).then(response => {
+          console.log(response.data);
+          navigate('/'); //redireccion a home
+
+        }).catch(error => {
+          console.error('Error al guardar el historial:', error);
+        });
+
+    
+  };
+
   handleNextQuestionRef.current = handleNextQuestion;
+
   useEffect(() => {
     if (!quizFinished && questionsLoaded) {
       if (timerIntervalRef.current) clearInterval(timerIntervalRef.current); // Limpia el intervalo si ya existe
@@ -131,6 +137,7 @@ function Jugar() {
           </div>
           <p>Aciertos: {correctAnswers}</p>
           <p>Errores: {questions.length - correctAnswers}</p>
+          <button onClick={handleSaveHistory}>Terminar</button>
         </div>
       ) : (
         <div className="quiz-container">

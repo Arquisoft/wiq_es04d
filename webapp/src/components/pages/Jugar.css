@@ -102,4 +102,26 @@ body, html {
   color: #fff;
   transform: scale(1.05);
 }
+
+.result-container button {
+  margin-left: 25%;
+  margin-right: 25%;
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  width: 50%;
+  box-sizing: border-box;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.result-container button:hover {
+  background-color: #000000;
+  color: #fff;
+  transform: scale(1.05);
+}
   
