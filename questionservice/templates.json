@@ -4,5 +4,69 @@
         "questionVariable": "wd:Q6256",
         "answerVariable": "wdt:P36",
         "questionCategory": "Geografia"
+    },
+
+    "population_of": {
+        "question": "¿Cuál es la población de __x__?",
+        "questionVariable": "wd:Q6256",
+        "answerVariable": "wdt:P1082",
+        "questionCategory": "Geografia"
+    }, 
+
+    "author_of": {
+         "question": "¿Quién es el autor de __x__?",
+        "questionVariable": "wd:Q571",
+        "answerVariable": "wdt:P50",
+        "questionCategory": "Entretenimiento"
+    },
+
+    "release_date_of": {
+        "question": "¿Cuando se estrenó __x__?",
+        "questionVariable": "wd:Q11424",
+        "answerVariable": "wdt:P577",
+        "questionCategory": "Entretenimiento"
+    },
+
+    "country_of_origin_of_dish": {
+        "question": "¿De qué país es originario el plato de comida __x__?",
+        "questionVariable": "wd:Q746549", 
+        "answerVariable": "wdt:P495",
+        "questionCategory": "Gastronomía"
+    },
+
+    "end_date_of_war": {
+        "question": "¿Cuándo terminó la guerra __x__?",
+        "questionVariable": "wd:Q198",
+        "answerVariable": "wdt:P582",
+        "questionCategory": "Historia"
+    },
+
+    "author_of_painting": {
+        "question": "¿Quién es el autor de la pintura famosa __x__?",
+        "questionVariable": "wd:Q3305213",
+        "answerVariable": "wdt:P170",
+        "questionCategory": "Arte"
+    },
+
+    "stadium_of_team": {
+        "question": "¿Cuál es el nombre del estadio del equipo deportivo __x__?",
+        "questionVariable": "wd:Q12973014",
+        "answerVariable": "wdt:P115",
+        "questionCategory": "Deportes"
+    },
+
+    "winner_of_tournament": {
+        "question": "¿Quién ganó el torneo deportivo __x__?",
+        "questionVariable": "wd:Q61748313",
+        "answerVariable": "wdt:P1346",
+        "questionCategory": "Deportes"
+    },
+
+    "nobel_prize_winner": {
+        "question": "¿Quién ganó el Premio Nobel de __x__?",
+        "questionVariable": "wd:Q7191",
+        "answerVariable": "wdt:P1346",
+        "questionCategory": "Premio Nobel"
     }
+
 }

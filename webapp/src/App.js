@@ -17,11 +17,9 @@ function App() {
     }, []);
 
     return (
-
         <AuthProvider> {/* Envolver con AuthProvider */}
             <Router>
                 <Routes>
-                    {/* Rutas que incluyen el Navbar a través del componente Layout */}
                     <Route path="/" element={<Layout><Home /></Layout>} />
                     <Route path="/historial" element={<Layout><Historial /></Layout>} />
                     <Route path="/jugar" element={<Layout><Jugar /></Layout>} />
@@ -30,7 +28,6 @@ function App() {
                     <Route path="/login" element={<Layout><LogIn /></Layout>} />
                     <Route path="/aboutus" element={<Layout><AboutUS/></Layout>} />
 
-                    {/* Ruta NotFoundPage sin Layout para evitar mostrar el Navbar */}
                     <Route path="*" element={<Error404Page />} />
                 </Routes>
             </Router>
