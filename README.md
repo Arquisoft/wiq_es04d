@@ -7,12 +7,11 @@
 Link: (http://20.77.40.187)
 
 Development Team
-- Zohaib Aktar Kausar
-- Yago Navajas González [![yagonavajas](https://github.com/yagonavajas)]
-- Santiago Lopez Laso
+- Zohaib Aktar Kausar [![Verzidee]()]([https://github.com/yagonavajas](https://github.com/Verzidee))
+- Yago Navajas González [![yagonavajas]()](https://github.com/yagonavajas)
+- Santiago Lopez Laso [![Santiago21112001]()](https://github.com/Santiago21112001)
 
-
-This repo is a basic application composed of several components.
+This are the components that compose the web application.
 
 - **Gateway service**. Express service that is exposed to the public and serves as a proxy to the two previous ones.
 - **User service**. Express service that handles the insertion of new users in the system.
