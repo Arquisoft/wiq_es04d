@@ -4,13 +4,11 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Arquisoft_wiq_es04d&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Arquisoft_wiq_es04d)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Arquisoft_wiq_es04d&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Arquisoft_wiq_es04d)
 
-This is a base repo for the [Software Architecture course](http://arquisoft.github.io/) in [2023/2024 edition](https://arquisoft.github.io/course2324.html). 
-
 Link: (http://20.77.40.187)
 
 Development Team
 - Zohaib Aktar Kausar
-- Yago Navajas González
+- Yago Navajas González [![yagonavajas](https://github.com/yagonavajas)]
 - Santiago Lopez Laso
 
 
@@ -19,9 +17,9 @@ This repo is a basic application composed of several components.
 - **Gateway service**. Express service that is exposed to the public and serves as a proxy to the two previous ones.
 - **User service**. Express service that handles the insertion of new users in the system.
 - **Auth service**. Express service that handles the authentication of users.
-- **Webapp**. React web application that uses the gateway service to allow basic login and new user features.
 - **History service**. Express service that handle the history of games played by users.
 - **Question service**. Express service that handle the generation and the calls to the API of wikidata.
+- **Webapp**. React web application that uses the gateway service to allow basic login and new user features.
 
 The application architecture is composed of microservices. Every service uses a different data base.
 
@@ -129,3 +127,5 @@ This action uses three secrets that must be configured in the repository:
 
 Note that this action logs in the remote machine and downloads the docker-compose file from the repository and launches it. 
 Obviously, previous actions have been executed which have uploaded the docker images to the GitHub Packages repository.
+
+This is a repository for the [Software Architecture course](http://arquisoft.github.io/) in [2023/2024 edition](https://arquisoft.github.io/course2324.html). 
