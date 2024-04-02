@@ -7,9 +7,9 @@
 Link: (http://20.77.40.187)
 
 Development Team
-- Zohaib Aktar Kausar [![Verzidee]()]([https://github.com/yagonavajas](https://github.com/Verzidee))
-- Yago Navajas González [![yagonavajas]()](https://github.com/yagonavajas)
-- Santiago Lopez Laso [![Santiago21112001]()](https://github.com/Santiago21112001)
+- Zohaib Aktar Kausar -> <a href="https://github.com/Verzidee"><img src="https://img.shields.io/badge/profile-Verzidee-red"></a> 
+- Yago Navajas González -> <a href="https://github.com/yagonavajas"><img src="https://img.shields.io/badge/profile-yagonavajas-purple"></a> 
+- Santiago Lopez Laso -> <a href="https://github.com/Santiago21112001"><img src="https://img.shields.io/badge/profile-Santiago21112001-green"></a>
 
 This are the components that compose the web application.
 
