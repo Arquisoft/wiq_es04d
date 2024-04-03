@@ -4,10 +4,10 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Arquisoft_wiq_es04d&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Arquisoft_wiq_es04d)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Arquisoft_wiq_es04d&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Arquisoft_wiq_es04d)
 
-Link: (http://20.77.40.187)
+Link: (http://20.77.40.187:3000/)
 
 Development Team
-- Zohaib Aktar Kausar -> <a href="https://github.com/Verzidee"><img src="https://img.shields.io/badge/profile-Verzidee-red"></a> 
+- Zohaib Aktar Kausar -> <a href="https://github.com/Verzidee"><img src="https://img.shields.io/badge/profile-Verzidee-black"></a> 
 - Yago Navajas González -> <a href="https://github.com/yagonavajas"><img src="https://img.shields.io/badge/profile-yagonavajas-purple"></a> 
 - Santiago Lopez Laso -> <a href="https://github.com/Santiago21112001"><img src="https://img.shields.io/badge/profile-Santiago21112001-green"></a>
 
