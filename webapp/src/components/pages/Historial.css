@@ -4,7 +4,7 @@
   align-items: center;
   padding: 20px;
   position: relative;
-  height: 100vh;
+  height: calc(100vh - 80px);
 }
 
 video {

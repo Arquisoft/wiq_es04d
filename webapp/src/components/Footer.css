@@ -4,14 +4,15 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #000000;
+    background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
     padding: 20px;
     text-align: center;
     box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
 }
 
 footer a,
-footer a:visited {
+footer a:visited,
+.footer-links{
     color: #ffffff;
     margin-right: 20px;
     text-decoration: none;
@@ -19,8 +20,7 @@ footer a:visited {
 }
 
 footer a:hover,
-footer a:focus,
-.footer-links{
+footer a:focus{
     color: #000000;
     background-color: #ffffff;
     padding: 5px;
