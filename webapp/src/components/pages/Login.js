@@ -18,10 +18,10 @@ const Login = () => {
 
   const loginUser = async () => {
     try {
-      await axios.post(`${apiEndpoint}/login`, { username, password });
+      const {data} = await axios.post(`${apiEndpoint}/login`, { username, password });
 
       setLoginSuccess(true);
-      handleLogin(username);
+      handleLogin(data.token);
       setOpenSnackbar(true);
       navigate('/');
     } catch (error) {

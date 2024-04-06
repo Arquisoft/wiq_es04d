@@ -1,27 +1,39 @@
 import React, { createContext, useState } from 'react';
+import { jwtDecode } from 'jwt-decode'; // Ajuste en la importación
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn") === "true");
-    const [username, setUsername] = useState(localStorage.getItem("username") || "unknown");
 
-    const handleLogin = (username) => {
+    const initialToken = window.localStorage.getItem("token");
+    // Decodifica el token para obtener el username, si el token está presente
+    const decodedToken = initialToken ? jwtDecode(initialToken) : null; // Uso correcto de jwtDecode
+    const initialUsername = decodedToken ? decodedToken.username : undefined;
+
+    // Establece el estado inicial basado en la presencia del token y el username decodificado
+    const [isLoggedIn, setIsLoggedIn] = useState(Boolean(initialToken));
+    const [username, setUsername] = useState(initialUsername);
+    const [token, setToken] = useState(initialToken);
+
+    const handleLogin = (token) => {
+        setToken(token);
+        window.localStorage.setItem("token", token);
+        const decoded = jwtDecode(token); // Uso correcto de jwtDecode
+        if (decoded && decoded.username) {
+            setUsername(decoded.username);
+        }
         setIsLoggedIn(true);
-        setUsername(username); // Establecer el nombre de usuario al iniciar sesión
-        localStorage.setItem("isLoggedIn", "true"); // Asegúrate de guardar como string
-        localStorage.setItem("username", username);
     };
 
     const handleLogout = () => {
+        setToken(null);
         setIsLoggedIn(false);
-        setUsername("unknown");
-        localStorage.removeItem("isLoggedIn");
-        localStorage.removeItem("username");
+        setUsername(undefined);
+        window.localStorage.removeItem("token");
     };
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, username, handleLogin, handleLogout }}>
+        <AuthContext.Provider value={{ token, isLoggedIn, username, handleLogin, handleLogout }}>
             {children}
         </AuthContext.Provider>
     );
