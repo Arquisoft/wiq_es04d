@@ -19,7 +19,8 @@ footer a:visited {
 }
 
 footer a:hover,
-footer a:focus {
+footer a:focus,
+.footer-links{
     color: #000000;
     background-color: #ffffff;
     padding: 5px;

@@ -9,7 +9,7 @@ function Footer() {
         <footer>
             <a href={`${apiEndpoint}/api-doc`}>API Doc</a>
             <a href="WIQ_ES04D">WIQ_ES04D</a>
-            <a href="/aboutus"> About us</a>
+            <Link to='/aboutus' className='footer-links'>About us</Link>
         </footer>
     );
 }
