@@ -37,6 +37,12 @@ app.post('/login', async (req, res) => {
     res.status(error.response.status).json({ error: error.response.data.error });
   }
 });
+app.get("/validate/:token", (req, res) => {
+  axios
+      .get(`${authServiceUrl}/validate/${req.params.token}`)
+      .then(({ data }) => res.json(data))
+      .catch((error) => res.status(error.response.status).json({ error: error.response.data.error }));
+});
 
 app.post('/adduser', async (req, res) => {
   try {

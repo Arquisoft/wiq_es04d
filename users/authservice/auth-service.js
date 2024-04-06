@@ -37,7 +37,7 @@ app.post('/login', async (req, res) => {
     // Check if the user exists and verify the password
     if (user && await bcrypt.compare(password, user.password)) {
       // Generate a JWT token
-      const token = jwt.sign({ userId: user._id,username:username }, 'your-secret-key', { expiresIn: '1h' });
+      const token = jwt.sign({ userId: user._id,username:username }, '28dn2js2noma1210_-21@', { expiresIn: '1h' });
       // Respond with the token and user information
       res.json({ token: token, username: username, createdAt: user.createdAt });
     } else {
@@ -47,7 +47,15 @@ app.post('/login', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-app.get('/validate/:token')
+
+app.get('/validate/:token', (req, res) => {
+  try {
+    const {iat, exp, ...result} = jwt.verify(req.params.token, '28dn2js2noma1210_-21@');
+    res.json({ data: result, valid: true });
+  } catch (error) {
+    res.json({ valid: false });
+  }
+});
 
 // Start the server
 const server = app.listen(port, () => {
