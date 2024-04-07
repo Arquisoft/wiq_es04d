@@ -25,6 +25,7 @@ defineFeature(feature, test => {
       waitUntil: "networkidle0",
     }).catch(() => {});
 
+
     //Registrar al user
 
     await expect(page).toFill('input[name="username"]', username);
@@ -44,10 +45,12 @@ defineFeature(feature, test => {
     
     when('Presses submit', async () => {
         await expect(page).toClick('button[name="entrarPage"]');
+        await page.waitForTimeout(1500);
     });
 
 
     then('The user is redirected', async () => {
+        //No lo encuentra
         await expect(page).toMatchElement("p", { text: "¿A que estás esperando?" });
     });
   })
