@@ -45,14 +45,14 @@ defineFeature(feature, test => {
     
     when('Presses submit', async () => {
         await expect(page).toClick('button[name="entrarPage"]');
-        await page.waitForTimeout(1500);
+        //await page.waitForTimeout(1500);
     });
 
 
     then('The user is redirected', async () => {
         // Espera a que el elemento <p> con el texto deseado esté presente en la página
         await page.waitForSelector('p', { text: '¿A que estás esperando?' });
-        
+
         await expect(page).toMatchElement("p", { text: "¿A que estás esperando?" });
     });
   })

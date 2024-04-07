@@ -43,7 +43,7 @@ defineFeature(feature, (test) => {
             await expect(page).toFill('input[name="username"]', username);
             await expect(page).toFill('input[name="password"]', password);
             await expect(page).toClick('button[name="entrarPage"]');
-            await page.waitForTimeout(1500);
+            //await page.waitForTimeout(1500);
         });
 
         when('the user clicks the "Play" button on the homepage', async () => {
