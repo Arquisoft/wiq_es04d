@@ -1,7 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const app = express();
 const port = 8003;
+
+// Middleware to parse JSON in request body
+app.use(bodyParser.json());
 
 // Importamos la función desde questionTemplates.js
 const templates = require('./templates.json')
@@ -12,30 +16,71 @@ mongoose.connect(mongoUri);
 const WikiQuery = require('./wikiUtils/wikiQuery');
 const Question = require('./question-model');
 
+function selectRandomTemplatesKeys(templateKeys, sampleSize) {
+    const randomTemplateKeys = [];
+    while (randomTemplateKeys.length < sampleSize) {
+        const randomIndex = Math.floor(Math.random() * templateKeys.length);
+        const randomKey = templateKeys[randomIndex];
+        if (!randomTemplateKeys.includes(randomKey)) {
+            randomTemplateKeys.push(randomKey);
+        }
+    }
+    return randomTemplateKeys;
+}
+
 async function generateQuestions() {
-    const template = templates.capital_of;
-    const newQuestions = await WikiQuery.getQuestions(template, 20);
-    newQuestions.forEach(q => {
-        console.log(q.question);
-        console.log(q.answers);
-    });
-    Question.insertMany(newQuestions);
+    const templateKeys = Object.keys(templates);
+    const randomTemplateKeys = selectRandomTemplatesKeys(templateKeys, 5);
+    const randomTemplates = randomTemplateKeys.map(key => templates[key]);
+
+    let newQuestions = [];
+    for (let template of randomTemplates) {
+        let wikiQuestions = await WikiQuery.getQuestions(template, 20)
+        newQuestions.push(...wikiQuestions);   
+    }
+    await Question.insertMany(newQuestions);
+}
+
+async function extractAndRemoveRandomQuestions(sampleSize) {
+    let randomQuestions = await Question.aggregate([
+        { $sample: { size: sampleSize } }
+    ]);
+    await Question.deleteMany({ _id: { $in: randomQuestions.map(doc => doc._id) } });
+    return randomQuestions;
+}
+
+function checkReq(reqBody) {
+    // Verificar que el cuerpo de la solicitud contiene los campos necesarios
+    const { question, answers, questionCategory } = reqBody;
+    if (!question || !answers || !questionCategory) {
+        return { error: 'Missing required fields' };
+    }
+
+    // Verificar que 'answers' sea un array y contenga al menos una respuesta
+    if (!Array.isArray(answers) || answers.length === 0) {
+        return { error: 'Invalid format for answers' };
+    }
+
+    // Verificar que cada respuesta tenga el formato correcto
+    for (const answer of answers) {
+        if (!answer.hasOwnProperty('answer') || !answer.hasOwnProperty('correct')) {
+            return { error: 'Invalid format for answers' };
+        }
+    }
+
+    return { error: null };
 }
 
 app.get('/getquestions', async (req, res) => {
     try {
 
-        // Selecciona 'size' preguntas aleatorias
-        let randomQuestions = await Question.aggregate([
-            { $sample: { size: 5 } } 
-        ]);
+        const sampleSize = 5
+        let randomQuestions = await extractAndRemoveRandomQuestions(sampleSize);
 
-        if (randomQuestions.length === 0) {
+        if (randomQuestions.length < sampleSize) {
             console.log("Not enough questions in database. Adding new ones...");
             await generateQuestions();
-            randomQuestions = await Question.aggregate([
-                { $sample: { size: 5 } } 
-            ]);
+            randomQuestions = await extractAndRemoveRandomQuestions(sampleSize);
         }
 
         console.log(randomQuestions);
@@ -59,29 +104,16 @@ app.get('/generatequestions', async (req, res) => {
 
 app.post('/createquestion', async (req, res) => {
     try {
-        // Verificar que el cuerpo de la solicitud contiene los campos necesarios
-        const { question, answers, questionCategory } = req.body;
-        if (!question || !answers || !questionCategory) {
-            return res.status(400).json({ error: 'Missing required fields' });
-        }
-
-        // Verificar que 'answers' sea un array y contenga al menos una respuesta
-        if (!Array.isArray(answers) || answers.length === 0) {
-            return res.status(400).json({ error: 'Invalid format for answers' });
-        }
-
-        // Verificar que cada respuesta tenga el formato correcto
-        for (const answer of answers) {
-            if (!answer.hasOwnProperty('answer') || !answer.hasOwnProperty('correct')) {
-                return res.status(400).json({ error: 'Invalid format for answers' });
-            }
+        const checkResponse = checkReq(req.body);
+        if (checkResponse.error !== null) {
+            return res.status(400).json(checkResponse);
         }
 
         // Crear una nueva pregunta basada en el cuerpo de la solicitud
         const newQuestion = new Question(req.body);
         // Guardar la nueva pregunta en la base de datos
         await newQuestion.save();
-        
+
         // Devolver la nueva pregunta creada, incluido el ID asignado por la base de datos
         res.status(201).json(newQuestion);
     } catch (error) {
@@ -94,26 +126,17 @@ app.post('/createquestion', async (req, res) => {
 app.put('/updatequestion/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        // Verificar que el cuerpo de la solicitud contiene los campos necesarios
-        const { question, answers, questionCategory } = req.body;
-        if (!question || !answers || !questionCategory) {
-            return res.status(400).json({ error: 'Missing required fields' });
+        const checkResponse = checkReq(req.body);
+        if (checkResponse.error !== null) {
+            return res.status(400).json(checkResponse);
         }
 
-        // Verificar que 'answers' sea un array y contenga al menos una respuesta
-        if (!Array.isArray(answers) || answers.length === 0) {
-            return res.status(400).json({ error: 'Invalid format for answers' });
-        }
-
-        // Verificar que cada respuesta tenga el formato correcto
-        for (const answer of answers) {
-            if (!answer.hasOwnProperty('answer') || !answer.hasOwnProperty('correct')) {
-                return res.status(400).json({ error: 'Invalid format for answers' });
-            }
-        }
-
-        // Actualizar la pregunta en la base de datos
-        const updatedQuestion = await Question.findByIdAndUpdate(id, { question, answers, questionCategory }, { new: true });
+        // Actualizar la pregunta en la base de datos con los datos proporcionados en el cuerpo de la solicitud
+        const updatedQuestion = await Question.findByIdAndUpdate(id, {
+            question: req.body.question,
+            answers: req.body.answers,
+            questionCategory: req.body.questionCategory
+        }, { new: true });
 
         if (!updatedQuestion) {
             return res.status(404).json({ error: 'Question not found' });
@@ -125,6 +148,7 @@ app.put('/updatequestion/:id', async (req, res) => {
         res.status(500).json({ error: 'Error updating the question' });
     }
 });
+
 
 // Ruta para eliminar una pregunta por ID
 app.delete('/deletequestion/:id', async (req, res) => {
@@ -150,6 +174,6 @@ const server = app.listen(port, () => {
 
 server.on('close', () => {
     mongoose.connection.close();
-  });
+});
 
 module.exports = server

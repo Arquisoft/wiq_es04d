@@ -18,10 +18,10 @@ const Login = () => {
 
   const loginUser = async () => {
     try {
-      await axios.post(`${apiEndpoint}/login`, { username, password });
+      const {data} = await axios.post(`${apiEndpoint}/login`, { username, password });
 
       setLoginSuccess(true);
-      handleLogin(username);
+      handleLogin(data.token);
       setOpenSnackbar(true);
       navigate('/');
     } catch (error) {
@@ -37,10 +37,12 @@ const Login = () => {
   return (
       <Container component="main" maxWidth="xs" sx={{ marginTop: 4 }}>
         <div>
+        <video src='/videos/loginregister.mp4' autoPlay loop muted data-testid="login-video"/>
           <Typography component="h1" variant="h5">
             Entrar
           </Typography>
           <TextField
+              name ="username"
               margin="normal"
               fullWidth
               label="Nombre de Usuario"
@@ -48,6 +50,7 @@ const Login = () => {
               onChange={(e) => setUsername(e.target.value)}
           />
           <TextField
+              name = "password"
               margin="normal"
               fullWidth
               label="Contraseña"
@@ -55,7 +58,7 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
           />
-          <Button variant="contained" color="primary" onClick={loginUser} sx={{ mt: 3, mb: 2 }}>
+          <Button name="entrarPage" variant="contained" color="primary" onClick={loginUser} sx={{ mt: 3, mb: 2 }}>
             Entrar
           </Button>
           <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar} message={loginSuccess ? "Inicio de sesión exitoso" : `Error: ${error}`} />

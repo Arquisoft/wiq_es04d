@@ -13,13 +13,6 @@
         "questionCategory": "Geografia"
     }, 
 
-    "author_of": {
-         "question": "¿Quién es el autor de __x__?",
-        "questionVariable": "wd:Q571",
-        "answerVariable": "wdt:P50",
-        "questionCategory": "Entretenimiento"
-    },
-
     "release_date_of": {
         "question": "¿Cuando se estrenó __x__?",
         "questionVariable": "wd:Q11424",
@@ -46,13 +39,6 @@
         "questionVariable": "wd:Q3305213",
         "answerVariable": "wdt:P170",
         "questionCategory": "Arte"
-    },
-
-    "stadium_of_team": {
-        "question": "¿Cuál es el nombre del estadio del equipo deportivo __x__?",
-        "questionVariable": "wd:Q12973014",
-        "answerVariable": "wdt:P115",
-        "questionCategory": "Deportes"
     },
 
     "winner_of_tournament": {

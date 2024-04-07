@@ -11,7 +11,10 @@ defineFeature(feature, test => {
   beforeAll(async () => {
     browser = process.env.GITHUB_ACTIONS
         ? await puppeteer.launch()
-        : await puppeteer.launch({ headless: false, slowMo: 100 });
+        : await puppeteer.launch({ headless: false, slowMo: 100,defaultViewport: {
+            width: 1024, // Asegurando que el ancho sea mayor a 960px
+            height: 768,
+          }, });
     page = await browser.newPage();
     setDefaultOptions({ timeout: 10000 });
 
@@ -26,7 +29,7 @@ defineFeature(feature, test => {
     let password;
 
     given('An unregistered user', async () => {
-      username = "ProbandoV1"
+      username = "ProbandoV12"
       password = "pabloasw"
       await expect(page).toClick("a", { text: "¿No tienes una cuenta? Registrate aquí." });
     });
@@ -34,7 +37,7 @@ defineFeature(feature, test => {
     when('I fill the data in the form and press submit', async () => {
       await expect(page).toFill('input[name="username"]', username);
       await expect(page).toFill('input[name="password"]', password);
-      await expect(page).toClick('button', { text: 'Registrarse' })
+      await expect(page).toClick('button[name="registrarsePage"]');
     });
 
     then('A confirmation message should be shown in the screen', async () => {
