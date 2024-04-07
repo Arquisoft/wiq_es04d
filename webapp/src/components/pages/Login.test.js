@@ -26,8 +26,9 @@ describe('Login component', () => {
     const passwordInput = screen.getByLabelText(/Contraseña/i);
     const loginButton = screen.getByRole('button', { name: /Entrar/i });
 
-    // Mock the axios.post request to simulate a successful response
-    mockAxios.onPost('http://localhost:8000/login').reply(200, { createdAt: '2024-01-01T12:34:56Z' });
+    // Asegurando que el token mockeado tenga un formato correcto
+    const mockToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RVc2VyIn0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
+    mockAxios.onPost('http://localhost:8000/login').reply(200, { token: mockToken });
 
     // Simulate user input
     await act(async () => {
@@ -37,6 +38,7 @@ describe('Login component', () => {
     });
 
     await waitFor(() => {
+      // Asumiendo que hay algún indicador de éxito en tu aplicación al loguearse correctamente
       expect(screen.getByText(/Inicio de sesión exitoso/i)).toBeInTheDocument();
     });
   });

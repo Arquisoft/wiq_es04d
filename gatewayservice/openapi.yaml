@@ -1,8 +1,8 @@
 openapi: 3.0.0
 info:
   title: Gatewayservice API
-  description: Gateway OpenAPI specification.
-  version: 0.2.0
+  description: API available to the client for accessing the services 
+  version: 1.0.0
 servers:
   - url: http://localhost:8000
     description: Development server
@@ -361,5 +361,44 @@ paths:
                     example: OK
         '404':
           description: Question not found
+        '500':
+          description: Internal server error
+  /gethistory/{user}:
+    get:
+      summary: Get a history by user name
+      operationId: getHistoryByUser
+      parameters:
+        - in: path
+          name: user
+          required: true
+          description: name of the user
+          schema:
+            type: string
+            example: "username"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                properties:
+                  username:
+                    type: string
+                    example: "user"
+                  played:
+                    type: number
+                    example: 1
+                  playedAnswers:
+                    type: number
+                    example: 5
+                  correctAnswers:
+                    type: number
+                    example: 2
+                  incorrectAnswers:
+                    type: number
+                    example: 3
+        '404':
+          description: User not found
         '500':
           description: Internal server error

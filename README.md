@@ -4,16 +4,23 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Arquisoft_wiq_es04d&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Arquisoft_wiq_es04d)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Arquisoft_wiq_es04d&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Arquisoft_wiq_es04d)
 
-This is a base repo for the [Software Architecture course](http://arquisoft.github.io/) in [2023/2024 edition](https://arquisoft.github.io/course2324.html). 
+Link: (http://20.77.40.187:3000/)
 
-This repo is a basic application composed of several components.
+Development Team
+- Zohaib Aktar Kausar -> <a href="https://github.com/Verzidee"><img src="https://img.shields.io/badge/profile-Verzidee-black"></a> 
+- Yago Navajas González -> <a href="https://github.com/yagonavajas"><img src="https://img.shields.io/badge/profile-yagonavajas-purple"></a> 
+- Santiago Lopez Laso -> <a href="https://github.com/Santiago21112001"><img src="https://img.shields.io/badge/profile-Santiago21112001-green"></a>
+
+This are the components that compose the web application.
 
 - **Gateway service**. Express service that is exposed to the public and serves as a proxy to the two previous ones.
 - **User service**. Express service that handles the insertion of new users in the system.
 - **Auth service**. Express service that handles the authentication of users.
+- **History service**. Express service that handle the history of games played by users.
+- **Question service**. Express service that handle the generation and the calls to the API of wikidata.
 - **Webapp**. React web application that uses the gateway service to allow basic login and new user features.
 
-Both the user and auth service share a Mongo database that is accessed with mongoose.
+The application architecture is composed of microservices. Every service uses a different data base.
 
 ## Quick start guide
 
@@ -119,3 +126,5 @@ This action uses three secrets that must be configured in the repository:
 
 Note that this action logs in the remote machine and downloads the docker-compose file from the repository and launches it. 
 Obviously, previous actions have been executed which have uploaded the docker images to the GitHub Packages repository.
+
+This is a repository for the [Software Architecture course](http://arquisoft.github.io/) in [2023/2024 edition](https://arquisoft.github.io/course2324.html). 

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('./auth-model')
-
+require('dotenv').config();
 const app = express();
 const port = 8002; 
 
@@ -37,7 +37,7 @@ app.post('/login', async (req, res) => {
     // Check if the user exists and verify the password
     if (user && await bcrypt.compare(password, user.password)) {
       // Generate a JWT token
-      const token = jwt.sign({ userId: user._id }, 'your-secret-key', { expiresIn: '1h' });
+      const token = jwt.sign({ userId: user._id,username:username }, process.env.SECRET_KEY, { expiresIn: '1h' });
       // Respond with the token and user information
       res.json({ token: token, username: username, createdAt: user.createdAt });
     } else {
@@ -45,6 +45,15 @@ app.post('/login', async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.get('/validate/:token', (req, res) => {
+  try {
+    const {iat, exp, ...result} = jwt.verify(req.params.token, process.env.SECRET_KEY);
+    res.json({ data: result, valid: true });
+  } catch (error) {
+    res.json({ valid: false });
   }
 });
 

@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import Jugar from './Jugar';
 import { AuthContext } from '../../AuthContext';
 import { BrowserRouter } from 'react-router-dom';
-import axios from "axios";
+import axios from 'axios';
 
 // Mock de useNavigate
 const mockedNavigate = jest.fn();
