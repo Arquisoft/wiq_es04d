@@ -51,7 +51,7 @@ const AddUser = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <Button variant="contained" color="primary" onClick={addUser} sx={{ mt: 3, mb: 2 }}>
+            <Button name="registrarsePage" variant="contained" color="primary" onClick={addUser} sx={{ mt: 3, mb: 2 }}>
                 Registrarse
             </Button>
             <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar} message="Usuario añadido correctamente" />

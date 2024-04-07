@@ -7,32 +7,42 @@ let page;
 let browser;
 
 defineFeature(feature, (test) => {
-    let username;
-    let password;
+    let username = "usuario13"
+    let password = "contraseña"
 
     beforeAll(async () => {
         browser = process.env.GITHUB_ACTIONS
             ? await puppeteer.launch()
-            : await puppeteer.launch({ headless: false, slowMo: 100 });
+            : await puppeteer.launch({ headless: false, slowMo: 100,defaultViewport: {
+                    width: 1024, // Asegurando que el ancho sea mayor a 960px
+                    height: 768,
+                }, });
         page = await browser.newPage();
         setDefaultOptions({ timeout: 10000 });
 
-        await page.goto("http://localhost:3000/login", {
+        await page.goto("http://localhost:3000/sign-up", {
             waitUntil: "networkidle0",
         }).catch(() => {});
+
+        //Registrar al user
+
+        await expect(page).toFill('input[name="username"]', username);
+        await expect(page).toFill('input[name="password"]', password);
+        await expect(page).toClick('button[name="registrarsePage"]');
+
+        await page.waitForTimeout(1500);
     }, 60000);
 
     test('User Initiates a Game', ({ given, when, then }) => {
 
         given('a registered user exists', async () => {
-            username = "zohaib"
-            password = "zohaib"
+            await expect(page).toClick('button',{text: "Entrar"});
         });
 
         when('the user enters their details on the login form and submits', async () => {
             await expect(page).toFill('input[name="username"]', username);
             await expect(page).toFill('input[name="password"]', password);
-            await expect(page).toClick('button', { text: 'Entrar' })
+            await expect(page).toClick('button[name="entrarPage"]');
         });
 
         when('the user clicks the "Play" button on the homepage', async () => {

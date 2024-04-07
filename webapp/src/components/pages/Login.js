@@ -58,7 +58,7 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
           />
-          <Button variant="contained" color="primary" onClick={loginUser} sx={{ mt: 3, mb: 2 }}>
+          <Button name="entrarPage" variant="contained" color="primary" onClick={loginUser} sx={{ mt: 3, mb: 2 }}>
             Entrar
           </Button>
           <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar} message={loginSuccess ? "Inicio de sesión exitoso" : `Error: ${error}`} />
