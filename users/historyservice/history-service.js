@@ -88,18 +88,13 @@ app.get('/gethistory/:username', async (req, res) => {
   try {
       let username = req.params.username;
 
-      console.log(username);
 
       // Buscar el historial en la base de datos basado en el nombre de usuario
       let historyEntry = await History.findOne({ username:username });
-      console.log(historyEntry);
-
 
       if (historyEntry === null) {
-        console.log("null");
         res.status(404).json({ error: 'No se encontro historial para este usuario'});
       } else {
-        console.log("encontro");
         res.json(historyEntry);
       }
      

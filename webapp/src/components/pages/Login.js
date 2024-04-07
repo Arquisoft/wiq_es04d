@@ -37,6 +37,7 @@ const Login = () => {
   return (
       <Container component="main" maxWidth="xs" sx={{ marginTop: 4 }}>
         <div>
+        <video src='/videos/loginregister.mp4' autoPlay loop muted data-testid="login-video"/>
           <Typography component="h1" variant="h5">
             Entrar
           </Typography>

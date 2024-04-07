@@ -29,6 +29,8 @@ const AddUser = () => {
 
     return (
         <Container component="main" maxWidth="xs" sx={{ marginTop: 4 }}>
+            <video src='/videos/loginregister.mp4' autoPlay loop muted data-testid="register-video"/>
+  
             <Typography component="h1" variant="h5">
                 Registro de Usuario
             </Typography>
