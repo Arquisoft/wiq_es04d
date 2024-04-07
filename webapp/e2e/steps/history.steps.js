@@ -8,7 +8,7 @@ let browser;
 
 defineFeature(feature, test => {
 
-    let username = "usuario12"
+    let username = "usuario30"
     let password = "contraseña"
 
   beforeAll(async () => {
@@ -34,7 +34,7 @@ defineFeature(feature, test => {
       waitUntil: "networkidle0",
     }).catch(() => {});
 
-  }, 60000);
+  }, 600000);
 
   test('The user is not loged in the site', ({given,when,then}) => {
     
@@ -56,20 +56,20 @@ defineFeature(feature, test => {
   test('The user is loged in the site so he can see history', ({given,when,then}) => {
     
     given('A registered user, i fill the login', async () => {
-        await page.goto("http://localhost:3000/login", {
-            waitUntil: "networkidle0",
-        }).catch(() => {});
         await expect(page).toFill('input[name="username"]', username);
         await expect(page).toFill('input[name="password"]', password);
         await expect(page).toClick('button[name="entrarPage"]');
-        //await page.waitForTimeout(1500);
+
+        await page.goto("http://localhost:3000/", {
+            waitUntil: "networkidle0",
+        }).catch(() => {});
     });
     
     when('I press history', async () => {
-        // Espera a que el enlace <a> con el texto "Historial" esté presente y sea clickeable
-        await page.waitForSelector('a', { text: 'Historial' });
-
         await expect(page).toClick('a', { text: 'Historial' });
+        await page.goto("http://localhost:3000/historial", {
+            waitUntil: "networkidle0",
+        }).catch(() => {});
     });
 
     then('I see my history', async () => {

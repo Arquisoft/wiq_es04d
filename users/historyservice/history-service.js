@@ -59,7 +59,7 @@ app.get('/gethistory', async (req, res) => {
       let username = req.query.username;
 
       // Buscar el historial en la base de datos basado en el nombre de usuario
-      let historyEntry = await History.findOne({ username: username });
+      let historyEntry = await History.findOne({ username: username.toString() });
 
       if (historyEntry === null) {
         
@@ -90,7 +90,7 @@ app.get('/gethistory/:username', async (req, res) => {
 
 
       // Buscar el historial en la base de datos basado en el nombre de usuario
-      let historyEntry = await History.findOne({ username:username });
+      let historyEntry = await History.findOne({ username: username.toString() });
 
       if (historyEntry === null) {
         res.status(404).json({ error: 'No se encontro historial para este usuario'});

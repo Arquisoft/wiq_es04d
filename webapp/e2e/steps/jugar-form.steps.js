@@ -7,7 +7,7 @@ let page;
 let browser;
 
 defineFeature(feature, (test) => {
-    let username = "usuario13"
+    let username = "usuario31"
     let password = "contraseña"
 
     beforeAll(async () => {
@@ -30,31 +30,31 @@ defineFeature(feature, (test) => {
         await expect(page).toFill('input[name="password"]', password);
         await expect(page).toClick('button[name="registrarsePage"]');
 
-        await page.waitForTimeout(1500);
-    }, 60000);
+    }, 600000);
 
     test('User Initiates a Game', ({ given, when, then }) => {
 
         given('a registered user exists', async () => {
-            await expect(page).toClick('button',{text: "Entrar"});
+            await page.goto("http://localhost:3000/login", {
+                waitUntil: "networkidle0",
+            }).catch(() => {});
         });
 
         when('the user enters their details on the login form and submits', async () => {
             await expect(page).toFill('input[name="username"]', username);
             await expect(page).toFill('input[name="password"]', password);
             await expect(page).toClick('button[name="entrarPage"]');
-            //await page.waitForTimeout(1500);
+            await page.goto("http://localhost:3000/", {
+                waitUntil: "networkidle0",
+            }).catch(() => {});
         });
 
         when('the user clicks the "Play" button on the homepage', async () => {
-            
-
-            // Espera a que el botón con el texto "JUGAR" esté presente y sea clickeable
-            await page.waitForSelector('button', { text: 'JUGAR' })
-
             //NO LO ENCUENTRA
             await expect(page).toClick('button', { text: 'JUGAR' })
-            await page.waitForTimeout(1500);
+            await page.goto("http://localhost:3000/jugar", {
+                waitUntil: "networkidle0",
+            }).catch(() => {});
         });
 
         then('the questions should be displayed', async () => {

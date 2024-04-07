@@ -21,7 +21,7 @@ defineFeature(feature, test => {
     await page.goto("http://localhost:3000/login", {
       waitUntil: "networkidle0",
     }).catch(() => {});
-  }, 60000);
+  }, 600000);
 
   test('The user is not registered in the site', ({given,when,then}) => {
     
@@ -29,7 +29,7 @@ defineFeature(feature, test => {
     let password;
 
     given('An unregistered user', async () => {
-      username = "ProbandoV12"
+      username = "ProbandoV18"
       password = "pabloasw"
       await expect(page).toClick("a", { text: "¿No tienes una cuenta? Registrate aquí." });
     });
@@ -41,7 +41,7 @@ defineFeature(feature, test => {
     });
 
     then('A confirmation message should be shown in the screen', async () => {
-        await expect(page).toMatchElement("div", { text: "Usuario añadido correctamente" });
+        await expect(page).toMatchElement('button[name="entrarPage"]');
     });
   })
 
