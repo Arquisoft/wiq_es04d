@@ -26,16 +26,12 @@ app.get('/getquestions', async (req, res) => {
     try {
 
         // Selecciona 'size' preguntas aleatorias
-        let randomQuestions = await Question.aggregate([
-            { $sample: { size: 5 } } 
-        ]);
+        let randomQuestions = await extractAndRemoveRandomQuestions();
 
         if (randomQuestions.length === 0) {
             console.log("Not enough questions in database. Adding new ones...");
             await generateQuestions();
-            randomQuestions = await Question.aggregate([
-                { $sample: { size: 5 } } 
-            ]);
+            randomQuestions = await extractAndRemoveRandomQuestions();
         }
 
         console.log(randomQuestions);
@@ -57,24 +53,33 @@ app.get('/generatequestions', async (req, res) => {
 
 });
 
+function checkReq(reqBody) {
+    // Verificar que el cuerpo de la solicitud contiene los campos necesarios
+    const { question, answers, questionCategory } = reqBody;
+    if (!question || !answers || !questionCategory) {
+        return { error: 'Missing required fields' };
+    }
+
+    // Verificar que 'answers' sea un array y contenga al menos una respuesta
+    if (!Array.isArray(answers) || answers.length === 0) {
+        return { error: 'Invalid format for answers' };
+    }
+
+    // Verificar que cada respuesta tenga el formato correcto
+    for (const answer of answers) {
+        if (!answer.hasOwnProperty('answer') || !answer.hasOwnProperty('correct')) {
+            return { error: 'Invalid format for answers' };
+        }
+    }
+
+    return {error: null};
+}
+
 app.post('/createquestion', async (req, res) => {
     try {
-        // Verificar que el cuerpo de la solicitud contiene los campos necesarios
-        const { question, answers, questionCategory } = req.body;
-        if (!question || !answers || !questionCategory) {
-            return res.status(400).json({ error: 'Missing required fields' });
-        }
-
-        // Verificar que 'answers' sea un array y contenga al menos una respuesta
-        if (!Array.isArray(answers) || answers.length === 0) {
-            return res.status(400).json({ error: 'Invalid format for answers' });
-        }
-
-        // Verificar que cada respuesta tenga el formato correcto
-        for (const answer of answers) {
-            if (!answer.hasOwnProperty('answer') || !answer.hasOwnProperty('correct')) {
-                return res.status(400).json({ error: 'Invalid format for answers' });
-            }
+        const checkResponse = checkReq(req.body);
+        if (checkResponse.error !== null) {
+            return res.status(400).json(checkResponse);
         }
 
         // Crear una nueva pregunta basada en el cuerpo de la solicitud
@@ -94,22 +99,9 @@ app.post('/createquestion', async (req, res) => {
 app.put('/updatequestion/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        // Verificar que el cuerpo de la solicitud contiene los campos necesarios
-        const { question, answers, questionCategory } = req.body;
-        if (!question || !answers || !questionCategory) {
-            return res.status(400).json({ error: 'Missing required fields' });
-        }
-
-        // Verificar que 'answers' sea un array y contenga al menos una respuesta
-        if (!Array.isArray(answers) || answers.length === 0) {
-            return res.status(400).json({ error: 'Invalid format for answers' });
-        }
-
-        // Verificar que cada respuesta tenga el formato correcto
-        for (const answer of answers) {
-            if (!answer.hasOwnProperty('answer') || !answer.hasOwnProperty('correct')) {
-                return res.status(400).json({ error: 'Invalid format for answers' });
-            }
+        const checkResponse = checkReq(req.body);
+        if (checkResponse.error !== null) {
+            return res.status(400).json(checkResponse);
         }
 
         // Actualizar la pregunta en la base de datos
@@ -153,3 +145,11 @@ server.on('close', () => {
   });
 
 module.exports = server
+
+async function extractAndRemoveRandomQuestions() {
+    let randomQuestions = await Question.aggregate([
+        { $sample: { size: 5 } }
+    ]);
+    await Question.deleteMany({ _id: { $in: randomQuestions.map(doc => doc._id) } });
+    return randomQuestions;
+}
