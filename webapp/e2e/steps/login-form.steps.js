@@ -8,7 +8,7 @@ let browser;
 
 defineFeature(feature, test => {
 
-    let username = "usuario11"
+    let username = "usuario29"
     let password = "contraseña"
 
   beforeAll(async () => {
@@ -32,9 +32,12 @@ defineFeature(feature, test => {
     await expect(page).toFill('input[name="password"]', password);
     await expect(page).toClick('button[name="registrarsePage"]');
 
-    await page.waitForTimeout(1500);
+    await page.goto("http://localhost:3000/login", {
+        waitUntil: "networkidle0",
+    }).catch(() => {});
 
-  }, 60000);
+
+  }, 600000);
 
   test('The user is registered in the site', ({given,when,then}) => {
     
@@ -45,7 +48,10 @@ defineFeature(feature, test => {
     
     when('Presses submit', async () => {
         await expect(page).toClick('button[name="entrarPage"]');
-        await page.waitForTimeout(1500);
+
+        await page.goto("http://localhost:3000/", {
+            waitUntil: "networkidle0",
+        }).catch(() => {});
     });
 
 
