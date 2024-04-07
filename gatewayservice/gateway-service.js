@@ -128,6 +128,16 @@ app.get('/gethistory', async (req, res) => {
   }
 });
 
+app.get('/gethistory/:username', async (req, res) => {
+  try{
+    const { username } = req.params;
+    const historyResponse = await axios.get(historyServiceUrl+'/gethistory/'+username);
+    res.json(historyResponse.data);
+  }catch(error){
+    res.status(error.response.status).json({ error: error.response.data.error });
+  }
+});
+
 
 // Read the OpenAPI YAML file synchronously
 openapiPath='./openapi.yaml'
