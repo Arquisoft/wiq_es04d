@@ -66,6 +66,9 @@ defineFeature(feature, test => {
     });
     
     when('I press history', async () => {
+        // Espera a que el enlace <a> con el texto "Historial" esté presente y sea clickeable
+        await page.waitForSelector('a', { text: 'Historial' });
+
         await expect(page).toClick('a', { text: 'Historial' });
     });
 

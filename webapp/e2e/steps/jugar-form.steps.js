@@ -47,6 +47,11 @@ defineFeature(feature, (test) => {
         });
 
         when('the user clicks the "Play" button on the homepage', async () => {
+            
+
+            // Espera a que el botón con el texto "JUGAR" esté presente y sea clickeable
+            await page.waitForSelector('button', { text: 'JUGAR' })
+
             //NO LO ENCUENTRA
             await expect(page).toClick('button', { text: 'JUGAR' })
             await page.waitForTimeout(1500);

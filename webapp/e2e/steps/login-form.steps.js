@@ -50,7 +50,9 @@ defineFeature(feature, test => {
 
 
     then('The user is redirected', async () => {
-        //No lo encuentra
+        // Espera a que el elemento <p> con el texto deseado esté presente en la página
+        await page.waitForSelector('p', { text: '¿A que estás esperando?' });
+        
         await expect(page).toMatchElement("p", { text: "¿A que estás esperando?" });
     });
   })
