@@ -12,26 +12,74 @@ mongoose.connect(mongoUri);
 const WikiQuery = require('./wikiUtils/wikiQuery');
 const Question = require('./question-model');
 
+function selectRandomTemplatesKeys(templateKeys, sampleSize) {
+    const randomTemplateKeys = [];
+    while (randomTemplateKeys.length < sampleSize) {
+        const randomIndex = Math.floor(Math.random() * templateKeys.length);
+        const randomKey = templateKeys[randomIndex];
+        if (!randomTemplateKeys.includes(randomKey)) {
+            randomTemplateKeys.push(randomKey);
+        }
+    }
+    return randomTemplateKeys;
+}
+
 async function generateQuestions() {
-    const template = templates.capital_of;
-    const newQuestions = await WikiQuery.getQuestions(template, 20);
-    newQuestions.forEach(q => {
-        console.log(q.question);
-        console.log(q.answers);
-    });
-    Question.insertMany(newQuestions);
+    const templateKeys = Object.keys(templates);
+    const randomTemplateKeys = selectRandomTemplatesKeys(templateKeys, 5);
+    const randomTemplates = randomTemplateKeys.map(key => templates[key]);
+    console.log('Plantillas aleatorias elegidas:', randomTemplates);
+
+    for (let template of randomTemplates) {
+        let newQuestions = await WikiQuery.getQuestions(template, 20);
+        newQuestions.forEach(q => {
+            console.log(q.question);
+            console.log(q.answers);
+        });
+        await Question.insertMany(newQuestions);
+    }
+}
+
+async function extractAndRemoveRandomQuestions(sampleSize) {
+    let randomQuestions = await Question.aggregate([
+        { $sample: { size: sampleSize } }
+    ]);
+    await Question.deleteMany({ _id: { $in: randomQuestions.map(doc => doc._id) } });
+    return randomQuestions;
+}
+
+function checkReq(reqBody) {
+    // Verificar que el cuerpo de la solicitud contiene los campos necesarios
+    const { question, answers, questionCategory } = reqBody;
+    if (!question || !answers || !questionCategory) {
+        return { error: 'Missing required fields' };
+    }
+
+    // Verificar que 'answers' sea un array y contenga al menos una respuesta
+    if (!Array.isArray(answers) || answers.length === 0) {
+        return { error: 'Invalid format for answers' };
+    }
+
+    // Verificar que cada respuesta tenga el formato correcto
+    for (const answer of answers) {
+        if (!answer.hasOwnProperty('answer') || !answer.hasOwnProperty('correct')) {
+            return { error: 'Invalid format for answers' };
+        }
+    }
+
+    return { error: null };
 }
 
 app.get('/getquestions', async (req, res) => {
     try {
 
-        // Selecciona 'size' preguntas aleatorias
-        let randomQuestions = await extractAndRemoveRandomQuestions();
+        const sampleSize = 5
+        let randomQuestions = await extractAndRemoveRandomQuestions(sampleSize);
 
-        if (randomQuestions.length === 0) {
+        if (randomQuestions.length < sampleSize) {
             console.log("Not enough questions in database. Adding new ones...");
             await generateQuestions();
-            randomQuestions = await extractAndRemoveRandomQuestions();
+            randomQuestions = await extractAndRemoveRandomQuestions(sampleSize);
         }
 
         console.log(randomQuestions);
@@ -53,28 +101,6 @@ app.get('/generatequestions', async (req, res) => {
 
 });
 
-function checkReq(reqBody) {
-    // Verificar que el cuerpo de la solicitud contiene los campos necesarios
-    const { question, answers, questionCategory } = reqBody;
-    if (!question || !answers || !questionCategory) {
-        return { error: 'Missing required fields' };
-    }
-
-    // Verificar que 'answers' sea un array y contenga al menos una respuesta
-    if (!Array.isArray(answers) || answers.length === 0) {
-        return { error: 'Invalid format for answers' };
-    }
-
-    // Verificar que cada respuesta tenga el formato correcto
-    for (const answer of answers) {
-        if (!answer.hasOwnProperty('answer') || !answer.hasOwnProperty('correct')) {
-            return { error: 'Invalid format for answers' };
-        }
-    }
-
-    return {error: null};
-}
-
 app.post('/createquestion', async (req, res) => {
     try {
         const checkResponse = checkReq(req.body);
@@ -86,7 +112,7 @@ app.post('/createquestion', async (req, res) => {
         const newQuestion = new Question(req.body);
         // Guardar la nueva pregunta en la base de datos
         await newQuestion.save();
-        
+
         // Devolver la nueva pregunta creada, incluido el ID asignado por la base de datos
         res.status(201).json(newQuestion);
     } catch (error) {
@@ -142,14 +168,6 @@ const server = app.listen(port, () => {
 
 server.on('close', () => {
     mongoose.connection.close();
-  });
+});
 
 module.exports = server
-
-async function extractAndRemoveRandomQuestions() {
-    let randomQuestions = await Question.aggregate([
-        { $sample: { size: 5 } }
-    ]);
-    await Question.deleteMany({ _id: { $in: randomQuestions.map(doc => doc._id) } });
-    return randomQuestions;
-}
