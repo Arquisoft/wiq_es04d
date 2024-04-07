@@ -33,7 +33,7 @@ defineFeature(feature, test => {
 
   }, 60000);
 
-  test('The user is not loged in the site so he cant see history', ({given,when,then}) => {
+  test('The user is not loged in the site', ({given,when,then}) => {
     
     given('A not loged user', async () => {
         

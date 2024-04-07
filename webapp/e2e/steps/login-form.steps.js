@@ -32,17 +32,17 @@ defineFeature(feature, test => {
 
   test('The user is registered in the site', ({given,when,then}) => {
     
-    given('A registered user, i fill the data', async () => {
+    given('A registered user, fill the data', async () => {
         await expect(page).toFill('input[name="username"]', username);
         await expect(page).toFill('input[name="password"]', password);
     });
     
-    when('I press submit', async () => {
+    when('Presses submit', async () => {
         await expect(page).toClick('button', { text: 'Entrar' });
     });
 
 
-    then('The user is redirected ', async () => {
+    then('The user is redirected', async () => {
         await expect(page).toMatchElement("div", { text: "Inicio de sesión exitoso" });
     });
   })
