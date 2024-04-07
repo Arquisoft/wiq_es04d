@@ -1,7 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const app = express();
 const port = 8003;
+
+// Middleware to parse JSON in request body
+app.use(bodyParser.json());
 
 // Importamos la función desde questionTemplates.js
 const templates = require('./templates.json')
@@ -28,16 +32,13 @@ async function generateQuestions() {
     const templateKeys = Object.keys(templates);
     const randomTemplateKeys = selectRandomTemplatesKeys(templateKeys, 5);
     const randomTemplates = randomTemplateKeys.map(key => templates[key]);
-    console.log('Plantillas aleatorias elegidas:', randomTemplates);
 
+    let newQuestions = [];
     for (let template of randomTemplates) {
-        let newQuestions = await WikiQuery.getQuestions(template, 20);
-        newQuestions.forEach(q => {
-            console.log(q.question);
-            console.log(q.answers);
-        });
-        await Question.insertMany(newQuestions);
+        let wikiQuestions = await WikiQuery.getQuestions(template, 20)
+        newQuestions.push(...wikiQuestions);   
     }
+    await Question.insertMany(newQuestions);
 }
 
 async function extractAndRemoveRandomQuestions(sampleSize) {
@@ -130,8 +131,12 @@ app.put('/updatequestion/:id', async (req, res) => {
             return res.status(400).json(checkResponse);
         }
 
-        // Actualizar la pregunta en la base de datos
-        const updatedQuestion = await Question.findByIdAndUpdate(id, { question, answers, questionCategory }, { new: true });
+        // Actualizar la pregunta en la base de datos con los datos proporcionados en el cuerpo de la solicitud
+        const updatedQuestion = await Question.findByIdAndUpdate(id, {
+            question: req.body.question,
+            answers: req.body.answers,
+            questionCategory: req.body.questionCategory
+        }, { new: true });
 
         if (!updatedQuestion) {
             return res.status(404).json({ error: 'Question not found' });
@@ -143,6 +148,7 @@ app.put('/updatequestion/:id', async (req, res) => {
         res.status(500).json({ error: 'Error updating the question' });
     }
 });
+
 
 // Ruta para eliminar una pregunta por ID
 app.delete('/deletequestion/:id', async (req, res) => {
