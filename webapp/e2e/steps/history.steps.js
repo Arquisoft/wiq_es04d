@@ -8,7 +8,7 @@ let browser;
 
 defineFeature(feature, test => {
 
-  let username = "yago20"
+  let username = "yago24"
   let password = "yago1"
 
   beforeAll(async () => {
@@ -55,10 +55,10 @@ defineFeature(feature, test => {
     });
 
     when('I press history', async () => {
-      await page.waitForSelector('a.nav-links[href="/historial"]', {
+      await page.waitForSelector('a[id="historial-link"]', {
         visible: true,
       });
-      await page.click('a.nav-links[href="/historial"]');
+      await page.click('a[id="historial-link"]');
     });
 
     then('I see my history', async () => {

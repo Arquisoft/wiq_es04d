@@ -30,7 +30,7 @@ function Navbar() {
                 <Link to='/jugar' className='nav-links' onClick={closeMenu}>Jugar</Link>
             </li>
             <li className='nav-item'>
-                <Link to='/historial' className='nav-links' onClick={closeMenu}>Historial</Link>
+                <Link to='/historial' className='nav-links' onClick={closeMenu} id='historial-link'>Historial</Link>
             </li>
             <li>
                 <Link to='/logout' className='nav-links-mobile' onClick={closeMenu}>Salir</Link>
