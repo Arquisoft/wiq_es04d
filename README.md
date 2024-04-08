@@ -1,82 +1,82 @@
-# WIQ ¿A qué estas esperando?
+# WIQ ¿A qué estás esperando?
 
-[![Deploy on release](https://github.com/Arquisoft/wiq_es04d/actions/workflows/release.yml/badge.svg)](https://github.com/Arquisoft/wiq_es04d/actions/workflows/release.yml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Arquisoft_wiq_es04d&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Arquisoft_wiq_es04d)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Arquisoft_wiq_es04d&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Arquisoft_wiq_es04d)
+[![Desplegar en lanzamiento](https://github.com/Arquisoft/wiq_es04d/actions/workflows/release.yml/badge.svg)](https://github.com/Arquisoft/wiq_es04d/actions/workflows/release.yml)
+[![Estado de la Puerta de Calidad](https://sonarcloud.io/api/project_badges/measure?project=Arquisoft_wiq_es04d&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Arquisoft_wiq_es04d)
+[![Cobertura](https://sonarcloud.io/api/project_badges/measure?project=Arquisoft_wiq_es04d&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Arquisoft_wiq_es04d)
 
-Link: (http://20.77.40.187:3000/)
+Enlace: (http://20.77.40.187:3000/)
 
-Development Team
-- Zohaib Aktar Kausar -> <a href="https://github.com/Verzidee"><img src="https://img.shields.io/badge/profile-Verzidee-black"></a> 
-- Yago Navajas González -> <a href="https://github.com/yagonavajas"><img src="https://img.shields.io/badge/profile-yagonavajas-purple"></a> 
-- Santiago Lopez Laso -> <a href="https://github.com/Santiago21112001"><img src="https://img.shields.io/badge/profile-Santiago21112001-green"></a>
+Equipo de Desarrollo
+- Zohaib Aktar Kausar -> <a href="https://github.com/Verzidee"><img src="https://img.shields.io/badge/perfil-Verzidee-black"></a> 
+- Yago Navajas González -> <a href="https://github.com/yagonavajas"><img src="https://img.shields.io/badge/perfil-yagonavajas-purple"></a> 
+- Santiago Lopez Laso -> <a href="https://github.com/Santiago21112001"><img src="https://img.shields.io/badge/perfil-Santiago21112001-green"></a>
 
-This are the components that compose the web application.
+Estos son los componentes que componen la aplicación web.
 
-- **Gateway service**. Express service that is exposed to the public and serves as a proxy to the two previous ones.
-- **User service**. Express service that handles the insertion of new users in the system.
-- **Auth service**. Express service that handles the authentication of users.
-- **History service**. Express service that handle the history of games played by users.
-- **Question service**. Express service that handle the generation and the calls to the API of wikidata.
-- **Webapp**. React web application that uses the gateway service to allow basic login and new user features.
+- **Servicio de Gateway**. Servicio Express expuesto al público que actúa como un proxy hacia los servicios subyacentes.
+- **Servicio de Usuarios**. Servicio Express encargado de registrar nuevos usuarios en el sistema.
+- **Servicio de Autenticación**. Servicio Express que se ocupa de verificar la identidad de los usuarios.
+- **Servicio de Historial**. Servicio Express que gestiona los registros de juegos jugados por los usuarios.
+- **Servicio de Preguntas**. Servicio Express que se encarga de la generación de preguntas y de realizar consultas a la API de Wikidata.
+- **Aplicación Web**. Aplicación web desarrollada en React que interactúa con el Servicio Gateway para ofrecer funcionalidades de inicio de sesión, registro de nuevos usuarios, la posibilidad de jugar y la opción de revisar las estadísticas de juegos anteriores.
 
-The application architecture is composed of microservices. Every service uses a different data base.
+La arquitectura de la aplicación está compuesta por microservicios. Cada servicio utiliza una base de datos diferente.
 
-## Quick start guide
+## Guía rápida para empezar
 
-### Using docker
+### Usando docker
 
-The fastest way for launching this sample project is using docker. Just clone the project:
+La forma más rápida de lanzar este proyecto de ejemplo es usando docker. Solo clona el proyecto:
 
 ```sh
 git clone https://github.com/Arquisoft/wiq_es04d.git
 ```
 
-and launch it with docker compose:
+y lánzalo con docker compose:
 
 ```sh
 docker compose --profile dev up --build
 ```
 
-and tear it down:
+y detenlo con:
 
 ```sh
 docker compose --profile dev down
 ```
 
-### Starting Component by component
+### Iniciando componente por componente
 
-First, start the database. Either install and run Mongo or run it using docker:
+Primero, inicia la base de datos. Instala y ejecuta Mongo o ejecútalo usando docker:
 
 ```docker run -d -p 27017:27017 --name=my-mongo mongo:latest```
 
-You can also use services like Mongo Altas for running a Mongo database in the cloud.
+También puedes usar servicios como Mongo Atlas para ejecutar una base de datos Mongo en la nube.
 
-Now, launch the auth, user and gateway services. Just go to each directory and run `npm install` followed by `npm start`.
+Ahora, lanza los servicios de autenticación, usuario y puerta de enlace. Solo ve a cada directorio y ejecuta `npm install` seguido de `npm start`.
 
-Lastly, go to the webapp directory and launch this component with `npm install` followed by `npm start`.
+Por último, ve al directorio de la aplicación web y lanza este componente con `npm install` seguido de `npm start`.
 
-After all the components are launched, the app should be available in localhost in port 3000.
+Después de que todos los componentes se hayan lanzado, la aplicación debería estar disponible en localhost en el puerto 3000.
 
-## Deployment
+## Despliegue
 
-For the deployment, we have several options. 
+Para el despliegue, tenemos varias opciones.
 
-The first and more flexible is to deploy to a virtual machine using SSH. This will work with any cloud service (or with our own server). 
+La primera y más flexible es desplegar en una máquina virtual usando SSH. Esto funcionará con cualquier servicio en la nube (o con nuestro propio servidor).
 
-Other options include using the container services that most cloud services provide. This means, deploying our Docker containers directly. 
+Otras opciones incluyen usar los servicios de contenedores que la mayoría de los servicios en la nube proporcionan. Esto significa, desplegar nuestros contenedores de Docker directamente.
 
-We are going to use the first approach, creating a virtual machine in a cloud service and after installing docker and docker-compose, deploy our containers there using GitHub Actions and SSH.
+Vamos a usar el primer enfoque, creando una máquina virtual en un servicio en la nube y después de instalar docker y docker-compose, desplegar nuestros contenedores allí usando GitHub Actions y SSH.
 
-### Machine requirements for deployment
+### Requisitos de la máquina para el despliegue
 
-The machine for deployment can be created in services like Microsoft Azure or Amazon AWS. These are in general the settings that it must have:
+La máquina para el despliegue se puede crear en servicios como Microsoft Azure o Amazon AWS. En general, estos son los ajustes que debe tener:
 
-- Linux machine with Ubuntu > 20.04.
-- Docker and docker-compose installed.
-- Open ports for the applications installed (in this case, ports 3000 for the webapp and 8000 for the gateway service).
+- Máquina Linux con Ubuntu > 20.04.
+- Docker y docker-compose instalados.
+- Puertos abiertos para las aplicaciones instaladas (en este caso, puertos 3000 para la aplicación web y 8000 para el servicio de gateway).
 
-Once you have the virtual machine created, you can install **docker** and **docker-compose** using the following instructions:
+Una vez que hayas creado la máquina virtual, puedes instalar **docker** y **docker-compose** usando las siguientes instrucciones:
 
 ```ssh
 sudo apt update
@@ -90,23 +90,23 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.28.5/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
-### Continuous delivery (GitHub Actions)
+### Entrega continua (GitHub Actions)
 
-Once we have our machine ready, we could deploy by hand the application, taking our docker-compose file and executing it in the remote machine. 
+Una vez que tenemos nuestra máquina lista, podríamos desplegar manualmente la aplicación, llevando nuestro archivo docker-compose y ejecutándolo en la máquina remota.
 
-In this repository, this process is done automatically using **GitHub Actions**. The idea is to trigger a series of actions when some condition is met in the repository. 
+En este repositorio, este proceso se hace automáticamente usando **GitHub Actions**. La idea es desencadenar una serie de acciones cuando se cumple alguna condición en el repositorio.
 
-As you can see, unitary tests of each module and e2e tests are executed before pushing the docker images and deploying them. Using this approach we avoid deploying versions that do not pass the tests.
+Como puedes ver, las pruebas unitarias de cada módulo y las pruebas e2e se ejecutan antes de subir las imágenes de docker y desplegarlas. Usando este enfoque evitamos desplegar versiones que no pasan las pruebas.
 
-The deploy action is the following:
+La acción de despliegue es la siguiente:
 
 ```yml
 deploy:
-    name: Deploy over SSH
+    name: Desplegar a través de SSH
     runs-on: ubuntu-latest
     needs: [docker-push-userservice,docker-push-authservice,docker-push-gatewayservice,docker-push-webapp]
     steps:
-    - name: Deploy over SSH
+    - name: Desplegar a través de SSH
       uses: fifsky/ssh-action@master
       with:
         host: ${{ secrets.DEPLOY_HOST }}
@@ -119,12 +119,12 @@ deploy:
           docker compose --profile prod up -d --pull always
 ```
 
-This action uses three secrets that must be configured in the repository:
-- DEPLOY_HOST: IP of the remote machine.
-- DEPLOY_USER: user with permission to execute the commands in the remote machine.
-- DEPLOY_KEY: key to authenticate the user in the remote machine.
+Esta acción utiliza tres secretos que deben configurarse en el repositorio:
+- DEPLOY_HOST: IP de la máquina remota.
+- DEPLOY_USER: usuario con permiso para ejecutar los comandos en la máquina remota.
+- DEPLOY_KEY: clave para autenticar al usuario en la máquina remota.
 
-Note that this action logs in the remote machine and downloads the docker-compose file from the repository and launches it. 
-Obviously, previous actions have been executed which have uploaded the docker images to the GitHub Packages repository.
+Nota que esta acción inicia sesión en la máquina remota, descarga el archivo docker-compose del repositorio y lo lanza.
+Obviamente, previamente se han ejecutado acciones que han subido las imágenes de docker al repositorio de GitHub Packages.
 
-This is a repository for the [Software Architecture course](http://arquisoft.github.io/) in [2023/2024 edition](https://arquisoft.github.io/course2324.html). 
+Este es un repositorio para el [curso de Arquitectura de Software](http://arquisoft.github.io/) en la [edición 2023/2024](https://arquisoft.github.io/course2324.html).
