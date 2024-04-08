@@ -32,16 +32,9 @@ Decisiones de cómo llegar a las metas principales (En desarrollo):
 
 === Decisiones organizativas 👥
 
-El equipo estara dividido en 2 grupos. Los equipos son de documentación y de desarrollo. Los miembros de los grupos podran ir cambiando de rol si el proyecto asi lo necesita. Esta es la distribucion inicial.
+Este grupo ha sido formado a partir de un grupo ya existente pasando de 5 integrantes a 3. Se ha decidido utilizar el proyecto inicial cuando se dio esta situacion para empezar de 0.
 
-[options="header",cols="1,2"]
-|===
-|Equipo|Miembros
-|Equipo documentación| Yago Navajas Gonzalez -> UO287746@uniovi.es
-|Equipo desarrollo del proyecto|Zohaib Akhtar Kausar -> UO291060@uniovi.es + 
-Santiago Lopez Laso -> UO277369@uniovi.es
-|===
+No existe una división clara entre las funcionalidades que desempeña cada usuario, todos hacen de todo.
 
-La realización de las actas de las reuniones diarias se le ha asignado la tarea a Sara Lamuño García.
+Se realizará una reunion a la semana en clase y una reunión fuera de la escuela, para organizar y llevar recuento del trabajo realizado. 
 
-La división se ha realizado considerando la experiencia y los conocimientos previos de los integrantes del grupo. De esta manera, el trabajo se puede distribuir de manera realista y los integrantes podrán aportar de manera equitativa al proyecto. Todos los miembros comprenderán cómo funcionan las diferentes partes del proyecto; sin embargo, no todos tendrán las habilidades necesarias para realizar todas las tareas. Por lo tanto, esta es la forma más equilibrada de organizar al equipo.

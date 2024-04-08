@@ -5,9 +5,9 @@ ifndef::imagesdir[:imagesdir: ../images]
 Estos conceptos todavía no han sido aprobados ni implementados, pero dan una idea general del proyecto.
 
 === Modelo de Dominio 🗺️
-Esta es una primera versión del modelo de dominio muy simple, para hacerse una idea como funcionará la aplicación.
+Esta no sera la versión final del modelo de dominio. Es una representación de la aplicación en la actualidad.
 
-image::Diagrama de clases juego de preguntas.jpg["Modelo de dominio simple provisional"]
+image::08_diagrama_modelo_dominio(V2).png["Modelo de dominio simple provisional"]
 
 
 === Experiencia de Usuario 👨‍🦰
@@ -21,7 +21,7 @@ Nos esforzamos por crear una experiencia de usuario comoda y accesible, donde ca
 
 === Arquitectura y Patrones de Diseño 📒
 
-En Desarrollo.
+Se usará una aquitectura basada en microservicios, para mantener la independencia entre las distintas partes de la aplicación. Esto nos permite tener una arquitectura flexible y modular que puede brindar beneficios significativos en términos de escalabilidad, flexibilidad tecnológica, agilidad en el desarrollo, resistencia a fallos y mantenibilidad del software.
 
 === Desarrollo ⚙️
 
@@ -32,6 +32,8 @@ En el desarrollo de nuestra aplicación, nos centramos en varios aspectos para g
 * Mantenibilidad del código: Escribimos nuestro código de manera clara y organizada, siguiendo las mejores prácticas de desarrollo, para facilitar su mantenimiento y futuras actualizaciones. Esto incluye el uso de comentarios claros, la modularización del código y la adopción de patrones de diseño eficientes.
 
 * Automatización de pruebas: Implementamos pruebas automatizadas para garantizar que nuestra aplicación funcione correctamente en diferentes situaciones y escenarios. Esto nos ayuda a identificar y corregir errores de manera oportuna, manteniendo la calidad del software.
+
+* Integración continua: La implementación exitosa de CI/CD proporciona un camino continuo hacia la entrega de software de alta calidad, permitiendo la automatización de pruebas, integración y despliegue, agilizando así el ciclo de vida del desarrollo y garantizando una entrega rápida y confiable de valor al cliente,
 
 * Optimización de rendimiento: Nos esforzamos por mejorar el rendimiento de nuestra aplicación, optimizando el tiempo de carga, la velocidad de respuesta y el consumo de recursos. Esto garantiza una experiencia fluida para los usuarios, incluso en dispositivos y conexiones de red menos potentes.
 
@@ -51,7 +53,7 @@ En resumen, en las operaciones de nuestra aplicación nos enfocamos en garantiza
 
 === Seguridad 🔒
 
-La seguridad en nuestra aplicación es una de las prioridades. Nos comprometemos a proteger la información personal y sensible de nuestros usuarios, así como a prevenir cualquier amenaza o vulnerabilidad que pueda comprometer su seguridad mientras utilizan nuestra aplicación web dentro de nuetras capacidades y conocimientos.
+Nos comprometemos a proteger la información personal y sensible de nuestros usuarios, así como a prevenir vulnerabilidades que pueda comprometer su seguridad mientras utilizan nuestra aplicación web dentro de nuetras capacidades y conocimientos.
 
 Para ello, implementamos medidas de seguridad, como la encriptación de datos y la autenticación de usuarios mediante contraseñass.
 
