@@ -1,7 +1,7 @@
 // wikiQuery.test.js
 const wikiCall = require("./wikiCall");
 const Question = require("../question-model");
-const WikiQuery = require("./WikiQuery");
+const WikiQuery = require("./wikiQuery");
 
 // Mock de wikiCall y Question
 jest.mock("./wikiCall");
