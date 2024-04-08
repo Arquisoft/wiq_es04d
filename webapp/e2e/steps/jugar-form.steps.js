@@ -7,7 +7,7 @@ let page;
 let browser;
 
 defineFeature(feature, (test) => {
-    let username = "zohaib20";
+    let username = "zohaib24";
     let password = "zohaib1";
 
     beforeAll(async () => {
