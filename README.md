@@ -72,11 +72,9 @@ Vamos a usar el primer enfoque, creando una máquina virtual en un servicio en l
 
 La máquina para el despliegue se puede crear en servicios como Microsoft Azure o Amazon AWS. En general, estos son los ajustes que debe tener:
 
-- Máquina Linux con Ubuntu > 20.
-
-04.
+- Máquina Linux con Ubuntu > 20.04.
 - Docker y docker-compose instalados.
-- Puertos abiertos para las aplicaciones instaladas (en este caso, puertos 3000 para la aplicación web y 8000 para el servicio de puerta de enlace).
+- Puertos abiertos para las aplicaciones instaladas (en este caso, puertos 3000 para la aplicación web y 8000 para el servicio de gateway).
 
 Una vez que hayas creado la máquina virtual, puedes instalar **docker** y **docker-compose** usando las siguientes instrucciones:
 
