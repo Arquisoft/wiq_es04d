@@ -4,7 +4,7 @@ ifndef::imagesdir[:imagesdir: ../images]
 == Alcance del sistema y Contexto 💭
 
 === Contexto de negocio 💰
-image::Diagrama de contexto de negocio.jpg["Diagrama de contexto de negocio"]
+image::03_diagrama_contexto_negocio.png["Diagrama de contexto de negocio"]
 En esta tabla se muestra el contexto de negocio de la aplicación. Las entradas son los mensajes que van desde el agente externo hacia la aplicación, y las salidas son los mensajes que van desde la aplicación hacia al agente externo.
 [options="header",cols="1,2,3"]
 |===
@@ -15,4 +15,14 @@ En esta tabla se muestra el contexto de negocio de la aplicación. Las entradas 
 
 === Contexto técnico 🔧
 
-image::Diagrama de contexto técnico.jpg["Diagrama de contexto técnico"]
+image::03_diagrama_contexto_tecnico.png["Diagrama de contexto técnico"]
+|===
+
+|Agente externo|Entradas|Salidas
+|Usuario|Datos registro, datos login, respuesta a cada pregunta|Preguntas, histórico
+|WIQ|Peticiones del usuario | respuesta a las peticiones
+|WebApp| Entradas del usuario | Salidas de WIQ
+|Wikidata| Peticiones de datos | Datos 
+|Base de datos|Nuevos usuarios, preguntas de Wikidata y respuestas del usuario| validacion de usuarios, nuevas preguntas de Wikidata e historico
+|Máquina Virtual| peticion de Despliegue | Despliegue 
+|===
