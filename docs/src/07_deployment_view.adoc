@@ -6,38 +6,16 @@ ifndef::imagesdir[:imagesdir: ../images]
 == Vista de Despliegue 👀
 
 
-=== Nivel de Infraestructura 1 ☝️
+Los sevicios que se van a desplegar son los siguientes:
 
-EN DESARROLLO.
+* User service: Servicio Express que maneja la inserción de nuevos usuarios en el sistema.
+* Auth service: Servicio Express que maneja la autenticación de usuarios.
+* Question service: Servicio Express que maneja la generación y las llamadas a la API de Wikidata.
+* Webapp: Aplicación web React que utiliza el servicio de puerta de enlace para permitir funciones básicas de inicio de sesión y nuevos usuarios.
+* History service: Servicio Express que maneja el historial de juegos jugados por los usuarios.
+* Gateway service: Servicio Express expuesto al público que sirve como proxy a los anteriores.
 
-==== Diagrama de Vista General 🎀
+El diagrama de despliegue es el siguiente:
 
-EN DESARROLLO.
+image::07_diagrama_de_despliegue.png["Diagrama de despliegue"]
 
-==== Motivacion 🤩 
-
-1. Disponibilidad: Se busca una aplicación que sea capaz de prestar servicio de manera continuada, con resistencia a fallos.
-2. Eficiencia: Se busca una aplicación que ofreza un rendimiento óptimo para la generación de preguntas desde dispositivos con pocas capacidades.
-3. Cumplimiento de Requisitos Regulatorios: El uso de Wikidata como fuente de datos en nuestra aplicación está respaldado por la necesidad de cumplir con requisitos regulatorios y normativos específicos. Esta elección se basa en las siguientes consideraciones:
- * Caracteristicas de Calidad y/o Rendimiento:
-    ** Rendimiento: Se busca que la aplicación tenga un rendimiento óptimo en dispositivos móviles y tablets.
-    ** Adaptabilidad: La aplicación tiene que ser adaptable en diferentes dispositivos para así poder garantizar su uso.
-
-
-
-
-EN DESARROLLO.
-
-==== Mapeado de Bloques de Construccion a Infraestructura 📜
-
-EN DESARROLLO.
-
-
-=== Nivel de Infraestructura 2 ☝️
-
-EN DESARROLLO.
-
-
-==== Elemento 1 de insfraestructura
-
-EN DESARROLLO.
