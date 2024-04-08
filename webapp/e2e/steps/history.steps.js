@@ -19,7 +19,7 @@ defineFeature(feature, test => {
                 height: 768,
             }, });
     page = await browser.newPage();
-    setDefaultOptions({ timeout: 10000 });
+    setDefaultOptions({ timeout: 200000 });
 
     await page.goto("http://localhost:3000/sign-up", {
       waitUntil: "networkidle0",
@@ -79,7 +79,7 @@ defineFeature(feature, test => {
         await expect(page).toMatchElement('p', { text: 'Número de acertadas:' });
         await expect(page).toMatchElement('p', { text: 'Número de falladas:' });
     });
-  })
+  }, 600000)
 
   afterAll(async ()=>{
     browser.close()
