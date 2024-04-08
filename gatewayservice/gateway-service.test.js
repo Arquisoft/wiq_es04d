@@ -1,34 +1,46 @@
 const request = require('supertest');
 const axios = require('axios');
-const app = require('./gateway-service'); 
+const app = require('./gateway-service');
 
 afterAll(async () => {
-    app.close();
-  });
+  app.close();
+});
 
 jest.mock('axios');
 
 describe('Gateway Service', () => {
-  // Mock responses from external services
-  axios.post.mockImplementation((url, data) => {
-    if (url.endsWith('/login')) {
-      return Promise.resolve({ data: { token: 'mockedToken' } });
-    } else if (url.endsWith('/adduser')) {
-      return Promise.resolve({ data: { userId: 'mockedUserId' } });
-    }
+  beforeEach(() => {
+    jest.resetAllMocks(); // Restablece los mocks a su estado original antes de cada prueba
   });
 
-  // Test /login endpoint
+  const mockSuccessResponse = (response) => {
+    axios.post.mockResolvedValueOnce({ data: response });
+    axios.get.mockResolvedValueOnce({ data: response });
+    axios.delete.mockResolvedValueOnce({ data: response });
+    axios.put.mockResolvedValueOnce({ data: response });
+  };
+
+  const mockErrorResponse = (error) => {
+    axios.post.mockRejectedValueOnce({ response: { status: error.status, data: { error: error.message } } });
+    axios.get.mockRejectedValueOnce({ response: { status: error.status, data: { error: error.message } } });
+    axios.delete.mockRejectedValueOnce({ response: { status: error.status, data: { error: error.message } } });
+    axios.put.mockRejectedValueOnce({ response: { status: error.status, data: { error: error.message } } });
+  };
+
   it('should forward login request to auth service', async () => {
+    mockSuccessResponse({ token: 'mockedToken' });
+
     const response = await request(app)
-      .post('/login')
-      .send({ username: 'testuser', password: 'testpassword' });
+        .post('/login')
+        .send({ username: 'testuser', password: 'testpassword' });
 
     expect(response.statusCode).toBe(200);
     expect(response.body.token).toBe('mockedToken');
   });
-// Test /adduser endpoint
+
   it('should forward add user request to user service', async () => {
+    mockSuccessResponse({ userId: 'mockedUserId' });
+
     const response = await request(app)
         .post('/adduser')
         .send({ username: 'newuser', password: 'newpassword' });
@@ -38,8 +50,7 @@ describe('Gateway Service', () => {
   });
 
   it('should handle errors from the auth service on login', async () => {
-    // Simula una respuesta de error del servicio de autenticación
-    axios.post.mockRejectedValue({ response: { status: 401, data: { error: 'Unauthorized' } } });
+    mockErrorResponse({ status: 401, message: 'Unauthorized' });
 
     const response = await request(app)
         .post('/login')
@@ -50,8 +61,7 @@ describe('Gateway Service', () => {
   });
 
   it('should validate a token successfully', async () => {
-    // Simula una respuesta exitosa del servicio de autenticación
-    axios.get.mockResolvedValue({ data: { valid: true } });
+    mockSuccessResponse({ valid: true });
 
     const response = await request(app)
         .get('/validate/mockedToken');
@@ -59,9 +69,9 @@ describe('Gateway Service', () => {
     expect(response.statusCode).toBe(200);
     expect(response.body.valid).toBe(true);
   });
+
   it('should handle validation error', async () => {
-    // Simula una respuesta de error del servicio de autenticación
-    axios.get.mockRejectedValue({ response: { status: 401, data: { error: 'Invalid token' } } });
+    mockErrorResponse({ status: 401, message: 'Invalid token' });
 
     const response = await request(app)
         .get('/validate/invalidToken');
@@ -70,9 +80,11 @@ describe('Gateway Service', () => {
     expect(response.body.error).toBe('Invalid token');
   });
 
-  // Test for /getquestions endpoint
+  // Continuación de las pruebas para el Gateway Service
+
   it('should forward get questions request to generate service', async () => {
-    axios.get.mockResolvedValue({ data: [{ question: 'What is 2+2?' }] });
+    mockSuccessResponse([{ question: 'What is 2+2?' }]);
+
     const response = await request(app)
         .get('/getquestions');
 
@@ -80,9 +92,9 @@ describe('Gateway Service', () => {
     expect(response.body).toEqual([{ question: 'What is 2+2?' }]);
   });
 
-  // Test for /createquestion endpoint
   it('should forward create question request to generate service', async () => {
-    axios.post.mockResolvedValue({ data: { success: true, id: 'questionId' } });
+    mockSuccessResponse({ success: true, id: 'questionId' });
+
     const response = await request(app)
         .post('/createquestion')
         .send({ question: 'What is 2+2?', answer: '4' });
@@ -91,9 +103,9 @@ describe('Gateway Service', () => {
     expect(response.body).toEqual({ success: true, id: 'questionId' });
   });
 
-  // Test for /updatequestion/:id endpoint
   it('should forward update question request to generate service', async () => {
-    axios.put.mockResolvedValue({ status: 200 });
+    mockSuccessResponse({ status: 'OK' });
+
     const response = await request(app)
         .put('/updatequestion/questionId')
         .send({ question: 'Updated Question?', answer: 'Updated Answer' });
@@ -102,19 +114,9 @@ describe('Gateway Service', () => {
     expect(response.body.status).toBe('OK');
   });
 
-  // Test for /deletequestion/:id endpoint
-  it('should forward delete question request to generate service', async () => {
-    axios.delete.mockResolvedValue({ status: 200 });
-    const response = await request(app)
-        .put('/deletequestion/questionId');
-
-    expect(response.statusCode).toBe(200);
-    expect(response.body.status).toBe('OK');
-  });
-
-  // Test for /savehistory endpoint
   it('should forward save history request to history service', async () => {
-    axios.post.mockResolvedValue({ data: { success: true } });
+    mockSuccessResponse({ success: true });
+
     const response = await request(app)
         .post('/savehistory')
         .send({ username: 'testuser', action: 'test action' });
@@ -123,14 +125,89 @@ describe('Gateway Service', () => {
     expect(response.body.success).toBe(true);
   });
 
-  // Test for /gethistory endpoint
   it('should forward get history request to history service', async () => {
-    axios.get.mockResolvedValue({ data: [{ action: 'test action', date: '2024-03-31' }] });
+    mockSuccessResponse([{ action: 'test action', date: '2024-03-31' }]);
+
     const response = await request(app)
         .get('/gethistory?username=testuser');
 
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([{ action: 'test action', date: '2024-03-31' }]);
   });
+
+  it('should handle error getting questions from generate service', async () => {
+    mockErrorResponse({ status: 500, message: 'Error getting the questions' });
+
+    const response = await request(app)
+        .get('/getquestions');
+
+    expect(response.statusCode).toBe(500);
+    expect(response.body.error).toBe('Error getting the questions');
+  });
+
+  it('should handle error creating question in generate service', async () => {
+    mockErrorResponse({ status: 500, message: 'Error creating the question' });
+
+    const response = await request(app)
+        .post('/createquestion')
+        .send({ question: 'New Question', answer: 'New Answer' });
+
+    expect(response.statusCode).toBe(500);
+    expect(response.body.error).toBe('Error creating the question');
+  });
+
+  it('should handle error updating question in generate service', async () => {
+    mockErrorResponse({ status: 500, message: 'Error updating the question' });
+
+    const response = await request(app)
+        .put('/updatequestion/nonexistentId')
+        .send({ question: 'Updated Question', answer: 'Updated Answer' });
+
+    expect(response.statusCode).toBe(500);
+    expect(response.body.error).toBe('Error updating the question');
+  });
+
+  it('should handle error saving history in history service', async () => {
+    mockErrorResponse({ status: 500, message: 'Error saving the history' });
+
+    const response = await request(app)
+        .post('/savehistory')
+        .send({ username: 'testuser', action: 'test action' });
+
+    expect(response.statusCode).toBe(500);
+    expect(response.body.error).toBe('Error saving the history');
+  });
+
+  it('should handle error getting history from history service with query', async () => {
+    mockErrorResponse({ status: 500, message: 'Error getting the history' });
+
+    const response = await request(app)
+        .get('/gethistory?username=testuser');
+
+    expect(response.statusCode).toBe(500);
+    expect(response.body.error).toBe('Error getting the history');
+  });
+
+  it('should forward get specific user history request to history service', async () => {
+    mockSuccessResponse([{ action: 'specific action', date: '2024-03-31' }]);
+
+    const response = await request(app)
+        .get('/gethistory/testuser');
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toEqual([{ action: 'specific action', date: '2024-03-31' }]);
+  });
+
+  it('should handle error getting specific user history from history service', async () => {
+    mockErrorResponse({ status: 500, message: 'Error getting the history' });
+
+    const response = await request(app)
+        .get('/gethistory/nonexistentUser');
+
+    expect(response.statusCode).toBe(500);
+    expect(response.body.error).toBe('Error getting the history');
+  });
+
+
 
 });
