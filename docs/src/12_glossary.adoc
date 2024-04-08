@@ -40,6 +40,4 @@ entre ellas. Favorece a la eficiencia y agilidad del funcionamiento de dichas ap
 |GitHub Actions
 |Plataforma que ayuda a automatizar los proyectos, haciendo posible el despliegue de estos desde el mismo Github. Soporta una gran variedad de lenguajes de programación y sistemas operativos.
 
-|MySql
-|Es un sistema de gestión de bases de datos relacional de código abierto ampliamente utilizado que se destaca por su velocidad, confiabilidad y facilidad de uso. Permite a los usuarios almacenar, organizar y recuperar datos de manera eficiente a través de consultas estructuradas utilizando el lenguaje estándar de SQL. Es compatible con una variedad de plataformas y se utiliza en una amplia gama de aplicaciones.
 |===
