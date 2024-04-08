@@ -27,16 +27,49 @@ describe('Gateway Service', () => {
     expect(response.statusCode).toBe(200);
     expect(response.body.token).toBe('mockedToken');
   });
-
-  // Test /adduser endpoint
+// Test /adduser endpoint
   it('should forward add user request to user service', async () => {
     const response = await request(app)
-      .post('/adduser')
-      .send({ username: 'newuser', password: 'newpassword' });
+        .post('/adduser')
+        .send({ username: 'newuser', password: 'newpassword' });
 
     expect(response.statusCode).toBe(200);
     expect(response.body.userId).toBe('mockedUserId');
   });
+
+  it('should handle errors from the auth service on login', async () => {
+    // Simula una respuesta de error del servicio de autenticación
+    axios.post.mockRejectedValue({ response: { status: 401, data: { error: 'Unauthorized' } } });
+
+    const response = await request(app)
+        .post('/login')
+        .send({ username: 'testuser', password: 'wrongpassword' });
+
+    expect(response.statusCode).toBe(401);
+    expect(response.body.error).toBe('Unauthorized');
+  });
+
+  it('should validate a token successfully', async () => {
+    // Simula una respuesta exitosa del servicio de autenticación
+    axios.get.mockResolvedValue({ data: { valid: true } });
+
+    const response = await request(app)
+        .get('/validate/mockedToken');
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body.valid).toBe(true);
+  });
+  it('should handle validation error', async () => {
+    // Simula una respuesta de error del servicio de autenticación
+    axios.get.mockRejectedValue({ response: { status: 401, data: { error: 'Invalid token' } } });
+
+    const response = await request(app)
+        .get('/validate/invalidToken');
+
+    expect(response.statusCode).toBe(401);
+    expect(response.body.error).toBe('Invalid token');
+  });
+
   // Test for /getquestions endpoint
   it('should forward get questions request to generate service', async () => {
     axios.get.mockResolvedValue({ data: [{ question: 'What is 2+2?' }] });
