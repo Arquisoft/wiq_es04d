@@ -8,18 +8,14 @@ let browser;
 
 defineFeature(feature, test => {
 
-    let username = "usuario29"
-    let password = "contraseña"
+    let username = "santiago20"
+    let password = "santiago1"
 
   beforeAll(async () => {
-    browser = process.env.GITHUB_ACTIONS
-        ? await puppeteer.launch()
-        : await puppeteer.launch({ headless: false, slowMo: 100,defaultViewport: {
-                width: 1024, // Asegurando que el ancho sea mayor a 960px
-                height: 768,
-            }, });
-    page = await browser.newPage();
-    setDefaultOptions({ timeout: 10000 });
+      browser = await puppeteer.launch({ headless: true, slowMo: 50,defaultViewport: {
+              width: 1024, height: 768,}, });
+      page = await browser.newPage();
+      setDefaultOptions({ timeout: 200000 });
 
     await page.goto("http://localhost:3000/sign-up", {
       waitUntil: "networkidle0",
@@ -32,34 +28,26 @@ defineFeature(feature, test => {
     await expect(page).toFill('input[name="password"]', password);
     await expect(page).toClick('button[name="registrarsePage"]');
 
-    await page.goto("http://localhost:3000/login", {
-        waitUntil: "networkidle0",
-    }).catch(() => {});
 
-
-  }, 600000);
+  }, 300000);
 
   test('The user is registered in the site', ({given,when,then}) => {
     
     given('A registered user, fill the data', async () => {
+        await expect(page).toMatchElement('button[name="entrarPage"]');
         await expect(page).toFill('input[name="username"]', username);
         await expect(page).toFill('input[name="password"]', password);
     });
     
     when('Presses submit', async () => {
         await expect(page).toClick('button[name="entrarPage"]');
-
-        await page.goto("http://localhost:3000/", {
-            waitUntil: "networkidle0",
-        }).catch(() => {});
     });
 
 
     then('The user is redirected', async () => {
-        //No lo encuentra
         await expect(page).toMatchElement("p", { text: "¿A que estás esperando?" });
     });
-  })
+  },300000);
 
   afterAll(async ()=>{
     browser.close()

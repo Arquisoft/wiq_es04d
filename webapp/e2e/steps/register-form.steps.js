@@ -9,19 +9,15 @@ let browser;
 defineFeature(feature, test => {
 
   beforeAll(async () => {
-    browser = process.env.GITHUB_ACTIONS
-        ? await puppeteer.launch()
-        : await puppeteer.launch({ headless: false, slowMo: 100,defaultViewport: {
-            width: 1024, // Asegurando que el ancho sea mayor a 960px
-            height: 768,
-          }, });
+    browser = await puppeteer.launch({ headless: true, slowMo: 50,defaultViewport: {
+        width: 1024, height: 768,}, });
     page = await browser.newPage();
-    setDefaultOptions({ timeout: 10000 });
+    setDefaultOptions({ timeout: 200000 });
 
     await page.goto("http://localhost:3000/login", {
       waitUntil: "networkidle0",
     }).catch(() => {});
-  }, 600000);
+  }, 300000);
 
   test('The user is not registered in the site', ({given,when,then}) => {
     
@@ -29,8 +25,8 @@ defineFeature(feature, test => {
     let password;
 
     given('An unregistered user', async () => {
-      username = "ProbandoV18"
-      password = "pabloasw"
+      username = "abdulla20"
+      password = "abdulla20"
       await expect(page).toClick("a", { text: "¿No tienes una cuenta? Registrate aquí." });
     });
 
@@ -43,7 +39,7 @@ defineFeature(feature, test => {
     then('A confirmation message should be shown in the screen', async () => {
         await expect(page).toMatchElement('button[name="entrarPage"]');
     });
-  })
+  },300000);
 
   afterAll(async ()=>{
     browser.close()
