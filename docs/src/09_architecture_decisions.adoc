@@ -2,10 +2,10 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 [[section-design-decisions]]
 == Decisiones de Arquitectura 🗣️
-Los enlaces proporcionan las decisiones de arquitectura via GitHub.
+Los enlaces proporcionan las decisiones de arquitectura via Wiki de GitHub.
 
-* https://github.com/Arquisoft/wiq_es04d/wiki/ADR-1-%E2%80%90-Lenguaje-de-programaci%C3%B3n ‐ Lenguaje de programación
-* https://github.com/Arquisoft/wiq_es04d/wiki/ADR-2-%E2%80%90-Frontend - Frontend
-* https://github.com/Arquisoft/wiq_es04d/wiki/ADR-3-%E2%80%90-Backend - Backend
-* https://github.com/Arquisoft/wiq_es04d/wiki/ADR-4-%E2%80%90-Base-de-datos - Base de datos
-* https://github.com/Arquisoft/wiq_es04d/wiki/ADR-5-%E2%80%90-Modo-de-generar-preguntas - Modo de generar las preguntas
+* https://github.com/Arquisoft/wiq_es04d/wiki/ADR-1-%E2%80%90-Lenguaje-de-programaci%C3%B3n[ADR 1] ‐ Lenguaje de programación
+* https://github.com/Arquisoft/wiq_es04d/wiki/ADR-2-%E2%80%90-Frontend[ADR 2] - Frontend
+* https://github.com/Arquisoft/wiq_es04d/wiki/ADR-3-%E2%80%90-Backend[ADR 3] - Backend
+* https://github.com/Arquisoft/wiq_es04d/wiki/ADR-4-%E2%80%90-Base-de-datos[ADR 4] - Base de datos
+* https://github.com/Arquisoft/wiq_es04d/wiki/ADR-5-%E2%80%90-Modo-de-generar-preguntas[ADR 5] - Modo de generar las preguntas
