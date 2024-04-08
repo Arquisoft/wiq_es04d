@@ -132,5 +132,86 @@ describe('Gateway Service', () => {
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([{ action: 'test action', date: '2024-03-31' }]);
   });
+  it('should handle error getting questions from generate service', async () => {
+    axios.get.mockRejectedValue({ response: { status: 500, data: { error: 'Error getting the questions' } } });
+    const response = await request(app)
+        .get('/getquestions');
+
+    expect(response.statusCode).toBe(500);
+    expect(response.body.error).toBe('Error getting the questions');
+  });
+
+// Test error handling for /createquestion endpoint
+  it('should handle error creating question in generate service', async () => {
+    axios.post.mockRejectedValue({ response: { status: 500, data: { error: 'Error creating the question' } } });
+    const response = await request(app)
+        .post('/createquestion')
+        .send({ question: 'New Question', answer: 'New Answer' });
+
+    expect(response.statusCode).toBe(500);
+    expect(response.body.error).toBe('Error creating the question');
+  });
+
+// Test error handling for /updatequestion/:id endpoint
+  it('should handle error updating question in generate service', async () => {
+    axios.put.mockRejectedValue({ response: { status: 500, data: { error: 'Error updating the question' } } });
+    const response = await request(app)
+        .put('/updatequestion/nonexistentId')
+        .send({ question: 'Updated Question', answer: 'Updated Answer' });
+
+    expect(response.statusCode).toBe(500);
+    expect(response.body.error).toBe('Error updating the question');
+  });
+
+// Test error handling for /deletequestion/:id endpoint
+  it('should handle error deleting question in generate service', async () => {
+    axios.delete.mockRejectedValue({ response: { status: 500, data: { error: 'Error deleting the question' } } });
+    const response = await request(app)
+        .put('/deletequestion/nonexistentId');
+
+    expect(response.statusCode).toBe(500);
+    expect(response.body.error).toBe('Error deleting the question');
+  });
+
+// Test error handling for /savehistory endpoint
+  it('should handle error saving history in history service', async () => {
+    axios.post.mockRejectedValue({ response: { status: 500, data: { error: 'Error saving the history' } } });
+    const response = await request(app)
+        .post('/savehistory')
+        .send({ username: 'testuser', action: 'test action' });
+
+    expect(response.statusCode).toBe(500);
+    expect(response.body.error).toBe('Error saving the history');
+  });
+
+// Test error handling for /gethistory with query endpoint
+  it('should handle error getting history from history service with query', async () => {
+    axios.get.mockRejectedValue({ response: { status: 500, data: { error: 'Error getting the history' } } });
+    const response = await request(app)
+        .get('/gethistory?username=testuser');
+
+    expect(response.statusCode).toBe(500);
+    expect(response.body.error).toBe('Error getting the history');
+  });
+
+// Test for /gethistory/:username endpoint
+  it('should forward get specific user history request to history service', async () => {
+    axios.get.mockResolvedValue({ data: [{ action: 'specific action', date: '2024-03-31' }] });
+    const response = await request(app)
+        .get('/gethistory/testuser');
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toEqual([{ action: 'specific action', date: '2024-03-31' }]);
+  });
+
+// Test error handling for /gethistory/:username endpoint
+  it('should handle error getting specific user history from history service', async () => {
+    axios.get.mockRejectedValue({ response: { status: 500, data: { error: 'Error getting the history' } } });
+    const response = await request(app)
+        .get('/gethistory/nonexistentUser');
+
+    expect(response.statusCode).toBe(500);
+    expect(response.body.error).toBe('Error getting the history');
+  });
 
 });
