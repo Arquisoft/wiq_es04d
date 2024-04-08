@@ -4,4 +4,8 @@ ifndef::imagesdir[:imagesdir: ../images]
 == Decisiones de Arquitectura 🗣️
 Los enlaces proporcionan las decisiones de arquitectura via GitHub.
 
-* https://github.com/Arquisoft/wiq_es04c/wiki/ADR-1-‐-Diseño-de-BD-para-Generación-de-Preguntas[ADR 01] ‐ Diseño de BD para Generación de Preguntas
+* https://github.com/Arquisoft/wiq_es04d/wiki/ADR-1-%E2%80%90-Lenguaje-de-programaci%C3%B3n ‐ Lenguaje de programación
+* https://github.com/Arquisoft/wiq_es04d/wiki/ADR-2-%E2%80%90-Frontend - Frontend
+* https://github.com/Arquisoft/wiq_es04d/wiki/ADR-3-%E2%80%90-Backend - Backend
+* https://github.com/Arquisoft/wiq_es04d/wiki/ADR-4-%E2%80%90-Base-de-datos - Base de datos
+* https://github.com/Arquisoft/wiq_es04d/wiki/ADR-5-%E2%80%90-Modo-de-generar-preguntas - Modo de generar las preguntas
