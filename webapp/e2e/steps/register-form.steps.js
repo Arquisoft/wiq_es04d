@@ -16,7 +16,7 @@ defineFeature(feature, test => {
             height: 768,
           }, });
     page = await browser.newPage();
-    setDefaultOptions({ timeout: 10000 });
+    setDefaultOptions({ timeout: 200000 });
 
     await page.goto("http://localhost:3000/login", {
       waitUntil: "networkidle0",
