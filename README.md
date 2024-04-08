@@ -13,12 +13,12 @@ Equipo de Desarrollo
 
 Estos son los componentes que componen la aplicación web.
 
-- **Servicio de puerta de enlace**. Servicio Express que está expuesto al público y sirve como proxy a los dos anteriores.
-- **Servicio de usuario**. Servicio Express que maneja la inserción de nuevos usuarios en el sistema.
-- **Servicio de autenticación**. Servicio Express que maneja la autenticación de los usuarios.
-- **Servicio de historial**. Servicio Express que maneja el historial de juegos jugados por los usuarios.
-- **Servicio de preguntas**. Servicio Express que maneja la generación y las llamadas a la API de wikidata.
-- **Aplicación web**. Aplicación web React que utiliza el servicio de puerta de enlace para permitir el inicio de sesión básico y las características de nuevos usuarios.
+- **Servicio de Gateway**. Servicio Express expuesto al público que actúa como un proxy hacia los servicios subyacentes.
+- **Servicio de Usuarios**. Servicio Express encargado de registrar nuevos usuarios en el sistema.
+- **Servicio de Autenticación**. Servicio Express que se ocupa de verificar la identidad de los usuarios.
+- **Servicio de Historial**. Servicio Express que gestiona los registros de juegos jugados por los usuarios.
+- **Servicio de Preguntas**. Servicio Express que se encarga de la generación de preguntas y de realizar consultas a la API de Wikidata.
+- **Aplicación Web**. Aplicación web desarrollada en React que interactúa con el Servicio Gateway para ofrecer funcionalidades de inicio de sesión, registro de nuevos usuarios, la posibilidad de jugar y la opción de revisar las estadísticas de juegos anteriores.
 
 La arquitectura de la aplicación está compuesta por microservicios. Cada servicio utiliza una base de datos diferente.
 
