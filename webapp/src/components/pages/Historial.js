@@ -38,7 +38,7 @@ export default function Historial() {
 
   return (
     <div className='historial-container'>
-      <video src='/videos/history.mp4' autoPlay loop muted data-testid="history-video"/>
+      <video src='/videos/history.mp4' autoPlay loop muted playsInline data-testid="history-video"/>
       <h1 className='services'>HISTORIAL</h1>
       {historialData && (
         <div className="user-info">

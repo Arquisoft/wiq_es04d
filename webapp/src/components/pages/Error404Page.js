@@ -22,7 +22,7 @@ function Error404Page({ initialCountdown = 12 }) {
   // Renderizado de la página 404 con video de fondo y mensaje de cuenta regresiva.
   return (
       <div className="error-page-container">
-        <video autoPlay loop muted className="background-video">
+        <video autoPlay loop muted playsInline className="background-video">
           <source src="/videos/Error404.mp4" type="video/mp4" />
         </video>
         <div className="content">

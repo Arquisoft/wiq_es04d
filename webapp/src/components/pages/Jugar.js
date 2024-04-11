@@ -129,7 +129,7 @@ function Jugar() {
     <>
       <div className="video-background">
         {/* Usar una clave que cambie con videoSource asegura que el componente video se remonte */}
-        <video key={videoSource} autoPlay loop muted>
+        <video key={videoSource} autoPlay loop muted playsInline>
           <source src={videoSource} type="video/mp4" />
         </video>
       </div>
