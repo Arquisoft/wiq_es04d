@@ -70,7 +70,7 @@ describe('Question Service', () => {
     expect(response.body.length).toBe(5);
   });
 
-  // Prueba para el endpoint /createquestion
+  // Prueba para el endpoint /question
   test('Should create a new question', async () => {
     const newQuestionData = {
       question: '¿Cuál es la capital de Francia?',
@@ -83,9 +83,9 @@ describe('Question Service', () => {
       questionCategory: 'Geografía'
     };
 
-    // Realiza una solicitud POST al endpoint /createquestion con los datos de la nueva pregunta
+    // Realiza una solicitud POST al endpoint /question con los datos de la nueva pregunta
     const response = await request(app)
-      .post('/createquestion')
+      .post('/question')
       .send(newQuestionData);
 
     // Verifica que la solicitud se haya completado con éxito (código de estado 201)
@@ -99,7 +99,7 @@ describe('Question Service', () => {
     expect(savedQuestion).toBeTruthy();
   });
 
-  // Prueba para el endpoint /updatequestion/:id
+  // Prueba para el endpoint PATCH /question/:id
   test('Should update a question by ID', async () => {
     // Crear una nueva pregunta en la base de datos para actualizarla luego
     const newQuestion = new Question({
@@ -126,9 +126,9 @@ describe('Question Service', () => {
       questionCategory: 'Geografía'
     };
 
-    // Realizar una solicitud PUT al endpoint /updatequestion/:id con los datos actualizados
+    // Realizar una solicitud PATCH al endpoint /question/:id con los datos actualizados
     const response = await request(app)
-      .put(`/updatequestion/${newQuestion._id}`)
+      .patch(`/question/${newQuestion._id}`)
       .send(updatedQuestionData);
 
     // Verificar que la solicitud se haya completado con éxito (código de estado 200)

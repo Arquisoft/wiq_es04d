@@ -17,14 +17,14 @@ describe('Gateway Service', () => {
     axios.post.mockResolvedValueOnce({ data: response });
     axios.get.mockResolvedValueOnce({ data: response });
     axios.delete.mockResolvedValueOnce({ data: response });
-    axios.put.mockResolvedValueOnce({ data: response });
+    axios.patch.mockResolvedValueOnce({ data: response });
   };
 
   const mockErrorResponse = (error) => {
     axios.post.mockRejectedValueOnce({ response: { status: error.status, data: { error: error.message } } });
     axios.get.mockRejectedValueOnce({ response: { status: error.status, data: { error: error.message } } });
     axios.delete.mockRejectedValueOnce({ response: { status: error.status, data: { error: error.message } } });
-    axios.put.mockRejectedValueOnce({ response: { status: error.status, data: { error: error.message } } });
+    axios.patch.mockRejectedValueOnce({ response: { status: error.status, data: { error: error.message } } });
   };
 
   it('should forward login request to auth service', async () => {
@@ -96,7 +96,7 @@ describe('Gateway Service', () => {
     mockSuccessResponse({ success: true, id: 'questionId' });
 
     const response = await request(app)
-        .post('/createquestion')
+        .post('/question')
         .send({ question: 'What is 2+2?', answer: '4' });
 
     expect(response.statusCode).toBe(201);
@@ -107,7 +107,7 @@ describe('Gateway Service', () => {
     mockSuccessResponse({ status: 'OK' });
 
     const response = await request(app)
-        .put('/updatequestion/questionId')
+        .patch('/question/questionId')
         .send({ question: 'Updated Question?', answer: 'Updated Answer' });
 
     expect(response.statusCode).toBe(200);
@@ -149,7 +149,7 @@ describe('Gateway Service', () => {
     mockErrorResponse({ status: 500, message: 'Error creating the question' });
 
     const response = await request(app)
-        .post('/createquestion')
+        .post('/question')
         .send({ question: 'New Question', answer: 'New Answer' });
 
     expect(response.statusCode).toBe(500);
@@ -160,7 +160,7 @@ describe('Gateway Service', () => {
     mockErrorResponse({ status: 500, message: 'Error updating the question' });
 
     const response = await request(app)
-        .put('/updatequestion/nonexistentId')
+        .patch('/question/nonexistentId')
         .send({ question: 'Updated Question', answer: 'Updated Answer' });
 
     expect(response.statusCode).toBe(500);

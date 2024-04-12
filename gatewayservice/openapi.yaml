@@ -201,7 +201,7 @@ paths:
                     description: Error message.
                 example:
                   error: "Error getting the questions occurred"
-  /createquestion:
+  /question:
     post:
       summary: Create a new question.
       operationId: createQuestion
@@ -281,8 +281,8 @@ paths:
                     type: string
                     description: Error information.
                     example: Internal Server Error
-  /updatequestion/{id}:
-    put:
+  /question/{id}:
+    patch:
       summary: Update a question by ID
       operationId: updateQuestionById
       parameters:

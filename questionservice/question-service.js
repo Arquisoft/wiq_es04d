@@ -102,7 +102,7 @@ app.get('/generatequestions', async (req, res) => {
 
 });
 
-app.post('/createquestion', async (req, res) => {
+app.post('/question', async (req, res) => {
     try {
         const checkResponse = checkReq(req.body);
         if (checkResponse.error !== null) {
@@ -123,7 +123,7 @@ app.post('/createquestion', async (req, res) => {
 })
 
 // Ruta para actualizar una pregunta por ID
-app.put('/updatequestion/:id', async (req, res) => {
+app.patch('/question/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const checkResponse = checkReq(req.body);

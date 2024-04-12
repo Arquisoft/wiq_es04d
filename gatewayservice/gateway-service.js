@@ -71,9 +71,9 @@ app.get('/question/randoms', async(req,res)=> {
   }
 });
 
-app.post('/createquestion', async (req, res) => {
+app.post('/question', async (req, res) => {
   try {
-    const response = await axios.post(`${generateServiceURL}/createquestion`, req.body);
+    const response = await axios.post(`${generateServiceURL}/question`, req.body);
     res.status(201).json(response.data);
   } catch (error) {
     if (error.response) {
@@ -84,10 +84,10 @@ app.post('/createquestion', async (req, res) => {
   }
 });
 
-app.put('/updatequestion/:id', async (req, res) => {
+app.patch('/question/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    await axios.put(`${generateServiceURL}/updatequestion/${id}`, req.body);
+    await axios.patch(`${generateServiceURL}/question/${id}`, req.body);
     res.status(200).json({ status: 'OK' });
   } catch (error) {
     if (error.response) {
