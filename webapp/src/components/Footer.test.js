@@ -24,7 +24,7 @@ describe('Footer Component', () => {
     it('should have correct link for WIQ_ES04D', () => {
         renderWithRouter(<Footer />);
         const wiqLink = screen.getByText('WIQ_ES04D');
-        expect(wiqLink).toHaveAttribute('href', 'https://arquisoft.github.io/wiq_es04c/');
+        expect(wiqLink).toHaveAttribute('href', 'https://arquisoft.github.io/wiq_es04d/');
     });
 
     it('should have correct link for About Us', () => {
