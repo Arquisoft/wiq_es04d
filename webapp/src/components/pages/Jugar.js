@@ -43,7 +43,7 @@ function Jugar() {
     const getQuestions = async () => {
       try {
         console.log("Requesting random questions to " + apiEndpoint);
-        const response = await axios.get(`${apiEndpoint}/getquestions`);
+        const response = await axios.get(`${apiEndpoint}/question/randoms`);
         console.log(response);
         setQuestions(response.data);
         setQuestionsLoaded(true);

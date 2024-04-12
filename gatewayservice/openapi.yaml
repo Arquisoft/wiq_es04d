@@ -142,10 +142,10 @@ paths:
                     type: string
                     description: Error information.
                     example: Internal Server Error
-  /getquestions:
+  /question/randoms:
     get:
       summary: Get random questions.
-      operationId: getQuestions
+      operationId: questionRandoms
       responses:
         '200':
           description: Returns random questions.

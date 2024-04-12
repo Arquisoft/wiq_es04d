@@ -61,9 +61,9 @@ describe('Question Service', () => {
     expect(questionCount).toBe(100);
   });
 
-  // Prueba para el endpoint /getquestions
-  test('Should get questions /getquestions', async () => {
-    const response = await request(app).get('/getquestions');
+  // Prueba para el endpoint /question/randoms
+  test('Should get questions /question/randoms', async () => {
+    const response = await request(app).get('/question/randoms');
     expect(response.status).toBe(200);
 
     // Verifica que se devuelvan 5 preguntas

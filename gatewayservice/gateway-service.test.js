@@ -86,7 +86,7 @@ describe('Gateway Service', () => {
     mockSuccessResponse([{ question: 'What is 2+2?' }]);
 
     const response = await request(app)
-        .get('/getquestions');
+        .get('/question/randoms');
 
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([{ question: 'What is 2+2?' }]);
@@ -139,7 +139,7 @@ describe('Gateway Service', () => {
     mockErrorResponse({ status: 500, message: 'Error getting the questions' });
 
     const response = await request(app)
-        .get('/getquestions');
+        .get('/question/randoms');
 
     expect(response.statusCode).toBe(500);
     expect(response.body.error).toBe('Error getting the questions');

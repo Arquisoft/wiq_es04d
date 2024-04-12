@@ -71,7 +71,7 @@ function checkReq(reqBody) {
     return { error: null };
 }
 
-app.get('/getquestions', async (req, res) => {
+app.get('/question/randoms', async (req, res) => {
     try {
 
         const sampleSize = 5
