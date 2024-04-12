@@ -49,6 +49,11 @@ async function extractAndRemoveRandomQuestions(sampleSize) {
     return randomQuestions;
 }
 
+async function getAllQuestions() {
+    const questions = await Question.find();
+    return questions;
+}
+
 function checkReq(reqBody) {
     // Verificar que el cuerpo de la solicitud contiene los campos necesarios
     const { question, answers, questionCategory } = reqBody;
@@ -70,6 +75,17 @@ function checkReq(reqBody) {
 
     return { error: null };
 }
+
+app.get('/question', async (req, res) => {
+    try {
+        const questions = await getAllQuestions();
+        res.status(200).json(questions);
+    } catch (error) {
+        console.log("Error getting questions from database: " + error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+});
 
 app.get('/question/randoms', async (req, res) => {
     try {

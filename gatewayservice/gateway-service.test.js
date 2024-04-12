@@ -31,8 +31,8 @@ describe('Gateway Service', () => {
     mockSuccessResponse({ token: 'mockedToken' });
 
     const response = await request(app)
-        .post('/login')
-        .send({ username: 'testuser', password: 'testpassword' });
+      .post('/login')
+      .send({ username: 'testuser', password: 'testpassword' });
 
     expect(response.statusCode).toBe(200);
     expect(response.body.token).toBe('mockedToken');
@@ -42,8 +42,8 @@ describe('Gateway Service', () => {
     mockSuccessResponse({ userId: 'mockedUserId' });
 
     const response = await request(app)
-        .post('/adduser')
-        .send({ username: 'newuser', password: 'newpassword' });
+      .post('/adduser')
+      .send({ username: 'newuser', password: 'newpassword' });
 
     expect(response.statusCode).toBe(200);
     expect(response.body.userId).toBe('mockedUserId');
@@ -53,8 +53,8 @@ describe('Gateway Service', () => {
     mockErrorResponse({ status: 401, message: 'Unauthorized' });
 
     const response = await request(app)
-        .post('/login')
-        .send({ username: 'testuser', password: 'wrongpassword' });
+      .post('/login')
+      .send({ username: 'testuser', password: 'wrongpassword' });
 
     expect(response.statusCode).toBe(401);
     expect(response.body.error).toBe('Unauthorized');
@@ -64,7 +64,7 @@ describe('Gateway Service', () => {
     mockSuccessResponse({ valid: true });
 
     const response = await request(app)
-        .get('/validate/mockedToken');
+      .get('/validate/mockedToken');
 
     expect(response.statusCode).toBe(200);
     expect(response.body.valid).toBe(true);
@@ -74,30 +74,41 @@ describe('Gateway Service', () => {
     mockErrorResponse({ status: 401, message: 'Invalid token' });
 
     const response = await request(app)
-        .get('/validate/invalidToken');
+      .get('/validate/invalidToken');
 
     expect(response.statusCode).toBe(401);
     expect(response.body.error).toBe('Invalid token');
   });
 
-  // Continuación de las pruebas para el Gateway Service
-
-  it('should forward get questions request to generate service', async () => {
+  it('should forward get random questions request to generate service', async () => {
     mockSuccessResponse([{ question: 'What is 2+2?' }]);
 
     const response = await request(app)
-        .get('/question/randoms');
+      .get('/question/randoms');
 
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([{ question: 'What is 2+2?' }]);
   });
 
+  it('should forward get questions request to generate service', async () => {
+    mockSuccessResponse([{ question: 'What is 2+2?' }]);
+
+    const response = await request(app)
+      .get('/question');
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toEqual([{ question: 'What is 2+2?' }]);
+  });
+
+
+
+
   it('should forward create question request to generate service', async () => {
     mockSuccessResponse({ success: true, id: 'questionId' });
 
     const response = await request(app)
-        .post('/question')
-        .send({ question: 'What is 2+2?', answer: '4' });
+      .post('/question')
+      .send({ question: 'What is 2+2?', answer: '4' });
 
     expect(response.statusCode).toBe(201);
     expect(response.body).toEqual({ success: true, id: 'questionId' });
@@ -107,8 +118,8 @@ describe('Gateway Service', () => {
     mockSuccessResponse({ status: 'OK' });
 
     const response = await request(app)
-        .patch('/question/questionId')
-        .send({ question: 'Updated Question?', answer: 'Updated Answer' });
+      .patch('/question/questionId')
+      .send({ question: 'Updated Question?', answer: 'Updated Answer' });
 
     expect(response.statusCode).toBe(200);
     expect(response.body.status).toBe('OK');
@@ -118,8 +129,8 @@ describe('Gateway Service', () => {
     mockSuccessResponse({ success: true });
 
     const response = await request(app)
-        .post('/savehistory')
-        .send({ username: 'testuser', action: 'test action' });
+      .post('/savehistory')
+      .send({ username: 'testuser', action: 'test action' });
 
     expect(response.statusCode).toBe(200);
     expect(response.body.success).toBe(true);
@@ -129,17 +140,29 @@ describe('Gateway Service', () => {
     mockSuccessResponse([{ action: 'test action', date: '2024-03-31' }]);
 
     const response = await request(app)
-        .get('/gethistory?username=testuser');
+      .get('/gethistory?username=testuser');
 
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([{ action: 'test action', date: '2024-03-31' }]);
+  });
+
+
+
+  it('should handle error getting random questions from generate service', async () => {
+    mockErrorResponse({ status: 500, message: 'Error getting the questions' });
+
+    const response = await request(app)
+      .get('/question/randoms');
+
+    expect(response.statusCode).toBe(500);
+    expect(response.body.error).toBe('Error getting the questions');
   });
 
   it('should handle error getting questions from generate service', async () => {
     mockErrorResponse({ status: 500, message: 'Error getting the questions' });
 
     const response = await request(app)
-        .get('/question/randoms');
+      .get('/question');
 
     expect(response.statusCode).toBe(500);
     expect(response.body.error).toBe('Error getting the questions');
@@ -149,8 +172,8 @@ describe('Gateway Service', () => {
     mockErrorResponse({ status: 500, message: 'Error creating the question' });
 
     const response = await request(app)
-        .post('/question')
-        .send({ question: 'New Question', answer: 'New Answer' });
+      .post('/question')
+      .send({ question: 'New Question', answer: 'New Answer' });
 
     expect(response.statusCode).toBe(500);
     expect(response.body.error).toBe('Error creating the question');
@@ -160,8 +183,8 @@ describe('Gateway Service', () => {
     mockErrorResponse({ status: 500, message: 'Error updating the question' });
 
     const response = await request(app)
-        .patch('/question/nonexistentId')
-        .send({ question: 'Updated Question', answer: 'Updated Answer' });
+      .patch('/question/nonexistentId')
+      .send({ question: 'Updated Question', answer: 'Updated Answer' });
 
     expect(response.statusCode).toBe(500);
     expect(response.body.error).toBe('Error updating the question');
@@ -171,8 +194,8 @@ describe('Gateway Service', () => {
     mockErrorResponse({ status: 500, message: 'Error saving the history' });
 
     const response = await request(app)
-        .post('/savehistory')
-        .send({ username: 'testuser', action: 'test action' });
+      .post('/savehistory')
+      .send({ username: 'testuser', action: 'test action' });
 
     expect(response.statusCode).toBe(500);
     expect(response.body.error).toBe('Error saving the history');
@@ -182,7 +205,7 @@ describe('Gateway Service', () => {
     mockErrorResponse({ status: 500, message: 'Error getting the history' });
 
     const response = await request(app)
-        .get('/gethistory?username=testuser');
+      .get('/gethistory?username=testuser');
 
     expect(response.statusCode).toBe(500);
     expect(response.body.error).toBe('Error getting the history');
@@ -192,7 +215,7 @@ describe('Gateway Service', () => {
     mockSuccessResponse([{ action: 'specific action', date: '2024-03-31' }]);
 
     const response = await request(app)
-        .get('/gethistory/testuser');
+      .get('/gethistory/testuser');
 
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([{ action: 'specific action', date: '2024-03-31' }]);
@@ -202,12 +225,9 @@ describe('Gateway Service', () => {
     mockErrorResponse({ status: 500, message: 'Error getting the history' });
 
     const response = await request(app)
-        .get('/gethistory/nonexistentUser');
+      .get('/gethistory/nonexistentUser');
 
     expect(response.statusCode).toBe(500);
     expect(response.body.error).toBe('Error getting the history');
   });
-
-
-
 });

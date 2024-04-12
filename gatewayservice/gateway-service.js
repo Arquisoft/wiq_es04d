@@ -54,6 +54,23 @@ app.post('/adduser', async (req, res) => {
   }
 });
 
+app.get('/question', async(req,res)=> {
+  try{
+    // Redirige la solicitud al servicio de generación de preguntas sin enviar un cuerpo de solicitud.
+    const response = await axios.get(`${generateServiceURL}/question`);
+
+    // Devuelve la respuesta del servicio de generación de preguntas al cliente original.
+    res.status(200).json(response.data);
+
+  } catch(error) {
+    if (error.response) {
+      res.status(error.response.status).json({ error: error.response.data.error });
+    } else {
+      res.status(500).json({ error: 'Error getting the questions' });
+    }
+  }
+});
+
 app.get('/question/randoms', async(req,res)=> {
   try{
     // Redirige la solicitud al servicio de generación de preguntas sin enviar un cuerpo de solicitud.
