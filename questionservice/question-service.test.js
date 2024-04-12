@@ -142,7 +142,7 @@ describe('Question Service', () => {
     expect(updatedQuestion).toMatchObject(updatedQuestionData);
   });
 
-  // Prueba para el endpoint /deletequestion/:id
+  // Prueba para el endpoint DELETE /question/:id
   test('Should delete a question by ID', async () => {
     // Crear una nueva pregunta en la base de datos para eliminarla luego
     const newQuestion = new Question({
@@ -157,9 +157,9 @@ describe('Question Service', () => {
     });
     await newQuestion.save();
 
-    // Realizar una solicitud DELETE al endpoint /deletequestion/:id con el ID de la pregunta creada
+    // Realizar una solicitud DELETE al endpoint /question/:id con el ID de la pregunta creada
     const response = await request(app)
-      .delete(`/deletequestion/${newQuestion._id}`);
+      .delete(`/question/${newQuestion._id}`);
 
     // Verificar que la solicitud se haya completado con éxito (código de estado 200)
     expect(response.status).toBe(200);

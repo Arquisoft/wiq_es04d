@@ -335,7 +335,6 @@ paths:
           description: Question not found
         '500':
           description: Internal server error
-  /deletequestion/{id}:
     delete:
       summary: Delete a question by ID
       operationId: deleteQuestionById

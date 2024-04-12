@@ -151,7 +151,7 @@ app.patch('/question/:id', async (req, res) => {
 
 
 // Ruta para eliminar una pregunta por ID
-app.delete('/deletequestion/:id', async (req, res) => {
+app.delete('/question/:id', async (req, res) => {
     try {
         const { id } = req.params;
         // Verificar si la pregunta existe en la base de datos

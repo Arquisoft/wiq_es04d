@@ -98,10 +98,10 @@ app.patch('/question/:id', async (req, res) => {
   }
 });
 
-app.put('/deletequestion/:id', async (req, res) => {
+app.delete('/question/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    await axios.delete(`${generateServiceURL}/deletequestion/${id}`, req.body);
+    await axios.delete(`${generateServiceURL}/question/${id}`, req.body);
     res.status(200).json({ status: 'OK' });
   } catch (error) {
     if (error.response) {
