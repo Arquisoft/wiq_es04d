@@ -70,6 +70,38 @@ describe('Question Service', () => {
     expect(response.body.length).toBe(5);
   });
 
+  // Prueba para el endpoint GET /question
+  test('Should get all questions GET /question', async () => {
+    const newQuestionData = [new Question({
+      question: '¿Cuál es la capital de Francia?',
+      answers: [
+        { answer: 'París', correct: true },
+        { answer: 'Madrid', correct: false },
+        { answer: 'Berlín', correct: false },
+        { answer: 'Londres', correct: false }
+      ],
+      questionCategory: 'Geografía'
+    }),
+    new Question({
+      question: '¿Cuál es la capital de España?',
+      answers: [
+        { answer: 'París', correct: false },
+        { answer: 'Madrid', correct: true },
+        { answer: 'Berlín', correct: false },
+        { answer: 'Londres', correct: false }
+      ],
+      questionCategory: 'Geografía'
+    })];
+
+    await Question.insertMany(newQuestionData);
+
+    const response = await request(app).get('/question');
+    expect(response.status).toBe(200);
+
+    // Verifica que se devuelvan 2 preguntas
+    expect(response.body.length).toBe(2);
+  });
+
   // Prueba para el endpoint /question
   test('Should create a new question', async () => {
     const newQuestionData = {
