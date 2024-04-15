@@ -136,7 +136,7 @@ app.post('/question', async (req, res) => {
         console.log("Error creating question: " + error);
         res.status(500).json({ error: 'Error creating the question' });
     }
-})
+});
 
 // Ruta para actualizar una pregunta por ID
 app.patch('/question/:id', async (req, res) => {

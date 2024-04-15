@@ -54,6 +54,64 @@ app.post('/adduser', async (req, res) => {
   }
 });
 
+//API Usuarios
+app.get('/user', async(req,res)=> {
+  try{
+    const response = await axios.get(`${userServiceUrl}/user`);
+
+    res.status(200).json(response.data);
+
+  } catch(error) {
+    if (error.response) {
+      res.status(error.response.status).json({ error: error.response.data.error });
+    } else {
+      res.status(500).json({ error: 'Error getting the user' });
+    }
+  }
+});
+
+app.post('/user', async (req, res) => {
+  try {
+    const response = await axios.post(`${userServiceUrl}/adduser`, req.body);
+    res.status(201).json(response.data);
+  } catch (error) {
+    if (error.response) {
+      res.status(error.response.status).json({ error: error.response.data.error });
+    } else {
+      res.status(500).json({ error: 'Error creating the user' });
+    }
+  }
+});
+
+app.patch('/user/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await axios.patch(`${userServiceUrl}/user/${id}`, req.body);
+    res.status(200).json({ status: 'OK' });
+  } catch (error) {
+    if (error.response) {
+      res.status(error.response.status).json({ error: error.response.data.error });
+    } else {
+      res.status(500).json({ error: 'Error updating the user' });
+    }
+  }
+});
+
+app.delete('/user/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await axios.delete(`${userServiceUrl}/user/${id}`, req.body);
+    res.status(200).json({ status: 'OK' });
+  } catch (error) {
+    if (error.response) {
+      res.status(error.response.status).json({ error: error.response.data.error });
+    } else {
+      res.status(500).json({ error: 'Error deleting the user' });
+    }
+  }
+});
+
+//API Preguntas
 app.get('/question', async(req,res)=> {
   try{
     // Redirige la solicitud al servicio de generación de preguntas sin enviar un cuerpo de solicitud.
@@ -151,7 +209,7 @@ app.get('/gethistory', async (req, res) => {
   }
 });
 
-app.get('/gethistory/:username', async (req, res) => {
+app.get('/history/:username', async (req, res) => {
   try{
     const { username } = req.params;
     const historyResponse = await axios.get(historyServiceUrl+'/gethistory/'+username);

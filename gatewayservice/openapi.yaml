@@ -2,73 +2,19 @@ openapi: 3.0.0
 info:
   title: Gatewayservice API
   description: API available to the client for accessing the services 
-  version: 1.0.0
+  version: 1.1.0
 servers:
   - url: http://localhost:8000
     description: Development server
   - url: http://20.77.40.187:8000
     description: Production server
 paths:
-  /adduser:
-    post:
-      summary: Add a new user to the database.
-      operationId: addUser
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                username:
-                  type: string
-                  description: User ID.
-                  example: student
-                password:
-                  type: string
-                  description: User password.
-                  example: pass
-      responses:
-        '200':
-          description: User added successfully.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  username:
-                    type: string
-                    description: User ID
-                  password:
-                    type: string
-                    description: Hashed password
-                    example: $2b$10$ZKdNYLWFQxzt5Rei/YTc/OsZNi12YiWz30JeUFHNdAt7MyfmkTuvC
-                  _id:
-                    type: string
-                    description: Identification
-                    example: 65f756db3fa22d227a4b7c7d
-                  createdAt:
-                    type: string
-                    description: Creation date.
-                    example: '2024-03-17T20:47:23.935Z'
-                  ___v:
-                    type: integer
-                    example: '0'                                        
-        '400':
-          description: Failed to add user.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    description: Error information.
-                    example: getaddrinfo EAI_AGAIN mongodb
   /health:
     get:
       summary: Check the health status of the service.
       operationId: checkHealth
+      tags:
+        - Other
       responses:
         '200':
           description: Service is healthy.
@@ -85,6 +31,8 @@ paths:
     post:
       summary: Log in to the system.
       operationId: loginUser
+      tags:
+        - Other
       requestBody:
         required: true
         content:
@@ -146,6 +94,8 @@ paths:
     get:
       summary: Get random questions.
       operationId: questionRandoms
+      tags:
+        - Questions
       responses:
         '200':
           description: Returns random questions.
@@ -205,6 +155,8 @@ paths:
     get:
       summary: Obtener todas las preguntas
       operationId: getAllQuestions
+      tags:
+        - Questions
       responses:
         '200':
           description: Operación exitosa
@@ -237,6 +189,8 @@ paths:
     post:
       summary: Create a new question.
       operationId: createQuestion
+      tags:
+        - Questions
       requestBody:
         required: true
         content:
@@ -317,6 +271,8 @@ paths:
     patch:
       summary: Update a question by ID
       operationId: updateQuestionById
+      tags:
+        - Questions
       parameters:
         - in: path
           name: id
@@ -370,6 +326,8 @@ paths:
     delete:
       summary: Delete a question by ID
       operationId: deleteQuestionById
+      tags:
+        - Questions
       parameters:
         - in: path
           name: id
@@ -394,10 +352,168 @@ paths:
           description: Question not found
         '500':
           description: Internal server error
-  /gethistory/{user}:
+  /user:
+    get:
+      summary: Get all users
+      operationId: getAllUsers
+      tags:
+        - Users
+      responses:
+        '200':
+          description: Operación exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    _id:
+                      type: string
+                      description: ID unico del usuario
+                    username:
+                      type: string
+                      description: nombre de usuario
+                    createdAt:
+                      type: Date
+                      description: Fecha de creacion del usuario          
+        '500':
+          description: Error interno del servidor
+    post:
+      summary: Create a new user.
+      operationId: createUser
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: nombre de usuario
+                password:
+                  type: string
+                  description: Contraseña del usuario   
+      responses:
+        '201':
+          description: user created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    description: The ID of the created user.
+                    example: "65f756db3fa22d227a4b7c7d"
+                  username:
+                    type: string
+                    description: The user name.
+                  createdAt:
+                    type: Date
+                    description: Date of creation of the user.
+        '400':
+          description: Bad request. Invalid input data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error information.
+                    example: Invalid input data.
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error information.
+                    example: Internal Server Error
+  /user/{id}:
+    patch:
+      summary: Update a user by ID
+      operationId: updateUserById
+      tags:
+        - Users
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID of the user to update
+          schema:
+            type: string
+          example: "605cf8a59c73cc0022563989"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: The name of the user.    
+      responses:
+        '200':
+          description: Successful update
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Update status
+                    example: OK
+        '400':
+          description: Bad request, invalid data provided
+        '404':
+          description: User not found
+        '500':
+          description: Internal server error
+    delete:
+      summary: Delete a user by ID
+      operationId: deleteUserById
+      tags:
+        - Users
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID of the user to delete
+          schema:
+            type: string
+          example: "605cf8a59c73cc0022563989"
+      responses:
+        '200':
+          description: User deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Deletion status
+                    example: OK
+        '404':
+          description: User not found
+        '500':
+          description: Internal server error
+  /history/{user}:
     get:
       summary: Get a history by user name
-      operationId: getHistoryByUser
+      operationId: historyByUser
+      tags:
+        - History
       parameters:
         - in: path
           name: user
@@ -433,3 +549,12 @@ paths:
           description: User not found
         '500':
           description: Internal server error
+tags:
+  - name: Users
+    description: Endpoints related to user management
+  - name: Questions
+    description: Endpoints related to question management
+  - name: History
+    description: Endpoints related to history management
+  - name: Other
+    description: Other endpoints

@@ -49,7 +49,56 @@ app.post('/adduser', async (req, res) => {
         res.json(newUser);
     } catch (error) {
         res.status(400).json({ error: error.message }); 
-    }});
+    }
+});
+
+app.get('/user', async (req, res) => {
+  try {
+    const users = await User.find({}, 'username createdAt');
+    res.status(200).json(users);
+  } catch (error) {
+    console.log("Error getting users from database: " + error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+
+});
+
+app.patch('/user/:id', async (req, res) => {
+  try {
+      const { id } = req.params;
+      validateRequiredFields(req, ['username']);
+
+      const updatedUser = await User.findByIdAndUpdate(id, {
+          username: req.body.username
+      }, { new: true });
+
+      if (!updatedUser) {
+          return res.status(404).json({ error: 'User not found' });
+      }
+
+      res.status(200).json(updatedUser);
+  } catch (error) {
+      console.error("Error updating question:", error);
+      res.status(500).json({ error: 'Error updating the question' });
+  }
+});
+
+app.delete('/user/:id', async (req, res) => {
+  try {
+      const { id } = req.params;
+      // Verificar si la pregunta existe en la base de datos
+      const user = await User.findById(id);
+      if (!user) {
+          return res.status(404).json({ error: 'User not found' });
+      }
+      // Eliminar la pregunta de la base de datos
+      await User.findByIdAndDelete(id);
+      res.status(200).json({ status: 'OK' });
+  } catch (error) {
+      console.error("Error deleting user:", error);
+      res.status(500).json({ error: 'Error deleting the question' });
+  }
+});
 
 const server = app.listen(port, () => {
   console.log(`User Service listening at http://localhost:${port}`);
