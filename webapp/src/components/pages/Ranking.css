@@ -1,0 +1,66 @@
+body {
+    overflow-y: hidden; /* Desactiva la barra de desplazamiento vertical */
+    margin: 0; /* Elimina el margen predeterminado del body */
+    padding: 0; /* Elimina el relleno predeterminado del body */
+}
+
+.ranking-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Alinea el contenido al principio */
+    min-height: 100vh;
+    padding-top: 20px; /* Agrega espacio en la parte superior */
+    position: relative; /* Permite el posicionamiento relativo */
+}
+
+.video-container {
+    width: 100%;
+    height: 50vh; /* Ajusta la altura del video */
+    position: relative;
+    overflow: hidden; /* Oculta cualquier desbordamiento del video */
+}
+
+.video-container video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%; /* Garantiza que el video cubra todo el contenedor */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+h1 {
+    color: white; /* Cambia el color del texto a blanco */
+}
+
+.users-table-container {
+    margin-top: 20px;
+    width: 60%; /* Ancho ajustado de la tabla */
+    max-height: 40vh; /* Altura máxima de la tabla */
+    overflow-y: auto; /* Agrega barra de desplazamiento vertical */
+}
+
+.users-table {
+    width: 100%; /* Ancho completo de la tabla */
+    background-color: rgba(255, 255, 255, 0.9);
+    border-collapse: collapse;
+    table-layout: fixed; /* Fuerza que las celdas tengan el ancho especificado */
+}
+
+th, td {
+    padding: 8px 16px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    word-wrap: break-word; /* Permite que el texto se divida en varias líneas */
+    width: auto; /* Ancho automático basado en el contenido */
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}

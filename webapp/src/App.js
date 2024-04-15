@@ -10,6 +10,7 @@ import { AuthProvider } from './AuthContext';
 import Logout from "./components/Logout";
 import AboutUS from "./components/pages/AboutUS";
 import Error404Page from "./components/pages/Error404Page";
+import Ranking from './components/pages/Ranking';
 
 function App() {
     useEffect(() => {
@@ -22,6 +23,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Layout><Home /></Layout>} />
                     <Route path="/historial" element={<Layout><Historial /></Layout>} />
+                    <Route path="/ranking" element={<Layout><Ranking /></Layout>} />
                     <Route path="/jugar" element={<Layout><Jugar /></Layout>} />
                     <Route path="/sign-up" element={<Layout><SignUp /></Layout>} />
                     <Route path="/logout" element={<Layout><Logout /></Layout>} />

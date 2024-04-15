@@ -32,6 +32,9 @@ function Navbar() {
             <li className='nav-item'>
                 <Link to='/historial' className='nav-links' onClick={closeMenu} id='historial-link'>Historial</Link>
             </li>
+            <li className='nav-item'>
+                <Link to='/ranking' className='nav-links' onClick={closeMenu} id='ranking-link'>Ranking</Link>
+            </li>
             <li>
                 <Link to='/logout' className='nav-links-mobile' onClick={closeMenu}>Salir</Link>
             </li>
