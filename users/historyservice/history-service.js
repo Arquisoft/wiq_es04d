@@ -84,6 +84,17 @@ app.get('/gethistory', async (req, res) => {
   }
 });
 
+app.get('/getranking', async (req, res) => {
+  try {
+    // Buscar los 10 registros con el mayor número de respuestas correctas
+    const topPlayers = await History.find().sort({ NumAcertadas: -1 }).limit(10);
+    console.log(topPlayers);
+    res.json(topPlayers); // Devolver los resultados como JSON
+} catch (error) {
+    res.status(500).json({ message: error.message }); // Manejo de errores
+}
+});
+
 app.get('/gethistory/:username', async (req, res) => {
   try {
       let username = req.params.username;

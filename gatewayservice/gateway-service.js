@@ -187,6 +187,17 @@ app.delete('/question/:id', async (req, res) => {
   }
 });
 
+//API historial
+app.get('/history/:username', async (req, res) => {
+  try{
+    const { username } = req.params;
+    const historyResponse = await axios.get(historyServiceUrl+'/gethistory/'+username);
+    res.json(historyResponse.data);
+  }catch(error){
+    res.status(error.response.status).json({ error: error.response.data.error });
+  }
+});
+
 //Guardar el historial
 app.post('/savehistory', async (req, res) => {
   try{
@@ -209,16 +220,16 @@ app.get('/gethistory', async (req, res) => {
   }
 });
 
-app.get('/history/:username', async (req, res) => {
+//Obtener el ranking
+app.get('/getranking', async (req, res) => {
   try{
-    const { username } = req.params;
-    const historyResponse = await axios.get(historyServiceUrl+'/gethistory/'+username);
-    res.json(historyResponse.data);
+    const rankingResponse = await axios.get(historyServiceUrl+'/getranking');
+    res.json(rankingResponse.data);
+    
   }catch(error){
     res.status(error.response.status).json({ error: error.response.data.error });
   }
 });
-
 
 // Read the OpenAPI YAML file synchronously
 const openapiPath='./openapi.yaml'

@@ -7,69 +7,62 @@ import './Ranking.css';
 
 export default function Ranking() {
 
+    const navigate = useNavigate();
+    const { isLoggedIn } = useContext(AuthContext);
+    const [rankingData, setRankingData] = useState(false);
+
+    const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:8000';
+
+    const fetchRankingData = useCallback(async () => {
+        try {
+            let response = await axios.get(`${apiEndpoint}/getranking`);
+
+            setRankingData(response.data);
+
+        } catch (error) {
+            console.error('Error al obtener el ranking:', error);
+        }
+    }, [apiEndpoint]);
+
+
+    useEffect(() => {
+        if (!isLoggedIn) {
+            navigate('/login');
+        } else {
+            fetchRankingData();
+        }
+    }, [isLoggedIn, navigate, fetchRankingData]);
+
     return (
         <div className='ranking-container'>
-            <video src='/videos/ranking.mp4' autoPlay loop muted playsInline data-testid="ranking" />
-            <h1 className='ranking'>Ranking</h1>
-            <div className="users-table">
-                <table>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Player Name</th>
-                        <th>Score</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Player 1</td>
-                        <td>1000</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Player 2</td>
-                        <td>950</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Player 3</td>
-                        <td>900</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Player 1</td>
-                        <td>1000</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Player 1</td>
-                        <td>1000</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Player 1</td>
-                        <td>1000</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>Player 1</td>
-                        <td>1000</td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>Player 1</td>
-                        <td>1000</td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td>Player 1</td>
-                        <td>1000</td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td>Player 1</td>
-                        <td>1000</td>
-                    </tr>
-                </table>
-            </div>
+            <video src='/videos/ranking.mp4' autoPlay loop muted playsInline data-testid="ranking-video" />
+            <h1 className='ranking'>RANKING</h1>
+                {rankingData.length > 0 ? (
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Posición</th>
+                                <th>Nombre de usuario</th>
+                                <th>Preguntas Jugadas</th>
+                                <th>Preguntas Acertadas</th>
+                                <th>Porcentaje de Aciertos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {rankingData.map((player, index) => (
+                                <tr key={index}>
+                                    <td>{index + 1}</td>
+                                    <td>{player.username}</td>
+                                    <td>{player.NumPreguntasJugadas}</td>
+                                    <td>{player.NumAcertadas}</td>
+                                    <td>{((player.NumAcertadas / player.NumPreguntasJugadas) * 100).toFixed(2)}%</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                ) : (
+                    <p>No hay datos de ranking disponibles.</p>
+                )}
         </div>
     );
 }
