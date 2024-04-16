@@ -16,102 +16,122 @@ mongoose.connect(mongoUri);
 
 
 app.post('/savehistory', async (req, res) => {
-    try {
-        let username = req.body.username; //necesitamos el username
+  try {
+    let username = req.body.username; //necesitamos el username
 
-        //Extraer los datos de la solicitud
-        const { NumPreguntasJugadas, NumAcertadas } = req.body;
-    
-        // Buscar si ya existe una entrada en la base de datos con el mismo nombre de usuario
-        let historyEntry = await History.findOne({ username: username });
+    //Extraer los datos de la solicitud
+    const { NumPreguntasJugadas, NumAcertadas } = req.body;
 
-        if (historyEntry !== null) {
-          // Si la entrada ya existe, actualizamos los datos
-          historyEntry.NumJugadas = historyEntry.NumJugadas + 1;
-          historyEntry.NumPreguntasJugadas = historyEntry.NumPreguntasJugadas + NumPreguntasJugadas;
-          historyEntry.NumAcertadas = historyEntry.NumAcertadas + NumAcertadas;
-          historyEntry.NumFalladas = historyEntry.NumFalladas + NumPreguntasJugadas - NumAcertadas;
-        } else {
-          // Si la entrada no existe, creamos una nueva
-          historyEntry = new History({
-            username: username,
-            NumJugadas: 1,
-            NumPreguntasJugadas: NumPreguntasJugadas,
-            NumAcertadas: NumAcertadas,
-            NumFalladas: NumPreguntasJugadas - NumAcertadas
-          })
-        }
-    
-        // Guardar la entrada en la base de datos
-        await historyEntry.save();
-        
-        // Respuesta exitosa
-        res.json(historyEntry);
-      } catch (error) {
-        // Manejo de errores
-        res.status(400).json({ error: 'Error al guardar el historial' });
-      }
+    // Buscar si ya existe una entrada en la base de datos con el mismo nombre de usuario
+    let historyEntry = await History.findOne({ username: username });
+
+    if (historyEntry !== null) {
+      // Si la entrada ya existe, actualizamos los datos
+      historyEntry.NumJugadas = historyEntry.NumJugadas + 1;
+      historyEntry.NumPreguntasJugadas = historyEntry.NumPreguntasJugadas + NumPreguntasJugadas;
+      historyEntry.NumAcertadas = historyEntry.NumAcertadas + NumAcertadas;
+      historyEntry.NumFalladas = historyEntry.NumFalladas + NumPreguntasJugadas - NumAcertadas;
+    } else {
+      // Si la entrada no existe, creamos una nueva
+      historyEntry = new History({
+        username: username,
+        NumJugadas: 1,
+        NumPreguntasJugadas: NumPreguntasJugadas,
+        NumAcertadas: NumAcertadas,
+        NumFalladas: NumPreguntasJugadas - NumAcertadas
+      })
+    }
+
+    // Guardar la entrada en la base de datos
+    await historyEntry.save();
+
+    // Respuesta exitosa
+    res.json(historyEntry);
+  } catch (error) {
+    // Manejo de errores
+    res.status(400).json({ error: 'Error al guardar el historial' });
+  }
 });
 
 app.get('/gethistory', async (req, res) => {
   try {
-    
-      let username = req.query.username;
 
-      // Buscar el historial en la base de datos basado en el nombre de usuario
-      let historyEntry = await History.findOne({ username: username.toString() });
+    let username = req.query.username;
 
-      if (historyEntry === null) {
-        
-        // Si no se encuentra ningún historial para el usuario, crear un nuevo historial con valores igualados a 0
-        historyEntry = new History({
-          username: username,
-          NumJugadas: 0,
-          NumPreguntasJugadas: 0,
-          NumAcertadas: 0,
-          NumFalladas: 0
-        })
+    // Buscar el historial en la base de datos basado en el nombre de usuario
+    let historyEntry = await History.findOne({ username: username.toString() });
 
-        // Guardar el nuevo historial en la base de datos
-        await historyEntry.save();
+    if (historyEntry === null) {
 
-      }
+      // Si no se encuentra ningún historial para el usuario, crear un nuevo historial con valores igualados a 0
+      historyEntry = new History({
+        username: username,
+        NumJugadas: 0,
+        NumPreguntasJugadas: 0,
+        NumAcertadas: 0,
+        NumFalladas: 0
+      })
 
-      res.json(historyEntry);
+      // Guardar el nuevo historial en la base de datos
+      await historyEntry.save();
+
+    }
+
+    res.json(historyEntry);
 
   } catch (error) {
-      res.status(500).json({ error: 'Error al obtener el historial' });
+    res.status(500).json({ error: 'Error al obtener el historial' });
   }
 });
 
+//clasificacion Bayesiana
 app.get('/getranking', async (req, res) => {
   try {
-    // Buscar los 10 registros con el mayor número de respuestas correctas
-    const topPlayers = await History.find().sort({ NumAcertadas: -1 }).limit(10);
+    // Obtener todos los registros de historial
+    const allPlayers = await History.find();
+
+    // Calcular la probabilidad a priori de que un usuario juegue muchas preguntas
+    const totalQuestionsPlayed = allPlayers.reduce((acc, player) => acc + player.NumPreguntasJugadas, 0);
+    const priorProbability = totalQuestionsPlayed / allPlayers.length;
+
+    // Calcular la probabilidad a posteriori para cada usuario
+    const rankedPlayers = allPlayers.map(player => {
+      const posteriorProbability = (player.NumPreguntasJugadas / totalQuestionsPlayed) * (player.NumAcertadas / player.NumPreguntasJugadas) * priorProbability;
+      return { ...player.toObject(), posteriorProbability };
+    });
+
+    // Ordenar los jugadores según la probabilidad a posteriori
+    const topPlayers = rankedPlayers.sort((a, b) => b.posteriorProbability - a.posteriorProbability).slice(0, 10);
+
     console.log(topPlayers);
     res.json(topPlayers); // Devolver los resultados como JSON
-} catch (error) {
+
+    // Buscar los 10 registros con el mayor número de respuestas correctas
+    //const topPlayers = await History.find().sort({ NumAcertadas: -1 }).limit(10);
+    //console.log(topPlayers);
+    //res.json(topPlayers); // Devolver los resultados como JSON
+  } catch (error) {
     res.status(500).json({ message: error.message }); // Manejo de errores
-}
+  }
 });
 
 app.get('/gethistory/:username', async (req, res) => {
   try {
-      let username = req.params.username;
+    let username = req.params.username;
 
 
-      // Buscar el historial en la base de datos basado en el nombre de usuario
-      let historyEntry = await History.findOne({ username: username.toString() });
+    // Buscar el historial en la base de datos basado en el nombre de usuario
+    let historyEntry = await History.findOne({ username: username.toString() });
 
-      if (historyEntry === null) {
-        res.status(404).json({ error: 'No se encontro historial para este usuario'});
-      } else {
-        res.json(historyEntry);
-      }
-     
+    if (historyEntry === null) {
+      res.status(404).json({ error: 'No se encontro historial para este usuario' });
+    } else {
+      res.json(historyEntry);
+    }
+
 
   } catch (error) {
-      res.status(500).json({ error: 'Error al obtener el historial' });
+    res.status(500).json({ error: 'Error al obtener el historial' });
   }
 });
 
@@ -121,8 +141,8 @@ const server = app.listen(port, () => {
 
 // Listen for the 'close' event on the Express.js server
 server.on('close', () => {
-    // Close the Mongoose connection
-    mongoose.connection.close();
-  });
+  // Close the Mongoose connection
+  mongoose.connection.close();
+});
 
 module.exports = server

@@ -35,7 +35,7 @@ table {
     border-collapse: collapse; /* Combina los bordes de las celdas de la tabla */
     width: 45%;
     border-radius: 10px; /* Bordes redondeados en la parte superior */
-    background-color: rgba(240, 240, 240, 0.7);
+    background-color: rgba(240, 240, 240, 0.6);
     overflow-y: auto;/* Muestra la barra de desplazamiento vertical cuando sea necesario */
 }
 
