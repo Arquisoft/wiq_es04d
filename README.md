@@ -22,6 +22,8 @@ Estos son los componentes que componen la aplicación web.
 
 La arquitectura de la aplicación está compuesta por microservicios. Cada servicio utiliza una base de datos diferente.
 
+Documentacion: https://arquisoft.github.io/wiq_es04d/
+
 ## Guía rápida para empezar
 
 ### Usando docker
