@@ -10,3 +10,4 @@ Los enlaces proporcionan las decisiones de arquitectura via Wiki de GitHub.
 * https://github.com/Arquisoft/wiq_es04d/wiki/ADR-4-%E2%80%90-Base-de-datos[ADR 4] - Base de datos
 * https://github.com/Arquisoft/wiq_es04d/wiki/ADR-5-%E2%80%90-Modo-de-generar-preguntas[ADR 5] - Modo de generar las preguntas
 * https://github.com/Arquisoft/wiq_es04d/wiki/ADR-6-‐-Uso-de-ramas-en-Git[ADR 6] - Uso de ramas en Git
+* https://github.com/Arquisoft/wiq_es04d/wiki/ADR-7-‐-Métrica-calculo-del-Ranking[ADR 7] - Métrica calculo del Ranking
