@@ -50,8 +50,17 @@ tr:not(:last-child) th {
     border-bottom: 1px solid #ddd; /* Agrega una línea inferior a las filas */
 }
 
-th {
+/* Redondear solo el primer encabezado de columna por la izquierda */
+th:first-child {
     border-top-left-radius: 10px; /* Bordes redondeados en la esquina superior izquierda */
+}
+
+/* Redondear solo el último encabezado de columna por la derecha */
+th:last-child {
     border-top-right-radius: 10px; /* Bordes redondeados en la esquina superior derecha */
-    background-color: #f2f2f2;/* Color de fondo de los encabezados de columna */
+}
+
+/* Color de fondo para todos los encabezados de columna */
+th {
+    background-color: #f2f2f2; /* Color de fondo de los encabezados de columna */
 }
