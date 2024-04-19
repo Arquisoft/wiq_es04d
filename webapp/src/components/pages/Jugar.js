@@ -26,12 +26,12 @@ function Jugar() {
   const navigate = useNavigate();
   const { isLoggedIn, username } = useContext(AuthContext);
   const [questions, setQuestions] = useState([{
-    question: "¿Cuál es la capital de Francia?",
+    question: "Se están generando nuevas preguntas. Por favor espere, no debería tardar más de 1 minuto.",
     answers: [
-      { answer: "París", correct: true },
-      { answer: "Londres", correct: false },
-      { answer: "Madrid", correct: false },
-      { answer: "Berlín", correct: false },
+      { answer: "No responda", correct: true },
+      { answer: "Por favor no responda en serio", correct: false },
+      { answer: "Si responde un gatito muere ", correct: false },
+      { answer: "Ninguna de las anteriores", correct: false },
     ]
   }]);
 
