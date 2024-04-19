@@ -19,7 +19,7 @@ class WikiQuery {
         WHERE {
             ?question wdt:P31 ${template.questionVariable}; # Tipo de entidad: question
             ${template.answerVariable} ?answer. # Propiedad: Tiene por answer
-            SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],es". }
+            SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
           }
         LIMIT ${limitValue}`;
         const results = await wikiCall(query)
@@ -30,12 +30,18 @@ class WikiQuery {
             // La pregunta es la de la plantilla pero reemplazando __x__ por la variable de pregunta
             let question = template.question.replace("__x__", questionVar);
             let answerVar = results[i]['answerLabel'].value;
+            if (answerVar.startsWith('http')) {
+                answerVar = 'No tiene';
+            }
             let answers = [{ answer: answerVar, correct: true }];
             let copy_results = results.slice(); // copia para no modificar la lista original
             copy_results.splice(i, 1); // Eliminar la fila que lleva la pregunta correcta
             while (answers.length < 4) {
                 let randomIndex = Math.floor(Math.random() * copy_results.length);
                 let distractorAnswerVar = copy_results[randomIndex]['answerLabel'].value;
+                if (distractorAnswerVar.startsWith('http')) {
+                    distractorAnswerVar = 'No tiene';
+                }
                 answers.push({ answer: distractorAnswerVar, correct: false })
                 copy_results.splice(randomIndex, 1); // Eliminar la fila elegida para que no vuelva a salir
             }
