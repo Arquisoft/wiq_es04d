@@ -39,7 +39,7 @@ describe("WikiQuery", () => {
         const questions = await WikiQuery.getQuestions(template, limitValue);
 
         // Verificar que wikiCall fue llamado correctamente
-        expect(wikiCall).toHaveBeenCalledWith(expect.stringMatching(/SELECT\s+\?questionLabel\s+\?answerLabel\s+WHERE/gm));
+        expect(wikiCall).toHaveBeenCalledWith(expect.stringMatching(/SELECT DISTINCT\s+\?questionLabel\s+\?answerLabel\s+WHERE/gm));
 
         expect(wikiCall).toHaveBeenCalledTimes(1);
 

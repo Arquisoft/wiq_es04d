@@ -17,7 +17,8 @@
         "question": "¿Cuando se estrenó __x__?",
         "questionVariable": "wd:Q11424",
         "answerVariable": "wdt:P577",
-        "questionCategory": "Entretenimiento"
+        "questionCategory": "Entretenimiento",
+        "year":true
     },
 
     "country_of_origin_of_dish": {
@@ -31,7 +32,8 @@
         "question": "¿Cuándo terminó la guerra __x__?",
         "questionVariable": "wd:Q198",
         "answerVariable": "wdt:P582",
-        "questionCategory": "Historia"
+        "questionCategory": "Historia",
+        "year":true
     },
 
     "author_of_painting": {

@@ -10,8 +10,12 @@ class WikiQuery {
      * @returns preguntas con el formato de api_questionservice.txt
      */
     static async getQuestions(template, limitValue) {
+        let queryAnswerVar = '?answerLabel'
+        if (template.year===true){
+            queryAnswerVar = '(YEAR(?answer) AS ?answerLabel)'
+        }
         const query = `
-        SELECT ?questionLabel ?answerLabel
+        SELECT DISTINCT ?questionLabel ${queryAnswerVar}
         WHERE {
             ?question wdt:P31 ${template.questionVariable}; # Tipo de entidad: question
             ${template.answerVariable} ?answer. # Propiedad: Tiene por answer
