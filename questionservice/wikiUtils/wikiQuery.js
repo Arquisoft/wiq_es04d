@@ -31,7 +31,7 @@ class WikiQuery {
             let question = template.question.replace("__x__", questionVar);
             let answerVar = results[i]['answerLabel'].value;
             if (answerVar.startsWith('http')) {
-                answerVar = 'No tiene';
+                answerVar = 'No hay';
             }
             let answers = [{ answer: answerVar, correct: true }];
             let copy_results = results.slice(); // copia para no modificar la lista original
@@ -40,7 +40,7 @@ class WikiQuery {
                 let randomIndex = Math.floor(Math.random() * copy_results.length);
                 let distractorAnswerVar = copy_results[randomIndex]['answerLabel'].value;
                 if (distractorAnswerVar.startsWith('http')) {
-                    distractorAnswerVar = 'No tiene';
+                    distractorAnswerVar = 'No hay';
                 }
                 answers.push({ answer: distractorAnswerVar, correct: false })
                 copy_results.splice(randomIndex, 1); // Eliminar la fila elegida para que no vuelva a salir

@@ -13,14 +13,6 @@
         "questionCategory": "Geografia"
     }, 
 
-    "release_date_of": {
-        "question": "¿Cuando se estrenó __x__?",
-        "questionVariable": "wd:Q11424",
-        "answerVariable": "wdt:P577",
-        "questionCategory": "Entretenimiento",
-        "year":true
-    },
-
     "country_of_origin_of_dish": {
         "question": "¿De qué país es originario el plato de comida __x__?",
         "questionVariable": "wd:Q746549", 
@@ -55,6 +47,36 @@
         "questionVariable": "wd:Q7191",
         "answerVariable": "wdt:P1346",
         "questionCategory": "Premio Nobel"
+    },
+
+    "album_release_date": {
+        "question": "¿Cuándo se lanzó el álbum __x__?",
+        "questionVariable": "wd:Q482994",
+        "answerVariable": "wdt:P577",
+        "questionCategory": "Música",
+        "year": true
+    },
+
+    "developer_of_game": {
+        "question": "¿Quién desarrolló el videojuego __x__?",
+        "questionVariable": "wd:Q7889",
+        "answerVariable": "wdt:P162",
+        "questionCategory": "Videojuegos"
+    },
+
+    "league_winner": {
+        "question": "¿Quién ganó la liga deportiva __x__?",
+        "questionVariable": "wd:Q27020041",
+        "answerVariable": "wdt:P1346",
+        "questionCategory": "Deportes"
+    },
+
+    "video_game_genre": {
+        "question": "¿Cuál es el género del videojuego __x__?",
+        "questionVariable": "wd:Q7889",
+        "answerVariable": "wdt:P136",
+        "questionCategory": "Videojuegos"
     }
+    
 
 }
