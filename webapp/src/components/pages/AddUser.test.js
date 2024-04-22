@@ -4,7 +4,7 @@ import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import AddUser from './AddUser';
 import { BrowserRouter as Router } from 'react-router-dom';
-
+import {AuthProvider} from "../../AuthContext";
 const mockAxios = new MockAdapter(axios);
 
 describe('AddUser component', () => {
@@ -15,7 +15,9 @@ describe('AddUser component', () => {
   it('should add user successfully', async () => {
     render(
         <Router>
-          <AddUser />
+          <AuthProvider>
+            <AddUser />
+          </AuthProvider>
         </Router>
     );
 
@@ -42,7 +44,9 @@ describe('AddUser component', () => {
   it('should handle error when adding user', async () => {
     render(
         <Router>
-          <AddUser />
+          <AuthProvider>
+            <AddUser />
+          </AuthProvider>
         </Router>
     );
 
