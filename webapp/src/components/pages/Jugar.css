@@ -73,7 +73,7 @@ body, html {
 }
 
 .answers-list li:hover,.answers-list li.selected{
-  background-color: #000000;
+  background-color: #575656;
   color: #fff;
 }
 .answers-list li:hover {
