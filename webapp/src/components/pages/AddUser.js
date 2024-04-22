@@ -11,20 +11,38 @@ const AddUser = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [openSnackbar, setOpenSnackbar] = useState(false);
-    const navigate = useNavigate(); // Instancia de useNavigate
+    const navigate = useNavigate();
     const { handleLogin } = useContext(AuthContext);
 
     const addUser = async () => {
+        if (username.length < 4) {
+            setError("El nombre de usuario debe tener al menos 4 caracteres.");
+            return;
+        }
+
+        if (password.length < 8) {
+            setError("La contraseña debe tener al menos 8 caracteres.");
+            return;
+        }
+
+        if (!/[A-Z]/.test(password)) {
+            setError("La contraseña debe contener al menos una letra mayúscula.");
+            return;
+        }
+
+        if (!/\d/.test(password)) {
+            setError("La contraseña debe contener al menos un número.");
+            return;
+        }
+
         try {
             await axios.post(`${apiEndpoint}/adduser`, { username, password });
             setOpenSnackbar(true);
-            // Logear al usuario directamente
             setTimeout(async () => {
-                const {data} = await axios.post(`${apiEndpoint}/login`, {username, password});
+                const { data } = await axios.post(`${apiEndpoint}/login`, { username, password });
                 handleLogin(data.token);
-                setOpenSnackbar(true);
                 navigate('/');
-            }, 750); // Espera 1 segundos antes de redirigir
+            }, 1000);
         } catch (error) {
             setError(error.response.data.error);
         }

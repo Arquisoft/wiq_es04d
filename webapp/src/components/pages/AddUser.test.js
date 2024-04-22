@@ -30,7 +30,7 @@ describe('AddUser component', () => {
 
     // Simulate user input
     fireEvent.change(usernameInput, { target: { value: 'testUser' } });
-    fireEvent.change(passwordInput, { target: { value: 'testPassword' } });
+    fireEvent.change(passwordInput, { target: { value: 'testPassword2' } });
 
     // Trigger the add user button click
     fireEvent.click(addUserButton);
@@ -59,7 +59,7 @@ describe('AddUser component', () => {
 
     // Simulate user input
     fireEvent.change(usernameInput, { target: { value: 'testUser' } });
-    fireEvent.change(passwordInput, { target: { value: 'testPassword' } });
+    fireEvent.change(passwordInput, { target: { value: 'testPassword2' } });
 
     // Trigger the add user button click
     fireEvent.click(addUserButton);
