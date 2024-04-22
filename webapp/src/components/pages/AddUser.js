@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import axios from 'axios';
 import { Container, Typography, TextField, Button, Snackbar } from '@mui/material';
 import {Link, useNavigate} from "react-router-dom";
+import {AuthContext} from "../../AuthContext";
 
 const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:8000';
 
@@ -11,13 +12,19 @@ const AddUser = () => {
     const [error, setError] = useState('');
     const [openSnackbar, setOpenSnackbar] = useState(false);
     const navigate = useNavigate(); // Instancia de useNavigate
+    const { handleLogin } = useContext(AuthContext);
 
     const addUser = async () => {
         try {
             await axios.post(`${apiEndpoint}/adduser`, { username, password });
             setOpenSnackbar(true);
-            // Redirigir al usuario a /login después de mostrar el Snackbar
-            setTimeout(() => navigate('/login'), 750); // Espera 1 segundos antes de redirigir
+            // Logear al usuario directamente
+            setTimeout(async () => {
+                const {data} = await axios.post(`${apiEndpoint}/login`, {username, password});
+                handleLogin(data.token);
+                setOpenSnackbar(true);
+                navigate('/');
+            }, 750); // Espera 1 segundos antes de redirigir
         } catch (error) {
             setError(error.response.data.error);
         }
