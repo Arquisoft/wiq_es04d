@@ -15,6 +15,7 @@ function Home() {
           buttonStyle='btn--outline'
           buttonSize='btn--large'
           to='/Jugar'
+          testId="jugar-button-home"
         >
           JUGAR
         </Button>

@@ -27,25 +27,25 @@ function Navbar() {
       {isLoggedIn ? (
         <>
             <li className='nav-item'>
-                <Link to='/jugar' className='nav-links' onClick={closeMenu}>Jugar</Link>
+                <Link to='/jugar' className='nav-links' onClick={closeMenu} data-testid="Jugar-button-navbar">Jugar</Link>
             </li>
             <li className='nav-item'>
-                <Link to='/historial' className='nav-links' onClick={closeMenu} id='historial-link'>Historial</Link>
+                <Link to='/historial' className='nav-links' onClick={closeMenu} data-testid="historial-button-navbar">Historial</Link>
             </li>
             <li className='nav-item'>
-                <Link to='/ranking' className='nav-links' onClick={closeMenu} id='ranking-link'>Ranking</Link>
+                <Link to='/ranking' className='nav-links' onClicks={closeMenu} data-testid="Ranking-button-navbar">Ranking</Link>
             </li>
             <li>
-                <Link to='/logout' className='nav-links-mobile' onClick={closeMenu}>Salir</Link>
+                <Link to='/logout' className='nav-links-mobile' onClick={closeMenu} data-testid="Salir-button-navbar">Salir</Link>
             </li>
         </>
       ) : (
         <>
             <li>
-                <Link to='/sign-up' className='nav-links-mobile' onClick={closeMenu}>Registrarse</Link>
+                <Link to='/sign-up' className='nav-links-mobile' onClick={closeMenu} data-testid="Registrarse-button-navbar">Registrarse</Link>
             </li>
             <li>
-                <Link to='/login' className='nav-links-mobile' onClick={closeMenu}>Entrar</Link>
+                <Link to='/login' className='nav-links-mobile' onClick={closeMenu} data-testid="Entrar-button-navbar">Entrar</Link>
             </li>
         </>
       )}
@@ -57,7 +57,7 @@ function Navbar() {
       <div className='navbar-container'>
         <Link to='/' className='navbar-logo' onClick={closeMenu}>WIQ<i className='fab fa-typo3' /></Link>
         <div className='menu-icon' onClick={toggleClick}>
-          <button aria-label="Menu toggle">
+          <button aria-label="Menu toggle" data-testid="Menu-toggle-button">
             <i className={isClicked ? 'fas fa-times' : 'fas fa-bars'}/>
           </button>
         </div>
@@ -65,12 +65,12 @@ function Navbar() {
         <NavLinks isLoggedIn={isLoggedIn}/>
         {isLoggedIn ? (
             <>
-              {showButton && <Button buttonStyle='btn--outline' to='/logout'>Salir</Button>}
+              {showButton && <Button buttonStyle='btn--outline' to='/logout' testId="Salir-button-navbar-large">Salir</Button>}
             </>
         ) : (
           <>
-            {showButton && <Button buttonStyle='btn--outline' to='/sign-up'>Registrarse</Button>}
-            {showButton && <Button buttonStyle='btn--outline' to='/login'>Entrar</Button>}
+            {showButton && <Button buttonStyle='btn--outline' to='/sign-up' testId="Registrarse-button-navbar-large">Registrarse</Button>}
+            {showButton && <Button buttonStyle='btn--outline' to='/login' testId="Entrar-button-navbar-large">Entrar</Button>}
           </>
         )}
       </div>

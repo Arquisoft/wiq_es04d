@@ -9,7 +9,7 @@ let browser;
 defineFeature(feature, test => {
 
   beforeAll(async () => {
-    browser = await puppeteer.launch({ headless: true, slowMo: 50,defaultViewport: {
+    browser = await puppeteer.launch({ headless: "new", slowMo: 50,defaultViewport: {
         width: 1024, height: 768,}, });
     page = await browser.newPage();
     setDefaultOptions({ timeout: 200000 });
@@ -25,8 +25,8 @@ defineFeature(feature, test => {
     let password;
 
     given('An unregistered user', async () => {
-      username = "abdulla24"
-      password = "abdulla20"
+      username = "santiago"
+      password = "Santiago1"
       await expect(page).toClick("a", { text: "¿No tienes una cuenta? Registrate aquí." });
     });
 
@@ -34,10 +34,18 @@ defineFeature(feature, test => {
       await expect(page).toFill('input[name="username"]', username);
       await expect(page).toFill('input[name="password"]', password);
       await expect(page).toClick('button[name="registrarsePage"]');
+      await page.waitForNavigation({
+        waitUntil: 'networkidle0'
+      });
     });
 
-    then('A confirmation message should be shown in the screen', async () => {
-        await expect(page).toMatchElement('button[name="entrarPage"]');
+    then('The user is registered and logged', async () => {
+      // Utiliza data-testid para verificar la presencia de botones o enlaces
+      const isLogoutLinkVisibleMobile = await page.$eval('[data-testid="Salir-button-navbar"]', el => el.textContent.includes('Salir'));
+      const isLogoutButtonVisibleDesktop = await page.$('[data-testid="Salir-button-navbar-large"]') !== null;
+
+      // Afirmar que el enlace o botón "Salir" debe ser visible en al menos una de las versiones
+      expect(isLogoutLinkVisibleMobile || isLogoutButtonVisibleDesktop).toBeTruthy();
     });
   },300000);
 
