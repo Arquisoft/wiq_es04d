@@ -5,9 +5,8 @@ function Ayuda() {
     return (
         <div className="center-wrapper">
             <video src='/videos/help.mp4' autoPlay loop muted playsInline data-testid="help-video"/>
-            <div className="help-container">
-                <h1>Ayuda (WIQ 4D)</h1>
-
+            <h1>AYUDA (WIQ 4D)</h1>
+            <div className="help-container">     
                 <section>
                     <h2>1. Registro e Inicio de Sesión</h2>
                     <h3>¿Cómo me registro?</h3>
@@ -107,7 +106,18 @@ function Ayuda() {
 
                 <section>
                     <h2>6. Contacto</h2>
-                    <p>¿Necesitas más ayuda? Si tienes preguntas adicionales o necesitas asistencia, no dudes en contactarnos. Puedes enviarnos un correo electrónico a <a href="mailto:uo287746@uniovi.es">uo287746@uniovi.es</a>.</p>
+                    <p>¿Necesitas más ayuda? Si tienes preguntas adicionales o necesitas asistencia, no dudes en contactarnos. Puedes enviarnos un correo electrónico a :</p>
+                    <ul>
+                        <li>
+                            <a href="mailto:uo287746@uniovi.es">uo287746@uniovi.es</a>, 
+                        </li>
+                        <li>
+                            <a href="mailto:uo287746@uniovi.es">uo287746@uniovi.es</a>, 
+                        </li>
+                        <li>
+                            <a href="mailto:uo287746@uniovi.es">uo287746@uniovi.es</a>, 
+                        </li>
+                    </ul>        
                 </section>
             </div>
         </div>
