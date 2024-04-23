@@ -1,6 +1,7 @@
-import React, {useContext, useState, useEffect, useRef } from "react";
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../AuthContext';
+import React, {useContext, useEffect, useRef, useState} from "react";
+import {useNavigate} from 'react-router-dom';
+import {AuthContext} from '../../AuthContext';
+import { Snackbar } from '@mui/material';
 import "./Jugar.css";
 import axios from 'axios';
 
@@ -24,6 +25,9 @@ function Jugar() {
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
   const [questionsLoaded, setQuestionsLoaded] = useState(false);
   const navigate = useNavigate();
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [message, setMessage] = useState('');
+  const [snackbarColor, setSnackbarColor] = useState('default');
   const { isLoggedIn, username } = useContext(AuthContext);
   const [questions, setQuestions] = useState([{
     question: "Se están generando nuevas preguntas. Por favor espere, no debería tardar más de 1 minuto.",
@@ -61,37 +65,44 @@ function Jugar() {
 
 
   const handleNextQuestion = (timeExpired = false) => {
-    setTimer(INITIAL_TIMER);
     if (selectedAnswerIndex !== null || timeExpired) {
+      const question = questions[currentQuestionIndex];
       const isCorrect =
           selectedAnswerIndex !== null &&
           questions[currentQuestionIndex].answers[selectedAnswerIndex]?.correct;
       if (isCorrect) {
         setCorrectAnswers(correctAnswers + 1);
+        setMessage('¡Respuesta Correcta!');
+        setSnackbarColor('green');
       }
+      else {
+        const correctAnswer = question.answers.find(ans => ans.correct);
+        setMessage(`Fallo: La correcta era: ${correctAnswer.answer}`);
+        setSnackbarColor('red');
+      }
+      setOpenSnackbar(true);
     }
+    setTimer(INITIAL_TIMER);
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setSelectedAnswerIndex(null);
     } else {
       // Finaliza el quiz
       setQuizFinished(true);
-      
     }
   };
 
-  const handleSaveHistory = () => {
+  handleSaveHistoryRef.current = () => {
     axios.post(`${apiEndpoint}/savehistory`, {
       username: username,
       NumPreguntasJugadas: questions.length,
       NumAcertadas: correctAnswers,
     }).then(response => {
-          console.log(response.data);
-        }).catch(error => {
-          console.error('Error al guardar el historial:', error);
-        });
+      console.log(response.data);
+    }).catch(error => {
+      console.error('Error al guardar el historial:', error);
+    });
   };
-  handleSaveHistoryRef.current = handleSaveHistory;
 
   handleNextQuestionRef.current = handleNextQuestion;
 
@@ -121,7 +132,9 @@ function Jugar() {
       handleSaveHistoryRef.current();
     }
   }, [quizFinished, questionsLoaded]);
-
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
+  };
 
   const videoSource = quizFinished ? "/videos/celebracion.mp4" : "/videos/question.mp4";
   // Renderizado del componente
@@ -172,6 +185,19 @@ function Jugar() {
           </div>
         </div>
       )}
+      <Snackbar
+          open={openSnackbar}
+          autoHideDuration={6000}
+          onClose={handleCloseSnackbar}
+          message={message}
+          ContentProps={{
+            sx: {
+              bgcolor: snackbarColor,
+              color: 'white',
+              fontWeight: 'bold'
+            }
+          }}
+      />
     </>
   );
 }
