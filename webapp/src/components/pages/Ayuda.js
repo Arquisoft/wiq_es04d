@@ -109,13 +109,13 @@ function Ayuda() {
                     <p>¿Necesitas más ayuda? Si tienes preguntas adicionales o necesitas asistencia, no dudes en contactarnos. Puedes enviarnos un correo electrónico a :</p>
                     <ul>
                         <li>
-                            <a href="mailto:uo287746@uniovi.es">uo287746@uniovi.es</a>, 
+                            <a href="mailto:uo287746@uniovi.es">uo287746@uniovi.es</a>
                         </li>
                         <li>
-                            <a href="mailto:uo291060@uniovi.es">uo291060@uniovi.es</a>, 
+                            <a href="mailto:uo291060@uniovi.es">uo291060@uniovi.es</a>
                         </li>
                         <li>
-                            <a href="mailto:uo277269@uniovi.es">uo277269@uniovi.es</a>, 
+                            <a href="mailto:uo277269@uniovi.es">uo277269@uniovi.es</a>
                         </li>
                     </ul>        
                 </section>
