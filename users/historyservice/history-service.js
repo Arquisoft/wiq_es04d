@@ -103,12 +103,8 @@ app.get('/getranking', async (req, res) => {
     // Ordenar los jugadores según la probabilidad a posteriori
     const topPlayers = rankedPlayers.sort((a, b) => b.posteriorProbability - a.posteriorProbability).slice(0, 10);
 
-    res.json(topPlayers); // Devolver los resultados como JSON
+    res.json(topPlayers);
 
-    // Buscar los 10 registros con el mayor número de respuestas correctas
-    //const topPlayers = await History.find().sort({ NumAcertadas: -1 }).limit(10);
-    //console.log(topPlayers);
-    //res.json(topPlayers); // Devolver los resultados como JSON
   } catch (error) {
     res.status(500).json({ message: error.message }); // Manejo de errores
   }

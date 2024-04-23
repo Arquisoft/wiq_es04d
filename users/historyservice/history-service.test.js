@@ -96,3 +96,41 @@ describe('GET /gethistory', () => {
     expect(response.body.NumFalladas).toBe(0);
   });
 });
+
+describe('GET /gethistory/:username', () => {
+  test('should get history entry for an existing user', async () => {
+    // Crear una entrada de historial existente en la base de datos
+    await History.create({
+      username: 'existinguser2',
+      NumJugadas: 1,
+      NumPreguntasJugadas: 5,
+      NumAcertadas: 3,
+      NumFalladas: 2
+    });
+
+    const response = await request(app).get('/gethistory/existinguser2');
+    
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('username', 'NumJugadas','NumPreguntasJugadas','NumAcertadas','NumFalladas');
+    expect(response.body.username).toBe('existinguser2');
+    expect(response.body.NumJugadas).toBe(1);
+    expect(response.body.NumPreguntasJugadas).toBe(5);
+    expect(response.body.NumAcertadas).toBe(3);
+    expect(response.body.NumFalladas).toBe(2);
+  });
+
+  test('should return an error', async () => {
+    const response = await request(app).get('/gethistory/nonexistinguser');
+
+    expect(response.status).toBe(404);
+    expect(response.body.error).toBe('No se encontro historial para este usuario');
+
+  });
+});
+
+describe('GET /getranking', () => {
+  test('get the ranking in order', async () => {
+    
+  });
+
+});
