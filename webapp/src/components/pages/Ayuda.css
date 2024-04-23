@@ -1,0 +1,35 @@
+.center-wrapper {
+    display: flex; /* Habilita Flexbox */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: calc(100vh - 80px); /* Altura suficiente para centrar verticalmente */
+    width: 100vw; /* Ancho completo para evitar desbordamiento horizontal */
+    position: relative; /* Posicionamiento relativo para el contexto de apilamiento */
+    overflow: auto;
+}
+.help-container {
+    background-color: white; /* Fondo blanco para el contenedor */
+    width: 80%; /* Ancho del contenedor */
+    height: calc(100vh - 80px); /* Altura suficiente para centrar verticalmente */
+    max-width: 800px; /* Ancho máximo del contenedor */
+    margin: auto; /* Margen automático para centrado adicional y espaciado */
+    padding: 20px; /* Espaciado dentro del contenedor */
+    border-radius: 10px; /* Bordes redondeados del contenedor */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra ligera para el contenedor */
+    position: relative; /* Asegura que el contenedor se posicione correctamente dentro de flex */
+    z-index: 10; /* Asegura que el contenedor esté sobre cualquier fondo u otros elementos */
+    overflow: auto; /* Permite el desbordamiento de contenido dentro del contenedor */
+    max-height: 90vh; /* Limita la altura máxima para evitar el solapamiento con el footer */
+}
+.help-container h1, h2, h3, h4 {
+    color: #333; /* Color oscuro para los títulos */
+}
+
+.help-container code, pre {
+    background-color: #f4f4f4; /* Fondo gris para los bloques de código */
+    border: 1px solid #ddd; /* Borde para los bloques de código */
+    padding: 5px; /* Padding dentro de los bloques de código */
+    border-radius: 5px; /* Bordes redondeados para los bloques de código */
+    display: block;
+    white-space: pre-wrap; /* Asegura que el texto dentro de los bloques de código se envuelva */
+}

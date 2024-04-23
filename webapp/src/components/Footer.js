@@ -10,6 +10,7 @@ function Footer() {
             <a href={`${apiEndpoint}/api-doc`}>API Doc</a>
             <a href="https://arquisoft.github.io/wiq_es04d/">WIQ_ES04D</a>
             <Link to='/aboutus' className='footer-links'>About us</Link>
+            <Link to='/help' className='footer-help'>Ayuda</Link>
         </footer>
     );
 }
