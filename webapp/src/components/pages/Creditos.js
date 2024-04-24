@@ -12,7 +12,7 @@ function Creditos() {
 
     return (
         <div className='hero-container'>
-            <video ref={videoRef} src='/videos/creditos.mp4' autoPlay muted playsInline data-testid="creditos-video"/>
+            <video ref={videoRef} src='/videos/creditos.mp4' autoPlay loop muted playsInline data-testid="creditos-video"/>
         </div>
     );
 }
