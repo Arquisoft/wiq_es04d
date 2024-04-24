@@ -2,6 +2,8 @@ import React from 'react';
 import './AboutUS.css';
 import CardItem from '../CardItem';
 
+const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:8000';
+
 function AboutUS() {
   return (
     <div className='cards'>
@@ -13,13 +15,13 @@ function AboutUS() {
               src='images/design.jpg'
               text='Estudiantes innovadores que transformaron la visión del proyecto con su diseño gráfico.'
               label='Diseño Gráfico'
-              path='https://arquisoft.github.io/wiq_es04d/'
+              path='https://github.com/Arquisoft/wiq_es04d'
             />
             <CardItem
               src='images/api-logic.jpg'
               text='Desarrollo de la lógica de integración con la API de Wikidata para enriquecer nuestro proyecto.'
               label='API de Wikidata'
-              path='https://arquisoft.github.io/wiq_es04d/'
+              path={`${apiEndpoint}/api-doc`}
             />
           </ul>
           <ul className='cards__items'>
