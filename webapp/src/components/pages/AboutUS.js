@@ -41,7 +41,15 @@ function AboutUS() {
               src='images/deployment.jpg' // Asegúrate de cambiar esta imagen por una representativa del despliegue
               text='Técnicas y estrategias de despliegue aplicadas para poner en marcha nuestra aplicación.'
               label='Despliegue'
-              path='https://arquisoft.github.io/wiq_es04d/'
+              path=
+              'https://arquisoft.github.io/wiq_es04d/'
+            />
+            {/*Creditos */}
+            <CardItem
+              src='images/creditos.jpg' // Asegúrate de cambiar esta imagen por una representativa del despliegue
+              text='Creditos de la Aplicacion'
+              label='Creditos'
+              path='/creditos' 
             />
           </ul>
         </div>

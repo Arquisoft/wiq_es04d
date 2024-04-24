@@ -12,6 +12,7 @@ import AboutUS from "./components/pages/AboutUS";
 import Error404Page from "./components/pages/Error404Page";
 import Ranking from './components/pages/Ranking';
 import Ayuda from './components/pages/Ayuda';
+import Creditos from './components/pages/Creditos';
 
 function App() {
     useEffect(() => {
@@ -31,6 +32,7 @@ function App() {
                     <Route path="/login" element={<Layout><LogIn /></Layout>} />
                     <Route path="/aboutus" element={<Layout><AboutUS/></Layout>} />
                     <Route path="/help" element={<Layout><Ayuda/></Layout>} />
+                    <Route path="/creditos" element={<Layout><Creditos/></Layout>} />
 
                     <Route path="*" element={<Error404Page />} />
                 </Routes>
