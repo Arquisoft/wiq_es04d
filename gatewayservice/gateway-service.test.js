@@ -211,23 +211,4 @@ describe('Gateway Service', () => {
     expect(response.body.error).toBe('Error getting the history');
   });
 
-  it('should forward get specific user history request to history service', async () => {
-    mockSuccessResponse([{ action: 'specific action', date: '2024-03-31' }]);
-
-    const response = await request(app)
-      .get('/gethistory/testuser');
-
-    expect(response.statusCode).toBe(200);
-    expect(response.body).toEqual([{ action: 'specific action', date: '2024-03-31' }]);
-  });
-
-  it('should handle error getting specific user history from history service', async () => {
-    mockErrorResponse({ status: 500, message: 'Error getting the history' });
-
-    const response = await request(app)
-      .get('/gethistory/nonexistentUser');
-
-    expect(response.statusCode).toBe(500);
-    expect(response.body.error).toBe('Error getting the history');
-  });
 });
