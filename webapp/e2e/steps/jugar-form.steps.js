@@ -36,9 +36,6 @@ defineFeature(feature, (test) => {
             await expect(page).toFill('input[name="username"]', username);
             await expect(page).toFill('input[name="password"]', password);
             await expect(page).toClick('button[name="registrarsePage"]');
-            await page.waitForNavigation({
-                waitUntil: 'networkidle0'
-            });
         });
 
         and('the user is redirected to the homepage and logged in automatically', async () => {
