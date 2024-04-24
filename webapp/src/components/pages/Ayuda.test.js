@@ -17,32 +17,34 @@ describe('Help Tests', () => {
         mockNavigate.mockClear();
     });
 
-    test('renders Help', () => {
+    test('renders Help', async () => {
         render(
             <BrowserRouter>
                 <Ayuda />
             </BrowserRouter>
         );
 
-        // Verifica que estan los elementos
-        expect(screen.getByText(/AYUDA (WIQ 4D)/i)).toBeInTheDocument();
+        // Utiliza findByText para esperar de forma asíncrona a que el texto esté disponible
+        const ayudaTitle = await screen.findByText(/AYUDA \(WIQ 4D\)/i);
+        expect(ayudaTitle).toBeInTheDocument();
 
-       // verifica las secciones
-       expect(screen.getByText(/Registro e Inicio de Sesión/i)).toBeInTheDocument();
-       expect(screen.getByText(/Cómo Jugar/i)).toBeInTheDocument();
-       expect(screen.getByText(/Historial y Ranking/i)).toBeInTheDocument();
-       expect(screen.getByText(/API REST de la aplicación/i)).toBeInTheDocument();
-       expect(screen.getByText(/Otras Funcionalidades/i)).toBeInTheDocument();
-       expect(screen.getByText(/Contacto/i)).toBeInTheDocument();
+        // Verifica las secciones
+        expect(await screen.findByText(/Registro e Inicio de Sesión/i)).toBeInTheDocument();
+        expect(await screen.findByText(/Cómo Jugar/i)).toBeInTheDocument();
+        expect(await screen.findByText(/Historial y Ranking/i)).toBeInTheDocument();
+        expect(await screen.findByText(/API REST de la aplicación/i)).toBeInTheDocument();
+        expect(await screen.findByText(/Otras Funcionalidades/i)).toBeInTheDocument();
+        expect(await screen.findByText(/Contacto/i)).toBeInTheDocument();
 
-       // verifica el video
-       expect(screen.getByTestId('help-video')).toHaveAttribute('src', '/videos/help.mp4');
+        // Verifica el video
+        expect(screen.getByTestId('help-video')).toHaveAttribute('src', '/videos/help.mp4');
 
-       // verifica los links
-       expect(screen.getByText('uo287746@uniovi.es')).toBeInTheDocument();
-       expect(screen.getByText('uo291060@uniovi.es')).toBeInTheDocument();
-       expect(screen.getByText('uo277269@uniovi.es')).toBeInTheDocument();
+        // Verifica los links
+        expect(await screen.findByText('uo287746@uniovi.es')).toBeInTheDocument();
+        expect(await screen.findByText('uo291060@uniovi.es')).toBeInTheDocument();
+        expect(await screen.findByText('uo277269@uniovi.es')).toBeInTheDocument();
     });
+
 
 
 });
