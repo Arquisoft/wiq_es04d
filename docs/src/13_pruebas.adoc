@@ -1,0 +1,14 @@
+ifndef::imagesdir[:imagesdir: ../images]
+
+[[section-pruebas]]
+== Pruebas
+Para asegurarnos del correcto funcionamiento de la apliación y encontrar mejores para la misma se han realizado pruebas de todo tipo aqui están los resultados obtenidos.
+
+=== Pruebas de Cobertura (Tests Unitarios)
+
+=== Pruebas e2e
+
+=== Pruebas de carga
+
+=== Pruebas de usabilidad
+
