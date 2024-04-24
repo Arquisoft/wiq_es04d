@@ -6,7 +6,7 @@
 // configure EN settings for asciidoc
 include::src/config.adoc[]
 
-= image:arc42-logo.png[arc42] Generador de preguntas (WIQ 04 D)
+= image:logo.png[Logo] Generador de preguntas (WIQ 04 D)
 :revnumber: 8.2 EN
 :revdate: January 2023
 :revremark: (based upon AsciiDoc version)
