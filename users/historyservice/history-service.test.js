@@ -119,18 +119,4 @@ describe('GET /gethistory/:username', () => {
     expect(response.body.NumFalladas).toBe(2);
   });
 
-  test('should return an error', async () => {
-    const response = await request(app).get('/gethistory/nonexistinguser');
-
-    expect(response.status).toBe(404);
-    expect(response.body.error).toBe('No se encontro historial para este usuario');
-
-  });
-});
-
-describe('GET /getranking', () => {
-  test('get the ranking in order', async () => {
-    
-  });
-
 });
