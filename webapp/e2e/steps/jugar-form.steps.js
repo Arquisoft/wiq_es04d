@@ -11,21 +11,15 @@ defineFeature(feature, (test) => {
     let password = "";
 
     beforeAll(async () => {
-        browser = await puppeteer.launch({
-            headless: "new",
-            slowMo: 50,
-            defaultViewport: {
-                width: 1024,
-                height: 768,
-            },
-        });
+        browser = await puppeteer.launch({ headless: "new", slowMo: 10,defaultViewport: {
+                width: 1024, height: 768,},});
         page = await browser.newPage();
         setDefaultOptions({ timeout: 200000 });
     }, 300000);
 
     test('User Initiates a Game', ({ given, when,and, then }) => {
         given('An unregistered user exists', async () => {
-            username = "Zohaib";
+            username = "Zohaib1222121";
             password = "Zohaib11";
         });
 
@@ -36,6 +30,9 @@ defineFeature(feature, (test) => {
             await expect(page).toFill('input[name="username"]', username);
             await expect(page).toFill('input[name="password"]', password);
             await expect(page).toClick('button[name="registrarsePage"]');
+            await page.waitForNavigation({
+                waitUntil: 'networkidle0'
+            });
         });
 
         and('the user is redirected to the homepage and logged in automatically', async () => {
@@ -49,9 +46,6 @@ defineFeature(feature, (test) => {
 
         and('the user clicks the "Play" button on the homepage', async () => {
             await expect(page).toClick('[data-testid="jugar-button-home"]');
-            await page.waitForNavigation({
-                waitUntil: 'networkidle0'
-            });
         });
 
         then('the questions should be displayed', async () => {

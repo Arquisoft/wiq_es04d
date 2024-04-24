@@ -9,8 +9,8 @@ let browser;
 defineFeature(feature, test => {
 
   beforeAll(async () => {
-    browser = await puppeteer.launch({ headless: "new", slowMo: 50,defaultViewport: {
-        width: 1024, height: 768,}, });
+    browser = await puppeteer.launch({ headless: "new", slowMo: 10,defaultViewport: {
+        width: 1024, height: 768,},});
     page = await browser.newPage();
     setDefaultOptions({ timeout: 200000 });
 
@@ -25,7 +25,7 @@ defineFeature(feature, test => {
     let password;
 
     given('An unregistered user', async () => {
-      username = "santiago"
+      username = "santiago1212221"
       password = "Santiago1"
       await expect(page).toClick("a", { text: "¿No tienes una cuenta? Registrate aquí." });
     });
@@ -34,6 +34,9 @@ defineFeature(feature, test => {
       await expect(page).toFill('input[name="username"]', username);
       await expect(page).toFill('input[name="password"]', password);
       await expect(page).toClick('button[name="registrarsePage"]');
+      await page.waitForNavigation({
+        waitUntil: 'networkidle0'
+      });
     });
 
     then('The user is registered and logged', async () => {
