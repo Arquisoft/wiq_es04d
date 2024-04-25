@@ -44,14 +44,15 @@ jobs:
     - run: npm --prefix gatewayservice install
     - run: npm --prefix webapp install
 
-    - run: npm --prefix gatewayservice start
-    - run: npm --prefix questionservice start
-    - run: npm --prefix users/authservice start
-    - run: npm --prefix users/historyservice start
-    - run: npm --prefix users/userservice start
+    - run: npm --prefix gatewayservice start &
+    - run: npm --prefix questionservice start &
+    - run: npm --prefix users/authservice start &
+    - run: npm --prefix users/historyservice start &
+    - run: npm --prefix users/userservice start &
 
     - run: npm --prefix webapp run build
     - run: npm --prefix webapp run test:e2e
+    - run: kill $(jobs -p) || true
   docker-push-webapp:
     name: Push webapp Docker Image to GitHub Packages
     runs-on: ubuntu-latest
