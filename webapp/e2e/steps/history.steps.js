@@ -13,7 +13,7 @@ defineFeature(feature, test => {
 
   beforeAll(async () => {
 
-      browser = await puppeteer.launch({ headless: "new", slowMo: 10,defaultViewport: {
+      browser = await puppeteer.launch({ headless: "new", slowMo: 40,defaultViewport: {
               width: 1024, height: 768,},});
        page = await browser.newPage();
        setDefaultOptions({ timeout: 200000 });
@@ -23,8 +23,8 @@ defineFeature(feature, test => {
     test('The user is not loged in the site', ({given,when,then}) => {
 
     given('A not loged user', async () => {
-        username = "yago121221";
-        password = "Yagooooo1";
+        username = "Avestrus1";
+        password = "Avestrus1";
     });
 
     when('Press history', async () => {

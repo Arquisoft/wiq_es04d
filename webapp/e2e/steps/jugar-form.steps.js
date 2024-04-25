@@ -11,7 +11,7 @@ defineFeature(feature, (test) => {
     let password = "";
 
     beforeAll(async () => {
-        browser = await puppeteer.launch({ headless: "new", slowMo: 10,defaultViewport: {
+        browser = await puppeteer.launch({ headless: "new", slowMo: 40,defaultViewport: {
                 width: 1024, height: 768,},});
         page = await browser.newPage();
         setDefaultOptions({ timeout: 200000 });
@@ -19,8 +19,8 @@ defineFeature(feature, (test) => {
 
     test('User Initiates a Game', ({ given, when,and, then }) => {
         given('An unregistered user exists', async () => {
-            username = "Zohaib1222121";
-            password = "Zohaib11";
+            username = "Nasheeee1";
+            password = "Nasheeee1";
         });
 
         when('the user enters their details on the register form and submits', async () => {
@@ -37,11 +37,10 @@ defineFeature(feature, (test) => {
 
         and('the user is redirected to the homepage and logged in automatically', async () => {
             // Utiliza data-testid para verificar la presencia de botones o enlaces
-            const isLogoutLinkVisibleMobile = await page.$eval('[data-testid="Salir-button-navbar"]', el => el.textContent.includes('Salir'));
             const isLogoutButtonVisibleDesktop = await page.$('[data-testid="Salir-button-navbar-large"]') !== null;
 
             // Afirmar que el enlace o botón "Salir" debe ser visible en al menos una de las versiones
-            expect(isLogoutLinkVisibleMobile || isLogoutButtonVisibleDesktop).toBeTruthy();
+            expect(isLogoutButtonVisibleDesktop).toBeTruthy();
         });
 
         and('the user clicks the "Play" button on the homepage', async () => {

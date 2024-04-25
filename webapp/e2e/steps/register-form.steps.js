@@ -9,7 +9,7 @@ let browser;
 defineFeature(feature, test => {
 
   beforeAll(async () => {
-    browser = await puppeteer.launch({ headless: "new", slowMo: 10,defaultViewport: {
+    browser = await puppeteer.launch({ headless: "new", slowMo: 40,defaultViewport: {
         width: 1024, height: 768,},});
     page = await browser.newPage();
     setDefaultOptions({ timeout: 200000 });
@@ -25,8 +25,8 @@ defineFeature(feature, test => {
     let password;
 
     given('An unregistered user', async () => {
-      username = "santiago1212221"
-      password = "Santiago1"
+      username = "Vuamosss1"
+      password = "Vuamosss1"
       await expect(page).toClick("a", { text: "¿No tienes una cuenta? Registrate aquí." });
     });
 
@@ -41,11 +41,10 @@ defineFeature(feature, test => {
 
     then('The user is registered and logged', async () => {
       // Utiliza data-testid para verificar la presencia de botones o enlaces
-      const isLogoutLinkVisibleMobile = await page.$eval('[data-testid="Salir-button-navbar"]', el => el.textContent.includes('Salir'));
       const isLogoutButtonVisibleDesktop = await page.$('[data-testid="Salir-button-navbar-large"]') !== null;
 
       // Afirmar que el enlace o botón "Salir" debe ser visible en al menos una de las versiones
-      expect(isLogoutLinkVisibleMobile || isLogoutButtonVisibleDesktop).toBeTruthy();
+      expect(isLogoutButtonVisibleDesktop).toBeTruthy();
     });
   },300000);
 
