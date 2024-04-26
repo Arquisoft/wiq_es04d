@@ -14,6 +14,8 @@ app.use(express.json());
 const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/userdb';
 mongoose.connect(mongoUri);
 
+const secretKey = process.env.SECRET_KEY
+
 // Function to validate required fields in the request body
 function validateRequiredFields(req, requiredFields) {
     for (const field of requiredFields) {
@@ -37,20 +39,21 @@ app.post('/login', async (req, res) => {
     // Check if the user exists and verify the password
     if (user && await bcrypt.compare(password, user.password)) {
       // Generate a JWT token
-      const token = jwt.sign({ userId: user._id,username:username }, process.env.SECRET_KEY, { expiresIn: '1h' });
+      const token = jwt.sign({ userId: user._id,username:username }, secretKey, { expiresIn: '1h' });
       // Respond with the token and user information
       res.json({ token: token, username: username, createdAt: user.createdAt });
     } else {
       res.status(401).json({ error: 'Invalid credentials' });
     }
   } catch (error) {
+    console.error(error)
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
 app.get('/validate/:token', (req, res) => {
   try {
-    const {iat, exp, ...result} = jwt.verify(req.params.token, process.env.SECRET_KEY);
+    const {iat, exp, ...result} = jwt.verify(req.params.token, secretKey);
     res.json({ data: result, valid: true });
   } catch (error) {
     res.json({ valid: false });
