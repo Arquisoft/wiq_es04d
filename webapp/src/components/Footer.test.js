@@ -12,7 +12,7 @@ describe('Footer Component', () => {
         renderWithRouter(<Footer />);
         expect(screen.getByText('API Doc')).toBeInTheDocument();
         expect(screen.getByText('WIQ_ES04D')).toBeInTheDocument();
-        expect(screen.getByText('About us')).toBeInTheDocument();
+        expect(screen.getByText('Enlaces externos')).toBeInTheDocument();
     });
 
     it('should have correct link for API Doc', () => {
@@ -27,9 +27,9 @@ describe('Footer Component', () => {
         expect(wiqLink).toHaveAttribute('href', 'https://arquisoft.github.io/wiq_es04d/');
     });
 
-    it('should have correct link for About Us', () => {
+    it('should have correct link for Enlaces externos', () => {
         renderWithRouter(<Footer />);
-        const aboutUsLink = screen.getByRole('link', { name: 'About us' });
+        const aboutUsLink = screen.getByRole('link', { name: 'Enlaces externos' });
         expect(aboutUsLink).toHaveAttribute('href', '/aboutus');
     });
 });
