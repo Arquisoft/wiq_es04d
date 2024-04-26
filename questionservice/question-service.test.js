@@ -4,7 +4,7 @@ const Question = require('./question-model');
 
 // Importamos y mockeamos el módulo wikiQuery.js
 jest.mock('./wikiUtils/wikiQuery.js', () => ({
-  getQuestions: jest.fn().mockImplementation(async (template, count) => {
+  getQuestions: jest.fn().mockImplementation(async (template, count, backupAnswers) => {
     const questions = [];
 
     // Simula generar documentos de pregunta
@@ -22,6 +22,12 @@ jest.mock('./wikiUtils/wikiQuery.js', () => ({
     }
 
     return questions;
+  }),
+  getBackupAnswers: jest.fn().mockImplementation(async () => {
+    let backupAnswers = [{ "itemLabel": "Morris the Cat" },
+    { "itemLabel": "Sockington" },
+    { "itemLabel": "Misuke" }]
+    return backupAnswers;
   })
 }));
 

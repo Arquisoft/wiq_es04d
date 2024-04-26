@@ -29,13 +29,14 @@ function selectRandomTemplatesKeys(templateKeys, sampleSize) {
 }
 
 async function generateQuestions() {
+    let backupAnswers = await WikiQuery.getBackupAnswers();
     const templateKeys = Object.keys(templates);
     const randomTemplateKeys = selectRandomTemplatesKeys(templateKeys, 5);
     const randomTemplates = randomTemplateKeys.map(key => templates[key]);
 
     let newQuestions = [];
     for (let template of randomTemplates) {
-        let wikiQuestions = await WikiQuery.getQuestions(template, 20)
+        let wikiQuestions = await WikiQuery.getQuestions(template, 20, backupAnswers.slice())
         newQuestions.push(...wikiQuestions);   
     }
     await Question.insertMany(newQuestions);

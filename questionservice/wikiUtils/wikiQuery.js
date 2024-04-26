@@ -7,9 +7,10 @@ class WikiQuery {
      * Obtiene preguntas de wikidata a partir de una plantilla.
      * @param {Object} template - La plantilla sacada de templates.json.
      * @param {Number} limitValue - El límite de preguntas a obtener (número entero). Debe ser mayor a 3.
-     * @returns preguntas con el formato de api_questionservice.txt
+     * @returns preguntas con el formato de question-model
      */
-    static async getQuestions(template, limitValue) {
+    static async getQuestions(template, limitValue, backupAnswers) {
+        let backupAnswerIndex = 0;
         let queryAnswerVar = '?answerLabel'
         if (template.year===true){
             queryAnswerVar = '(YEAR(?answer) AS ?answerLabel)'
@@ -33,6 +34,7 @@ class WikiQuery {
             if (answerVar.startsWith('http')) {
                 answerVar = 'No hay';
             }
+
             let answers = [{ answer: answerVar, correct: true }];
             let copy_results = results.slice(); // copia para no modificar la lista original
             copy_results.splice(i, 1); // Eliminar la fila que lleva la pregunta correcta
@@ -42,6 +44,21 @@ class WikiQuery {
                 if (distractorAnswerVar.startsWith('http')) {
                     distractorAnswerVar = 'No hay';
                 }
+                
+                // Comprobar si es una respuesta repetida
+                let repeated = answers.some(function(a) {
+                    return a.answer === distractorAnswerVar;
+                });
+                // Si lo es, cambiarla por una de las de resguardo
+                if (repeated) {
+                    distractorAnswerVar = backupAnswers[backupAnswerIndex]['itemLabel'].value;
+                    backupAnswerIndex++;
+                    // Reiniciar indice de la lista de resguardo para que no se salga
+                    if (backupAnswerIndex >= backupAnswers.length) {
+                        backupAnswerIndex = 0;
+                    }
+                }
+
                 answers.push({ answer: distractorAnswerVar, correct: false })
                 copy_results.splice(randomIndex, 1); // Eliminar la fila elegida para que no vuelva a salir
             }
@@ -63,6 +80,23 @@ class WikiQuery {
             [array[i], array[j]] = [array[j], array[i]]; // Intercambia los elementos en las posiciones i y j
         }
         return array;
+    }
+
+    /**
+     * 
+     * @returns una lista de 100 objetos con una propiedad 'itemLabel'
+     */
+    static async getBackupAnswers() {
+        // Nombres de gatos
+        const query = `SELECT distinct ?itemLabel
+        WHERE
+        {
+          ?item wdt:P31 wd:Q146.
+          SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+        }
+        LIMIT 100`
+        const results = await wikiCall(query)
+        return results
     }
 }
 
