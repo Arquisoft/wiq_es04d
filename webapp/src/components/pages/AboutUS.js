@@ -45,8 +45,8 @@ function AboutUS() {
             {/*Creditos */}
             <CardItem
               src='images/creditos.jpg'
-              text='Creditos de la Aplicacion'
-              label='Creditos'
+              text='Créditos de la Aplicación'
+              label='Créditos'
               path='/creditos'
             />
           </ul>
