@@ -28,6 +28,6 @@ describe('AboutUS Component', () => {
         // Usamos queryAllByTestId para seleccionar todos los elementos con el data-testid "card-item"
         const cardItems = screen.queryAllByTestId('card-item');
         // Verificamos que el número de elementos encontrados sea el esperado
-        expect(cardItems).toHaveLength(5); // Cambia el número esperado según cuántos CardItem esperas renderizar
+        expect(cardItems).toHaveLength(4); // Cambia el número esperado según cuántos CardItem esperas renderizar
     });
 });

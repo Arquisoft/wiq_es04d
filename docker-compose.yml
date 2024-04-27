@@ -97,8 +97,6 @@ services:
       - gatewayservice
     ports:
       - "3000:3000" 
-    environment:
-      GRAFANA_ENDPOINT: http://grafana:9091
 
   prometheus:
     image: prom/prometheus

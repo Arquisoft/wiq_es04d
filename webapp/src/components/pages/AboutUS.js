@@ -3,7 +3,6 @@ import './AboutUS.css';
 import CardItem from '../CardItem';
 
 const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:8000';
-const grafanaEndpoint = process.env.GRAFANA_ENDPOINT || 'http://localhost:9091';
 
 function AboutUS() {
   return (
@@ -12,13 +11,6 @@ function AboutUS() {
       <div className='cards__container'>
         <div className='cards__wrapper'>
           <ul className='cards__items'>
-            {/* Monitorización de la Aplicación */}
-            <CardItem
-              src='images/monitoring.jpg'
-              text='Técnicas y estrategias de monitorización aplicadas con grafana para controlar nuestra aplicación.'
-              label='Monitorización'
-              path={`${grafanaEndpoint}/dashboards`}
-            />
             {/* API Doc */}
             <CardItem
               src='images/api-logic.jpg'
