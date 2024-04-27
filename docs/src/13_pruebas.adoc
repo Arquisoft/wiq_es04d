@@ -1,14 +1,168 @@
 ifndef::imagesdir[:imagesdir: ../images]
 
 [[section-pruebas]]
-== Pruebas
-Para asegurarnos del correcto funcionamiento de la apliación y encontrar mejores para la misma se han realizado pruebas de todo tipo aqui están los resultados obtenidos.
+== Pruebas 🔍
+Para asegurarnos del correcto funcionamiento de la aplicación y encontrar mejores para la misma se han realizado pruebas de todo tipo aqui están los resultados obtenidos.
 
 === Pruebas de Cobertura (Tests Unitarios)
+Estas pruebas se han realizado para la comprobacion de cada componente de manera individual evaluando los diferentes casos de uso. Estas son las pruebas realizadas, divididas por componente.
+
+==== Tests Gateway Service
+* *should forward login request to auth service*: Verifica que las solicitudes de inicio de sesión sean correctamente reenviadas al servicio de autenticación y que el token esperado sea retornado si las credenciales son correctas.
+* *should forward add user request to user service*:
+Comprueba que las solicitudes para agregar un nuevo usuario sean reenviadas al servicio de usuarios y que se reciba un ID de usuario como respuesta.
+* *should handle errors from the auth service on login*:
+Asegura que se manejen adecuadamente los errores durante el proceso de inicio de sesión, como credenciales incorrectas, y que se retorne el mensaje de error apropiado.
+
+* *should validate a token successfully*:
+Verifica que el servicio pueda validar correctamente un token, devolviendo un estado de validez.
+
+* *should handle validation error*:  
+Comprueba que se manejen correctamente los errores al validar tokens inválidos, retornando el mensaje de error adecuado.
+
+* *should forward get random questions request to generate service*:
+Asegura que las solicitudes para obtener preguntas aleatorias sean correctamente reenviadas al servicio de generación y que las preguntas esperadas sean retornadas.
+
+* *should forward get questions request to generate service*:
+Verifica que las solicitudes para obtener preguntas sean correctamente reenviadas al servicio de generación y que se retornen las preguntas adecuadas.
+
+* *should forward create question request to generate service*: 
+Comprueba que las solicitudes para crear una nueva pregunta sean correctamente reenviadas al servicio de generación y que se devuelva un estado de éxito y el ID de la pregunta.
+
+* *should forward update question request to generate service*:
+Asegura que las solicitudes para actualizar una pregunta existente sean reenviadas al servicio de generación y que se retorne un estado de "OK".
+
+* *should forward save history request to history service*:
+Verifica que las solicitudes para guardar el historial de acciones del usuario sean correctamente reenviadas al servicio de historial y que se retorne un estado de éxito.
+
+* *should forward get history request to history service*:
+Comprueba que las solicitudes para obtener el historial de un usuario sean correctamente reenviadas al servicio de historial y que se retornen los datos esperados.
+
+* *should handle error getting random questions from generate service*:
+Asegura que se manejen correctamente los errores al obtener preguntas aleatorias del servicio de generación, retornando el mensaje de error apropiado.
+
+* *should handle error getting questions from generate service*:
+Verifica que se manejen correctamente los errores al obtener preguntas del servicio de generación, retornando el mensaje de error adecuado.
+
+* *should handle error creating question in generate service*:
+Comprueba que se manejen correctamente los errores al crear una nueva pregunta en el servicio de generación, retornando el mensaje de error correspondiente.
+
+* *should handle error updating question in generate service*:
+Asegura que se manejen correctamente los errores al actualizar una pregunta en el servicio de generación, retornando el mensaje de error apropiado.
+
+* *should handle error saving history in history service*:
+Verifica que se manejen correctamente los errores al guardar el historial en el servicio de historial, retornando el mensaje de error adecuado.
+
+* *should handle error getting history from history service with query*:
+Comprueba que se manejen correctamente los errores al obtener el historial desde el servicio de historial, usando una consulta específica y retornando el mensaje de error correspondiente.
+
+==== Tests Question Service
+* *Should generate questions /generatequestions*:
+Verifica que el endpoint /generatequestions genere correctamente las preguntas solicitadas y las almacene en la base de datos. Se espera que se generen y cuenten 100 preguntas en la base de datos tras la ejecución.
+
+* *Should get questions /question/randoms*:
+Comprueba que el endpoint /question/randoms recupere y devuelva un número específico de preguntas aleatorias, en este caso, se espera que devuelva 5 preguntas.
+
+* *Should get all questions GET /question*:
+Testea que el endpoint GET /question recupere todas las preguntas existentes en la base de datos. En este caso, se insertan dos preguntas específicas y se verifica que ambas se retornen correctamente.
+
+* *Should create a new question*:
+Verifica que el endpoint POST /question permita crear una nueva pregunta y que esta se almacene correctamente en la base de datos. Se espera que la solicitud se complete con éxito (código de estado 201) y que los datos de la pregunta creada coincidan con los enviados en la solicitud.
+
+* *Should update a question by ID*:
+Prueba que el endpoint PATCH /question/:id actualice correctamente una pregunta existente en la base de datos según los datos proporcionados. Se verifica que la solicitud se complete con éxito (código de estado 200) y que los datos de la pregunta actualizada en la respuesta coincidan con los datos actualizados enviados.
+
+* *Should delete a question by ID*:
+Asegura que el endpoint DELETE /question/:id elimine correctamente una pregunta específica de la base de datos. Se espera que la solicitud se complete con éxito (código de estado 200) y que la pregunta ya no exista en la base de datos tras la eliminación.
+
+==== Tests llamadas a Wikidata
+- Wiki Call
+* *should fetch and return data from Wikidata for a valid SPARQL query*: 
+Este test evalúa si la función wikiCall realiza correctamente una solicitud HTTP para recuperar datos desde Wikidata utilizando una consulta SPARQL válida. Especificaciones del test incluyen:
+* Preparación de Datos Simulados: Configura un mock de node-fetch para simular una respuesta exitosa de la API de Wikidata. Esto implica establecer un JSON de respuesta que imita los datos que se esperarían de una consulta SPARQL real.
+* Ejecución y Validación de la Consulta: Ejecuta wikiCall con una consulta SPARQL de prueba para verificar si procesa esta consulta adecuadamente y si retorna los datos correctos. Se espera que la función transforme la respuesta simulada en el formato adecuado para su uso posterior, en este caso, un arreglo que contiene un objeto vacío que representa una fila de resultado SPARQL.
+* Verificación de la Llamada a fetch: Confirma que node-fetch se llamó exactamente una vez y con los parámetros correctos, incluyendo la URL de Wikidata con la consulta SPARQL codificada y los headers apropiados para aceptar JSON de resultados SPARQL.
+
+- Wiki Query
+* *debería obtener preguntas de Wikidata y formatearlas correctamente*: 
+Este test verifica que el método getQuestions de WikiQuery realice correctamente la llamada a wikiCall para obtener datos de Wikidata, y que luego formatee estos datos en el formato esperado para preguntas. Se realiza una configuración previa para simular respuestas de wikiCall que contienen preguntas y respuestas en un formato específico. El test comprueba que:
+* wikiCall se llama correctamente con una consulta SPARQL formateada para seleccionar etiquetas de preguntas y respuestas.
+* wikiCall se invoca una sola vez, asegurando que la función no realiza llamadas redundantes o innecesarias.
+* El modelo Question se instancia correctamente con los argumentos esperados para cada elemento de los resultados simulados, incluyendo la validación del formato de las preguntas y las respuestas.
+* Se verifica que el número de preguntas creadas y su formato coincidan con los datos proporcionados en los resultados simulados, asegurando que cada pregunta está bien formada con la estructura correcta y categoría especificada.
+
+==== Tests Auth Service
+
+
+==== Tests History Service
+
+
+==== Tests User Service
+
+
+==== Tests Componentes React
+
+
 
 === Pruebas e2e
+Estas pruebas estan enfocadas en el correcto funcionamiento de la aplicacion cuando el usuario interactua con ella. Haciendo que las paginas muestren los resultados esperados y redirijan de manera correcta.
 
 === Pruebas de carga
+Se enfocaran en evaluar cómo se comporta nuestro sistema bajo condiciones de alto tráfico y uso intensivo. Este tipo de pruebas es crucial para identificar cuellos de botella y asegurar que nuestra aplicación pueda manejar eficientemente el volumen de usuarios y transacciones esperado en producción, sin comprometer el rendimiento ni la estabilidad.
+
+Aqui los resultados.
 
 === Pruebas de usabilidad
+En este apartado, nos centraremos en las pruebas de usabilidad, un componente esencial para asegurar que nuestro sistema sea intuitivo, eficiente y accesible para todos los usuarios. Este tipo de pruebas evalúa la interacción entre el usuario y la aplicación, con el objetivo de identificar áreas de mejora en la interfaz de usuario que faciliten una mejor experiencia general.
 
+Las pruebas se han dividido en iteraciones. En cada interacion hay 3 fases.
+
+- 1. Fase de pruebas, con un grupo de usuarios variado (no muy extenso) en cuanto a conocimientos y soltura en el area de la informática donde los desarrolladores toman nota de las dificultades de los usuarios, sin intervenir, a no ser que sea estrictamente necesario.
+
+- 2. Fase de estudio de los resultado. El equipo de desarrolladores se reune y decide que mejoras se han de implementar basadas en las observacions de la fase anterior.
+
+- 3. Fase de Implementación. Las mejoras decididas se implementan y se repite el proceso, para comprobar que hay una mejoria en la usabilidad.
+
+Debido al escaso tiempo de desarrollo tan solo se relizaran 2 iteracciones de estas pruebas. A continuación se detallan paso a paso se desarrollaron las pruebas.
+
+==== 1ª Iteracción
+1. Se ha seleccionado el grupo de pruebas. El grupo consta de 2 personas con altos conocimientos de informatica, 2 personas con un nivel medio y 2 personas con un nivel bajo. Se deja al grupo trabajar mientras los desarrolladores observan.
+
+2. Los resultados obtenidos son los siguientes.
+- El diseño de la pagina es bastante intuitivo para los usuarios en especial para los que tiene alto conocimiento. Los usuarios con bajo conocimiento necesitaron de una pequeña intervencion por parte del observador.
+- Para los usuarios de nivel bajo se les hace dificil tener que registrarse y a continuacion tener que logearse en la pagina.
+- Los usuarios se quejan de que no se muestre cuando se acierta o se falla una pregunta.
+- Los usuario de nivel alto destacan que no hay restricciones en el nombre de usuario y la contraseña
+- Dificultad en las preguntas.
+- Fallos de formato en las preguntas.
+
+3. Las soluciones que se han aplicado a las observaciones tras debatir entre los desarrolladores son las siguientes.
+- Agregar una pagina de ayuda para los usuarios que no sepan que pasos seguir para jugar. Ya sea tener que registrase en la pagina, como juagro o como usar la API (aunque la API tenga su documentacion).
+- Añadir un pequeño aviso que te diga cuando se acierta o se falla la pregunta. Cuando se falla también se mostrara la respuesta correcta.
+- Añadir restricciones a la creacion de usuarios. Nombre de usuario de minimo 4 caracteres y contraseña con minimo una letra mayuscula y un número.
+- Se han revisado las plantillas de preguntas con mayor dicicultad y se han añadido alguna mas sencilla.
+- Se ha corregido los errores de formato de las respuestas donde existen fechas.
+
+
+==== 2ª Iteracción
+1. Para la segunda iteraccion se ha contado con un grupo más reducido por incompatibilidad en los horarios. Sin embargo seguimos contando con un usuario de cada nivel. Los resultados observados de esta segunda y ultima iteraccion se detallan a continuación.
+2. Las observaciones han cambiado y se han solucionado practicamente todos los problemas de la primera version, sin embargo, han aparecido problematicas nuevas.
+- La observacion mas importante de todos los usuarios es que no se puede recueperar la contraseña en caso de que se le olvide al usuario.
+- El calculo del Ranking es poco intuitivo.
+- Los usuarios poco habituados a los juegos destacan que la velocidad de la entrada al juego es demasiado rapida y no da tiempo a entrar en contexto.
+- Posibilidad de borrar usuarios desde la API sin tener permisos especiales. Esta problematica afecta a los usuarios mas avanzados.
+- Repeticion de las respuestas en la pregunta.
+
+3. Debido a la falta de tiempo no se podran implementar todas las mejoras que habia planteadas, sin embargo, estas son las decisiones de mejora tomadas por el equipo de desarrolladores.
+- La unica mejora implementada, es evitar en la logica de generacion de preguntas que existan respuestas repetidas.
+- Crear un sistema de recupearacion de contraseña, a traves del correo electronico, por lo habria que modificar el registro de usuarios.
+- Monitorizar el calculo del Ranking y valorar en el futuro si es correcto o hay que cambiarlo.
+- Introducir una cuenta atras cuando le das a jugar una partida nueva para que al usuario de tiempo a entrar en contexto.
+- Añadir permisos de usuario para realizar acciones especiales en la pagina y asi poder borrar o editar usuario a traves de la API.
+
+==== ¿3ª Iteraccion?
+Para probar la version final de la aplicacion que se entregará a los profesores, se ha realizado una ultima prueba para comprobar el correcto funcionamiento de todo con un par de usuarios ajeno a la aplicacion. Su nivel es medio y alto.
+Han destacado que todo es correcto en general (Obviando los puntos de la 2ª iteracción).
+
+==== Conclusiones
+Las pruebas de usabilidad han sido de gran utilidad para introducir mejoras en la aplicación, pero sobretodo han ayudado para dar un enfoque externo y más critico a nuestra apliación.
