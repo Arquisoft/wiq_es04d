@@ -4,13 +4,13 @@ ifndef::imagesdir[:imagesdir: ../images]
 == Conceptos Transversales 🧭
 Estos conceptos todavía no han sido aprobados ni implementados, pero dan una idea general del proyecto.
 
-=== Modelo de Dominio 🗺️
+=== Modelo de Dominio 
 Esta no sera la versión final del modelo de dominio. Es una representación de la aplicación en la actualidad.
 
 image::08_diagrama_modelo_dominio(V2).png["Modelo de dominio simple provisional"]
 
 
-=== Experiencia de Usuario 👨‍🦰
+=== Experiencia de Usuario 
 
 La Experiencia de Usuario en nuestra aplicación es la impresión general que los usuarios tienen al interactuar con ella. Se trata de cómo se sienten y qué piensan cuando utilizan nuestra aplicación web. Esto incluye aspectos como la facilidad para registrarse o iniciar sesion o lo intiutivo que es la parte del juego de preguntas.
 
@@ -19,11 +19,11 @@ Para nuestra aplicacion, la Experiencia de Usuario significa entender profundame
 Nos esforzamos por crear una experiencia de usuario comoda y accesible, donde cada detalle esté cuidadosamente diseñado para brindar una experiencia fluida y satisfactoria. Nuestro objetivo es ofrecer un juego entretenido, a la par que funcional y educativo.
 
 
-=== Arquitectura y Patrones de Diseño 📒
+=== Arquitectura y Patrones de Diseño
 
 Se usará una aquitectura basada en microservicios, para mantener la independencia entre las distintas partes de la aplicación. Esto nos permite tener una arquitectura flexible y modular que puede brindar beneficios significativos en términos de escalabilidad, flexibilidad tecnológica, agilidad en el desarrollo, resistencia a fallos y mantenibilidad del software.
 
-=== Desarrollo ⚙️
+=== Desarrollo
 
 En el desarrollo de nuestra aplicación, nos centramos en varios aspectos para garantizar su eficacia y fiabilidad:
 
@@ -39,7 +39,7 @@ En el desarrollo de nuestra aplicación, nos centramos en varios aspectos para g
 
 En resumen, en el desarrollo de nuestra aplicación nos esforzamos por crear una arquitectura escalable, un código mantenible, pruebas automatizadas y un rendimiento aceptable . Esto nos permite ofrecer una aplicación confiable y de alta calidad a nuestros usuarios.
 
-=== Operaciones 🔢
+=== Operaciones
 
 En las operaciones de nuestra aplicación, nos enfocamos en garantizar un entorno de producción estable y eficiente:
 
@@ -51,7 +51,7 @@ En las operaciones de nuestra aplicación, nos enfocamos en garantizar un entorn
 
 En resumen, en las operaciones de nuestra aplicación nos enfocamos en garantizar la disponibilidad y el rendimiento. Implementamos prácticas y herramientas que nos permiten monitorear, gestionar y mantener nuestra aplicación de manera efectiva y eficiente.
 
-=== Seguridad 🔒
+=== Seguridad
 
 Nos comprometemos a proteger la información personal y sensible de nuestros usuarios, así como a prevenir vulnerabilidades que pueda comprometer su seguridad mientras utilizan nuestra aplicación web dentro de nuetras capacidades y conocimientos.
 

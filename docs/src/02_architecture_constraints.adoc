@@ -4,7 +4,7 @@ ifndef::imagesdir[:imagesdir: ../images]
 == Restricciones de arquitectura ⛔
 
 
-=== Restricciones Técnicas 📛
+=== Restricciones Técnicas
 [options="header",cols="1,2"]
 |===
 |Restricción|Descripción
@@ -16,7 +16,7 @@ ifndef::imagesdir[:imagesdir: ../images]
 |===
 
 
-=== Resticciones organizacionales 🔗
+=== Resticciones organizacionales
 [options="header",cols="1,2"]
 |===
 |Restricción | Descripción

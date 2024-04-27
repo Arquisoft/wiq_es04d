@@ -3,7 +3,7 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-solution-strategy]]
 == Estrategia de Solución 📚
 
-=== Decisiones tecnológicas 💻
+=== Decisiones tecnológicas
 
 [options="header",cols="1,2"]
 |===
@@ -30,7 +30,7 @@ Decisiones de cómo llegar a las metas principales (En desarrollo):
 
 |===
 
-=== Decisiones organizativas 👥
+=== Decisiones organizativas
 
 Este grupo ha sido formado a partir de un grupo ya existente pasando de 5 integrantes a 3. Se ha decidido utilizar el proyecto inicial cuando se dio esta situacion para empezar de 0.
 

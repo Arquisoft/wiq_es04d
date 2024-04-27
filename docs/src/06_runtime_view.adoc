@@ -4,7 +4,7 @@ ifndef::imagesdir[:imagesdir: ../images]
 == Vista de Ejecución 📽️
 
 
-=== Escenario de Ejecucion1️⃣
+=== Escenario de Ejecución 1
 
 [plantuml,"Sequence diagram",png]
 
@@ -13,7 +13,7 @@ image::Diagrama de secuencia plantuml.png["Diagrama de secuencia plantuml"]
 Diagrama de secuencia con plantuml (se contempla sólo el uso correcto de la aplicación)
 
 
-=== Escenario de Ejecucion2️⃣
+=== Escenario de Ejecución 2
 
 *** Diagrama de secuencia                                   
     ** Descripción: diagrama de los usos básicos en la aplicación, como inicio de sesión, empezar a jugar y contestar las preguntas.
@@ -24,7 +24,7 @@ Diagrama de secuencia con plantuml (se contempla sólo el uso correcto de la apl
 
 image::Digrama de secuencia Juego de preguntas.jpg["Diagrama de secuencia"]
 
-=== Escenario de Ejecucion3️⃣
+=== Escenario de Ejecución 3
 
 *** Diagrama de casos de uso: 
     ** Descripción: diagrama básico de los distintos casos de uso que hay en el proyecto

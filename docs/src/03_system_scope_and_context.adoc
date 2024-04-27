@@ -3,7 +3,7 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-system-scope-and-context]]
 == Alcance del sistema y Contexto 💭
 
-=== Contexto de negocio 💰
+=== Contexto de negocio
 image::03_diagrama_contexto_negocio.png["Diagrama de contexto de negocio"]
 En esta tabla se muestra el contexto de negocio de la aplicación. Las entradas son los mensajes que van desde el agente externo hacia la aplicación, y las salidas son los mensajes que van desde la aplicación hacia al agente externo.
 [options="header",cols="1,2,3"]
@@ -13,7 +13,7 @@ En esta tabla se muestra el contexto de negocio de la aplicación. Las entradas 
 |Wikidata|Items (elementos) de Wikidata|Petición a la API de Wikidata
 |===
 
-=== Contexto técnico 🔧
+=== Contexto técnico
 
 image::03_diagrama_contexto_tecnico.png["Diagrama de contexto técnico"]
 |===

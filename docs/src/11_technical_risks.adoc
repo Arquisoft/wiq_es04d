@@ -2,7 +2,7 @@
 [[section-technical-risks]]
 == Riesgos y Deuda Técnina ⚠️
 
-=== Riesgos 🚨
+=== Riesgos
 [options="header",cols="1,2"]
 |======================
 | Riesgo | Descripción
@@ -17,7 +17,7 @@
 |Incumplimiento de normas|Si el proyecto no cumple con las regulaciones o estándares de seguridad pertinentes, podría enfrentar sanciones legales o multas.
 |======================
 
-=== Deuda Tecnica 💸
+=== Deuda Tecnica
 [options="header",cols="1,2"]
 |======================
 | Deuda Técnina | Descripción

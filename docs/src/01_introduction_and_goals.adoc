@@ -10,7 +10,7 @@ Los desarrolladores de la aplicacion son por Zohaib Akhtar Kausar, Yago Navajas 
 La aplicación tendrá su base para las preguntas y las respuestas en Wikidata, la base de conocimiento editada en colaboración.
 
 
-=== Requisitos Funcionales 🛠️
+=== Requisitos Funcionales
 
 ****
 * Los usuarios se deberán loggearse en la página; esto servirá para tener registro de una serie de parámetros, como puede ser las veces que se ha jugado. 
@@ -22,7 +22,7 @@ La aplicación tendrá su base para las preguntas y las respuestas en Wikidata, 
 
 ****
 
-=== Atributos de Calidad 👑
+=== Atributos de Calidad
 
 [options="header",cols="1,2,2"]
 |===
@@ -35,7 +35,7 @@ La aplicación tendrá su base para las preguntas y las respuestas en Wikidata, 
 |===
 
 
-=== Stakeholders 👨‍👩‍👦‍👦
+=== Stakeholders
 
 [options="header",cols="1,2,2"]
 |===
