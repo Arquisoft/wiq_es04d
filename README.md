@@ -5,6 +5,7 @@
 [![Cobertura](https://sonarcloud.io/api/project_badges/measure?project=Arquisoft_wiq_es04d&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Arquisoft_wiq_es04d)
 
 Enlace: (http://20.77.40.187:3000/)
+Enlace a grafana: (http://20.77.40.187:9091/)
 
 Equipo de Desarrollo
 - Zohaib Aktar Kausar -> <a href="https://github.com/Verzidee"><img src="https://img.shields.io/badge/perfil-Verzidee-black"></a> 
