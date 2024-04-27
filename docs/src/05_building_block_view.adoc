@@ -20,7 +20,7 @@ Bloques de Construcción Contenidos::
 
 * User Interface (Frontend)
 
-* Logica de Negocio(Backend)
+* Lógica de Negocio(Backend)
 
 * Base datos
 

@@ -139,7 +139,7 @@ Estas pruebas han sido diseñadas para mejorar el coverage de la aplicacion y no
 * Add User
 * Ayuda
 * Creditos
-* Pagina de Error (404)
+* Página de Error (404)
 * Historial
 * Home (Inicio)
 * Jugar
@@ -152,7 +152,7 @@ Estas pruebas han sido diseñadas para mejorar el coverage de la aplicacion y no
 
 
 === Pruebas e2e
-Estas pruebas estan enfocadas en el correcto funcionamiento de la aplicacion cuando el usuario interactua con ella. Haciendo que las paginas muestren los resultados esperados y redirijan de manera correcta.
+Estas pruebas estan enfocadas en el correcto funcionamiento de la aplicacion cuando el usuario interactua con ella. Haciendo que las páginas muestren los resultados esperados y redirijan de manera correcta.
 
 Las features son:
 
@@ -218,15 +218,15 @@ Debido al escaso tiempo de desarrollo tan solo se relizaran 2 iteracciones de es
 1. Se ha seleccionado el grupo de pruebas. El grupo consta de 2 personas con altos conocimientos de informatica, 2 personas con un nivel medio y 2 personas con un nivel bajo. Se deja al grupo trabajar mientras los desarrolladores observan.
 
 2. Los resultados obtenidos son los siguientes.
-- El diseño de la pagina es bastante intuitivo para los usuarios en especial para los que tiene alto conocimiento. Los usuarios con bajo conocimiento necesitaron de una pequeña intervencion por parte del observador.
-- Para los usuarios de nivel bajo se les hace dificil tener que registrarse y a continuacion tener que logearse en la pagina.
+- El diseño de la página es bastante intuitivo para los usuarios en especial para los que tiene alto conocimiento. Los usuarios con bajo conocimiento necesitaron de una pequeña intervencion por parte del observador.
+- Para los usuarios de nivel bajo se les hace dificil tener que registrarse y a continuacion tener que logearse en la página.
 - Los usuarios se quejan de que no se muestre cuando se acierta o se falla una pregunta.
 - Los usuario de nivel alto destacan que no hay restricciones en el nombre de usuario y la contraseña
 - Dificultad en las preguntas.
 - Fallos de formato en las preguntas.
 
 3. Las soluciones que se han aplicado a las observaciones tras debatir entre los desarrolladores son las siguientes.
-- Agregar una pagina de ayuda para los usuarios que no sepan que pasos seguir para jugar. Ya sea tener que registrase en la pagina, como juagro o como usar la API (aunque la API tenga su documentacion).
+- Agregar una página de ayuda para los usuarios que no sepan que pasos seguir para jugar. Ya sea tener que registrase en la página, como juagro o como usar la API (aunque la API tenga su documentacion).
 - Añadir un pequeño aviso que te diga cuando se acierta o se falla la pregunta. Cuando se falla también se mostrara la respuesta correcta.
 - Añadir restricciones a la creacion de usuarios. Nombre de usuario de minimo 4 caracteres y contraseña con minimo una letra mayuscula y un número.
 - Se han revisado las plantillas de preguntas con mayor dicicultad y se han añadido alguna mas sencilla.
@@ -242,15 +242,15 @@ Debido al escaso tiempo de desarrollo tan solo se relizaran 2 iteracciones de es
 - Posibilidad de borrar usuarios desde la API sin tener permisos especiales. Esta problematica afecta a los usuarios mas avanzados.
 - Repeticion de las respuestas en la pregunta.
 
-3. Debido a la falta de tiempo no se podran implementar todas las mejoras que habia planteadas, sin embargo, estas son las decisiones de mejora tomadas por el equipo de desarrolladores.
-- La unica mejora implementada, es evitar en la logica de generacion de preguntas que existan respuestas repetidas.
-- Crear un sistema de recupearacion de contraseña, a traves del correo electronico, por lo habria que modificar el registro de usuarios.
-- Monitorizar el calculo del Ranking y valorar en el futuro si es correcto o hay que cambiarlo.
-- Introducir una cuenta atras cuando le das a jugar una partida nueva para que al usuario de tiempo a entrar en contexto.
-- Añadir permisos de usuario para realizar acciones especiales en la pagina y asi poder borrar o editar usuario a traves de la API.
+3. Debido a la falta de tiempo no se podrán implementar todas las mejoras que habia planteadas, sin embargo, estas son las decisiones de mejora tomadas por el equipo de desarrolladores.
+- La única mejora implementada, es evitar en la logica de generación de preguntas que existan respuestas repetidas.
+- Crear un sistema de recupearación de contraseña, a traves del correo electrónico, por lo habría que modificar el registro de usuarios.
+- Monitorizar el cálculo del Ranking y valorar en el futuro si es correcto o hay que cambiarlo.
+- Introducir una cuenta atrás cuando le das a jugar una partida nueva para que al usuario de tiempo a entrar en contexto.
+- Añadir permisos de usuario para realizar acciones especiales en la página y asi poder borrar o editar usuario a traves de la API.
 
 ==== ¿3ª Iteraccion?
-Para probar la version final de la aplicacion que se entregará a los profesores, se ha realizado una ultima prueba para comprobar el correcto funcionamiento de todo con un par de usuarios ajeno a la aplicacion. Su nivel es medio y alto.
+Para probar la versión final de la aplicación que se entregará a los profesores, se ha realizado una última prueba para comprobar el correcto funcionamiento de todo con un par de usuarios ajeno a la aplicación. Su nivel es medio y alto.
 Han destacado que todo es correcto en general (Obviando los puntos de la 2ª iteracción).
 
 ==== Conclusiones

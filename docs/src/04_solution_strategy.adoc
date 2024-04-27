@@ -10,7 +10,7 @@ ifndef::imagesdir[:imagesdir: ../images]
 |Aplicación|Breve explicación
 |React / JS|Biblioteca de JavaScript que nos servirá para realizar las interfaces de usuario necesarias para el Front-End. Esto nos indica que el lenguaje principal usado en el proyecto es JavaScript.
 |Microservicios|Se usaran microservicios diferentes para los diferentes componentes del proyecto como la generacion de preguntas o el registro de usuarios en el sistema. 
-|Azure|Para el alojamiemto de la pagina web se usara una maquina virtual Azure con el credito de estudiante proporcionado
+|Azure|Para el alojamiemto de la página web se usara una maquina virtual Azure con el credito de estudiante proporcionado
 |Docker
 |Encargado de dividir el contenido del proyecto en diversos contenedores (en nuestro caso 4) y sea más fácil de manipular el contenido de dicho proyecto.
 |GitHub Actions
