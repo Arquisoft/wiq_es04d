@@ -92,25 +92,114 @@ Este test verifica que el método getQuestions de WikiQuery realice correctament
 * Se verifica que el número de preguntas creadas y su formato coincidan con los datos proporcionados en los resultados simulados, asegurando que cada pregunta está bien formada con la estructura correcta y categoría especificada.
 
 ==== Tests Auth Service
+* *Should perform a login operation /login*:
+Este test verifica que el endpoint /login permita a un usuario existente realizar el inicio de sesión correctamente. Comprueba que al enviar un nombre de usuario y contraseña válidos, el sistema responde con un estado 200 y retorna la propiedad 'username' en el cuerpo de la respuesta, indicando que el proceso de autenticación fue exitoso.
 
+* *Should reject login with incorrect credentials*:
+Este test se asegura de que el endpoint /login rechace el intento de inicio de sesión cuando las credenciales son incorrectas. En este caso, se envía una contraseña errónea para un nombre de usuario existente. El test verifica que el servidor responda con un estado 401 y que el cuerpo de la respuesta contenga el mensaje de error 'Invalid credentials', indicando que las credenciales proporcionadas no son válidas.
+
+* *Should require username and password fields for login*:
+Este test evalúa que el endpoint /login requiera tanto el nombre de usuario como la contraseña para procesar una solicitud de inicio de sesión. Aquí se envía solo el nombre de usuario sin proporcionar una contraseña. El test verifica que el servidor responda con un estado 500 y que el cuerpo de la respuesta contenga un mensaje de error, indicando que la solicitud está incompleta o mal formada.
+
+* *Should validate a JWT token*:
+Este test primero realiza un inicio de sesión válido para obtener un token JWT y luego verifica la validez de ese token a través de otro endpoint. Tras obtener el token, se realiza una solicitud de validación para dicho token y se verifica que el servidor responda con un estado 200 y que el cuerpo de la respuesta indique que el token es válido (valid: true).
+
+* *Should reject an invalid JWT token*:
+Este test verifica la funcionalidad del sistema para rechazar tokens JWT que no son válidos. Se envía un token arbitrario (incorrecto) al endpoint de validación y se comprueba que el servidor responda con un estado 200, pero con el cuerpo de la respuesta indicando que el token no es válido (valid: false).
 
 ==== Tests History Service
+* *POST /savehistory*:
+* should save history entry for a new user that plays a game: Este test verifica que el endpoint /savehistory pueda crear una nueva entrada de historial para un usuario que no existía previamente en la base de datos. Evalúa si la entrada se almacena correctamente y si los datos devueltos en la respuesta coinciden con los datos enviados, incluyendo la correcta diferenciación entre preguntas acertadas y falladas.
+* should update history entry for an existing user: Este test comprueba que el endpoint /savehistory actualice correctamente una entrada de historial existente para un usuario, sumando correctamente las nuevas jugadas, preguntas jugadas, preguntas acertadas y preguntas falladas a los totales previos.
 
+* *GET /gethistory*:
+* should get history entry for an existing user: Este test verifica que el endpoint /gethistory (con un query param) recupere correctamente la entrada de historial de un usuario existente. Evalúa si los datos devueltos coinciden exactamente con los que están almacenados en la base de datos.
+* should create new history entry for a non-existing user: Este test comprueba que el endpoint /gethistory sea capaz de manejar solicitudes para usuarios no existentes correctamente, retornando una entrada de historial con contadores en cero.
+
+* *GET /gethistory/:username*:
+* should get history entry for an existing user: Similar al test anterior bajo el endpoint /gethistory, pero esta vez utilizando una ruta con parámetro. Verifica si la solicitud a /gethistory/:username recupera correctamente la entrada de historial para un usuario específico usando la identificación del usuario en la URL, asegurándose de que todos los datos devueltos coincidan con los almacenados.
 
 ==== Tests User Service
+* *should add a new user on POST /adduser*:
+Esta prueba verifica que un usuario nuevo se pueda añadir correctamente mediante el endpoint /adduser. Al enviar una solicitud POST con un nombre de usuario y contraseña válidos, se espera que el servidor responda con un código de estado 200 y que el cuerpo de la respuesta contenga el nombre de usuario que fue añadido.
 
+* *should reject a user without a username*:
+Prueba la validación del campo requerido para el nombre de usuario. Al intentar registrar un usuario sin proporcionar un nombre de usuario, se espera que el servidor responda con un código de estado 400 y un mensaje de error indicando que falta el campo requerido "username".
+
+* *should reject a user without a password*:
+Verifica que el servicio rechace las solicitudes para crear un usuario que no incluyan una contraseña. Si se envía una solicitud sin una contraseña, el servidor debe responder con un código de estado 400 y un mensaje de error que indique que falta el campo requerido "password".
+
+* *should not allow adding a user with an existing username*: 
+Asegura que no se pueda registrar más de un usuario con el mismo nombre de usuario. l intentar añadir un usuario que ya existe en la base de datos, el servidor debe responder con un código de estado 400 y un mensaje indicando que el usuario ya existe.
 
 ==== Tests Componentes React
+Estas pruebas han sido diseñadas para mejorar el coverage de la aplicacion y no tienen mayor objetivo que comprobar que los componentes se cargan de manera correcta, sin probar la funcionalidad, ya que de esta sen encargan los servicios, estos componentes son:
 
+* About US
+* Add User
+* Ayuda
+* Creditos
+* Pagina de Error (404)
+* Historial
+* Home (Inicio)
+* Jugar
+* Login
+* Ranking
+* Card Items (del About Us)
+* Footer
+* Layout
+* NavBar
 
 
 === Pruebas e2e
 Estas pruebas estan enfocadas en el correcto funcionamiento de la aplicacion cuando el usuario interactua con ella. Haciendo que las paginas muestren los resultados esperados y redirijan de manera correcta.
 
+Las features son:
+
+* Register Form:
+****
+Feature: Registering a new user
+
+Scenario: The user is not registered in the site
+  Given An unregistered user
+  When I fill the data in the form and press submit
+  Then The user is registered and logged
+****
+
+* Jugar Form:
+****
+Feature: Game Initialization
+
+Scenario: User Initiates a Game
+    Given An unregistered user exists
+    When the user enters their details on the register form and submits
+    And the user is redirected to the homepage and logged in automatically
+    And the user clicks the "Play" button on the homepage
+    Then the questions should be displayed
+****
+
+* History Form:
+****
+Feature: Seeing the loged user history
+
+Scenario: The user is not loged in the site
+  Given A not loged user
+  When Press history
+  Then Redirected to login
+
+Scenario: The user register in the site so he can see history
+  Given A unregistered user, fill the register
+  When I press history
+  Then I see my history
+****
+
+
 === Pruebas de carga
 Se enfocaran en evaluar cómo se comporta nuestro sistema bajo condiciones de alto tráfico y uso intensivo. Este tipo de pruebas es crucial para identificar cuellos de botella y asegurar que nuestra aplicación pueda manejar eficientemente el volumen de usuarios y transacciones esperado en producción, sin comprometer el rendimiento ni la estabilidad.
 
 Aqui los resultados.
+
+**(resultados)**
 
 === Pruebas de usabilidad
 En este apartado, nos centraremos en las pruebas de usabilidad, un componente esencial para asegurar que nuestro sistema sea intuitivo, eficiente y accesible para todos los usuarios. Este tipo de pruebas evalúa la interacción entre el usuario y la aplicación, con el objetivo de identificar áreas de mejora en la interfaz de usuario que faciliten una mejor experiencia general.
