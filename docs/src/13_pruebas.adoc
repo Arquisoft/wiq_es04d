@@ -196,8 +196,26 @@ Scenario: The user register in the site so he can see history
 
 === Pruebas de carga
 Se enfocaran en evaluar cómo se comporta nuestro sistema bajo condiciones de alto tráfico y uso intensivo. Este tipo de pruebas es crucial para identificar cuellos de botella y asegurar que nuestra aplicación pueda manejar eficientemente el volumen de usuarios y transacciones esperado en producción, sin comprometer el rendimiento ni la estabilidad.
+Se han realizado 2 pruebas de carga con diferente numero de usuarios simultaneos.
+Las pruebas seguiran el siguiente procedimiento sencillo, pero que servira para probar los servicios y como se comportan ante el estres generado por muchos usuarios:
 
-Aqui los resultados.
+. El usuario se logea en la pagina
+. Juega una partida completa
+. Ve su historial
+. Hace logout 
+
+Esto se realiza en el transcurso de 1 minuto.
+
+Aqui los resultados de la primera prueba con 240 usuarios.
+
+image::Pruebacarga240.png["Prueba de carga 240 usuarios"]
+
+Estos son los resultados con 900 seguidores concurrentes.
+
+image::Pruebacarga900.png["Prueba de carga 900 usuarios"]
+
+Podemos observar que la primera prueba la soporta de manera mas o menos asumible. Sin embargo, la segunda prueba ya esta sorpasando el limite de usuarios concurrentes y empiezan a fallar los servicios.
+Esto se debe principalmente a las bajas prestaciones de la maquina virtual, marcadas por el credito disponible como estudiantes.
 
 **(resultados)**
 
