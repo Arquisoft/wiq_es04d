@@ -1,7 +1,7 @@
 const request = require('supertest');
 const axios = require('axios');
 const app = require('./gateway-service');
-
+const userServiceUrl = process.env.USER_SERVICE_URL || 'http://localhost:8001';
 afterAll(async () => {
   app.close();
 });
@@ -275,7 +275,95 @@ describe('Gateway Service', () => {
     expect(response.statusCode).toBe(404);
     expect(response.body.error).toBe('User not found');
   });
-
-
-
 });
+describe('User API Endpoints', () => {
+  beforeEach(() => {
+    jest.resetAllMocks(); // Clear previous mocks between tests
+  });
+
+  // Test for GET /user
+  it('should retrieve user data successfully', async () => {
+    const mockUserData = [{ id: 'user1', name: 'John Doe' }];
+    axios.get.mockResolvedValueOnce({ data: mockUserData });
+
+    const response = await request(app).get('/user');
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toEqual(mockUserData);
+    expect(axios.get).toHaveBeenCalledWith(`${userServiceUrl}/user`);
+  });
+
+  it('should handle failure when retrieving user data', async () => {
+    axios.get.mockRejectedValueOnce({ response: { status: 404, data: { error: 'User not found' } } });
+
+    const response = await request(app).get('/user');
+
+    expect(response.statusCode).toBe(404);
+    expect(response.body.error).toBe('User not found');
+  });
+
+  // Test for POST /user
+  it('should create a user successfully', async () => {
+    const newUser = { username: 'newuser', password: 'password123' };
+    axios.post.mockResolvedValueOnce({ data: { userId: '12345' } });
+
+    const response = await request(app).post('/user').send(newUser);
+
+    expect(response.statusCode).toBe(201);
+    expect(response.body.userId).toBe('12345');
+    expect(axios.post).toHaveBeenCalledWith(`${userServiceUrl}/adduser`, newUser);
+  });
+
+  it('should handle failure when creating a user', async () => {
+    const newUser = { username: 'newuser', password: 'password123' };
+    axios.post.mockRejectedValueOnce({ response: { status: 500, data: { error: 'Error creating the user' } } });
+
+    const response = await request(app).post('/user').send(newUser);
+
+    expect(response.statusCode).toBe(500);
+    expect(response.body.error).toBe('Error creating the user');
+  });
+
+  // Test for PATCH /user/:id
+  it('should update user data successfully', async () => {
+    const updates = { name: 'Jane Doe' };
+    axios.patch.mockResolvedValueOnce({ data: { status: 'OK' } });
+
+    const response = await request(app).patch('/user/1').send(updates);
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body.status).toBe('OK');
+    expect(axios.patch).toHaveBeenCalledWith(`${userServiceUrl}/user/1`, updates);
+  });
+
+  it('should handle failure when updating user data', async () => {
+    const updates = { name: 'Jane Doe' };
+    axios.patch.mockRejectedValueOnce({ response: { status: 404, data: { error: 'User not found' } } });
+
+    const response = await request(app).patch('/user/1').send(updates);
+
+    expect(response.statusCode).toBe(404);
+    expect(response.body.error).toBe('User not found');
+  });
+
+  // Test for DELETE /user/:id
+  it('should delete a user successfully', async () => {
+    axios.delete.mockResolvedValueOnce({ data: { status: 'OK' } });
+
+    const response = await request(app).delete('/user/1');
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body.status).toBe('OK');
+    expect(axios.delete).toHaveBeenCalledWith(`${userServiceUrl}/user/1`, {});
+  });
+
+  it('should handle failure when deleting a user', async () => {
+    axios.delete.mockRejectedValueOnce({ response: { status: 404, data: { error: 'User not found' } } });
+
+    const response = await request(app).delete('/user/1');
+
+    expect(response.statusCode).toBe(404);
+    expect(response.body.error).toBe('User not found');
+  });
+});
+

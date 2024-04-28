@@ -1,72 +1,87 @@
-import React from 'react';
-import { render, fireEvent, screen, waitFor } from '@testing-library/react';
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import AddUser from './AddUser';
-import { BrowserRouter as Router } from 'react-router-dom';
-import {AuthProvider} from "../../AuthContext";
-const mockAxios = new MockAdapter(axios);
+import { BrowserRouter } from 'react-router-dom';
+import { AuthContext } from '../../AuthContext';
+import axios from 'axios';
 
-describe('AddUser component', () => {
-  beforeEach(() => {
-    mockAxios.reset();
-  });
+jest.mock('axios');
+const mockHandleLogin = jest.fn();
 
-  it('should add user successfully', async () => {
-    render(
-        <Router>
-          <AuthProvider>
-            <AddUser />
-          </AuthProvider>
-        </Router>
+function renderAddUser() {
+    return render(
+        <BrowserRouter>
+            <AuthContext.Provider value={{ handleLogin: mockHandleLogin }}>
+                <AddUser />
+            </AuthContext.Provider>
+        </BrowserRouter>
     );
+}
 
-    const usernameInput = screen.getByLabelText(/Nombre de Usuario/i);
-    const passwordInput = screen.getByLabelText(/Contraseña/i);
-    const addUserButton = screen.getByRole('button', { name: /Registrarse/i });
+function fillAndSubmitForm(username, password) {
+    fireEvent.change(screen.getByLabelText(/nombre de usuario/i), { target: { value: username } });
+    fireEvent.change(screen.getByLabelText(/contraseña/i), { target: { value: password } });
+    fireEvent.click(screen.getByRole('button', { name: /registrarse/i }));
+}
 
-    // Mock the axios.post request to simulate a successful response
-    mockAxios.onPost('http://localhost:8000/adduser').reply(200);
+test('renderiza el formulario de registro', () => {
+    renderAddUser();
+    expect(screen.getByLabelText(/nombre de usuario/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/contraseña/i)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /registrarse/i })).toBeInTheDocument();
+});
 
-    // Simulate user input
-    fireEvent.change(usernameInput, { target: { value: 'testUser' } });
-    fireEvent.change(passwordInput, { target: { value: 'testPassword2' } });
+test('Errores de validacion al crear una nueva cuenta', async () => {
+    renderAddUser();
+    fillAndSubmitForm('abc', '12345678');
 
-    // Trigger the add user button click
-    fireEvent.click(addUserButton);
-
-    // Wait for the Snackbar to be open
     await waitFor(() => {
-      expect(screen.getByText(/Usuario añadido correctamente/i)).toBeInTheDocument();
+        expect(screen.getByText(/el nombre de usuario debe tener al menos 4 caracteres/i)).toBeInTheDocument();
     });
-  });
+});
 
-  it('should handle error when adding user', async () => {
-    render(
-        <Router>
-          <AuthProvider>
-            <AddUser />
-          </AuthProvider>
-        </Router>
-    );
+test('La contraseña debe tener al menos 8 caracteres', async () => {
+    renderAddUser();
+    fillAndSubmitForm('testuser', 'abc');
 
-    const usernameInput = screen.getByLabelText(/Nombre de Usuario/i);
-    const passwordInput = screen.getByLabelText(/Contraseña/i);
-    const addUserButton = screen.getByRole('button', { name: /Registrarse/i });
-
-    // Mock the axios.post request to simulate an error response
-    mockAxios.onPost('http://localhost:8000/adduser').reply(500, { error: 'Internal Server Error' });
-
-    // Simulate user input
-    fireEvent.change(usernameInput, { target: { value: 'testUser' } });
-    fireEvent.change(passwordInput, { target: { value: 'testPassword2' } });
-
-    // Trigger the add user button click
-    fireEvent.click(addUserButton);
-
-    // Wait for the error Snackbar to be open
     await waitFor(() => {
-      expect(screen.getByText(/Error: Internal Server Error/i)).toBeInTheDocument();
+        expect(screen.getByText(/la contraseña debe tener al menos 8 caracteres/i)).toBeInTheDocument();
     });
-  });
+});
+
+test('La contraseña debe contener al menos una letra mayúscula', async () => {
+    renderAddUser();
+    fillAndSubmitForm('testuser', 'abcdefgh');
+
+    await waitFor(() => {
+        expect(screen.getByText(/la contraseña debe contener al menos una letra mayúscula/i)).toBeInTheDocument();
+    });
+});
+
+test('La contraseña debe contener al menos un número', async () => {
+    renderAddUser();
+    fillAndSubmitForm('testuser', 'Abcdefgh');
+
+    await waitFor(() => {
+        expect(screen.getByText(/la contraseña debe contener al menos un número/i)).toBeInTheDocument();
+    });
+});
+
+test('Registro exitoso de usuario', async () => {
+    axios.post.mockImplementation((url) => {
+        if (url.includes('/adduser')) {
+            return Promise.resolve({ status: 200 });
+        } else if (url.includes('/login')) {
+            return Promise.resolve({ data: { token: 'fakeToken123' } });
+        }
+    });
+
+    renderAddUser();
+    fillAndSubmitForm('validUser', 'Valid1234');
+
+    await waitFor(() => {
+        expect(screen.getByText('Usuario añadido correctamente')).toBeInTheDocument();
+    });
+
+    // Verificar redireccionamiento a la página inicial
+    expect(window.location.pathname).toBe('/');
 });
