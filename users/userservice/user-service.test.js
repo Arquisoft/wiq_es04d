@@ -103,6 +103,23 @@ describe('User Service Validation', () => {
     expect(response.status).toBe(500);
     expect(response.body.error).toContain('Internal Server Error');
   });
+  it('should handle internal server error when deleting user', async () => {
+    const testUserId = 'validUserId';  // Assuming 'validUserId' is a placeholder for a valid user ID.
+
+    // Mock findByIdAndDelete to simulate a database failure.
+    jest.spyOn(User, 'findByIdAndDelete').mockImplementationOnce(() => {
+      throw new Error('Database failure during deletion');
+    });
+
+    const response = await request(app).delete(`/user/${testUserId}`);
+
+    // Check that the response status is 500 Internal Server Error
+    expect(response.status).toBe(500);
+    expect(response.body.error).toBe('Error deleting the user');
+
+    jest.restoreAllMocks();
+  });
+
 
 
 
