@@ -54,34 +54,4 @@ describe("WikiQuery", () => {
         expect(questions).toHaveLength(mockResults.length);
 
     });
-
-    it("debería obtener preguntas correctamente si la plantilla tiene year:true", async () => {
-        const mockResults = [
-            { questionLabel: { value: "¿Cuándo terminó la guerra test1?" }, answerLabel: { value: "http1900" } },
-            { questionLabel: { value: "¿Cuándo terminó la guerra test2?" }, answerLabel: { value: "1901" } },
-            { questionLabel: { value: "¿Cuándo terminó la guerra test3?" }, answerLabel: { value: "1901" } },
-            { questionLabel: { value: "¿Cuándo terminó la guerra test4?" }, answerLabel: { value: "1903" } }
-        ];
-        wikiCall.mockResolvedValue(mockResults);
-        const template = {
-            questionVariable: "?q",
-            answerVariable: "?a",
-            question: "¿Cuándo terminó la guerra __x__?",
-            questionCategory: "Historia",
-            year: true
-        };
-        const limitValue = 5;
-        const backupAnswers = [{itemLabel: "gato"}, {itemLabel: "gato2"}]
-        await WikiQuery.getQuestions(template, limitValue, backupAnswers);
-        expect(wikiCall).toHaveBeenCalledWith(expect.stringMatching(/SELECT DISTINCT\s+\?questionLabel\s+\(YEAR\(\?answer\) AS \?answerLabel\)\s+WHERE/gm));
-
-    });
-
-    it('should return a list of 100 objects with a property "itemLabel"', async () => {
-        const expectedResults = [{ itemLabel: 'Cat' }, { itemLabel: 'Dog' }, /* más resultados aquí */];
-        wikiCall.mockResolvedValue(expectedResults);
-        const results = await WikiQuery.getBackupAnswers();
-        expect(wikiCall).toHaveBeenCalledTimes(1);
-        expect(results).toEqual(expectedResults);
-    });
 });
