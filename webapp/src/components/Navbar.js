@@ -20,43 +20,52 @@ function Navbar() {
   }, []);
 
   const NavLinks = ({ isLoggedIn }) => (
-    <ul className={isClicked ? 'nav-menu active' : 'nav-menu'}>
-      <li className='nav-item'>
-        <Link to='/' className='nav-links' onClick={closeMenu}>Inicio</Link>
-      </li>
-      {isLoggedIn ? (
-        <>
-            <li className='nav-item'>
-                <Link to='/jugar' className='nav-links' onClick={closeMenu} data-testid="Jugar-button-navbar">Jugar</Link>
-            </li>
-            <li className='nav-item'>
-                <Link to='/historial' className='nav-links' onClick={closeMenu} data-testid="historial-button-navbar">Historial</Link>
-            </li>
-            <li className='nav-item'>
-                <Link to='/ranking' className='nav-links' onClicks={closeMenu} data-testid="Ranking-button-navbar">Ranking</Link>
-            </li>
-            <li>
-                <Link to='/logout' className='nav-links-mobile' onClick={closeMenu} data-testid="Salir-button-navbar">Salir</Link>
-            </li>
-        </>
-      ) : (
-        <>
-            <li>
-                <Link to='/sign-up' className='nav-links-mobile' onClick={closeMenu} data-testid="Registrarse-button-navbar">Registrarse</Link>
-            </li>
-            <li>
-                <Link to='/login' className='nav-links-mobile' onClick={closeMenu} data-testid="Entrar-button-navbar">Entrar</Link>
-            </li>
-        </>
-      )}
-    </ul>
+      <ul className={isClicked ? 'nav-menu active' : 'nav-menu'}>
+        <li className='nav-item'>
+          <Link to='/' className='nav-links' onClick={closeMenu}>Inicio</Link>
+        </li>
+        <li className='nav-item'>
+          <Link to='/abouts' className='nav-links' onClick={closeMenu}>About us</Link>
+        </li>
+        {isLoggedIn ? (
+            <>
+              <li className='nav-item'>
+                <Link to='/jugar' className='nav-links' onClick={closeMenu}
+                      data-testid="Jugar-button-navbar">Jugar</Link>
+              </li>
+              <li className='nav-item'>
+                <Link to='/historial' className='nav-links' onClick={closeMenu}
+                      data-testid="historial-button-navbar">Historial</Link>
+              </li>
+              <li className='nav-item'>
+                <Link to='/ranking' className='nav-links' onClicks={closeMenu}
+                      data-testid="Ranking-button-navbar">Ranking</Link>
+              </li>
+              <li>
+                <Link to='/logout' className='nav-links-mobile' onClick={closeMenu}
+                      data-testid="Salir-button-navbar">Salir</Link>
+              </li>
+            </>
+        ) : (
+            <>
+              <li>
+                <Link to='/sign-up' className='nav-links-mobile' onClick={closeMenu}
+                      data-testid="Registrarse-button-navbar">Registrarse</Link>
+              </li>
+              <li>
+                <Link to='/login' className='nav-links-mobile' onClick={closeMenu}
+                      data-testid="Entrar-button-navbar">Entrar</Link>
+              </li>
+            </>
+        )}
+      </ul>
   );
 
   return (
-    <nav className='navbar'>
-      <div className='navbar-container'>
-        <Link to='/' className='navbar-logo' onClick={closeMenu}>WIQ<i className='fab fa-typo3' /></Link>
-        <div className='menu-icon' onClick={toggleClick}>
+      <nav className='navbar'>
+        <div className='navbar-container'>
+          <Link to='/' className='navbar-logo' onClick={closeMenu}>WIQ<i className='fab fa-typo3'/></Link>
+          <div className='menu-icon' onClick={toggleClick}>
           <button aria-label="Menu toggle" data-testid="Menu-toggle-button">
             <i className={isClicked ? 'fas fa-times' : 'fas fa-bars'}/>
           </button>

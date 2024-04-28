@@ -26,6 +26,7 @@ describe('Componente Navbar', () => {
         renderNavbar(true);
 
         expect(screen.getByRole('link', { name: 'Inicio' })).toBeInTheDocument();
+        expect(screen.getByRole('link', { name: 'About us' })).toBeInTheDocument();
         expect(screen.getByRole('button', { name: 'Salir' })).toBeInTheDocument();
         expect(screen.getByRole('link', { name: 'Historial' })).toBeInTheDocument();
         expect(screen.getByRole('link', { name: 'Jugar' })).toBeInTheDocument();

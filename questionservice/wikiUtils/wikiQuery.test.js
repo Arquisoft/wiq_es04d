@@ -20,7 +20,6 @@ describe("WikiQuery", () => {
             { questionLabel: { value: "¿Cuál es la capital de Francia?1" }, answerLabel: { value: "París1" } },
             { questionLabel: { value: "¿Cuál es la capital de Francia?2" }, answerLabel: { value: "París2" } },
             { questionLabel: { value: "¿Cuál es la capital de Francia?3" }, answerLabel: { value: "París3" } }
-            // Agrega más elementos según necesites para tu prueba
         ];
 
         // Configurar wikiCall para retornar datos simulados
@@ -53,6 +52,6 @@ describe("WikiQuery", () => {
 
         // Verifica que la cantidad de preguntas y sus formatos sean los esperados
         expect(questions).toHaveLength(mockResults.length);
-        
+
     });
 });
