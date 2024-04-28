@@ -211,4 +211,71 @@ describe('Gateway Service', () => {
     expect(response.body.error).toBe('Error getting the history');
   });
 
+  it('should propagate parameters correctly on user update request', async () => {
+    mockSuccessResponse({ status: 'OK' });
+
+    const response = await request(app)
+        .patch('/user/userId')
+        .send({ username: 'updatedUsername' });
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body.status).toBe('OK');
+  });
+  it('should ensure data consistency when retrieving user history', async () => {
+    mockSuccessResponse({ username: 'user4', NumJugadas: 20, NumPreguntasJugadas: 100, NumAcertadas: 90, NumFalladas: 10 });
+
+    const response = await request(app)
+        .get('/history/testuser');
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toHaveProperty('username', 'user4');
+    expect(response.body).toHaveProperty('NumJugadas',20);
+    expect(response.body).toHaveProperty('NumPreguntasJugadas',100);
+    expect(response.body).toHaveProperty('NumAcertadas',90);
+    expect(response.body).toHaveProperty('NumFalladas',10);
+  });
+  it('should forward delete user request to user service and handle response', async () => {
+    mockSuccessResponse({ status: 'OK' });
+
+    const response = await request(app)
+        .delete('/user/12345');  // Supuesto ID de usuario
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body.status).toBe('OK');
+  });
+
+  it('should forward delete question request to generate service and handle response', async () => {
+    mockSuccessResponse({ status: 'OK' });
+
+    const response = await request(app)
+        .delete('/question/questionId123');
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body.status).toBe('OK');
+  });
+
+
+  it('should forward get ranking request to history service and return rankings', async () => {
+    mockSuccessResponse([{ username: 'user1', score: 95 }, { username: 'user2', score: 85 }]);
+
+    const response = await request(app)
+        .get('/getranking');
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body.length).toBeGreaterThan(0);
+    expect(response.body[0].username).toBe('user1');
+    expect(response.body[0].score).toBe(95);
+  });
+  it('should handle error deleting user from user service', async () => {
+    mockErrorResponse({ status: 404, message: 'User not found' });
+
+    const response = await request(app)
+        .delete('/user/nonexistentId');
+
+    expect(response.statusCode).toBe(404);
+    expect(response.body.error).toBe('User not found');
+  });
+
+
+
 });

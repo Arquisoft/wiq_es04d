@@ -56,6 +56,27 @@ Verifica que se manejen correctamente los errores al guardar el historial en el 
 * *should handle error getting history from history service with query*:
 Comprueba que se manejen correctamente los errores al obtener el historial desde el servicio de historial, usando una consulta específica y retornando el mensaje de error correspondiente.
 
+* *should handle error deleting non-existent user in user service*:
+Este test verifica que el servicio de gateway maneje adecuadamente la solicitud para eliminar un usuario que no existe en el servicio de usuarios, asegurando que se propague el mensaje de error correcto y se devuelva el código de estado adecuado.
+
+* *should propagate parameters correctly on user update request*:
+Este test asegura que los cambios en los datos de un usuario a través de una solicitud PATCH sean correctamente propagados al servicio de usuarios, validando así que los parámetros se transmitan correctamente y se obtenga una respuesta de éxito.
+
+* *should ensure data consistency when retrieving user history*:
+Este test verifica que el servicio de gateway proporcione una respuesta consistente y completa cuando se solicita el historial de un usuario específico, validando que todos los campos esperados estén presentes y sean correctos.
+
+* *should forward delete user request to user service and handle response*:
+Este test verifica que el endpoint de eliminación de usuario (DELETE /user/:id) funcione correctamente, reenviando la solicitud al servicio de usuarios y gestionando la respuesta adecuadamente.
+
+* *should forward delete question request to generate service and handle response*:
+Comprueba que el endpoint para eliminar preguntas (DELETE /question/:id) reenvíe correctamente la solicitud al servicio de generación de preguntas y maneje las respuestas adecuadamente.
+
+* *should forward get ranking request to history service and return rankings*:
+Asegura que el endpoint para obtener el ranking de usuarios (GET /getranking) reenvíe correctamente la solicitud al servicio de historial y reciba la lista de rankings esperada.
+
+* *should handle error deleting user from user service*:
+Este test verifica que el servicio de gateway maneje correctamente los errores retornados por el servicio de usuarios al intentar eliminar un usuario que no existe o cuando hay un fallo en la operación.
+
 ==== Tests Question Service
 * *Should generate questions /generatequestions*:
 Verifica que el endpoint /generatequestions genere correctamente las preguntas solicitadas y las almacene en la base de datos. Se espera que se generen y cuenten 100 preguntas en la base de datos tras la ejecución.
