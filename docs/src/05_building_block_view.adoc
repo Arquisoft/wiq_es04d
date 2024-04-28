@@ -3,104 +3,46 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-building-block-view]]
 
 
-== Vista de Bloque de Construcción  (EN desarollo) 🗳️
-image::Building Block View.jpg["Building Block View"]
+== Vista de Bloque de Construcción
 
-
-=== Sistema general de caja blanca 📏
+=== Sistema general de caja blanca
 
 Este diagrama del sistema general muestra una descripción del sistema con los componentes básicos.
 
-image::Whitebox Overall System.jpg["Whitebox Overall System"]
-
-
-
+image::blockview0.drawio.png["Whitebox Overall System"]
 
 Bloques de Construcción Contenidos::
 
-* User Interface (Frontend)
+* wiq_es0d: la aplicación web. Los usuarios pueden usarla para jugar o pueden usar su API. Usa Wikidata para generar las preguntas.
 
-* Lógica de Negocio(Backend)
+=== Nivel 2
 
-* Base datos
+image::blockview1.drawio.png["Nivel 2"]
 
-* API Preguntas 
+==== White Box _webapp_
 
+Interfaz web.
 
-Interfaces Importantes::
+==== White Box _gatewayservice_
 
+Puente entre webapp y resto de componentes.
 
-EN DESARROLLO.
+==== White Box _questionservice_
 
+Generador de las preguntas.
 
-==== <Interfaz Gráfica>
-[options="header",cols="1,2"]
-|===
-| UI | Descripción
-| Proposito / Responsabilidad | La Interfaz de Usuario (UI) - Black Box 1 es responsable de proporcionar una interfaz interactiva y amigable para los usuarios finales. Sirve como el punto principal de interacción entre la aplicación y los usuarios, y facilita la experiencia general del usuario.
-| Interface(s) | Interfaz de Entrada del Usuario: Acepta la entrada del usuario a través de varios controles, como botones, formularios y campos de entrada.
-Interfaz de Visualización: Renderiza y muestra información al usuario, incluyendo datos, mensajes y elementos visuales.
-| Caracteristicas de Calidad / Rendimiento | Capacidad de Respuesta: La UI debe responder de manera rápida a las interacciones del usuario para garantizar una experiencia fluida y eficiente.
-Accesibilidad: Adhiere a los estándares de accesibilidad para proporcionar una experiencia inclusiva para los usuarios.
-|===
+=== Nivel 3.
 
+image::blockview2.drawio.png["Nivel 3"]
 
+==== White Box _authservice_
 
-=== <Loggin>
+Gestión del inicio de sesión.
 
-Su función principal es permitir el acceso a los usuarios a la aplicación , y guardar los resultados de estos.
+==== White Box _historyservice_
 
+Gestión del histórico de participación de los usuarios en el sistema.
 
+==== White Box _userservice_
 
-==== <Api de preguntas>
-Su propósito es proporcionar preguntas de manera dinámica al usuario.
-
-
-EN DESARROLLO.
-
-==== <Lógica de negocio >
-Se encargará de gestionar toda la programación necesaria de cara a la lógica.
-
-EN DESARROLLO.
-
-==== <Base de datos>
-Dará almacenamiento al sistema de manera persistente y a los récords de los usuarios.
-
-EN DESARROLLO.
-
-=== Level 2
-
-==== White Box _<Interfaz de usuario>_
-
-En desarollo.
-
-==== White Box _<Login>_
-
-En desarollo.
-
-
-==== White Box _<Api preguntas>_
-
-En desarollo.
-
-==== White Box _<Logica de negocio >_
-
-En desarollo.
-
-
-=== Level 3 En desarrollo.
-
-
-==== White Box <_building block x.1_>
-
-En desarollo.
-
-
-==== White Box <_building block x.2_>
-
-En desarollo.
-
-
-==== White Box <_building block y.1_>
-
-En desarollo.
+Gestión del registro de usuarios.
