@@ -1,72 +1,124 @@
-import React from 'react';
-import { render, fireEvent, screen, waitFor } from '@testing-library/react';
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
+import { render, screen } from '@testing-library/react';
 import AddUser from './AddUser';
-import { BrowserRouter as Router } from 'react-router-dom';
-import {AuthProvider} from "../../AuthContext";
-const mockAxios = new MockAdapter(axios);
+import { BrowserRouter } from 'react-router-dom';
+import { AuthContext } from '../../AuthContext';
+import { fireEvent, waitFor } from '@testing-library/react';
+import axios from 'axios';
+jest.mock('axios');
+const mockHandleLogin = jest.fn();
 
-describe('AddUser component', () => {
-  beforeEach(() => {
-    mockAxios.reset();
-  });
+test('renderiza el formulario de registro', () => {
+  render(
+      <BrowserRouter>
+        <AuthContext.Provider value={{ handleLogin: mockHandleLogin }}>
+          <AddUser />
+        </AuthContext.Provider>
+      </BrowserRouter>
+  );
 
-  it('should add user successfully', async () => {
-    render(
-        <Router>
-          <AuthProvider>
-            <AddUser />
-          </AuthProvider>
-        </Router>
-    );
+  expect(screen.getByLabelText(/nombre de usuario/i)).toBeInTheDocument();
+  expect(screen.getByLabelText(/contraseña/i)).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: /registrarse/i })).toBeInTheDocument();
+});
+test('Errores de validacion al crear una nueva cuenta', async () => {
+  render(
+      <BrowserRouter>
+        <AuthContext.Provider value={{ handleLogin: mockHandleLogin }}>
+          <AddUser />
+        </AuthContext.Provider>
+      </BrowserRouter>
+  );
 
-    const usernameInput = screen.getByLabelText(/Nombre de Usuario/i);
-    const passwordInput = screen.getByLabelText(/Contraseña/i);
-    const addUserButton = screen.getByRole('button', { name: /Registrarse/i });
+  fireEvent.change(screen.getByLabelText(/nombre de usuario/i), { target: { value: 'abc' } });
+  fireEvent.click(screen.getByRole('button', { name: /registrarse/i }));
 
-    // Mock the axios.post request to simulate a successful response
-    mockAxios.onPost('http://localhost:8000/adduser').reply(200);
-
-    // Simulate user input
-    fireEvent.change(usernameInput, { target: { value: 'testUser' } });
-    fireEvent.change(passwordInput, { target: { value: 'testPassword2' } });
-
-    // Trigger the add user button click
-    fireEvent.click(addUserButton);
-
-    // Wait for the Snackbar to be open
-    await waitFor(() => {
-      expect(screen.getByText(/Usuario añadido correctamente/i)).toBeInTheDocument();
-    });
-  });
-
-  it('should handle error when adding user', async () => {
-    render(
-        <Router>
-          <AuthProvider>
-            <AddUser />
-          </AuthProvider>
-        </Router>
-    );
-
-    const usernameInput = screen.getByLabelText(/Nombre de Usuario/i);
-    const passwordInput = screen.getByLabelText(/Contraseña/i);
-    const addUserButton = screen.getByRole('button', { name: /Registrarse/i });
-
-    // Mock the axios.post request to simulate an error response
-    mockAxios.onPost('http://localhost:8000/adduser').reply(500, { error: 'Internal Server Error' });
-
-    // Simulate user input
-    fireEvent.change(usernameInput, { target: { value: 'testUser' } });
-    fireEvent.change(passwordInput, { target: { value: 'testPassword2' } });
-
-    // Trigger the add user button click
-    fireEvent.click(addUserButton);
-
-    // Wait for the error Snackbar to be open
-    await waitFor(() => {
-      expect(screen.getByText(/Error: Internal Server Error/i)).toBeInTheDocument();
-    });
+  await waitFor(() => {
+    expect(screen.getByText(/el nombre de usuario debe tener al menos 4 caracteres/i)).toBeInTheDocument();
   });
 });
+
+test('La contraseña debe tener al menos 8 caracteres', async () => {
+  render(
+      <BrowserRouter>
+        <AuthContext.Provider value={{ handleLogin: mockHandleLogin }}>
+          <AddUser />
+        </AuthContext.Provider>
+      </BrowserRouter>
+  );
+
+  fireEvent.change(screen.getByLabelText(/nombre de usuario/i), { target: { value: 'testuser' } });
+  fireEvent.change(screen.getByLabelText(/contraseña/i), { target: { value: 'abc' } });
+  fireEvent.click(screen.getByRole('button', { name: /registrarse/i }));
+
+  await waitFor(() => {
+    expect(screen.getByText(/la contraseña debe tener al menos 8 caracteres/i)).toBeInTheDocument();
+  });
+});
+
+test('El user debe tener al menos 4 caracteres', async () => {
+  render(
+      <BrowserRouter>
+        <AuthContext.Provider value={{ handleLogin: mockHandleLogin }}>
+          <AddUser />
+        </AuthContext.Provider>
+      </BrowserRouter>
+  );
+
+  fireEvent.change(screen.getByLabelText(/nombre de usuario/i), { target: { value: 'testuser' } });
+  fireEvent.change(screen.getByLabelText(/contraseña/i), { target: { value: 'abcdefgh' } });
+  fireEvent.click(screen.getByRole('button', { name: /registrarse/i }));
+
+  await waitFor(() => {
+    expect(screen.getByText(/la contraseña debe contener al menos una letra mayúscula/i)).toBeInTheDocument();
+  });
+});
+
+test('La contraseña debe contener al menos un número', async () => {
+  render(
+      <BrowserRouter>
+        <AuthContext.Provider value={{ handleLogin: mockHandleLogin }}>
+          <AddUser />
+        </AuthContext.Provider>
+      </BrowserRouter>
+  );
+
+  fireEvent.change(screen.getByLabelText(/nombre de usuario/i), { target: { value: 'testuser' } });
+  fireEvent.change(screen.getByLabelText(/contraseña/i), { target: { value: 'Abcdefgh' } });
+  fireEvent.click(screen.getByRole('button', { name: /registrarse/i }));
+
+  await waitFor(() => {
+    expect(screen.getByText(/la contraseña debe contener al menos un número/i)).toBeInTheDocument();
+  });
+});
+test('Registro exitoso de usuario', async () => {
+  // Simular respuesta exitosa de la API
+  axios.post.mockImplementation((url) => {
+    if (url.includes('/adduser')) {
+      return Promise.resolve({ status: 200 });
+    } else if (url.includes('/login')) {
+      return Promise.resolve({ data: { token: 'fakeToken123' } });
+    }
+  });
+
+  render(
+      <BrowserRouter>
+        <AuthContext.Provider value={{ handleLogin: mockHandleLogin }}>
+          <AddUser />
+        </AuthContext.Provider>
+      </BrowserRouter>
+  );
+
+  // Llenar el formulario con datos válidos
+  fireEvent.change(screen.getByLabelText(/nombre de usuario/i), { target: { value: 'validUser' } });
+  fireEvent.change(screen.getByLabelText(/contraseña/i), { target: { value: 'Valid1234' } });
+  fireEvent.click(screen.getByRole('button', { name: /registrarse/i }));
+
+  // Esperar que se llame a handleLogin y luego navegar a '/'
+  await waitFor(() => {
+    expect(screen.getByText('Usuario añadido correctamente')).toBeInTheDocument();
+  });
+
+  // Verificar redireccionamiento a la página inicial
+  expect(window.location.pathname).toBe('/');
+});
+
