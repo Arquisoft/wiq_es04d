@@ -61,6 +61,18 @@ describe('POST /savehistory', () => {
     expect(response.body.NumAcertadas).toBe(5); // Verificar que se han añadido las nuevas preguntas acertadas
     expect(response.body.NumFalladas).toBe(5); // Verificar que se han añadido las nuevas preguntas falladas
   });
+  test('should reject history entry with missing data', async () => {
+    const userData = {
+      username: 'testuser',
+      // Falta NumPreguntasJugadas y NumAcertadas
+    };
+
+    const response = await request(app).post('/savehistory').send(userData);
+    expect(response.status).toBe(400);
+    expect(response.body.error).toContain('Error al guardar el historial');  // Mensaje de error debe ser específico para la falta de datos
+  });
+
+
 });
 
 describe('GET /gethistory', () => {
@@ -95,6 +107,13 @@ describe('GET /gethistory', () => {
     expect(response.body.NumAcertadas).toBe(0);
     expect(response.body.NumFalladas).toBe(0);
   });
+  test('should handle non-existent username on get history', async () => {
+    const invalidUsername = "noexisto";
+    const response = await request(app).get(`/gethistory/${invalidUsername}`);
+    expect(response.status).toBe(404);
+    expect(response.body.error).toBe('No se encontro historial para este usuario');
+  });
+
 });
 
 describe('GET /gethistory/:username', () => {
@@ -118,5 +137,58 @@ describe('GET /gethistory/:username', () => {
     expect(response.body.NumAcertadas).toBe(3);
     expect(response.body.NumFalladas).toBe(2);
   });
+});
+describe('/getranking endpoint', () => {
+  beforeEach(async () => {
+    // Limpiar la colección antes de cada test para evitar contaminación de datos
+    await History.deleteMany({});
+  });
 
+  test('should handle insufficient data for rankings', async () => {
+    const response = await request(app).get('/getranking');
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual([]);  // Espera un array vacío si no hay datos suficientes para el ranking
+  });
+
+  test('should return a correct ranking of players based on their scores', async () => {
+    // Crear entradas de historial para múltiples usuarios
+    await History.create([
+      { username: 'user1', NumJugadas: 10, NumPreguntasJugadas: 50, NumAcertadas: 25, NumFalladas: 25 },
+      { username: 'user2', NumJugadas: 6, NumPreguntasJugadas: 30, NumAcertadas: 15, NumFalladas: 15 },
+      { username: 'user3', NumJugadas: 4, NumPreguntasJugadas: 20, NumAcertadas: 10, NumFalladas: 10 }
+    ]);
+
+    const response = await request(app).get('/getranking');
+    expect(response.status).toBe(200);
+    expect(response.body.length).toBe(3);
+    expect(response.body[0].username).toBe('user1');
+    expect(response.body[1].username).toBe('user2');
+    expect(response.body[2].username).toBe('user3');
+  });
+
+  test('should correctly calculate posterior probabilities in rankings', async () => {
+    // Crear entradas específicas para verificar el cálculo de las probabilidades a posteriori
+    await History.create([
+      { username: 'user4', NumJugadas: 20, NumPreguntasJugadas: 100, NumAcertadas: 90, NumFalladas: 10 },
+      { username: 'user5', NumJugadas: 20, NumPreguntasJugadas: 100, NumAcertadas: 60, NumFalladas: 40 }
+    ]);
+
+    const response = await request(app).get('/getranking');
+    expect(response.status).toBe(200);
+    // Comprobar que el cálculo de la probabilidad a posteriori coloca a user4 antes que a user5
+    expect(response.body[0].username).toBe('user4');
+    expect(response.body[1].username).toBe('user5');
+    expect(response.body[0].posteriorProbability).toBeGreaterThan(response.body[1].posteriorProbability);
+  });
+
+  test('should handle server error during ranking calculation', async () => {
+    // Simular un error en la base de datos
+    jest.spyOn(History, 'find').mockImplementationOnce(() => Promise.reject(new Error('Internal server error')));
+
+    const response = await request(app).get('/getranking');
+    expect(response.status).toBe(500);
+    expect(response.body.message).toContain('Internal server error');
+    // Restaurar mocks para evitar afectar otros tests
+    jest.restoreAllMocks();
+  });
 });

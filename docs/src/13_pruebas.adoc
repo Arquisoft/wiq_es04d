@@ -111,13 +111,21 @@ Este test verifica la funcionalidad del sistema para rechazar tokens JWT que no 
 * *POST /savehistory*:
 * should save history entry for a new user that plays a game: Este test verifica que el endpoint /savehistory pueda crear una nueva entrada de historial para un usuario que no existía previamente en la base de datos. Evalúa si la entrada se almacena correctamente y si los datos devueltos en la respuesta coinciden con los datos enviados, incluyendo la correcta diferenciación entre preguntas acertadas y falladas.
 * should update history entry for an existing user: Este test comprueba que el endpoint /savehistory actualice correctamente una entrada de historial existente para un usuario, sumando correctamente las nuevas jugadas, preguntas jugadas, preguntas acertadas y preguntas falladas a los totales previos.
+* should reject history entry with missing data: Este test verifica que el endpoint /savehistory maneje adecuadamente situaciones donde los datos esenciales como NumPreguntasJugadas o NumAcertadas no se proporcionen en la solicitud. Se espera que el servidor responda con un código de estado 400 y un mensaje de error claro indicando qué dato falta.
 
 * *GET /gethistory*:
 * should get history entry for an existing user: Este test verifica que el endpoint /gethistory (con un query param) recupere correctamente la entrada de historial de un usuario existente. Evalúa si los datos devueltos coinciden exactamente con los que están almacenados en la base de datos.
 * should create new history entry for a non-existing user: Este test comprueba que el endpoint /gethistory sea capaz de manejar solicitudes para usuarios no existentes correctamente, retornando una entrada de historial con contadores en cero.
+* should handle non-existent username on get history: Este test verifica que el endpoint /gethistory responda adecuadamente cuando se consulta el historial de un usuario que no existe. Se espera que el servidor responda con un código de estado 404.
 
 * *GET /gethistory/:username*:
 * should get history entry for an existing user: Similar al test anterior bajo el endpoint /gethistory, pero esta vez utilizando una ruta con parámetro. Verifica si la solicitud a /gethistory/:username recupera correctamente la entrada de historial para un usuario específico usando la identificación del usuario en la URL, asegurándose de que todos los datos devueltos coincidan con los almacenados.
+
+* *GET /getranking*:
+* should handle insufficient data for rankings: Verifica que cuando no hay datos suficientes para calcular un ranking, el servicio devuelve correctamente un arreglo vacío, lo cual es importante para evitar errores en la visualización del cliente cuando no hay datos disponibles.
+* should return a correct ranking of players based on their scores: Asegura que el servicio calcula y devuelve el ranking de los jugadores de manera correcta basándose en sus respuestas acertadas y el total de preguntas jugadas, ordenando los jugadores según sus rendimientos.
+* should correctly calculate posterior probabilities in rankings: Este test evalúa si se calcula adecuadamente las probabilidades a posteriori basadas en las estadísticas de juego de los jugadores, asegurando que los resultados del ranking sean justos y precisos.
+* should handle server error during ranking calculation: Este test asegura que /getranking maneje correctamente los errores internos durante el cálculo del ranking, devolviendo un estado de error 500 para indicar problemas en el proceso.
 
 ==== Tests User Service
 * *should add a new user on POST /adduser*:
