@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.22">
+<meta name="generator" content="Asciidoctor 2.0.20">
 <title>WIQ 4D</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -140,7 +140,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #content::before{content:none}
 #header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
 #header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
-#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
 #header .details span:first-child{margin-left:-.125em}
 #header .details span.email a{color:rgba(0,0,0,.85)}
@@ -162,7 +162,6 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
-body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 #toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
@@ -328,7 +327,7 @@ a.image{text-decoration:none;display:inline-block}
 a.image object{pointer-events:none}
 sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
 sup.footnote a,sup.footnoteref a{text-decoration:none}
-sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 #footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
 #footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
@@ -470,12 +469,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_decisiones_organizativas">4.2. Decisiones organizativas</a></li>
 </ul>
 </li>
-<li><a href="#section-building-block-view">5. Vista de Bloque de Construcción  (EN desarollo) 🗳️</a>
+<li><a href="#section-building-block-view">5. Vista de Bloque de Construcción</a>
 <ul class="sectlevel2">
-<li><a href="#_sistema_general_de_caja_blanca">5.1. Sistema general de caja blanca 📏</a></li>
-<li><a href="#_loggin">5.2. &lt;Loggin&gt;</a></li>
-<li><a href="#_level_2">5.3. Level 2</a></li>
-<li><a href="#_level_3_en_desarrollo">5.4. Level 3 En desarrollo.</a></li>
+<li><a href="#_sistema_general_de_caja_blanca">5.1. Sistema general de caja blanca</a></li>
+<li><a href="#_nivel_2">5.2. Nivel 2</a></li>
+<li><a href="#_nivel_3">5.3. Nivel 3.</a></li>
 </ul>
 </li>
 <li><a href="#section-runtime-view">6. Vista de Ejecución 📽️</a>
@@ -879,7 +877,7 @@ Santiago Lopez Laso &#8594; <a href="mailto:UO277369@uniovi.es">UO277369@uniovi.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Azure</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Para el alojamiemto de la pagina web se usara una maquina virtual Azure con el credito de estudiante proporcionado</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Para el alojamiemto de la página web se usara una maquina virtual Azure con el credito de estudiante proporcionado</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Docker</p></td>
@@ -946,21 +944,16 @@ unos test para asegurar el correcto despliegue del proyecto.</p></td>
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-building-block-view">5. Vista de Bloque de Construcción  (EN desarollo) 🗳️</h2>
+<h2 id="section-building-block-view">5. Vista de Bloque de Construcción</h2>
 <div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="./images/Building%20Block%20View.jpg" alt="Building Block View">
-</div>
-</div>
 <div class="sect2">
-<h3 id="_sistema_general_de_caja_blanca">5.1. Sistema general de caja blanca 📏</h3>
+<h3 id="_sistema_general_de_caja_blanca">5.1. Sistema general de caja blanca</h3>
 <div class="paragraph">
 <p>Este diagrama del sistema general muestra una descripción del sistema con los componentes básicos.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/Whitebox%20Overall%20System.jpg" alt="Whitebox Overall System">
+<img src="./images/blockview0.drawio.png" alt="Whitebox Overall System">
 </div>
 </div>
 <div class="dlist">
@@ -970,136 +963,63 @@ unos test para asegurar el correcto despliegue del proyecto.</p></td>
 <div class="ulist">
 <ul>
 <li>
-<p>User Interface (Frontend)</p>
-</li>
-<li>
-<p>Logica de Negocio(Backend)</p>
-</li>
-<li>
-<p>Base datos</p>
-</li>
-<li>
-<p>API Preguntas</p>
+<p>wiq_es0d: la aplicación web. Los usuarios pueden usarla para jugar o pueden usar su API. Usa Wikidata para generar las preguntas.</p>
 </li>
 </ul>
 </div>
 </dd>
-<dt class="hdlist1">Interfaces Importantes</dt>
-<dd>
-<p>EN DESARROLLO.</p>
-</dd>
 </dl>
 </div>
-<div class="sect3">
-<h4 id="_interfaz_gráfica">5.1.1. &lt;Interfaz Gráfica&gt;</h4>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 66.6667%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">UI</th>
-<th class="tableblock halign-left valign-top">Descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Proposito / Responsabilidad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">La Interfaz de Usuario (UI) - Black Box 1 es responsable de proporcionar una interfaz interactiva y amigable para los usuarios finales. Sirve como el punto principal de interacción entre la aplicación y los usuarios, y facilita la experiencia general del usuario.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Interface(s)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Interfaz de Entrada del Usuario: Acepta la entrada del usuario a través de varios controles, como botones, formularios y campos de entrada.
-Interfaz de Visualización: Renderiza y muestra información al usuario, incluyendo datos, mensajes y elementos visuales.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Caracteristicas de Calidad / Rendimiento</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Capacidad de Respuesta: La UI debe responder de manera rápida a las interacciones del usuario para garantizar una experiencia fluida y eficiente.
-Accesibilidad: Adhiere a los estándares de accesibilidad para proporcionar una experiencia inclusiva para los usuarios.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 <div class="sect2">
-<h3 id="_loggin">5.2. &lt;Loggin&gt;</h3>
-<div class="paragraph">
-<p>Su función principal es permitir el acceso a los usuarios a la aplicación , y guardar los resultados de estos.</p>
-</div>
-<div class="sect3">
-<h4 id="_api_de_preguntas">5.2.1. &lt;Api de preguntas&gt;</h4>
-<div class="paragraph">
-<p>Su propósito es proporcionar preguntas de manera dinámica al usuario.</p>
-</div>
-<div class="paragraph">
-<p>EN DESARROLLO.</p>
+<h3 id="_nivel_2">5.2. Nivel 2</h3>
+<div class="imageblock">
+<div class="content">
+<img src="./images/blockview1.drawio.png" alt="Nivel 2">
 </div>
 </div>
 <div class="sect3">
-<h4 id="_lógica_de_negocio">5.2.2. &lt;Lógica de negocio &gt;</h4>
+<h4 id="_white_box_webapp">5.2.1. White Box <em>webapp</em></h4>
 <div class="paragraph">
-<p>Se encargará de gestionar toda la programación necesaria de cara a la lógica.</p>
-</div>
-<div class="paragraph">
-<p>EN DESARROLLO.</p>
+<p>Interfaz web.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_base_de_datos">5.2.3. &lt;Base de datos&gt;</h4>
+<h4 id="_white_box_gatewayservice">5.2.2. White Box <em>gatewayservice</em></h4>
 <div class="paragraph">
-<p>Dará almacenamiento al sistema de manera persistente y a los récords de los usuarios.</p>
+<p>Puente entre webapp y resto de componentes.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_white_box_questionservice">5.2.3. White Box <em>questionservice</em></h4>
 <div class="paragraph">
-<p>EN DESARROLLO.</p>
+<p>Generador de las preguntas.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_level_2">5.3. Level 2</h3>
-<div class="sect3">
-<h4 id="_white_box_interfaz_de_usuario">5.3.1. White Box <em>&lt;Interfaz de usuario&gt;</em></h4>
-<div class="paragraph">
-<p>En desarollo.</p>
+<h3 id="_nivel_3">5.3. Nivel 3.</h3>
+<div class="imageblock">
+<div class="content">
+<img src="./images/blockview2.drawio.png" alt="Nivel 3">
 </div>
 </div>
 <div class="sect3">
-<h4 id="_white_box_login">5.3.2. White Box <em>&lt;Login&gt;</em></h4>
+<h4 id="_white_box_authservice">5.3.1. White Box <em>authservice</em></h4>
 <div class="paragraph">
-<p>En desarollo.</p>
+<p>Gestión del inicio de sesión.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_white_box_api_preguntas">5.3.3. White Box <em>&lt;Api preguntas&gt;</em></h4>
+<h4 id="_white_box_historyservice">5.3.2. White Box <em>historyservice</em></h4>
 <div class="paragraph">
-<p>En desarollo.</p>
+<p>Gestión del histórico de participación de los usuarios en el sistema.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_white_box_logica_de_negocio">5.3.4. White Box <em>&lt;Logica de negocio &gt;</em></h4>
+<h4 id="_white_box_userservice">5.3.3. White Box <em>userservice</em></h4>
 <div class="paragraph">
-<p>En desarollo.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_level_3_en_desarrollo">5.4. Level 3 En desarrollo.</h3>
-<div class="sect3">
-<h4 id="_white_box_building_block_x_1">5.4.1. White Box &lt;_building block x.1_&gt;</h4>
-<div class="paragraph">
-<p>En desarollo.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_white_box_building_block_x_2">5.4.2. White Box &lt;_building block x.2_&gt;</h4>
-<div class="paragraph">
-<p>En desarollo.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_white_box_building_block_y_1">5.4.3. White Box &lt;_building block y.1_&gt;</h4>
-<div class="paragraph">
-<p>En desarollo.</p>
+<p>Gestión del registro de usuarios.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1894,7 +1814,7 @@ Asegura que no se pueda registrar más de un usuario con el mismo nombre de usua
 <p>Creditos</p>
 </li>
 <li>
-<p>Pagina de Error (404)</p>
+<p>Página de Error (404)</p>
 </li>
 <li>
 <p>Historial</p>
@@ -1930,7 +1850,7 @@ Asegura que no se pueda registrar más de un usuario con el mismo nombre de usua
 <div class="sect2">
 <h3 id="_pruebas_e2e">13.2. Pruebas e2e</h3>
 <div class="paragraph">
-<p>Estas pruebas estan enfocadas en el correcto funcionamiento de la aplicacion cuando el usuario interactua con ella. Haciendo que las paginas muestren los resultados esperados y redirijan de manera correcta.</p>
+<p>Estas pruebas estan enfocadas en el correcto funcionamiento de la aplicacion cuando el usuario interactua con ella. Haciendo que las páginas muestren los resultados esperados y redirijan de manera correcta.</p>
 </div>
 <div class="paragraph">
 <p>Las features son:</p>
@@ -2052,10 +1972,10 @@ Asegura que no se pueda registrar más de un usuario con el mismo nombre de usua
 <div class="ulist">
 <ul>
 <li>
-<p>El diseño de la pagina es bastante intuitivo para los usuarios en especial para los que tiene alto conocimiento. Los usuarios con bajo conocimiento necesitaron de una pequeña intervencion por parte del observador.</p>
+<p>El diseño de la página es bastante intuitivo para los usuarios en especial para los que tiene alto conocimiento. Los usuarios con bajo conocimiento necesitaron de una pequeña intervencion por parte del observador.</p>
 </li>
 <li>
-<p>Para los usuarios de nivel bajo se les hace dificil tener que registrarse y a continuacion tener que logearse en la pagina.</p>
+<p>Para los usuarios de nivel bajo se les hace dificil tener que registrarse y a continuacion tener que logearse en la página.</p>
 </li>
 <li>
 <p>Los usuarios se quejan de que no se muestre cuando se acierta o se falla una pregunta.</p>
@@ -2077,7 +1997,7 @@ Asegura que no se pueda registrar más de un usuario con el mismo nombre de usua
 <div class="ulist">
 <ul>
 <li>
-<p>Agregar una pagina de ayuda para los usuarios que no sepan que pasos seguir para jugar. Ya sea tener que registrase en la pagina, como juagro o como usar la API (aunque la API tenga su documentacion).</p>
+<p>Agregar una página de ayuda para los usuarios que no sepan que pasos seguir para jugar. Ya sea tener que registrase en la página, como juagro o como usar la API (aunque la API tenga su documentacion).</p>
 </li>
 <li>
 <p>Añadir un pequeño aviso que te diga cuando se acierta o se falla la pregunta. Cuando se falla también se mostrara la respuesta correcta.</p>
@@ -2127,23 +2047,23 @@ Asegura que no se pueda registrar más de un usuario con el mismo nombre de usua
 </div>
 </li>
 <li>
-<p>Debido a la falta de tiempo no se podran implementar todas las mejoras que habia planteadas, sin embargo, estas son las decisiones de mejora tomadas por el equipo de desarrolladores.</p>
+<p>Debido a la falta de tiempo no se podrán implementar todas las mejoras que habia planteadas, sin embargo, estas son las decisiones de mejora tomadas por el equipo de desarrolladores.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>La unica mejora implementada, es evitar en la logica de generacion de preguntas que existan respuestas repetidas.</p>
+<p>La única mejora implementada, es evitar en la lógica de generación de preguntas que existan respuestas repetidas.</p>
 </li>
 <li>
-<p>Crear un sistema de recupearacion de contraseña, a traves del correo electronico, por lo habria que modificar el registro de usuarios.</p>
+<p>Crear un sistema de recupearación de contraseña, a traves del correo electrónico, por lo habría que modificar el registro de usuarios.</p>
 </li>
 <li>
-<p>Monitorizar el calculo del Ranking y valorar en el futuro si es correcto o hay que cambiarlo.</p>
+<p>Monitorizar el cálculo del Ranking y valorar en el futuro si es correcto o hay que cambiarlo.</p>
 </li>
 <li>
-<p>Introducir una cuenta atras cuando le das a jugar una partida nueva para que al usuario de tiempo a entrar en contexto.</p>
+<p>Introducir una cuenta atrás cuando le das a jugar una partida nueva para que al usuario de tiempo a entrar en contexto.</p>
 </li>
 <li>
-<p>Añadir permisos de usuario para realizar acciones especiales en la pagina y asi poder borrar o editar usuario a traves de la API.</p>
+<p>Añadir permisos de usuario para realizar acciones especiales en la página y asi poder borrar o editar usuario a traves de la API.</p>
 </li>
 </ul>
 </div>
@@ -2154,7 +2074,7 @@ Asegura que no se pueda registrar más de un usuario con el mismo nombre de usua
 <div class="sect3">
 <h4 id="_3ª_iteraccion">13.4.3. ¿3ª Iteraccion?</h4>
 <div class="paragraph">
-<p>Para probar la version final de la aplicacion que se entregará a los profesores, se ha realizado una ultima prueba para comprobar el correcto funcionamiento de todo con un par de usuarios ajeno a la aplicacion. Su nivel es medio y alto.
+<p>Para probar la versión final de la aplicación que se entregará a los profesores, se ha realizado una última prueba para comprobar el correcto funcionamiento de todo con un par de usuarios ajeno a la aplicación. Su nivel es medio y alto.
 Han destacado que todo es correcto en general (Obviando los puntos de la 2ª iteracción).</p>
 </div>
 </div>
@@ -2171,7 +2091,7 @@ Han destacado que todo es correcto en general (Obviando los puntos de la 2ª ite
 <div id="footer">
 <div id="footer-text">
 Version 8.2 EN<br>
-Last updated 2024-04-24 17:44:47 +0200
+Last updated 2024-04-26 15:20:01 +0200
 </div>
 </div>
 </body>
