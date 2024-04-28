@@ -10,8 +10,6 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 image::Diagrama de secuencia plantuml.png["Diagrama de secuencia plantuml"]
 
-Diagrama de secuencia con plantuml (se contempla sólo el uso correcto de la aplicación)
-
 
 === Escenario de Ejecución 2
 

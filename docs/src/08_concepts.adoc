@@ -2,10 +2,8 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 [[section-concepts]]
 == Conceptos Transversales 🧭
-Estos conceptos todavía no han sido aprobados ni implementados, pero dan una idea general del proyecto.
-
 === Modelo de Dominio 
-Esta no sera la versión final del modelo de dominio. Es una representación de la aplicación en la actualidad.
+Representación UML de las entidades que conforman el sistema. 
 
 image::08_diagrama_modelo_dominio(V2).png["Modelo de dominio simple provisional"]
 

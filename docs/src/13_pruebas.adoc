@@ -195,9 +195,9 @@ Scenario: The user register in the site so he can see history
 
 
 === Pruebas de carga
-Se enfocaran en evaluar cómo se comporta nuestro sistema bajo condiciones de alto tráfico y uso intensivo. Este tipo de pruebas es crucial para identificar cuellos de botella y asegurar que nuestra aplicación pueda manejar eficientemente el volumen de usuarios y transacciones esperado en producción, sin comprometer el rendimiento ni la estabilidad.
+Se enfocarán en evaluar cómo se comporta nuestro sistema bajo condiciones de alto tráfico y uso intensivo. Este tipo de pruebas es crucial para identificar cuellos de botella y asegurar que nuestra aplicación pueda manejar eficientemente el volumen de usuarios y transacciones esperado en producción, sin comprometer el rendimiento ni la estabilidad.
 Se han realizado 2 pruebas de carga con diferente numero de usuarios simultaneos.
-Las pruebas seguiran el siguiente procedimiento sencillo, pero que servira para probar los servicios y como se comportan ante el estres generado por muchos usuarios:
+Las pruebas seguirán el siguiente procedimiento sencillo, pero que servirá para probar los servicios y como se comportan ante el estres generado por muchos usuarios:
 
 . El usuario se logea en la pagina
 . Juega una partida completa
@@ -215,50 +215,48 @@ Estos son los resultados con 900 seguidores concurrentes.
 image::Pruebacarga900.png["Prueba de carga 900 usuarios"]
 
 Podemos observar que la primera prueba la soporta de manera mas o menos asumible. Sin embargo, la segunda prueba ya esta sorpasando el limite de usuarios concurrentes y empiezan a fallar los servicios.
-Esto se debe principalmente a las bajas prestaciones de la maquina virtual, marcadas por el credito disponible como estudiantes.
-
-**(resultados)**
+Esto se debe principalmente a las bajas prestaciones de la maquina virtual, marcadas por el credito disponible como estudiantes que nos proporciona Azure.
 
 === Pruebas de usabilidad
 En este apartado, nos centraremos en las pruebas de usabilidad, un componente esencial para asegurar que nuestro sistema sea intuitivo, eficiente y accesible para todos los usuarios. Este tipo de pruebas evalúa la interacción entre el usuario y la aplicación, con el objetivo de identificar áreas de mejora en la interfaz de usuario que faciliten una mejor experiencia general.
 
 Las pruebas se han dividido en iteraciones. En cada interacion hay 3 fases.
 
-- 1. Fase de pruebas, con un grupo de usuarios variado (no muy extenso) en cuanto a conocimientos y soltura en el area de la informática donde los desarrolladores toman nota de las dificultades de los usuarios, sin intervenir, a no ser que sea estrictamente necesario.
+. Fase de pruebas, con un grupo de usuarios variado (no muy extenso) en cuanto a conocimientos y soltura en el area de la informática donde los desarrolladores toman nota de las dificultades de los usuarios, sin intervenir, a no ser que sea estrictamente necesario.
 
-- 2. Fase de estudio de los resultado. El equipo de desarrolladores se reune y decide que mejoras se han de implementar basadas en las observacions de la fase anterior.
+. Fase de estudio de los resultado. El equipo de desarrolladores se reune y decide que mejoras se han de implementar basadas en las observacions de la fase anterior.
 
-- 3. Fase de Implementación. Las mejoras decididas se implementan y se repite el proceso, para comprobar que hay una mejoria en la usabilidad.
+. Fase de Implementación. Las mejoras decididas se implementan y se repite el proceso, para comprobar que hay una mejoria en la usabilidad.
 
 Debido al escaso tiempo de desarrollo tan solo se relizaran 2 iteracciones de estas pruebas. A continuación se detallan paso a paso se desarrollaron las pruebas.
 
 ==== 1ª Iteracción
-1. Se ha seleccionado el grupo de pruebas. El grupo consta de 2 personas con altos conocimientos de informatica, 2 personas con un nivel medio y 2 personas con un nivel bajo. Se deja al grupo trabajar mientras los desarrolladores observan.
+. Se ha seleccionado el grupo de pruebas. El grupo consta de 2 personas con altos conocimientos de informatica, 2 personas con un nivel medio y 2 personas con un nivel bajo. Se deja al grupo trabajar mientras los desarrolladores observan.
 
-2. Los resultados obtenidos son los siguientes.
-- El diseño de la página es bastante intuitivo para los usuarios en especial para los que tiene alto conocimiento. Los usuarios con bajo conocimiento necesitaron de una pequeña intervencion por parte del observador.
-- Para los usuarios de nivel bajo se les hace dificil tener que registrarse y a continuacion tener que logearse en la página.
+. Los resultados obtenidos son los siguientes.
+- El diseño de la página es bastante intuitivo en especial para los usuarios que tiene alto conocimiento. Los usuarios con bajo conocimiento necesitaron de una pequeña intervención por parte del observador.
+- A los usuarios de nivel bajo se les hace difícil tener que registrarse y a continuación, tener que logearse en la página.
 - Los usuarios se quejan de que no se muestre cuando se acierta o se falla una pregunta.
-- Los usuario de nivel alto destacan que no hay restricciones en el nombre de usuario y la contraseña
+- Los usuario de nivel alto destacan que no hay restricciones en el nombre de usuario y la contraseña.
 - Dificultad en las preguntas.
 - Fallos de formato en las preguntas.
 
-3. Las soluciones que se han aplicado a las observaciones tras debatir entre los desarrolladores son las siguientes.
-- Agregar una página de ayuda para los usuarios que no sepan que pasos seguir para jugar. Ya sea tener que registrase en la página, como juagro o como usar la API (aunque la API tenga su documentacion).
-- Añadir un pequeño aviso que te diga cuando se acierta o se falla la pregunta. Cuando se falla también se mostrara la respuesta correcta.
-- Añadir restricciones a la creacion de usuarios. Nombre de usuario de minimo 4 caracteres y contraseña con minimo una letra mayuscula y un número.
-- Se han revisado las plantillas de preguntas con mayor dicicultad y se han añadido alguna mas sencilla.
+. Las soluciones que se han aplicado a las observaciones tras debatir entre los desarrolladores son las siguientes.
+- Agregar una página de ayuda para los usuarios que no sepan que pasos seguir para jugar. Ya sea tener que registrase en la página, como jugar o como usar la API (aunque la API tenga su documentacion).
+- Añadir un pequeño aviso que te diga cuando se acierta o se falla la pregunta. Cuando se falla también se mostrará la respuesta correcta.
+- Añadir restricciones a la creación de usuarios. Nombre de usuario de mínimo 4 caracteres y contraseña con mínimo una letra mayúscula y un número.
+- Se han revisado las plantillas de preguntas con mayor dificultad y se han añadido alguna mas sencilla.
 - Se ha corregido los errores de formato de las respuestas donde existen fechas.
 
 
 ==== 2ª Iteracción
-1. Para la segunda iteraccion se ha contado con un grupo más reducido por incompatibilidad en los horarios. Sin embargo seguimos contando con un usuario de cada nivel. Los resultados observados de esta segunda y ultima iteraccion se detallan a continuación.
-2. Las observaciones han cambiado y se han solucionado practicamente todos los problemas de la primera version, sin embargo, han aparecido problematicas nuevas.
-- La observacion mas importante de todos los usuarios es que no se puede recueperar la contraseña en caso de que se le olvide al usuario.
-- El calculo del Ranking es poco intuitivo.
-- Los usuarios poco habituados a los juegos destacan que la velocidad de la entrada al juego es demasiado rapida y no da tiempo a entrar en contexto.
-- Posibilidad de borrar usuarios desde la API sin tener permisos especiales. Esta problematica afecta a los usuarios mas avanzados.
-- Repeticion de las respuestas en la pregunta.
+1. Para la segunda iteraccion se ha contado con un grupo más reducido por incompatibilidad en los horarios. Sin embargo, seguimos contando con un usuario de cada nivel. Los resultados observados de esta segunda y última iteración se detallan a continuación.
+2. Las observaciones han cambiado y se han solucionado prácticamente todos los problemas de la primera versión, sin embargo, han aparecido problemáticas nuevas.
+- La observación mas importante de todos los usuarios es que no se puede recuperar la contraseña en caso de que se le olvide al usuario.
+- El cálculo del Ranking es poco intuitivo.
+- Los usuarios poco habituados a los juegos destacan que la velocidad de la entrada al juego es demasiado rápida y no da tiempo a entrar en contexto.
+- Posibilidad de borrar usuarios desde la API sin tener permisos especiales. Esta problemática afecta a los usuarios mas avanzados.
+- Repetición de las respuestas en la pregunta.
 
 3. Debido a la falta de tiempo no se podrán implementar todas las mejoras que habia planteadas, sin embargo, estas son las decisiones de mejora tomadas por el equipo de desarrolladores.
 - La única mejora implementada, es evitar en la lógica de generación de preguntas que existan respuestas repetidas.
@@ -272,4 +270,4 @@ Para probar la versión final de la aplicación que se entregará a los profesor
 Han destacado que todo es correcto en general (Obviando los puntos de la 2ª iteracción).
 
 ==== Conclusiones
-Las pruebas de usabilidad han sido de gran utilidad para introducir mejoras en la aplicación, pero sobretodo han ayudado para dar un enfoque externo y más critico a nuestra apliación.
+Las pruebas de usabilidad han sido de gran utilidad para introducir mejoras en la aplicación, pero sobre todo han ayudado para dar un enfoque externo y más crítico a nuestra aplicación.

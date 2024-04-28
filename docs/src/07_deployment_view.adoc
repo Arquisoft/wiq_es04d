@@ -6,11 +6,11 @@ ifndef::imagesdir[:imagesdir: ../images]
 == Vista de Despliegue 👀
 
 
-Los sevicios que se van a desplegar son los siguientes:
+Los servicios que se van a desplegar son los siguientes:
 
 * User service: Servicio Express que maneja la inserción de nuevos usuarios en el sistema.
 * Auth service: Servicio Express que maneja la autenticación de usuarios.
-* Question service: Servicio Express que maneja la generación y las llamadas a la API de Wikidata.
+* Question service: Servicio Express que maneja la generación de preguntas y las llamadas a la API de Wikidata.
 * Webapp: Aplicación web React que utiliza el servicio de puerta de enlace para permitir funciones básicas de inicio de sesión y nuevos usuarios.
 * History service: Servicio Express que maneja el historial de juegos jugados por los usuarios.
 * Gateway service: Servicio Express expuesto al público que sirve como proxy a los anteriores.

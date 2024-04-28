@@ -9,7 +9,7 @@ En esta tabla se muestra el contexto de negocio de la aplicación. Las entradas 
 [options="header",cols="1,2,3"]
 |===
 |Agente externo|Entradas|Salidas
-|Usuario|Datos registro, datos login, respuesta a cada pregunta|Preguntas, histórico
+|Usuario|Datos registro, datos login, respuesta a cada pregunta|Preguntas, historial
 |Wikidata|Items (elementos) de Wikidata|Petición a la API de Wikidata
 |===
 
@@ -19,10 +19,10 @@ image::03_diagrama_contexto_tecnico.png["Diagrama de contexto técnico"]
 |===
 
 |Agente externo|Entradas|Salidas
-|Usuario|Datos registro, datos login, respuesta a cada pregunta|Preguntas, histórico
-|WIQ|Peticiones del usuario | respuesta a las peticiones
+|Usuario|Datos registro, datos login, respuesta a cada pregunta|Preguntas, historial
+|WIQ|Peticiones del usuario | Respuesta a las peticiones
 |WebApp| Entradas del usuario | Salidas de WIQ
 |Wikidata| Peticiones de datos | Datos 
-|Base de datos|Nuevos usuarios, preguntas de Wikidata y respuestas del usuario| validacion de usuarios, nuevas preguntas de Wikidata e historico
-|Máquina Virtual| peticion de Despliegue | Despliegue 
+|Base de datos|Nuevos usuarios, preguntas de Wikidata y respuestas del usuario| Validación de usuarios, nuevas preguntas de Wikidata e historial
+|Máquina Virtual| Petición de Despliegue | Despliegue 
 |===
