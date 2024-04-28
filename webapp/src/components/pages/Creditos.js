@@ -1,17 +1,7 @@
-//import React, { useRef, useEffect } from 'react';
 import React from 'react';
 import '../../App.css';
 
 function Creditos() {
-    // const videoRef = useRef(null); // Crear la referencia
-
-    // useEffect(() => {
-    //     if (videoRef.current) {
-    //         videoRef.current.playbackRate = 0.7; // Establecer la velocidad de reproducción al 80%
-    //     }
-    // }, []);
-
-    // ref={videoRef}
 
     return (
         <div className='hero-container'>

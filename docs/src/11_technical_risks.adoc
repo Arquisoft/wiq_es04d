@@ -2,12 +2,12 @@
 [[section-technical-risks]]
 == Riesgos y Deuda Técnina ⚠️
 
-=== Riesgos 🚨
+=== Riesgos
 [options="header",cols="1,2"]
 |======================
 | Riesgo | Descripción
 | Tiempo de entrega | Estamos limitados por el plazo de entrega y también por el tiempo que dedicaremos a trabajar en otras asignaturas.
-| Proyecto grande y equipo grande | La coordinación y comunicación en un equipo grande pueden ser desafiantes. 
+| Proyecto grande y trabajo en equipo | La coordinación y comunicación en un equipo pueden ser desafiantes. 
 | Diseño inadecuado o enfoque incorrecto | La presencia de errores en etapas tempranas puede ser devastadora, ya que estas son cruciales. Un mal diseño detectado en etapas avanzadas podría ser irreparable, subrayando la importancia de una planificación y visión previsoras.
 | Falta de familiaridad con las tecnologías | El equipo comienza con conocimiento limitado sobre las herramientas necesarias, lo que puede resultar en un uso subóptimo de estas.
 | Errores de implementación | Errores no críticos en la lógica de negocio pueden permanecer ocultos por largo tiempo, afectando la calidad del sistema.
@@ -17,7 +17,7 @@
 |Incumplimiento de normas|Si el proyecto no cumple con las regulaciones o estándares de seguridad pertinentes, podría enfrentar sanciones legales o multas.
 |======================
 
-=== Deuda Tecnica 💸
+=== Deuda Tecnica
 [options="header",cols="1,2"]
 |======================
 | Deuda Técnina | Descripción

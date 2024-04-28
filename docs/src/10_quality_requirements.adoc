@@ -2,7 +2,7 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-quality-scenarios]]
 == Requisitos de Calidad 🌟
 
-=== Árbol de Calidad 🌳
+=== Árbol de Calidad
 
 El árbol de calidad se organiza con "calidad" como raíz, desglosándose en varias ramas principales, que representan categorías de calidad relevantes para el proyecto WIQ. Estas ramas incluyen:
 
@@ -15,7 +15,7 @@ El árbol de calidad se organiza con "calidad" como raíz, desglosándose en var
 
 image::10_Arbol_de_calidad.jpg[Árbol de Calidad,align="center"]
 
-=== Escenarios de Calidad 🕹️
+=== Escenarios de Calidad
 
 ==== Usabilidad 
 

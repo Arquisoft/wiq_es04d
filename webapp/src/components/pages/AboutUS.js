@@ -11,12 +11,18 @@ function AboutUS() {
       <div className='cards__container'>
         <div className='cards__wrapper'>
           <ul className='cards__items'>
-            {/* API Doc */}
+            {/*Creditos */}
             <CardItem
-              src='images/api-logic.jpg'
-              text='Desarrollo de la lógica de integración con la API de Wikidata para enriquecer nuestro proyecto.'
-              label='API de Wikidata'
-              path={`${apiEndpoint}/api-doc`}
+                src='images/creditos.jpg'
+                text='Créditos de la Aplicación'
+                label='Créditos'
+                path='/creditos'
+            />
+            <CardItem
+                src='images/github.jpg'
+                text='Explora nuestro código en GitHub y contribuye al desarrollo del proyecto WIQ.'
+                label='GitHub WIQ4D'
+                path='https://github.com/Arquisoft/wiq_es04d'
             />
           </ul>
           <ul className='cards__items'>
@@ -25,7 +31,7 @@ function AboutUS() {
               src='images/database.jpg'
               text='Implementación de soluciones de bases de datos para gestionar eficientemente la información.'
               label='Base de Datos'
-              path='https://www.mongodb.com'
+              path='https://github.com/Arquisoft/wiq_es04d/wiki/ADR-4-%E2%80%90-Base-de-datos'
             />
             {/* Documentación */}
             <CardItem
@@ -34,12 +40,12 @@ function AboutUS() {
               label='Documentación'
               path='https://arquisoft.github.io/wiq_es04d/'
             />
-            {/*Creditos */}
+
             <CardItem
-              src='images/creditos.jpg'
-              text='Créditos de la Aplicación'
-              label='Créditos'
-              path='/creditos'
+                src='images/api-logic.jpg'
+                text='Desarrollo de la lógica de integración con la API de Wikidata para enriquecer nuestro proyecto.'
+                label='API de Wikidata'
+                path={`${apiEndpoint}/api-doc`}
             />
           </ul>
         </div>

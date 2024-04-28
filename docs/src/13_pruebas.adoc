@@ -1,14 +1,314 @@
 ifndef::imagesdir[:imagesdir: ../images]
 
 [[section-pruebas]]
-== Pruebas
-Para asegurarnos del correcto funcionamiento de la apliación y encontrar mejores para la misma se han realizado pruebas de todo tipo aqui están los resultados obtenidos.
+== Pruebas 🔍
+Para asegurarnos del correcto funcionamiento de la aplicación y encontrar mejores para la misma se han realizado pruebas de todo tipo aqui están los resultados obtenidos.
 
 === Pruebas de Cobertura (Tests Unitarios)
+Estas pruebas se han realizado para la comprobacion de cada componente de manera individual evaluando los diferentes casos de uso. Estas son las pruebas realizadas, divididas por componente.
+
+==== Tests Gateway Service
+* *should forward login request to auth service*: Verifica que las solicitudes de inicio de sesión sean correctamente reenviadas al servicio de autenticación y que el token esperado sea retornado si las credenciales son correctas.
+* *should forward add user request to user service*:
+Comprueba que las solicitudes para agregar un nuevo usuario sean reenviadas al servicio de usuarios y que se reciba un ID de usuario como respuesta.
+* *should handle errors from the auth service on login*:
+Asegura que se manejen adecuadamente los errores durante el proceso de inicio de sesión, como credenciales incorrectas, y que se retorne el mensaje de error apropiado.
+
+* *should validate a token successfully*:
+Verifica que el servicio pueda validar correctamente un token, devolviendo un estado de validez.
+
+* *should handle validation error*:  
+Comprueba que se manejen correctamente los errores al validar tokens inválidos, retornando el mensaje de error adecuado.
+
+* *should forward get random questions request to generate service*:
+Asegura que las solicitudes para obtener preguntas aleatorias sean correctamente reenviadas al servicio de generación y que las preguntas esperadas sean retornadas.
+
+* *should forward get questions request to generate service*:
+Verifica que las solicitudes para obtener preguntas sean correctamente reenviadas al servicio de generación y que se retornen las preguntas adecuadas.
+
+* *should forward create question request to generate service*: 
+Comprueba que las solicitudes para crear una nueva pregunta sean correctamente reenviadas al servicio de generación y que se devuelva un estado de éxito y el ID de la pregunta.
+
+* *should forward update question request to generate service*:
+Asegura que las solicitudes para actualizar una pregunta existente sean reenviadas al servicio de generación y que se retorne un estado de "OK".
+
+* *should forward save history request to history service*:
+Verifica que las solicitudes para guardar el historial de acciones del usuario sean correctamente reenviadas al servicio de historial y que se retorne un estado de éxito.
+
+* *should forward get history request to history service*:
+Comprueba que las solicitudes para obtener el historial de un usuario sean correctamente reenviadas al servicio de historial y que se retornen los datos esperados.
+
+* *should handle error getting random questions from generate service*:
+Asegura que se manejen correctamente los errores al obtener preguntas aleatorias del servicio de generación, retornando el mensaje de error apropiado.
+
+* *should handle error getting questions from generate service*:
+Verifica que se manejen correctamente los errores al obtener preguntas del servicio de generación, retornando el mensaje de error adecuado.
+
+* *should handle error creating question in generate service*:
+Comprueba que se manejen correctamente los errores al crear una nueva pregunta en el servicio de generación, retornando el mensaje de error correspondiente.
+
+* *should handle error updating question in generate service*:
+Asegura que se manejen correctamente los errores al actualizar una pregunta en el servicio de generación, retornando el mensaje de error apropiado.
+
+* *should handle error saving history in history service*:
+Verifica que se manejen correctamente los errores al guardar el historial en el servicio de historial, retornando el mensaje de error adecuado.
+
+* *should handle error getting history from history service with query*:
+Comprueba que se manejen correctamente los errores al obtener el historial desde el servicio de historial, usando una consulta específica y retornando el mensaje de error correspondiente.
+
+* *should handle error deleting non-existent user in user service*:
+Este test verifica que el servicio de gateway maneje adecuadamente la solicitud para eliminar un usuario que no existe en el servicio de usuarios, asegurando que se propague el mensaje de error correcto y se devuelva el código de estado adecuado.
+
+* *should propagate parameters correctly on user update request*:
+Este test asegura que los cambios en los datos de un usuario a través de una solicitud PATCH sean correctamente propagados al servicio de usuarios, validando así que los parámetros se transmitan correctamente y se obtenga una respuesta de éxito.
+
+* *should ensure data consistency when retrieving user history*:
+Este test verifica que el servicio de gateway proporcione una respuesta consistente y completa cuando se solicita el historial de un usuario específico, validando que todos los campos esperados estén presentes y sean correctos.
+
+* *should forward delete user request to user service and handle response*:
+Este test verifica que el endpoint de eliminación de usuario (DELETE /user/:id) funcione correctamente, reenviando la solicitud al servicio de usuarios y gestionando la respuesta adecuadamente.
+
+* *should forward delete question request to generate service and handle response*:
+Comprueba que el endpoint para eliminar preguntas (DELETE /question/:id) reenvíe correctamente la solicitud al servicio de generación de preguntas y maneje las respuestas adecuadamente.
+
+* *should forward get ranking request to history service and return rankings*:
+Asegura que el endpoint para obtener el ranking de usuarios (GET /getranking) reenvíe correctamente la solicitud al servicio de historial y reciba la lista de rankings esperada.
+
+* *should handle error deleting user from user service*:
+Este test verifica que el servicio de gateway maneje correctamente los errores retornados por el servicio de usuarios al intentar eliminar un usuario que no existe o cuando hay un fallo en la operación.
+
+==== Tests Question Service
+* *Should generate questions /generatequestions*:
+Verifica que el endpoint /generatequestions genere correctamente las preguntas solicitadas y las almacene en la base de datos. Se espera que se generen y cuenten 100 preguntas en la base de datos tras la ejecución.
+
+* *Should get questions /question/randoms*:
+Comprueba que el endpoint /question/randoms recupere y devuelva un número específico de preguntas aleatorias, en este caso, se espera que devuelva 5 preguntas.
+
+* *Should get all questions GET /question*:
+Testea que el endpoint GET /question recupere todas las preguntas existentes en la base de datos. En este caso, se insertan dos preguntas específicas y se verifica que ambas se retornen correctamente.
+
+* *Should create a new question*:
+Verifica que el endpoint POST /question permita crear una nueva pregunta y que esta se almacene correctamente en la base de datos. Se espera que la solicitud se complete con éxito (código de estado 201) y que los datos de la pregunta creada coincidan con los enviados en la solicitud.
+
+* *Should update a question by ID*:
+Prueba que el endpoint PATCH /question/:id actualice correctamente una pregunta existente en la base de datos según los datos proporcionados. Se verifica que la solicitud se complete con éxito (código de estado 200) y que los datos de la pregunta actualizada en la respuesta coincidan con los datos actualizados enviados.
+
+* *Should delete a question by ID*:
+Asegura que el endpoint DELETE /question/:id elimine correctamente una pregunta específica de la base de datos. Se espera que la solicitud se complete con éxito (código de estado 200) y que la pregunta ya no exista en la base de datos tras la eliminación.
+
+==== Tests llamadas a Wikidata
+- Wiki Call
+* *should fetch and return data from Wikidata for a valid SPARQL query*: 
+Este test evalúa si la función wikiCall realiza correctamente una solicitud HTTP para recuperar datos desde Wikidata utilizando una consulta SPARQL válida. Especificaciones del test incluyen:
+* Preparación de Datos Simulados: Configura un mock de node-fetch para simular una respuesta exitosa de la API de Wikidata. Esto implica establecer un JSON de respuesta que imita los datos que se esperarían de una consulta SPARQL real.
+* Ejecución y Validación de la Consulta: Ejecuta wikiCall con una consulta SPARQL de prueba para verificar si procesa esta consulta adecuadamente y si retorna los datos correctos. Se espera que la función transforme la respuesta simulada en el formato adecuado para su uso posterior, en este caso, un arreglo que contiene un objeto vacío que representa una fila de resultado SPARQL.
+* Verificación de la Llamada a fetch: Confirma que node-fetch se llamó exactamente una vez y con los parámetros correctos, incluyendo la URL de Wikidata con la consulta SPARQL codificada y los headers apropiados para aceptar JSON de resultados SPARQL.
+
+- Wiki Query
+* *debería obtener preguntas de Wikidata y formatearlas correctamente*: 
+Este test verifica que el método getQuestions de WikiQuery realice correctamente la llamada a wikiCall para obtener datos de Wikidata, y que luego formatee estos datos en el formato esperado para preguntas. Se realiza una configuración previa para simular respuestas de wikiCall que contienen preguntas y respuestas en un formato específico. El test comprueba que:
+* wikiCall se llama correctamente con una consulta SPARQL formateada para seleccionar etiquetas de preguntas y respuestas.
+* wikiCall se invoca una sola vez, asegurando que la función no realiza llamadas redundantes o innecesarias.
+* El modelo Question se instancia correctamente con los argumentos esperados para cada elemento de los resultados simulados, incluyendo la validación del formato de las preguntas y las respuestas.
+* Se verifica que el número de preguntas creadas y su formato coincidan con los datos proporcionados en los resultados simulados, asegurando que cada pregunta está bien formada con la estructura correcta y categoría especificada.
+
+==== Tests Auth Service
+* *Should perform a login operation /login*:
+Este test verifica que el endpoint /login permita a un usuario existente realizar el inicio de sesión correctamente. Comprueba que al enviar un nombre de usuario y contraseña válidos, el sistema responde con un estado 200 y retorna la propiedad 'username' en el cuerpo de la respuesta, indicando que el proceso de autenticación fue exitoso.
+
+* *Should reject login with incorrect credentials*:
+Este test se asegura de que el endpoint /login rechace el intento de inicio de sesión cuando las credenciales son incorrectas. En este caso, se envía una contraseña errónea para un nombre de usuario existente. El test verifica que el servidor responda con un estado 401 y que el cuerpo de la respuesta contenga el mensaje de error 'Invalid credentials', indicando que las credenciales proporcionadas no son válidas.
+
+* *Should require username and password fields for login*:
+Este test evalúa que el endpoint /login requiera tanto el nombre de usuario como la contraseña para procesar una solicitud de inicio de sesión. Aquí se envía solo el nombre de usuario sin proporcionar una contraseña. El test verifica que el servidor responda con un estado 500 y que el cuerpo de la respuesta contenga un mensaje de error, indicando que la solicitud está incompleta o mal formada.
+
+* *Should validate a JWT token*:
+Este test primero realiza un inicio de sesión válido para obtener un token JWT y luego verifica la validez de ese token a través de otro endpoint. Tras obtener el token, se realiza una solicitud de validación para dicho token y se verifica que el servidor responda con un estado 200 y que el cuerpo de la respuesta indique que el token es válido (valid: true).
+
+* *Should reject an invalid JWT token*:
+Este test verifica la funcionalidad del sistema para rechazar tokens JWT que no son válidos. Se envía un token arbitrario (incorrecto) al endpoint de validación y se comprueba que el servidor responda con un estado 200, pero con el cuerpo de la respuesta indicando que el token no es válido (valid: false).
+
+==== Tests History Service
+* *POST /savehistory*:
+* should save history entry for a new user that plays a game: Este test verifica que el endpoint /savehistory pueda crear una nueva entrada de historial para un usuario que no existía previamente en la base de datos. Evalúa si la entrada se almacena correctamente y si los datos devueltos en la respuesta coinciden con los datos enviados, incluyendo la correcta diferenciación entre preguntas acertadas y falladas.
+* should update history entry for an existing user: Este test comprueba que el endpoint /savehistory actualice correctamente una entrada de historial existente para un usuario, sumando correctamente las nuevas jugadas, preguntas jugadas, preguntas acertadas y preguntas falladas a los totales previos.
+* should reject history entry with missing data: Este test verifica que el endpoint /savehistory maneje adecuadamente situaciones donde los datos esenciales como NumPreguntasJugadas o NumAcertadas no se proporcionen en la solicitud. Se espera que el servidor responda con un código de estado 400 y un mensaje de error claro indicando qué dato falta.
+
+* *GET /gethistory*:
+* should get history entry for an existing user: Este test verifica que el endpoint /gethistory (con un query param) recupere correctamente la entrada de historial de un usuario existente. Evalúa si los datos devueltos coinciden exactamente con los que están almacenados en la base de datos.
+* should create new history entry for a non-existing user: Este test comprueba que el endpoint /gethistory sea capaz de manejar solicitudes para usuarios no existentes correctamente, retornando una entrada de historial con contadores en cero.
+* should handle non-existent username on get history: Este test verifica que el endpoint /gethistory responda adecuadamente cuando se consulta el historial de un usuario que no existe. Se espera que el servidor responda con un código de estado 404.
+
+* *GET /gethistory/:username*:
+* should get history entry for an existing user: Similar al test anterior bajo el endpoint /gethistory, pero esta vez utilizando una ruta con parámetro. Verifica si la solicitud a /gethistory/:username recupera correctamente la entrada de historial para un usuario específico usando la identificación del usuario en la URL, asegurándose de que todos los datos devueltos coincidan con los almacenados.
+
+* *GET /getranking*:
+* should handle insufficient data for rankings: Verifica que cuando no hay datos suficientes para calcular un ranking, el servicio devuelve correctamente un arreglo vacío, lo cual es importante para evitar errores en la visualización del cliente cuando no hay datos disponibles.
+* should return a correct ranking of players based on their scores: Asegura que el servicio calcula y devuelve el ranking de los jugadores de manera correcta basándose en sus respuestas acertadas y el total de preguntas jugadas, ordenando los jugadores según sus rendimientos.
+* should correctly calculate posterior probabilities in rankings: Este test evalúa si se calcula adecuadamente las probabilidades a posteriori basadas en las estadísticas de juego de los jugadores, asegurando que los resultados del ranking sean justos y precisos.
+* should handle server error during ranking calculation: Este test asegura que /getranking maneje correctamente los errores internos durante el cálculo del ranking, devolviendo un estado de error 500 para indicar problemas en el proceso.
+
+==== Tests User Service
+* *should add a new user on POST /adduser*:
+Esta prueba verifica que un usuario nuevo se pueda añadir correctamente mediante el endpoint /adduser. Al enviar una solicitud POST con un nombre de usuario y contraseña válidos, se espera que el servidor responda con un código de estado 200 y que el cuerpo de la respuesta contenga el nombre de usuario que fue añadido.
+
+* *should reject a user without a username*:
+Prueba la validación del campo requerido para el nombre de usuario. Al intentar registrar un usuario sin proporcionar un nombre de usuario, se espera que el servidor responda con un código de estado 400 y un mensaje de error indicando que falta el campo requerido "username".
+
+* *should reject a user without a password*:
+Verifica que el servicio rechace las solicitudes para crear un usuario que no incluyan una contraseña. Si se envía una solicitud sin una contraseña, el servidor debe responder con un código de estado 400 y un mensaje de error que indique que falta el campo requerido "password".
+
+* *should not allow adding a user with an existing username*: 
+Asegura que no se pueda registrar más de un usuario con el mismo nombre de usuario. l intentar añadir un usuario que ya existe en la base de datos, el servidor debe responder con un código de estado 400 y un mensaje indicando que el usuario ya existe.
+
+* *should get all users correctly*:
+Este test verifica que el endpoint /user funcione correctamente al recuperar todos los usuarios registrados. Se espera que el servidor responda con un código de estado 200 y que el cuerpo de la respuesta contenga una lista de usuarios, mostrando únicamente sus nombres de usuario y fechas de creación.
+
+* *should update an existing user*:
+Este test verifica que el endpoint /user/:id actualice correctamente un usuario existente. Al enviar una solicitud PATCH con un nuevo nombre de usuario, se espera que el servidor responda con un código de estado 200 y que el cuerpo de la respuesta refleje la actualización.
+
+* *should handle deletion of a non-existent user correctly*:
+Este test asegura que el servidor responda correctamente cuando se intenta eliminar un usuario que no existe. Al enviar una solicitud DELETE a /user/:id con un ID inexistente, se espera que el servidor responda con un código de estado 404 y un mensaje de error indicando que el usuario no fue encontrado.
+
+* *should handle internal server error when getting users*:
+Verifica que el servicio maneje correctamente los errores internos al intentar obtener la lista de usuarios. Si ocurre un error interno (simulado mediante un fallo en la conexión a la base de datos, por ejemplo), se espera que el servidor responda con un código de estado 500.
+
+==== Tests Componentes React
+Estas pruebas han sido diseñadas para mejorar el coverage de la aplicacion y no tienen mayor objetivo que comprobar que los componentes se cargan de manera correcta, sin probar la funcionalidad, ya que de esta sen encargan los servicios, estos componentes son:
+
+* About US
+* Add User
+* Ayuda
+* Creditos
+* Página de Error (404)
+* Historial
+* Home (Inicio)
+* Jugar
+* Login
+* Ranking
+* Card Items (del About Us)
+* Footer
+* Layout
+* NavBar
+
 
 === Pruebas e2e
+Estas pruebas estan enfocadas en el correcto funcionamiento de la aplicacion cuando el usuario interactua con ella. Haciendo que las páginas muestren los resultados esperados y redirijan de manera correcta.
+
+Las features son:
+
+* Register Form:
+****
+Feature: Registering a new user
+
+Scenario: The user is not registered in the site
+  Given An unregistered user
+  When I fill the data in the form and press submit
+  Then The user is registered and logged
+****
+
+* Jugar Form:
+****
+Feature: Game Initialization
+
+Scenario: User Initiates a Game
+    Given An unregistered user exists
+    When the user enters their details on the register form and submits
+    And the user is redirected to the homepage and logged in automatically
+    And the user clicks the "Play" button on the homepage
+    Then the questions should be displayed
+****
+
+* History Form:
+****
+Feature: Seeing the loged user history
+
+Scenario: The user is not loged in the site
+  Given A not loged user
+  When Press history
+  Then Redirected to login
+
+Scenario: The user register in the site so he can see history
+  Given A unregistered user, fill the register
+  When I press history
+  Then I see my history
+****
+
 
 === Pruebas de carga
+Se enfocarán en evaluar cómo se comporta nuestro sistema bajo condiciones de alto tráfico y uso intensivo. Este tipo de pruebas es crucial para identificar cuellos de botella y asegurar que nuestra aplicación pueda manejar eficientemente el volumen de usuarios y transacciones esperado en producción, sin comprometer el rendimiento ni la estabilidad.
+Se han realizado 2 pruebas de carga con diferente numero de usuarios simultaneos.
+Las pruebas seguirán el siguiente procedimiento sencillo, pero que servirá para probar los servicios y como se comportan ante el estres generado por muchos usuarios:
+
+. El usuario se logea en la pagina
+. Juega una partida completa
+. Ve su historial
+. Hace logout 
+
+Esto se realiza en el transcurso de 1 minuto.
+
+Aqui los resultados de la primera prueba con 240 usuarios.
+
+image::Pruebacarga240.png["Prueba de carga 240 usuarios"]
+
+Estos son los resultados con 900 seguidores concurrentes.
+
+image::Pruebacarga900.png["Prueba de carga 900 usuarios"]
+
+Podemos observar que la primera prueba la soporta de manera mas o menos asumible. Sin embargo, la segunda prueba ya esta sorpasando el limite de usuarios concurrentes y empiezan a fallar los servicios.
+Esto se debe principalmente a las bajas prestaciones de la maquina virtual, marcadas por el credito disponible como estudiantes que nos proporciona Azure.
 
 === Pruebas de usabilidad
+En este apartado, nos centraremos en las pruebas de usabilidad, un componente esencial para asegurar que nuestro sistema sea intuitivo, eficiente y accesible para todos los usuarios. Este tipo de pruebas evalúa la interacción entre el usuario y la aplicación, con el objetivo de identificar áreas de mejora en la interfaz de usuario que faciliten una mejor experiencia general.
 
+Las pruebas se han dividido en iteraciones. En cada interacion hay 3 fases.
+
+. Fase de pruebas, con un grupo de usuarios variado (no muy extenso) en cuanto a conocimientos y soltura en el area de la informática donde los desarrolladores toman nota de las dificultades de los usuarios, sin intervenir, a no ser que sea estrictamente necesario.
+
+. Fase de estudio de los resultado. El equipo de desarrolladores se reune y decide que mejoras se han de implementar basadas en las observacions de la fase anterior.
+
+. Fase de Implementación. Las mejoras decididas se implementan y se repite el proceso, para comprobar que hay una mejoria en la usabilidad.
+
+Debido al escaso tiempo de desarrollo tan solo se relizaran 2 iteracciones de estas pruebas. A continuación se detallan paso a paso se desarrollaron las pruebas.
+
+==== 1ª Iteracción
+. Se ha seleccionado el grupo de pruebas. El grupo consta de 2 personas con altos conocimientos de informatica, 2 personas con un nivel medio y 2 personas con un nivel bajo. Se deja al grupo trabajar mientras los desarrolladores observan.
+
+. Los resultados obtenidos son los siguientes.
+- El diseño de la página es bastante intuitivo en especial para los usuarios que tiene alto conocimiento. Los usuarios con bajo conocimiento necesitaron de una pequeña intervención por parte del observador.
+- A los usuarios de nivel bajo se les hace difícil tener que registrarse y a continuación, tener que logearse en la página.
+- Los usuarios se quejan de que no se muestre cuando se acierta o se falla una pregunta.
+- Los usuario de nivel alto destacan que no hay restricciones en el nombre de usuario y la contraseña.
+- Dificultad en las preguntas.
+- Fallos de formato en las preguntas.
+
+. Las soluciones que se han aplicado a las observaciones tras debatir entre los desarrolladores son las siguientes.
+- Agregar una página de ayuda para los usuarios que no sepan que pasos seguir para jugar. Ya sea tener que registrase en la página, como jugar o como usar la API (aunque la API tenga su documentacion).
+- Añadir un pequeño aviso que te diga cuando se acierta o se falla la pregunta. Cuando se falla también se mostrará la respuesta correcta.
+- Añadir restricciones a la creación de usuarios. Nombre de usuario de mínimo 4 caracteres y contraseña con mínimo una letra mayúscula y un número.
+- Se han revisado las plantillas de preguntas con mayor dificultad y se han añadido alguna mas sencilla.
+- Se ha corregido los errores de formato de las respuestas donde existen fechas.
+
+
+==== 2ª Iteracción
+1. Para la segunda iteraccion se ha contado con un grupo más reducido por incompatibilidad en los horarios. Sin embargo, seguimos contando con un usuario de cada nivel. Los resultados observados de esta segunda y última iteración se detallan a continuación.
+2. Las observaciones han cambiado y se han solucionado prácticamente todos los problemas de la primera versión, sin embargo, han aparecido problemáticas nuevas.
+- La observación mas importante de todos los usuarios es que no se puede recuperar la contraseña en caso de que se le olvide al usuario.
+- El cálculo del Ranking es poco intuitivo.
+- Los usuarios poco habituados a los juegos destacan que la velocidad de la entrada al juego es demasiado rápida y no da tiempo a entrar en contexto.
+- Posibilidad de borrar usuarios desde la API sin tener permisos especiales. Esta problemática afecta a los usuarios mas avanzados.
+- Repetición de las respuestas en la pregunta.
+
+3. Debido a la falta de tiempo no se podrán implementar todas las mejoras que habia planteadas, sin embargo, estas son las decisiones de mejora tomadas por el equipo de desarrolladores.
+- La única mejora implementada, es evitar en la lógica de generación de preguntas que existan respuestas repetidas.
+- Crear un sistema de recupearación de contraseña, a traves del correo electrónico, por lo habría que modificar el registro de usuarios.
+- Monitorizar el cálculo del Ranking y valorar en el futuro si es correcto o hay que cambiarlo.
+- Introducir una cuenta atrás cuando le das a jugar una partida nueva para que al usuario de tiempo a entrar en contexto.
+- Añadir permisos de usuario para realizar acciones especiales en la página y asi poder borrar o editar usuario a traves de la API.
+
+==== ¿3ª Iteraccion?
+Para probar la versión final de la aplicación que se entregará a los profesores, se ha realizado una última prueba para comprobar el correcto funcionamiento de todo con un par de usuarios ajeno a la aplicación. Su nivel es medio y alto.
+Han destacado que todo es correcto en general (Obviando los puntos de la 2ª iteracción).
+
+==== Conclusiones
+Las pruebas de usabilidad han sido de gran utilidad para introducir mejoras en la aplicación, pero sobre todo han ayudado para dar un enfoque externo y más crítico a nuestra aplicación.

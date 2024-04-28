@@ -3,38 +3,34 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-solution-strategy]]
 == Estrategia de Solución 📚
 
-=== Decisiones tecnológicas 💻
+=== Decisiones tecnológicas
 
 [options="header",cols="1,2"]
 |===
 |Aplicación|Breve explicación
 |React / JS|Biblioteca de JavaScript que nos servirá para realizar las interfaces de usuario necesarias para el Front-End. Esto nos indica que el lenguaje principal usado en el proyecto es JavaScript.
-|Microservicios|Se usaran microservicios diferentes para los diferentes componentes del proyecto como la generacion de preguntas o el registro de usuarios en el sistema. 
-|Azure|Para el alojamiemto de la pagina web se usara una maquina virtual Azure con el credito de estudiante proporcionado
-|Docker
-|Encargado de dividir el contenido del proyecto en diversos contenedores (en nuestro caso 4) y sea más fácil de manipular el contenido de dicho proyecto.
-|GitHub Actions
-|Nos servirá para el despliegue del proyecto, pero de forma automática en vez de desplegarlo todo a mano. Cabe a destacar que también están implementados
-unos test para asegurar el correcto despliegue del proyecto.
+|Microservicios|Se usaran microservicios diferentes para los diferentes componentes del proyecto como la generación de preguntas o el registro de usuarios en el sistema. 
+|Azure|Para el alojamiemto de la página web se usara una máquina virtual Azure con el credito de estudiante proporcionado
+|Docker|Encargado de dividir el contenido del proyecto en diversos contenedores (en nuestro caso 6) y sea más fácil de manipular el contenido de dicho proyecto.
+|GitHub Actions|Nos servirá para el despliegue del proyecto, pero de forma automática en vez de desplegarlo todo a mano. Cabe a destacar que también están implementados unos test para asegurar el correcto despliegue del proyecto.
 |===
 
-Decisiones de cómo llegar a las metas principales (En desarrollo):
+Decisiones de cómo llegar a las metas principales.
 [options="header",cols="1,2"]
 |===
-| Decision | Como llegar
-| Usabilidad | La aplicacion seguira los principios basicos de usabilidad y estos seran testeados en diferentes escenarios.
-| Mantenibilidad | El sistema sera mantenible gracias a la mantenibilidad de sus subsistemas. 
-| Eficiciencia | Para que la aplicacion sea rapida se usaran la base de datos y no se tendran que generar datos en caliente que pueden perjudicar a los tiempo de carga.
-| Fiabilidad | Todos los datos mostrados seran correctos y para esta comprobacion se usara la base de datos de Wikidata y sus entidades e ID's asociados. 
-| Privacidad | Los datos de los usuarios seran privados y no seran accesibles a ningun usuario. 
-
+| Decisión | Como llegar
+| Usabilidad | La aplicación seguirá los principios básicos de usabilidad y estos serán testeados en diferentes escenarios.
+| Mantenibilidad | El sistema será mantenible gracias a la mantenibilidad de sus subsistemas. 
+| Eficiciencia | Para que la aplicacián sea rápida se usará la base de datos y no se tendran que generar datos en caliente que pueden perjudicar a los tiempo de carga.
+| Fiabilidad | Todos los datos mostrados serán correctos y para esta comprobación se usará la base de datos de Wikidata y sus entidades e ID's asociados. 
+| Privacidad | Los datos sensibles de los usuarios seran privados y no seran accesibles a ningun usuario. 
 |===
 
-=== Decisiones organizativas 👥
+=== Decisiones organizativas
 
-Este grupo ha sido formado a partir de un grupo ya existente pasando de 5 integrantes a 3. Se ha decidido utilizar el proyecto inicial cuando se dio esta situacion para empezar de 0.
+Este grupo ha sido formado a partir de un grupo ya existente pasando de 5 integrantes a 3. Se ha decidido volver al proyecto inicial cuando se dio la situación de ruptura del grupo para empezar de 0.
 
 No existe una división clara entre las funcionalidades que desempeña cada usuario, todos hacen de todo.
 
-Se realizará una reunion a la semana en clase y una reunión fuera de la escuela, para organizar y llevar recuento del trabajo realizado. 
+Se realizará una reunion a la semana en clase y una reunión fuera de la escuela, para organizar y llevar recuento del trabajo realizado y que será lo siguiente en lo que se va a trabajar. 
 

@@ -3,14 +3,11 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-introduction-and-goals]]
 == Introducción y Objetivos 🎇
 
-El proyecto de wiq_es04d es un proyecto desarrollado en la asignatura Arquitectura del Software. Consiste en la creación de una aplicación web al estilo "Saber y Ganar". Es decir, es un juego de preguntas de cultura general.
+El proyecto de WIQ 4D es un proyecto desarrollado en la asignatura Arquitectura del Software. Consiste en la creación de una aplicación web al estilo "Saber y Ganar". Es decir, es un juego de preguntas de cultura general generadas de forma automatica con ayuda de Wikidata, la base de conocimiento editada en colaboración..
 
-Los desarrolladores de la aplicacion son por Zohaib Akhtar Kausar, Yago Navajas González y Santiago López Laso.
+Los desarrolladores de la aplicacion son por Zohaib Akhtar Kausar, Yago Navajas González y Santiago López Laso. 
 
-La aplicación tendrá su base para las preguntas y las respuestas en Wikidata, la base de conocimiento editada en colaboración.
-
-
-=== Requisitos Funcionales 🛠️
+=== Requisitos Funcionales
 
 ****
 * Los usuarios se deberán loggearse en la página; esto servirá para tener registro de una serie de parámetros, como puede ser las veces que se ha jugado. 
@@ -18,11 +15,13 @@ La aplicación tendrá su base para las preguntas y las respuestas en Wikidata, 
 * Las preguntas deberán ser respondidas en un tiempo límite.
 * Las preguntas seguirán la misma estructura: 1 pregunta correcta y 3 incorrectas, generadas automáticamente.
 * Los usuarios podrán consultar datos sobre su cuentas, como pueden ser las veces que han jugado o el número de preguntas que han acertado o fallado. 
+* Existirá un ranking que ordenará a los 10 mejores jugadores en función de una métrica.
+* Se podrán acceder a los servicios de la aplicación a traves de una API REST.
 
 
 ****
 
-=== Atributos de Calidad 👑
+=== Atributos de Calidad
 
 [options="header",cols="1,2,2"]
 |===
@@ -35,7 +34,7 @@ La aplicación tendrá su base para las preguntas y las respuestas en Wikidata, 
 |===
 
 
-=== Stakeholders 👨‍👩‍👦‍👦
+=== Stakeholders
 
 [options="header",cols="1,2,2"]
 |===
@@ -46,5 +45,5 @@ Santiago Lopez Laso -> UO277369@uniovi.es | Los estudiantes que llevarán a cabo
 | Profesores | Jose Emilio Labra Gayo | Supervisores de los avances y encargados de evaluar la aplicación final y el desarrollo de la misma.
 | Usuario | Jugador de la aplicación | Personas que puedan interactuar tanto con el registro de usuarios como con el juego en sí y pueda completar correctamente una partida.
 | HappySw | Empresa responsable | Empresa contratada, cuyo trabajo sera el desarrollo del juego de la mano del equipo de desarrollo.
-| RTVE | Empleador | Interesados en la creacion del juego e impulsores de su creacion.
+| RTVE | Empleador | Interesados en la creación del juego e impulsores de su desarrollo.
 |===
