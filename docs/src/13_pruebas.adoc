@@ -243,7 +243,7 @@ Debido al escaso tiempo de desarrollo tan solo se relizaran 2 iteracciones de es
 - Repeticion de las respuestas en la pregunta.
 
 3. Debido a la falta de tiempo no se podrán implementar todas las mejoras que habia planteadas, sin embargo, estas son las decisiones de mejora tomadas por el equipo de desarrolladores.
-- La única mejora implementada, es evitar en la logica de generación de preguntas que existan respuestas repetidas.
+- La única mejora implementada, es evitar en la lógica de generación de preguntas que existan respuestas repetidas.
 - Crear un sistema de recupearación de contraseña, a traves del correo electrónico, por lo habría que modificar el registro de usuarios.
 - Monitorizar el cálculo del Ranking y valorar en el futuro si es correcto o hay que cambiarlo.
 - Introducir una cuenta atrás cuando le das a jugar una partida nueva para que al usuario de tiempo a entrar en contexto.
