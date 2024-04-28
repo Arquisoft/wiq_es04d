@@ -86,17 +86,17 @@ app.patch('/user/:id', async (req, res) => {
 app.delete('/user/:id', async (req, res) => {
   try {
       const { id } = req.params;
-      // Verificar si la pregunta existe en la base de datos
+      // Verificar si el user existe en la base de datos
       const user = await User.findById(id);
       if (!user) {
           return res.status(404).json({ error: 'User not found' });
       }
-      // Eliminar la pregunta de la base de datos
+      // Eliminar al user de la base de datos
       await User.findByIdAndDelete(id);
       res.status(200).json({ status: 'OK' });
   } catch (error) {
       console.error("Error deleting user:", error);
-      res.status(500).json({ error: 'Error deleting the question' });
+      res.status(500).json({ error: 'Error deleting the user' });
   }
 });
 
