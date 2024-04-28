@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.20">
+<meta name="generator" content="Asciidoctor 2.0.22">
 <title>WIQ 4D</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -140,7 +140,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #content::before{content:none}
 #header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
 #header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
-#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
 #header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
 #header .details span:first-child{margin-left:-.125em}
 #header .details span.email a{color:rgba(0,0,0,.85)}
@@ -162,6 +162,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
+body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 #toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
@@ -327,7 +328,7 @@ a.image{text-decoration:none;display:inline-block}
 a.image object{pointer-events:none}
 sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
 sup.footnote a,sup.footnoteref a{text-decoration:none}
-sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 #footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
 #footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
@@ -442,7 +443,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <br><span id="revremark">(based upon AsciiDoc version)</span>
 </div>
 <div id="toc" class="toc">
-<div id="toctitle">Table of Contents</div>
+<div id="toctitle">Indice</div>
 <ul class="sectlevel1">
 <li><a href="#section-introduction-and-goals">1. Introducción y Objetivos 🎇</a>
 <ul class="sectlevel2">
@@ -552,13 +553,10 @@ See <a href="https://arc42.org" class="bare">https://arc42.org</a>.</p>
 <h2 id="section-introduction-and-goals">1. Introducción y Objetivos 🎇</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>El proyecto de wiq_es04d es un proyecto desarrollado en la asignatura Arquitectura del Software. Consiste en la creación de una aplicación web al estilo "Saber y Ganar". Es decir, es un juego de preguntas de cultura general.</p>
+<p>El proyecto de WIQ 4D es un proyecto desarrollado en la asignatura Arquitectura del Software. Consiste en la creación de una aplicación web al estilo "Saber y Ganar". Es decir, es un juego de preguntas de cultura general generadas de forma automatica con ayuda de Wikidata, la base de conocimiento editada en colaboración..</p>
 </div>
 <div class="paragraph">
 <p>Los desarrolladores de la aplicacion son por Zohaib Akhtar Kausar, Yago Navajas González y Santiago López Laso.</p>
-</div>
-<div class="paragraph">
-<p>La aplicación tendrá su base para las preguntas y las respuestas en Wikidata, la base de conocimiento editada en colaboración.</p>
 </div>
 <div class="sect2">
 <h3 id="_requisitos_funcionales">1.1. Requisitos Funcionales</h3>
@@ -580,6 +578,12 @@ See <a href="https://arc42.org" class="bare">https://arc42.org</a>.</p>
 </li>
 <li>
 <p>Los usuarios podrán consultar datos sobre su cuentas, como pueden ser las veces que han jugado o el número de preguntas que han acertado o fallado.</p>
+</li>
+<li>
+<p>Existirá un ranking que ordenará a los 10 mejores jugadores en función de una métrica.</p>
+</li>
+<li>
+<p>Se podrán acceder a los servicios de la aplicación a traves de una API REST.</p>
 </li>
 </ul>
 </div>
@@ -671,7 +675,7 @@ Santiago Lopez Laso &#8594; <a href="mailto:UO277369@uniovi.es">UO277369@uniovi.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RTVE</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Empleador</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Interesados en la creacion del juego e impulsores de su creacion.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interesados en la creación del juego e impulsores de su desarrollo.</p></td>
 </tr>
 </tbody>
 </table>
@@ -698,11 +702,11 @@ Santiago Lopez Laso &#8594; <a href="mailto:UO277369@uniovi.es">UO277369@uniovi.
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">API Wikidata</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">El numero de consultas en un tiempo espcidfico es la mayor limitacion de la API, junto con la disponibilidad de los datos. Esto puede afectar a tiempos de carga, por ejemplo.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">El número de consultas en un tiempo espcifico es la mayor limitacion de la API, junto con la disponibilidad de los datos. Esto puede afectar a tiempos de carga, por ejemplo.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Git</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Conflictos al realizar trabajo por separado por parte de mas de um miembro sobre un mismo recurso.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Conflictos al realizar trabajo por separado por parte de mas de un miembro sobre un mismo recurso.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GitHub</p></td>
@@ -713,8 +717,8 @@ Santiago Lopez Laso &#8594; <a href="mailto:UO277369@uniovi.es">UO277369@uniovi.
 <td class="tableblock halign-left valign-top"><p class="tableblock">Restricciones en la configuración de pipelines de CI/CD para automatizar las pruebas, compilaciones y despliegues de la aplicación en el servidor Docker, lo que podría afectar la velocidad y la frecuencia de las entregas de nuevas características o correcciones de errores.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Maquina Virtual Azure</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Esta plataforma impone limites a la cantidad de recursos que podemos usar con la licencia de estudiantes, por lo que debemos ir con cuidado de cuando tenemos la maquina encendida para no agotar el credito.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Máquina Virtual Azure</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Esta plataforma impone límites a la cantidad de recursos que podemos usar con la licencia de estudiantes, por lo que debemos ir con cuidado de cuando tenemos la máquina encendida para no agotar el crédito.</p></td>
 </tr>
 </tbody>
 </table>
@@ -739,7 +743,7 @@ Santiago Lopez Laso &#8594; <a href="mailto:UO277369@uniovi.es">UO277369@uniovi.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Expectativas y motivación</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Los miembrosd del equipo tienen distintas expectativas sobre el trabajo y esto afecta a la dedicacion que realizan.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Los miembros del equipo tienen distintas expectativas sobre el trabajo y esto afecta a la dedicacion que realizan.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Politicas de la Universidad</p></td>
@@ -785,7 +789,7 @@ Santiago Lopez Laso &#8594; <a href="mailto:UO277369@uniovi.es">UO277369@uniovi.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Usuario</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Datos registro, datos login, respuesta a cada pregunta</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Preguntas, histórico</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Preguntas, historial</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Wikidata</p></td>
@@ -817,12 +821,12 @@ Santiago Lopez Laso &#8594; <a href="mailto:UO277369@uniovi.es">UO277369@uniovi.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Usuario</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Datos registro, datos login, respuesta a cada pregunta</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Preguntas, histórico</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Preguntas, historial</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">WIQ</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Peticiones del usuario</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">respuesta a las peticiones</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Respuesta a las peticiones</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">WebApp</p></td>
@@ -837,11 +841,11 @@ Santiago Lopez Laso &#8594; <a href="mailto:UO277369@uniovi.es">UO277369@uniovi.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Base de datos</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Nuevos usuarios, preguntas de Wikidata y respuestas del usuario</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">validacion de usuarios, nuevas preguntas de Wikidata e historico</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Validación de usuarios, nuevas preguntas de Wikidata e historial</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Máquina Virtual</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">peticion de Despliegue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Petición de Despliegue</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Despliegue</p></td>
 </tr>
 </tbody>
@@ -873,25 +877,24 @@ Santiago Lopez Laso &#8594; <a href="mailto:UO277369@uniovi.es">UO277369@uniovi.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Microservicios</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Se usaran microservicios diferentes para los diferentes componentes del proyecto como la generacion de preguntas o el registro de usuarios en el sistema.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Se usaran microservicios diferentes para los diferentes componentes del proyecto como la generación de preguntas o el registro de usuarios en el sistema.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Azure</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Para el alojamiemto de la página web se usara una maquina virtual Azure con el credito de estudiante proporcionado</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Para el alojamiemto de la página web se usara una máquina virtual Azure con el credito de estudiante proporcionado</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Docker</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Encargado de dividir el contenido del proyecto en diversos contenedores (en nuestro caso 4) y sea más fácil de manipular el contenido de dicho proyecto.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Encargado de dividir el contenido del proyecto en diversos contenedores (en nuestro caso 6) y sea más fácil de manipular el contenido de dicho proyecto.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GitHub Actions</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Nos servirá para el despliegue del proyecto, pero de forma automática en vez de desplegarlo todo a mano. Cabe a destacar que también están implementados
-unos test para asegurar el correcto despliegue del proyecto.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nos servirá para el despliegue del proyecto, pero de forma automática en vez de desplegarlo todo a mano. Cabe a destacar que también están implementados unos test para asegurar el correcto despliegue del proyecto.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>Decisiones de cómo llegar a las metas principales (En desarrollo):</p>
+<p>Decisiones de cómo llegar a las metas principales.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -900,30 +903,30 @@ unos test para asegurar el correcto despliegue del proyecto.</p></td>
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Decision</th>
+<th class="tableblock halign-left valign-top">Decisión</th>
 <th class="tableblock halign-left valign-top">Como llegar</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Usabilidad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicacion seguira los principios basicos de usabilidad y estos seran testeados en diferentes escenarios.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación seguirá los principios básicos de usabilidad y estos serán testeados en diferentes escenarios.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Mantenibilidad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">El sistema sera mantenible gracias a la mantenibilidad de sus subsistemas.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">El sistema será mantenible gracias a la mantenibilidad de sus subsistemas.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Eficiciencia</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Para que la aplicacion sea rapida se usaran la base de datos y no se tendran que generar datos en caliente que pueden perjudicar a los tiempo de carga.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Para que la aplicacián sea rápida se usará la base de datos y no se tendran que generar datos en caliente que pueden perjudicar a los tiempo de carga.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fiabilidad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Todos los datos mostrados seran correctos y para esta comprobacion se usara la base de datos de Wikidata y sus entidades e ID&#8217;s asociados.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Todos los datos mostrados serán correctos y para esta comprobación se usará la base de datos de Wikidata y sus entidades e ID&#8217;s asociados.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Privacidad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Los datos de los usuarios seran privados y no seran accesibles a ningun usuario.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Los datos sensibles de los usuarios seran privados y no seran accesibles a ningun usuario.</p></td>
 </tr>
 </tbody>
 </table>
@@ -931,13 +934,13 @@ unos test para asegurar el correcto despliegue del proyecto.</p></td>
 <div class="sect2">
 <h3 id="_decisiones_organizativas">4.2. Decisiones organizativas</h3>
 <div class="paragraph">
-<p>Este grupo ha sido formado a partir de un grupo ya existente pasando de 5 integrantes a 3. Se ha decidido utilizar el proyecto inicial cuando se dio esta situacion para empezar de 0.</p>
+<p>Este grupo ha sido formado a partir de un grupo ya existente pasando de 5 integrantes a 3. Se ha decidido volver al proyecto inicial cuando se dio la situación de ruptura del grupo para empezar de 0.</p>
 </div>
 <div class="paragraph">
 <p>No existe una división clara entre las funcionalidades que desempeña cada usuario, todos hacen de todo.</p>
 </div>
 <div class="paragraph">
-<p>Se realizará una reunion a la semana en clase y una reunión fuera de la escuela, para organizar y llevar recuento del trabajo realizado.</p>
+<p>Se realizará una reunion a la semana en clase y una reunión fuera de la escuela, para organizar y llevar recuento del trabajo realizado y que será lo siguiente en lo que se va a trabajar.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1036,9 +1039,6 @@ unos test para asegurar el correcto despliegue del proyecto.</p></td>
 <img src="./images/Diagrama%20de%20secuencia%20plantuml.png" alt="Diagrama de secuencia plantuml">
 </div>
 </div>
-<div class="paragraph">
-<p>Diagrama de secuencia con plantuml (se contempla sólo el uso correcto de la aplicación)</p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="_escenario_de_ejecución_2">6.2. Escenario de Ejecución 2</h3>
@@ -1120,7 +1120,7 @@ unos test para asegurar el correcto despliegue del proyecto.</p></td>
 <h2 id="section-deployment-view">7. Vista de Despliegue 👀</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Los sevicios que se van a desplegar son los siguientes:</p>
+<p>Los servicios que se van a desplegar son los siguientes:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1131,7 +1131,7 @@ unos test para asegurar el correcto despliegue del proyecto.</p></td>
 <p>Auth service: Servicio Express que maneja la autenticación de usuarios.</p>
 </li>
 <li>
-<p>Question service: Servicio Express que maneja la generación y las llamadas a la API de Wikidata.</p>
+<p>Question service: Servicio Express que maneja la generación de preguntas y las llamadas a la API de Wikidata.</p>
 </li>
 <li>
 <p>Webapp: Aplicación web React que utiliza el servicio de puerta de enlace para permitir funciones básicas de inicio de sesión y nuevos usuarios.</p>
@@ -1158,13 +1158,10 @@ unos test para asegurar el correcto despliegue del proyecto.</p></td>
 <div class="sect1">
 <h2 id="section-concepts">8. Conceptos Transversales 🧭</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Estos conceptos todavía no han sido aprobados ni implementados, pero dan una idea general del proyecto.</p>
-</div>
 <div class="sect2">
 <h3 id="_modelo_de_dominio">8.1. Modelo de Dominio</h3>
 <div class="paragraph">
-<p>Esta no sera la versión final del modelo de dominio. Es una representación de la aplicación en la actualidad.</p>
+<p>Representación UML de las entidades que conforman el sistema.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1283,6 +1280,9 @@ unos test para asegurar el correcto despliegue del proyecto.</p></td>
 </li>
 <li>
 <p><a href="https://github.com/Arquisoft/wiq_es04d/wiki/ADR-7-‐-Métrica-calculo-del-Ranking">ADR 7</a> - Métrica calculo del Ranking</p>
+</li>
+<li>
+<p><a href="https://github.com/Arquisoft/wiq_es04d/wiki/ADR-8-‐-Maquina-Virtual">ADR 8</a> - Máquina Virtual</p>
 </li>
 </ul>
 </div>
@@ -1413,8 +1413,8 @@ unos test para asegurar el correcto despliegue del proyecto.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Estamos limitados por el plazo de entrega y también por el tiempo que dedicaremos a trabajar en otras asignaturas.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Proyecto grande y equipo grande</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">La coordinación y comunicación en un equipo grande pueden ser desafiantes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Proyecto grande y trabajo en equipo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La coordinación y comunicación en un equipo pueden ser desafiantes.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Diseño inadecuado o enfoque incorrecto</p></td>
@@ -1927,13 +1927,48 @@ Asegura que no se pueda registrar más de un usuario con el mismo nombre de usua
 <div class="sect2">
 <h3 id="_pruebas_de_carga">13.3. Pruebas de carga</h3>
 <div class="paragraph">
-<p>Se enfocaran en evaluar cómo se comporta nuestro sistema bajo condiciones de alto tráfico y uso intensivo. Este tipo de pruebas es crucial para identificar cuellos de botella y asegurar que nuestra aplicación pueda manejar eficientemente el volumen de usuarios y transacciones esperado en producción, sin comprometer el rendimiento ni la estabilidad.</p>
+<p>Se enfocarán en evaluar cómo se comporta nuestro sistema bajo condiciones de alto tráfico y uso intensivo. Este tipo de pruebas es crucial para identificar cuellos de botella y asegurar que nuestra aplicación pueda manejar eficientemente el volumen de usuarios y transacciones esperado en producción, sin comprometer el rendimiento ni la estabilidad.
+Se han realizado 2 pruebas de carga con diferente numero de usuarios simultaneos.
+Las pruebas seguirán el siguiente procedimiento sencillo, pero que servirá para probar los servicios y como se comportan ante el estres generado por muchos usuarios:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>El usuario se logea en la pagina</p>
+</li>
+<li>
+<p>Juega una partida completa</p>
+</li>
+<li>
+<p>Ve su historial</p>
+</li>
+<li>
+<p>Hace logout</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>Aqui los resultados.</p>
+<p>Esto se realiza en el transcurso de 1 minuto.</p>
 </div>
 <div class="paragraph">
-<p><strong>(resultados)</strong></p>
+<p>Aqui los resultados de la primera prueba con 240 usuarios.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/Pruebacarga240.png" alt="Prueba de carga 240 usuarios">
+</div>
+</div>
+<div class="paragraph">
+<p>Estos son los resultados con 900 seguidores concurrentes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/Pruebacarga900.png" alt="Prueba de carga 900 usuarios">
+</div>
+</div>
+<div class="paragraph">
+<p>Podemos observar que la primera prueba la soporta de manera mas o menos asumible. Sin embargo, la segunda prueba ya esta sorpasando el limite de usuarios concurrentes y empiezan a fallar los servicios.
+Esto se debe principalmente a las bajas prestaciones de la maquina virtual, marcadas por el credito disponible como estudiantes que nos proporciona Azure.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1944,18 +1979,18 @@ Asegura que no se pueda registrar más de un usuario con el mismo nombre de usua
 <div class="paragraph">
 <p>Las pruebas se han dividido en iteraciones. En cada interacion hay 3 fases.</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>1. Fase de pruebas, con un grupo de usuarios variado (no muy extenso) en cuanto a conocimientos y soltura en el area de la informática donde los desarrolladores toman nota de las dificultades de los usuarios, sin intervenir, a no ser que sea estrictamente necesario.</p>
+<p>Fase de pruebas, con un grupo de usuarios variado (no muy extenso) en cuanto a conocimientos y soltura en el area de la informática donde los desarrolladores toman nota de las dificultades de los usuarios, sin intervenir, a no ser que sea estrictamente necesario.</p>
 </li>
 <li>
-<p>2. Fase de estudio de los resultado. El equipo de desarrolladores se reune y decide que mejoras se han de implementar basadas en las observacions de la fase anterior.</p>
+<p>Fase de estudio de los resultado. El equipo de desarrolladores se reune y decide que mejoras se han de implementar basadas en las observacions de la fase anterior.</p>
 </li>
 <li>
-<p>3. Fase de Implementación. Las mejoras decididas se implementan y se repite el proceso, para comprobar que hay una mejoria en la usabilidad.</p>
+<p>Fase de Implementación. Las mejoras decididas se implementan y se repite el proceso, para comprobar que hay una mejoria en la usabilidad.</p>
 </li>
-</ul>
+</ol>
 </div>
 <div class="paragraph">
 <p>Debido al escaso tiempo de desarrollo tan solo se relizaran 2 iteracciones de estas pruebas. A continuación se detallan paso a paso se desarrollaron las pruebas.</p>
@@ -1972,16 +2007,16 @@ Asegura que no se pueda registrar más de un usuario con el mismo nombre de usua
 <div class="ulist">
 <ul>
 <li>
-<p>El diseño de la página es bastante intuitivo para los usuarios en especial para los que tiene alto conocimiento. Los usuarios con bajo conocimiento necesitaron de una pequeña intervencion por parte del observador.</p>
+<p>El diseño de la página es bastante intuitivo en especial para los usuarios que tiene alto conocimiento. Los usuarios con bajo conocimiento necesitaron de una pequeña intervención por parte del observador.</p>
 </li>
 <li>
-<p>Para los usuarios de nivel bajo se les hace dificil tener que registrarse y a continuacion tener que logearse en la página.</p>
+<p>A los usuarios de nivel bajo se les hace difícil tener que registrarse y a continuación, tener que logearse en la página.</p>
 </li>
 <li>
 <p>Los usuarios se quejan de que no se muestre cuando se acierta o se falla una pregunta.</p>
 </li>
 <li>
-<p>Los usuario de nivel alto destacan que no hay restricciones en el nombre de usuario y la contraseña</p>
+<p>Los usuario de nivel alto destacan que no hay restricciones en el nombre de usuario y la contraseña.</p>
 </li>
 <li>
 <p>Dificultad en las preguntas.</p>
@@ -1997,16 +2032,16 @@ Asegura que no se pueda registrar más de un usuario con el mismo nombre de usua
 <div class="ulist">
 <ul>
 <li>
-<p>Agregar una página de ayuda para los usuarios que no sepan que pasos seguir para jugar. Ya sea tener que registrase en la página, como juagro o como usar la API (aunque la API tenga su documentacion).</p>
+<p>Agregar una página de ayuda para los usuarios que no sepan que pasos seguir para jugar. Ya sea tener que registrase en la página, como jugar o como usar la API (aunque la API tenga su documentacion).</p>
 </li>
 <li>
-<p>Añadir un pequeño aviso que te diga cuando se acierta o se falla la pregunta. Cuando se falla también se mostrara la respuesta correcta.</p>
+<p>Añadir un pequeño aviso que te diga cuando se acierta o se falla la pregunta. Cuando se falla también se mostrará la respuesta correcta.</p>
 </li>
 <li>
-<p>Añadir restricciones a la creacion de usuarios. Nombre de usuario de minimo 4 caracteres y contraseña con minimo una letra mayuscula y un número.</p>
+<p>Añadir restricciones a la creación de usuarios. Nombre de usuario de mínimo 4 caracteres y contraseña con mínimo una letra mayúscula y un número.</p>
 </li>
 <li>
-<p>Se han revisado las plantillas de preguntas con mayor dicicultad y se han añadido alguna mas sencilla.</p>
+<p>Se han revisado las plantillas de preguntas con mayor dificultad y se han añadido alguna mas sencilla.</p>
 </li>
 <li>
 <p>Se ha corregido los errores de formato de las respuestas donde existen fechas.</p>
@@ -2022,26 +2057,26 @@ Asegura que no se pueda registrar más de un usuario con el mismo nombre de usua
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Para la segunda iteraccion se ha contado con un grupo más reducido por incompatibilidad en los horarios. Sin embargo seguimos contando con un usuario de cada nivel. Los resultados observados de esta segunda y ultima iteraccion se detallan a continuación.</p>
+<p>Para la segunda iteraccion se ha contado con un grupo más reducido por incompatibilidad en los horarios. Sin embargo, seguimos contando con un usuario de cada nivel. Los resultados observados de esta segunda y última iteración se detallan a continuación.</p>
 </li>
 <li>
-<p>Las observaciones han cambiado y se han solucionado practicamente todos los problemas de la primera version, sin embargo, han aparecido problematicas nuevas.</p>
+<p>Las observaciones han cambiado y se han solucionado prácticamente todos los problemas de la primera versión, sin embargo, han aparecido problemáticas nuevas.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>La observacion mas importante de todos los usuarios es que no se puede recueperar la contraseña en caso de que se le olvide al usuario.</p>
+<p>La observación mas importante de todos los usuarios es que no se puede recuperar la contraseña en caso de que se le olvide al usuario.</p>
 </li>
 <li>
-<p>El calculo del Ranking es poco intuitivo.</p>
+<p>El cálculo del Ranking es poco intuitivo.</p>
 </li>
 <li>
-<p>Los usuarios poco habituados a los juegos destacan que la velocidad de la entrada al juego es demasiado rapida y no da tiempo a entrar en contexto.</p>
+<p>Los usuarios poco habituados a los juegos destacan que la velocidad de la entrada al juego es demasiado rápida y no da tiempo a entrar en contexto.</p>
 </li>
 <li>
-<p>Posibilidad de borrar usuarios desde la API sin tener permisos especiales. Esta problematica afecta a los usuarios mas avanzados.</p>
+<p>Posibilidad de borrar usuarios desde la API sin tener permisos especiales. Esta problemática afecta a los usuarios mas avanzados.</p>
 </li>
 <li>
-<p>Repeticion de las respuestas en la pregunta.</p>
+<p>Repetición de las respuestas en la pregunta.</p>
 </li>
 </ul>
 </div>
@@ -2081,7 +2116,7 @@ Han destacado que todo es correcto en general (Obviando los puntos de la 2ª ite
 <div class="sect3">
 <h4 id="_conclusiones">13.4.4. Conclusiones</h4>
 <div class="paragraph">
-<p>Las pruebas de usabilidad han sido de gran utilidad para introducir mejoras en la aplicación, pero sobretodo han ayudado para dar un enfoque externo y más critico a nuestra apliación.</p>
+<p>Las pruebas de usabilidad han sido de gran utilidad para introducir mejoras en la aplicación, pero sobre todo han ayudado para dar un enfoque externo y más crítico a nuestra aplicación.</p>
 </div>
 </div>
 </div>
@@ -2091,7 +2126,7 @@ Han destacado que todo es correcto en general (Obviando los puntos de la 2ª ite
 <div id="footer">
 <div id="footer-text">
 Version 8.2 EN<br>
-Last updated 2024-04-26 15:20:01 +0200
+Last updated 2024-04-27 13:33:48 +0200
 </div>
 </div>
 </body>
