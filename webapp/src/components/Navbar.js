@@ -25,7 +25,7 @@ function Navbar() {
           <Link to='/' className='nav-links' onClick={closeMenu}>Inicio</Link>
         </li>
         <li className='nav-item'>
-          <Link to='/abouts' className='nav-links' onClick={closeMenu}>About us</Link>
+          <Link to='/aboutus' className='nav-links' onClick={closeMenu}>About us</Link>
         </li>
         {isLoggedIn ? (
             <>
