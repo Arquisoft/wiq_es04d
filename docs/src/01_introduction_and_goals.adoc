@@ -46,5 +46,6 @@ Santiago López Laso  | Los estudiantes que llevarán a cabo el desarrollo de la
 | Profesores | Jose Emilio Labra Gayo | Supervisores de los avances y encargados de evaluar la aplicación final y el desarrollo de la misma.
 | Usuario | Jugador de la aplicación | Personas que puedan interactuar tanto con el registro de usuarios como con el juego en sí y completar correctamente una partida.
 | HappySw | Empresa responsable | Empresa contratada, cuyo trabajo será el desarrollo del juego de la mano del equipo de desarrollo.
+| Wikidata | Proveedor de la información de las preguntas | Si la aplicación tiene éxito, para Wikidata es publicidad gratis. Por tanto, le interesa este proyecto.
 | RTVE | Empleador | Interesados en la creación del juego e impulsores de su desarrollo.
 |===
