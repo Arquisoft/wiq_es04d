@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.22">
+<meta name="generator" content="Asciidoctor 2.0.20">
 <title>WIQ 4D</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -140,7 +140,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #content::before{content:none}
 #header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
 #header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
-#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
 #header .details span:first-child{margin-left:-.125em}
 #header .details span.email a{color:rgba(0,0,0,.85)}
@@ -162,7 +162,6 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
-body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 #toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
@@ -328,7 +327,7 @@ a.image{text-decoration:none;display:inline-block}
 a.image object{pointer-events:none}
 sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
 sup.footnote a,sup.footnoteref a{text-decoration:none}
-sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 #footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
 #footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
@@ -443,7 +442,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <br><span id="revremark">(based upon AsciiDoc version)</span>
 </div>
 <div id="toc" class="toc">
-<div id="toctitle">Indice</div>
+<div id="toctitle">Índice</div>
 <ul class="sectlevel1">
 <li><a href="#section-introduction-and-goals">1. Introducción y Objetivos 🎇</a>
 <ul class="sectlevel2">
@@ -452,12 +451,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_stakeholders">1.3. Stakeholders</a></li>
 </ul>
 </li>
-<li><a href="#section-architecture-constraints">2. Restricciones de arquitectura ⛔</a>
-<ul class="sectlevel2">
-<li><a href="#_restricciones_técnicas">2.1. Restricciones Técnicas</a></li>
-<li><a href="#_resticciones_organizacionales">2.2. Resticciones organizacionales</a></li>
-</ul>
-</li>
+<li><a href="#section-architecture-constraints">2. Restricciones de arquitectura ⛔</a></li>
 <li><a href="#section-system-scope-and-context">3. Alcance del sistema y Contexto 💭</a>
 <ul class="sectlevel2">
 <li><a href="#_contexto_de_negocio">3.1. Contexto de negocio</a></li>
@@ -484,7 +478,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_escenario_de_ejecución_3">6.3. Escenario de Ejecución 3</a></li>
 </ul>
 </li>
-<li><a href="#section-deployment-view">7. Vista de Despliegue 👀</a></li>
+<li><a href="#section-deployment-view">7. Vista de Despliegue 👀</a>
+<ul class="sectlevel2">
+<li><a href="#_diagrama_de_despliegue">7.1. Diagrama de Despliegue</a></li>
+<li><a href="#_servicios">7.2. Servicios</a></li>
+<li><a href="#_monitoreo">7.3. Monitoreo</a></li>
+</ul>
+</li>
 <li><a href="#section-concepts">8. Conceptos Transversales 🧭</a>
 <ul class="sectlevel2">
 <li><a href="#_modelo_de_dominio">8.1. Modelo de Dominio</a></li>
@@ -553,7 +553,7 @@ See <a href="https://arc42.org" class="bare">https://arc42.org</a>.</p>
 <h2 id="section-introduction-and-goals">1. Introducción y Objetivos 🎇</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>El proyecto de WIQ 4D es un proyecto desarrollado en la asignatura Arquitectura del Software. Consiste en la creación de una aplicación web al estilo "Saber y Ganar". Es decir, es un juego de preguntas de cultura general generadas de forma automatica con ayuda de Wikidata, la base de conocimiento editada en colaboración..</p>
+<p>El proyecto de WIQ 04D es un proyecto desarrollado en la asignatura Arquitectura del Software. Consiste en la creación de una aplicación web al estilo "Saber y Ganar". Es decir, es un juego de preguntas de cultura general generadas de forma automática con ayuda de Wikidata, una base de conocimiento que puede ser leída y editada por humanos y por máquinas.</p>
 </div>
 <div class="paragraph">
 <p>Los desarrolladores de la aplicacion son por Zohaib Akhtar Kausar, Yago Navajas González y Santiago López Laso.</p>
@@ -565,7 +565,7 @@ See <a href="https://arc42.org" class="bare">https://arc42.org</a>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Los usuarios se deberán loggearse en la página; esto servirá para tener registro de una serie de parámetros, como puede ser las veces que se ha jugado.</p>
+<p>Los usuarios deberán iniciar sesión en la página; esto servirá para tener registro de una serie de parámetros, como puede ser las veces que se ha jugado.</p>
 </li>
 <li>
 <p>Se podrán responder preguntas autogeneradas y se verá si han acertado o fallado, así como la respuesta correcta.</p>
@@ -613,13 +613,18 @@ See <a href="https://arc42.org" class="bare">https://arc42.org</a>.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Mantenibilidad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">El código y documentación de la aplicación ha de estar conformado de tal forma que sea factible hacer cambios y ampliaciones en la aplicación.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rendimiento</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Los tiempos entre operaciones han de ser asumibles, aun teniendo varios usuarios usando la aplicación a la vez.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Eficiciencia</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Los tiempos entre operaciones han de ser asumibles.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Seguridad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Los datos sensibles de los usuarios deben estar restringidos al mismo usuario.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mantenibilidad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">El código y documentación de la aplicación ha de estar conformado de tal forma que sea factible hacer cambios y ampliaciones en la aplicación.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
@@ -628,8 +633,8 @@ See <a href="https://arc42.org" class="bare">https://arc42.org</a>.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Privacidad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Los datos sensibles de los usuarios deben estar restringidos al mismo usuario.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Portabilidad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación web es compatible con los navegadores web más utilizados (Chrome, Firefox, Safari, Edge).</p></td>
 </tr>
 </tbody>
 </table>
@@ -652,9 +657,9 @@ See <a href="https://arc42.org" class="bare">https://arc42.org</a>.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Equipo de Desarrollo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Yago Navajas Gonzalez &#8594; <a href="mailto:UO287746@uniovi.es">UO287746@uniovi.es</a><br>
-Zohaib Akhtar Kausar &#8594; <a href="mailto:UO291060@uniovi.es">UO291060@uniovi.es</a><br>
-Santiago Lopez Laso &#8594; <a href="mailto:UO277369@uniovi.es">UO277369@uniovi.es</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yago Navajas González<br>
+Zohaib Akhtar Kausar<br>
+Santiago López Laso</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Los estudiantes que llevarán a cabo el desarrollo de la aplicación. Serán los encargados de la arquitectura, la documentación y la codificación.</p></td>
 </tr>
 <tr>
@@ -665,12 +670,12 @@ Santiago Lopez Laso &#8594; <a href="mailto:UO277369@uniovi.es">UO277369@uniovi.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Usuario</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Jugador de la aplicación</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Personas que puedan interactuar tanto con el registro de usuarios como con el juego en sí y pueda completar correctamente una partida.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Personas que puedan interactuar tanto con el registro de usuarios como con el juego en sí y completar correctamente una partida.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">HappySw</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Empresa responsable</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Empresa contratada, cuyo trabajo sera el desarrollo del juego de la mano del equipo de desarrollo.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Empresa contratada, cuyo trabajo será el desarrollo del juego de la mano del equipo de desarrollo.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RTVE</p></td>
@@ -686,8 +691,6 @@ Santiago Lopez Laso &#8594; <a href="mailto:UO277369@uniovi.es">UO277369@uniovi.
 <div class="sect1">
 <h2 id="section-architecture-constraints">2. Restricciones de arquitectura ⛔</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_restricciones_técnicas">2.1. Restricciones Técnicas</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -701,62 +704,24 @@ Santiago Lopez Laso &#8594; <a href="mailto:UO277369@uniovi.es">UO277369@uniovi.
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">API Wikidata</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">El número de consultas en un tiempo espcifico es la mayor limitacion de la API, junto con la disponibilidad de los datos. Esto puede afectar a tiempos de carga, por ejemplo.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Wikidata</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Se debe usar Wikidata para obtener la información de las preguntas. El número de consultas en un tiempo específico es la mayor limitación de la API, junto con la disponibilidad de los datos. Esto puede afectar a tiempos de carga, por ejemplo.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Git</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Conflictos al realizar trabajo por separado por parte de mas de un miembro sobre un mismo recurso.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Conflictos al realizar trabajo por separado por parte de más de un miembro sobre un mismo recurso.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GitHub</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">La falta de experiencia puede conducir a problemas en la gestion del proyecto asi como en su despliegue y lo que ello conlleva.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La falta de experiencia puede conducir a problemas en la gestión del proyecto así como en su despliegue y lo que ello conlleva.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Integración continua/despliegue continuo (CI/CD)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Restricciones en la configuración de pipelines de CI/CD para automatizar las pruebas, compilaciones y despliegues de la aplicación en el servidor Docker, lo que podría afectar la velocidad y la frecuencia de las entregas de nuevas características o correcciones de errores.</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Máquina Virtual Azure</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Esta plataforma impone límites a la cantidad de recursos que podemos usar con la licencia de estudiantes, por lo que debemos ir con cuidado de cuando tenemos la máquina encendida para no agotar el crédito.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_resticciones_organizacionales">2.2. Resticciones organizacionales</h3>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 66.6667%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Restricción</th>
-<th class="tableblock halign-left valign-top">Descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Horarios y Disponibilidad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Los diferentes compromisos personales y académicos de los miembros del grupo pueden dificultar la coordinación de horarios para reuniones y sesiones de trabajo en equipo.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Expectativas y motivación</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Los miembros del equipo tienen distintas expectativas sobre el trabajo y esto afecta a la dedicacion que realizan.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Politicas de la Universidad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Las entregas de otra asignaturas se interponen en la realización del trabajo y puede derivar en una falta de tiempo para realizarlo.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Diferencias en el nivel de habilidades técnicas</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A pesar de no ser muy acusadas si que existen diferencias que pueden afectar en una distribucion igualitaria del trabajo.</p></td>
-</tr>
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -1119,40 +1084,85 @@ Santiago Lopez Laso &#8594; <a href="mailto:UO277369@uniovi.es">UO277369@uniovi.
 <div class="sect1">
 <h2 id="section-deployment-view">7. Vista de Despliegue 👀</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_diagrama_de_despliegue">7.1. Diagrama de Despliegue</h3>
 <div class="paragraph">
-<p>Los servicios que se van a desplegar son los siguientes:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>User service: Servicio Express que maneja la inserción de nuevos usuarios en el sistema.</p>
-</li>
-<li>
-<p>Auth service: Servicio Express que maneja la autenticación de usuarios.</p>
-</li>
-<li>
-<p>Question service: Servicio Express que maneja la generación de preguntas y las llamadas a la API de Wikidata.</p>
-</li>
-<li>
-<p>Webapp: Aplicación web React que utiliza el servicio de puerta de enlace para permitir funciones básicas de inicio de sesión y nuevos usuarios.</p>
-</li>
-<li>
-<p>History service: Servicio Express que maneja el historial de juegos jugados por los usuarios.</p>
-</li>
-<li>
-<p>Gateway service: Servicio Express expuesto al público que sirve como proxy a los anteriores.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>El diagrama de despliegue es el siguiente:</p>
+<p>Este diagrama ilustra cómo interactúan los diferentes servicios del sistema.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/07_diagrama_de_despliegue.png" alt="Diagrama de despliegue">
+<img src="./images/07_diagrama_de_despliegue.jpg" alt="Diagrama de despliegue">
 </div>
+</div>
+<div class="paragraph">
+<p>La arquitectura del sistema está compuesta por varios servicios, cada uno contenerizado usando Docker y desplegados en una máquina virtual de Azure. A continuación se describen los servicios principales y su función dentro del sistema:</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_servicios">7.2. Servicios</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>WebApp</strong><br>
+Tecnología: React<br>
+Descripción: Interfaz de usuario que proporciona funcionalidades de inicio de sesión, registro, juego y revisión de historial y ranking.<br>
+Interacción: Comunica con el Gateway Service para todas las operaciones.</p>
+</li>
+<li>
+<p><strong>Gateway Service</strong><br>
+Tecnología: Express<br>
+Descripción: Actúa como un proxy para los servicios internos, exponiendo una API unificada hacia la WebApp.</p>
+</li>
+<li>
+<p><strong>User Service</strong><br>
+Tecnología: Express<br>
+Descripción: Maneja operaciones relacionadas con usuarios, incluyendo inserción de nuevos registros.<br>
+Base de Datos: MongoDB (Colección: userdb).</p>
+</li>
+<li>
+<p><strong>Auth Service</strong><br>
+Tecnología: Express<br>
+Descripción: Procesa la autenticación de usuarios.<br>
+Base de Datos: MongoDB (Colección: userdb).</p>
+</li>
+<li>
+<p><strong>Question Service</strong><br>
+Tecnología: Express<br>
+Descripción: Genera preguntas y realiza consultas a la API de Wikidata.<br>
+Base de Datos: MongoDB (Colección: questiondb).</p>
+</li>
+<li>
+<p><strong>History Service</strong><br>
+Tecnología: Express<br>
+Descripción: Administra el historial de juegos de los usuarios y maneja el ranking.<br>
+Base de Datos: MongoDB (Colección: historydb).</p>
+</li>
+<li>
+<p><strong>MongoDB</strong><br>
+Descripción: Base de datos no relacional que almacena datos de usuarios, preguntas y historiales de juego.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_monitoreo">7.3. Monitoreo</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Prometheus</strong><br>
+Descripción: Sistema de monitoreo y alerta que recolecta métricas de los diferentes servicios. Utilizado para mantener la visibilidad del rendimiento y la salud operativa de los servicios dentro de la arquitectura del sistema.<br></p>
+<div class="paragraph">
+<p>Configuración: Configurado para realizar scraping cada 5 segundos al servicio Gateway, que es el punto central de comunicación y datos para la aplicación. La configuración específica define un solo trabajo de scraping que apunta al servicio Gateway en el puerto 8000. Esta configuración está diseñada para ser simple y directa, enfocada en la recolección eficiente de métricas críticas.</p>
+</div>
+</li>
+<li>
+<p><strong>Grafana</strong><br>
+Descripción: Herramienta de visualización y análisis que transforma los datos recolectados por Prometheus en dashboards interactivos y detallados.</p>
+</li>
+</ol>
 </div>
 <div style="page-break-after: always;"></div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1629,6 +1639,34 @@ Verifica que se manejen correctamente los errores al guardar el historial en el 
 <p><strong>should handle error getting history from history service with query</strong>:
 Comprueba que se manejen correctamente los errores al obtener el historial desde el servicio de historial, usando una consulta específica y retornando el mensaje de error correspondiente.</p>
 </li>
+<li>
+<p><strong>should handle error deleting non-existent user in user service</strong>:
+Este test verifica que el servicio de gateway maneje adecuadamente la solicitud para eliminar un usuario que no existe en el servicio de usuarios, asegurando que se propague el mensaje de error correcto y se devuelva el código de estado adecuado.</p>
+</li>
+<li>
+<p><strong>should propagate parameters correctly on user update request</strong>:
+Este test asegura que los cambios en los datos de un usuario a través de una solicitud PATCH sean correctamente propagados al servicio de usuarios, validando así que los parámetros se transmitan correctamente y se obtenga una respuesta de éxito.</p>
+</li>
+<li>
+<p><strong>should ensure data consistency when retrieving user history</strong>:
+Este test verifica que el servicio de gateway proporcione una respuesta consistente y completa cuando se solicita el historial de un usuario específico, validando que todos los campos esperados estén presentes y sean correctos.</p>
+</li>
+<li>
+<p><strong>should forward delete user request to user service and handle response</strong>:
+Este test verifica que el endpoint de eliminación de usuario (DELETE /user/:id) funcione correctamente, reenviando la solicitud al servicio de usuarios y gestionando la respuesta adecuadamente.</p>
+</li>
+<li>
+<p><strong>should forward delete question request to generate service and handle response</strong>:
+Comprueba que el endpoint para eliminar preguntas (DELETE /question/:id) reenvíe correctamente la solicitud al servicio de generación de preguntas y maneje las respuestas adecuadamente.</p>
+</li>
+<li>
+<p><strong>should forward get ranking request to history service and return rankings</strong>:
+Asegura que el endpoint para obtener el ranking de usuarios (GET /getranking) reenvíe correctamente la solicitud al servicio de historial y reciba la lista de rankings esperada.</p>
+</li>
+<li>
+<p><strong>should handle error deleting user from user service</strong>:
+Este test verifica que el servicio de gateway maneje correctamente los errores retornados por el servicio de usuarios al intentar eliminar un usuario que no existe o cuando hay un fallo en la operación.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -1754,6 +1792,9 @@ Este test verifica la funcionalidad del sistema para rechazar tokens JWT que no 
 <p>should update history entry for an existing user: Este test comprueba que el endpoint /savehistory actualice correctamente una entrada de historial existente para un usuario, sumando correctamente las nuevas jugadas, preguntas jugadas, preguntas acertadas y preguntas falladas a los totales previos.</p>
 </li>
 <li>
+<p>should reject history entry with missing data: Este test verifica que el endpoint /savehistory maneje adecuadamente situaciones donde los datos esenciales como NumPreguntasJugadas o NumAcertadas no se proporcionen en la solicitud. Se espera que el servidor responda con un código de estado 400 y un mensaje de error claro indicando qué dato falta.</p>
+</li>
+<li>
 <p><strong>GET /gethistory</strong>:</p>
 </li>
 <li>
@@ -1763,10 +1804,28 @@ Este test verifica la funcionalidad del sistema para rechazar tokens JWT que no 
 <p>should create new history entry for a non-existing user: Este test comprueba que el endpoint /gethistory sea capaz de manejar solicitudes para usuarios no existentes correctamente, retornando una entrada de historial con contadores en cero.</p>
 </li>
 <li>
+<p>should handle non-existent username on get history: Este test verifica que el endpoint /gethistory responda adecuadamente cuando se consulta el historial de un usuario que no existe. Se espera que el servidor responda con un código de estado 404.</p>
+</li>
+<li>
 <p><strong>GET /gethistory/:username</strong>:</p>
 </li>
 <li>
 <p>should get history entry for an existing user: Similar al test anterior bajo el endpoint /gethistory, pero esta vez utilizando una ruta con parámetro. Verifica si la solicitud a /gethistory/:username recupera correctamente la entrada de historial para un usuario específico usando la identificación del usuario en la URL, asegurándose de que todos los datos devueltos coincidan con los almacenados.</p>
+</li>
+<li>
+<p><strong>GET /getranking</strong>:</p>
+</li>
+<li>
+<p>should handle insufficient data for rankings: Verifica que cuando no hay datos suficientes para calcular un ranking, el servicio devuelve correctamente un arreglo vacío, lo cual es importante para evitar errores en la visualización del cliente cuando no hay datos disponibles.</p>
+</li>
+<li>
+<p>should return a correct ranking of players based on their scores: Asegura que el servicio calcula y devuelve el ranking de los jugadores de manera correcta basándose en sus respuestas acertadas y el total de preguntas jugadas, ordenando los jugadores según sus rendimientos.</p>
+</li>
+<li>
+<p>should correctly calculate posterior probabilities in rankings: Este test evalúa si se calcula adecuadamente las probabilidades a posteriori basadas en las estadísticas de juego de los jugadores, asegurando que los resultados del ranking sean justos y precisos.</p>
+</li>
+<li>
+<p>should handle server error during ranking calculation: Este test asegura que /getranking maneje correctamente los errores internos durante el cálculo del ranking, devolviendo un estado de error 500 para indicar problemas en el proceso.</p>
 </li>
 </ul>
 </div>
@@ -1790,6 +1849,22 @@ Verifica que el servicio rechace las solicitudes para crear un usuario que no in
 <li>
 <p><strong>should not allow adding a user with an existing username</strong>:
 Asegura que no se pueda registrar más de un usuario con el mismo nombre de usuario. l intentar añadir un usuario que ya existe en la base de datos, el servidor debe responder con un código de estado 400 y un mensaje indicando que el usuario ya existe.</p>
+</li>
+<li>
+<p><strong>should get all users correctly</strong>:
+Este test verifica que el endpoint /user funcione correctamente al recuperar todos los usuarios registrados. Se espera que el servidor responda con un código de estado 200 y que el cuerpo de la respuesta contenga una lista de usuarios, mostrando únicamente sus nombres de usuario y fechas de creación.</p>
+</li>
+<li>
+<p><strong>should update an existing user</strong>:
+Este test verifica que el endpoint /user/:id actualice correctamente un usuario existente. Al enviar una solicitud PATCH con un nuevo nombre de usuario, se espera que el servidor responda con un código de estado 200 y que el cuerpo de la respuesta refleje la actualización.</p>
+</li>
+<li>
+<p><strong>should handle deletion of a non-existent user correctly</strong>:
+Este test asegura que el servidor responda correctamente cuando se intenta eliminar un usuario que no existe. Al enviar una solicitud DELETE a /user/:id con un ID inexistente, se espera que el servidor responda con un código de estado 404 y un mensaje de error indicando que el usuario no fue encontrado.</p>
+</li>
+<li>
+<p><strong>should handle internal server error when getting users</strong>:
+Verifica que el servicio maneje correctamente los errores internos al intentar obtener la lista de usuarios. Si ocurre un error interno (simulado mediante un fallo en la conexión a la base de datos, por ejemplo), se espera que el servidor responda con un código de estado 500.</p>
 </li>
 </ul>
 </div>
@@ -2126,7 +2201,7 @@ Han destacado que todo es correcto en general (Obviando los puntos de la 2ª ite
 <div id="footer">
 <div id="footer-text">
 Version 8.2 EN<br>
-Last updated 2024-04-27 13:33:48 +0200
+Last updated 2024-05-02 23:17:27 +0200
 </div>
 </div>
 </body>
