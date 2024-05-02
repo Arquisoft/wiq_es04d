@@ -3,7 +3,7 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-building-block-view]]
 
 
-== Vista de Bloque de Construcción
+== Vista de Bloque de Construcción 🔨
 
 === Sistema general de caja blanca
 
