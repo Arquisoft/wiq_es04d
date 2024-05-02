@@ -19,15 +19,15 @@ Bloques de Construcción Contenidos::
 
 image::blockview1.drawio.png["Nivel 2"]
 
-==== White Box _webapp_
+==== Caja blanca _webapp_
 
 Interfaz web.
 
-==== White Box _gatewayservice_
+==== Caja blanca _gatewayservice_
 
 Puente entre webapp y resto de componentes.
 
-==== White Box _questionservice_
+==== Caja blanca _questionservice_
 
 Generador de las preguntas.
 
@@ -35,14 +35,14 @@ Generador de las preguntas.
 
 image::blockview2.drawio.png["Nivel 3"]
 
-==== White Box _authservice_
+==== Caja blanca _authservice_
 
 Gestión del inicio de sesión.
 
-==== White Box _historyservice_
+==== Caja blanca _historyservice_
 
 Gestión del histórico de participación de los usuarios en el sistema.
 
-==== White Box _userservice_
+==== Caja blanca _userservice_
 
 Gestión del registro de usuarios.
