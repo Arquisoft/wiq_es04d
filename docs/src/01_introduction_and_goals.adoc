@@ -3,14 +3,14 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-introduction-and-goals]]
 == Introducción y Objetivos 🎇
 
-El proyecto de WIQ 4D es un proyecto desarrollado en la asignatura Arquitectura del Software. Consiste en la creación de una aplicación web al estilo "Saber y Ganar". Es decir, es un juego de preguntas de cultura general generadas de forma automatica con ayuda de Wikidata, la base de conocimiento editada en colaboración..
+El proyecto de WIQ 04D es un proyecto desarrollado en la asignatura Arquitectura del Software. Consiste en la creación de una aplicación web al estilo "Saber y Ganar". Es decir, es un juego de preguntas de cultura general generadas de forma automática con ayuda de Wikidata, una base de conocimiento que puede ser leída y editada por humanos y por máquinas.
 
 Los desarrolladores de la aplicacion son por Zohaib Akhtar Kausar, Yago Navajas González y Santiago López Laso. 
 
 === Requisitos Funcionales
 
 ****
-* Los usuarios se deberán loggearse en la página; esto servirá para tener registro de una serie de parámetros, como puede ser las veces que se ha jugado. 
+* Los usuarios deberán iniciar sesión en la página; esto servirá para tener registro de una serie de parámetros, como puede ser las veces que se ha jugado. 
 * Se podrán responder preguntas autogeneradas y se verá si han acertado o fallado, así como la respuesta correcta.
 * Las preguntas deberán ser respondidas en un tiempo límite.
 * Las preguntas seguirán la misma estructura: 1 pregunta correcta y 3 incorrectas, generadas automáticamente.
@@ -27,10 +27,11 @@ Los desarrolladores de la aplicacion son por Zohaib Akhtar Kausar, Yago Navajas 
 |===
 | Prioridad | Objetivo | Descripción
 | 1 | Usabilidad | Todos los usuarios deben poder usar la aplicación sin tener en cuenta sus limitaciones.
-| 2 | Mantenibilidad | El código y documentación de la aplicación ha de estar conformado de tal forma que sea factible hacer cambios y ampliaciones en la aplicación.
-| 3 | Eficiciencia | Los tiempos entre operaciones han de ser asumibles.
+| 2 | Rendimiento | Los tiempos entre operaciones han de ser asumibles, aun teniendo varios usuarios usando la aplicación a la vez.
+| 3 | Seguridad |  Los datos sensibles de los usuarios deben estar restringidos al mismo usuario.
+| 3 | Mantenibilidad | El código y documentación de la aplicación ha de estar conformado de tal forma que sea factible hacer cambios y ampliaciones en la aplicación.
 | 4 | Fiabilidad | Los datos usados en la aplicación deben ser los correctos.
-| 5 | Privacidad |  Los datos sensibles de los usuarios deben estar restringidos al mismo usuario.
+| 5 | Portabilidad | La aplicación web es compatible con los navegadores web más utilizados (Chrome, Firefox, Safari, Edge).
 |===
 
 
@@ -39,11 +40,11 @@ Los desarrolladores de la aplicacion son por Zohaib Akhtar Kausar, Yago Navajas 
 [options="header",cols="1,2,2"]
 |===
 |Role/Name|Contact|Expectations
-| Equipo de Desarrollo | Yago Navajas Gonzalez -> UO287746@uniovi.es +
-Zohaib Akhtar Kausar -> UO291060@uniovi.es +
-Santiago Lopez Laso -> UO277369@uniovi.es | Los estudiantes que llevarán a cabo el desarrollo de la aplicación. Serán los encargados de la arquitectura, la documentación y la codificación.
+| Equipo de Desarrollo | Yago Navajas González +
+Zohaib Akhtar Kausar +
+Santiago López Laso  | Los estudiantes que llevarán a cabo el desarrollo de la aplicación. Serán los encargados de la arquitectura, la documentación y la codificación.
 | Profesores | Jose Emilio Labra Gayo | Supervisores de los avances y encargados de evaluar la aplicación final y el desarrollo de la misma.
-| Usuario | Jugador de la aplicación | Personas que puedan interactuar tanto con el registro de usuarios como con el juego en sí y pueda completar correctamente una partida.
-| HappySw | Empresa responsable | Empresa contratada, cuyo trabajo sera el desarrollo del juego de la mano del equipo de desarrollo.
+| Usuario | Jugador de la aplicación | Personas que puedan interactuar tanto con el registro de usuarios como con el juego en sí y completar correctamente una partida.
+| HappySw | Empresa responsable | Empresa contratada, cuyo trabajo será el desarrollo del juego de la mano del equipo de desarrollo.
 | RTVE | Empleador | Interesados en la creación del juego e impulsores de su desarrollo.
 |===
