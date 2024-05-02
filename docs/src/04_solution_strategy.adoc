@@ -7,8 +7,8 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 * Se usará la biblioteca de JavaScript React para facilitar la implementación de la interfaz.
 * Se usará una arquitectura basada en microservicios para los diferentes componentes del proyecto como la generación de preguntas o el registro de usuarios en el sistema.
-* Para el alojamiemto de la página web se usará una máquina virtual Azure con el crédito de estudiante proporcionado.
-* Se usará GitHub Actions para el despliegue del proyecto, pero de forma automática en vez de desplegarlo todo a mano. Cabe a destacar que también están implementados unos test para asegurar el correcto despliegue del proyecto.
+* Para el alojamiento de la página web se usará una máquina virtual Azure con el crédito de estudiante proporcionado.
+* Se usará GitHub Actions para el despliegue del proyecto, pero de forma automática en vez de desplegarlo todo a mano. Cabe destacar que también están implementados unos tests para asegurar el correcto despliegue del proyecto.
 * Se harán pruebas de usabilidad para comprobar la usabilidad de la aplicación.
 * Se harán pruebas de carga para comprobar el rendimiento de la aplicación.
 
