@@ -10,7 +10,7 @@ Enlace a grafana: (http://20.77.40.187:9091/)
 Equipo de Desarrollo
 - Zohaib Aktar Kausar -> <a href="https://github.com/Verzidee"><img src="https://img.shields.io/badge/perfil-Verzidee-black"></a> 
 - Yago Navajas González -> <a href="https://github.com/yagonavajas"><img src="https://img.shields.io/badge/perfil-yagonavajas-purple"></a> 
-- Santiago Lopez Laso -> <a href="https://github.com/Santiago21112001"><img src="https://img.shields.io/badge/perfil-Santiago21112001-green"></a>
+- Santiago López Laso -> <a href="https://github.com/Santiago21112001"><img src="https://img.shields.io/badge/perfil-Santiago21112001-green"></a>
 
 Estos son los componentes que componen la aplicación web.
 
@@ -21,9 +21,9 @@ Estos son los componentes que componen la aplicación web.
 - **Servicio de Preguntas**. Servicio Express que se encarga de la generación de preguntas y de realizar consultas a la API de Wikidata.
 - **Aplicación Web**. Aplicación web desarrollada en React que interactúa con el Servicio Gateway para ofrecer funcionalidades de inicio de sesión, registro de nuevos usuarios, la posibilidad de jugar y la opción de revisar las estadísticas de juegos anteriores.
 
-La arquitectura de la aplicación está compuesta por microservicios. Cada servicio utiliza una base de datos diferente.
+La arquitectura de la aplicación está compuesta por microservicios. Cada servicio utiliza una tabla privada en la base de datos.
 
-Documentacion: https://arquisoft.github.io/wiq_es04d/
+Documentación: https://arquisoft.github.io/wiq_es04d/
 
 ## Guía rápida para empezar
 
@@ -55,9 +55,9 @@ Primero, inicia la base de datos. Instala y ejecuta Mongo o ejecútalo usando do
 
 También puedes usar servicios como Mongo Atlas para ejecutar una base de datos Mongo en la nube.
 
-Ahora, lanza los servicios de autenticación, usuario y puerta de enlace. Solo ve a cada directorio y ejecuta `npm install` seguido de `npm start`.
+Ahora, lanza los siguientes servicios: gateway, questionservice, authservice, historyservice y userservice. Solo ve a cada directorio y ejecuta `npm install` seguido de `npm start`.
 
-Por último, ve al directorio de la aplicación web y lanza este componente con `npm install` seguido de `npm start`.
+Por último, ve al directorio de webapp y lanza este componente con `npm install` seguido de `npm start`.
 
 Después de que todos los componentes se hayan lanzado, la aplicación debería estar disponible en localhost en el puerto 3000.
 
