@@ -5,18 +5,18 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 El proyecto de WIQ 04D es un proyecto desarrollado en la asignatura Arquitectura del Software. Consiste en la creación de una aplicación web al estilo "Saber y Ganar". Es decir, es un juego de preguntas de cultura general generadas de forma automática con ayuda de Wikidata, una base de conocimiento que puede ser leída y editada por humanos y por máquinas.
 
-Los desarrolladores de la aplicacion son por Zohaib Akhtar Kausar, Yago Navajas González y Santiago López Laso. 
+Los desarrolladores de la aplicación son Zohaib Akhtar Kausar, Yago Navajas González y Santiago López Laso.
 
 === Requisitos Funcionales
 
 ****
 * Los usuarios deberán iniciar sesión en la página; esto servirá para tener registro de una serie de parámetros, como puede ser las veces que se ha jugado. 
-* Se podrán responder preguntas autogeneradas y se verá si han acertado o fallado, así como la respuesta correcta.
-* Las preguntas deberán ser respondidas en un tiempo límite.
+* Se podrán responder preguntas autogeneradas y se mostrará si han acertado o fallado, así como la respuesta correcta.
+* Las preguntas deberán ser respondidas dentro de un tiempo límite.
 * Las preguntas seguirán la misma estructura: 1 pregunta correcta y 3 incorrectas, generadas automáticamente.
-* Los usuarios podrán consultar datos sobre su cuentas, como pueden ser las veces que han jugado o el número de preguntas que han acertado o fallado. 
-* Existirá un ranking que ordenará a los 10 mejores jugadores en función de una métrica.
-* Se podrán acceder a los servicios de la aplicación a traves de una API REST.
+* Los usuarios podrán consultar datos sobre sus cuentas, como las veces que han jugado o el número de preguntas que han acertado o fallado.
+* Existirá un ranking que ordenará a los 10 mejores jugadores según una métrica determinada.
+* Se podrá acceder a los servicios de la aplicación a través de una API REST
 
 
 ****
@@ -29,8 +29,7 @@ Los desarrolladores de la aplicacion son por Zohaib Akhtar Kausar, Yago Navajas 
 | 1 | Usabilidad | Todos los usuarios deben poder usar la aplicación sin tener en cuenta sus limitaciones.
 | 2 | Rendimiento | Los tiempos entre operaciones han de ser asumibles, aun teniendo varios usuarios usando la aplicación a la vez.
 | 3 | Seguridad |  Los datos sensibles de los usuarios deben estar restringidos al mismo usuario.
-| 3 | Mantenibilidad | El código y documentación de la aplicación ha de estar conformado de tal forma que sea factible hacer cambios y ampliaciones en la aplicación.
-| 4 | Fiabilidad | Los datos usados en la aplicación deben ser los correctos.
+| 4 | Mantenibilidad | El código y documentación de la aplicación ha de estar conformado de tal forma que sea factible hacer cambios y ampliaciones en la aplicación.
 | 5 | Portabilidad | La aplicación web es compatible con los navegadores web más utilizados (Chrome, Firefox, Safari, Edge).
 |===
 

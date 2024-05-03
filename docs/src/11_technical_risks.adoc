@@ -1,29 +1,29 @@
 
 [[section-technical-risks]]
-== Riesgos y Deuda Técnina ⚠️
+== Riesgos y Deuda Técnica ⚠️
 
 === Riesgos
 [options="header",cols="1,2"]
 |======================
 | Riesgo | Descripción
 | Tiempo de entrega | Estamos limitados por el plazo de entrega y también por el tiempo que dedicaremos a trabajar en otras asignaturas.
-| Proyecto grande y trabajo en equipo | La coordinación y comunicación en un equipo pueden ser desafiantes. 
+| Proyecto grande y trabajo en equipo | La coordinación y comunicación en un equipo pueden ser desafiantes.
 | Diseño inadecuado o enfoque incorrecto | La presencia de errores en etapas tempranas puede ser devastadora, ya que estas son cruciales. Un mal diseño detectado en etapas avanzadas podría ser irreparable, subrayando la importancia de una planificación y visión previsoras.
 | Falta de familiaridad con las tecnologías | El equipo comienza con conocimiento limitado sobre las herramientas necesarias, lo que puede resultar en un uso subóptimo de estas.
 | Errores de implementación | Errores no críticos en la lógica de negocio pueden permanecer ocultos por largo tiempo, afectando la calidad del sistema.
-| Comunicación deficiente entre miembros | Las diferencias y desacuerdos pueden obstaculizar la colaboración efectiva, esencial para el éxito del equipo. 
+| Comunicación deficiente entre miembros | Las diferencias y desacuerdos pueden obstaculizar la colaboración efectiva, esencial para el éxito del equipo.
 | Distribución desigual del trabajo | Una asignación desequilibrada puede sobrecargar a algunos miembros mientras deja a otros con menos responsabilidades.
 | Reducción del tamaño del equipo | La salida inesperada de miembros puede desafiar la continuidad y el avance del proyecto, requiriendo adaptaciones rápidas y eficientes.
-|Incumplimiento de normas|Si el proyecto no cumple con las regulaciones o estándares de seguridad pertinentes, podría enfrentar sanciones legales o multas.
+| Incumplimiento de normas | Si el proyecto no cumple con las regulaciones o estándares de seguridad pertinentes, podría enfrentar sanciones legales o multas.
 |======================
 
-=== Deuda Tecnica
+=== Deuda Técnica
 [options="header",cols="1,2"]
 |======================
-| Deuda Técnina | Descripción
-| Uso del proyecto base creado por los profesores | Para no tener que realizar la creacion del proyecto hemos decidido usar el proyecto ya creado. Esto implica tener que revisar codigo ya creado y entender su funcionamiento, asi como ampliarlo con codigo propio, dando lugar a errores y perdidas de tiempo. Tambien requiere tener que aprender tecnologias nuevas y como usarlas.
-| Uso de React | El uso del framework nos puede facilitar el desarrolo en algunas etapas, pero nos lo puede complicar al no estar familiarizados con esta tecnologia y todas sus características.
-|Dependencias desactualizadas|Usar versiones obsoletas de bibliotecas, frameworks o plataformas puede resultar en vulnerabilidades de seguridad o limitaciones de rendimiento que deben abordarse en el futuro.
-|Falta de una abundancia de pruebas automatizada| A medida que avanza el proyecto la falta de pruebas pude hacer que se acumule deuda tecnica al no poder realizarse cambios de manera rapida y eficaz sin, ya que no se podran probar de manera inmediata.
-|Empezar desde el principio de nuevo| Debido a problemas este grupo ha tenido que volver a partir desde un proyecto desde 0 haciendo quecontemos con un retraso con lo que todo esto conlleva.
+| Deuda Técnica | Descripción
+| Uso del proyecto base creado por los profesores | Para evitar la creación del proyecto desde cero, hemos decidido utilizar el proyecto ya creado por los profesores. Esto implica revisar y comprender el código existente, así como ampliarlo con nuestro propio código, lo que puede llevar a errores y pérdida de tiempo. Además, requiere aprender nuevas tecnologías y cómo utilizarlas.
+| Uso de React | El uso de este framework puede facilitar el desarrollo en algunas etapas, pero también puede complicarlo al no estar familiarizados con esta tecnología y todas sus características.
+| Dependencias desactualizadas | Utilizar versiones obsoletas de bibliotecas, frameworks o plataformas puede resultar en vulnerabilidades de seguridad o limitaciones de rendimiento que deben abordarse en el futuro.
+| Falta de una abundancia de pruebas automatizadas | A medida que avanza el proyecto, la falta de pruebas puede acumular deuda técnica al no poder realizarse cambios de manera rápida y eficaz sin la capacidad de probarlos de inmediato.
+| Empezar desde el principio de nuevo | Debido a problemas, el grupo ha tenido que reiniciar el proyecto desde cero, lo que ha provocado un retraso significativo con todas las implicaciones que esto conlleva.
 |======================

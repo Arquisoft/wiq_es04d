@@ -1,43 +1,34 @@
 ifndef::imagesdir[:imagesdir: ../images]
 
 [[section-glossary]]
-== Glosario ⁉️
-
+= Glosario
 
 [cols="e,2e" options="header"]
 |===
-|Término 
-|Definicion
+|Término | Definición
 
-|React
-|Biblioteca de Javascript que se encarga en la creación de interfaces de usuario de una manera fácil. Es eficiente y se puede incorporar
-al código de una forma sencilla.
+|React | Biblioteca de JavaScript que facilita la creación de interfaces de usuario de manera sencilla y eficiente. Se integra fácilmente en el código.
 
-|Node.js
-|Entorno que usa Javascript, donde destaca en la creación de servidores web. Su programación es dirigida por eventos, es multi-plataforma, open-source
-y soporta la concurrencia.
+|Node.js | Entorno de ejecución de JavaScript, destacado en la creación de servidores web. Su programación es dirigida por eventos, es multiplataforma, de código abierto y compatible con la concurrencia.
 
-|Microservicio
-|Enfoque arquitectónico, donde el software se va a dividir en servicios de tamaño pequeño, que estarán unidos por la intervención de API's 
-(en nuestro caso Wikidata). Son rápidos, sencillos a la hora de su desarrollo y autonómos cuando estos están en ejecución.
+|Microservicio | Enfoque arquitectónico donde el software se divide en servicios pequeños, conectados mediante APIs (En nuestro caso usamos un gateway). Son rápidos, simples de desarrollar y autónomos en ejecución.
 
-|API
-|También llamado Application Programming Interface, es un intermediario que ayuda a las diferentes aplicaciones del proyecto a posibilitar la comunicación
-entre ellas. Favorece a la eficiencia y agilidad del funcionamiento de dichas aplicaciones.
+|API | Interfaz de programación de aplicaciones, que facilita la comunicación entre diferentes servicios del proyecto, mejorando su eficiencia y agilidad.
 
-|MongoDB
-|Es uno de los tantos tipos de bases de datos, como MariaDB. Usa NoSQL, soporta múltiples lenguajes de programación y también soporta su funcionamiento en gran variedad de sistemas operativos. Algo a tener en cuenta es que MongoDB realiza el guardado de datos de una forma distinta a la de las bases de datos de tipo relacional, con tablas de datos, este lo guarda en archivos BSON, que es un derivado de JSON.
+|MongoDB | Tipo de base de datos NoSQL, compatible con múltiples lenguajes de programación y sistemas operativos. Almacena datos en archivos BSON, un formato derivado de JSON.
 
-|BSON
-|Conocido como Binary JSON, son los archivos que usa la base de datos MongoDB para almacenar los datos de una manera más ágil y sencilla que con las tablas. Una curiosidad de este tipo de archivo es que no tiene un tipo de MIME definido, mientras que JSON sí que lo tiene.
+|BSON | Formato de archivo usado por MongoDB para almacenar datos de manera eficiente. No tiene un tipo MIME definido como JSON.
 
-|Mongoose
-|Biblioteca que es encargada de crear una conexión con la base de datos MongoDB con el entorno de Node.js. Hace que el acceso y creación de los datos de MongoDB sea más fácil de realizar que con MongoDB en sí.
+|Mongoose | Biblioteca que facilita la conexión entre Node.js y MongoDB, simplificando el acceso y la manipulación de datos en la base de datos.
 
-|Docker
-|Aplicación que realiza el despliegue de cualquier aplicación en formato de contenedores, similares a los contenedores que tienen los barcos. Es open-source y permite que el proceso de desplegar una aplicación sea bastante más fácil y ordenado. 
+|Docker | Plataforma que despliega aplicaciones en contenedores, similares a los contenedores de carga de los barcos. Es de código abierto y facilita el despliegue ordenado de aplicaciones.
 
-|GitHub Actions
-|Plataforma que ayuda a automatizar los proyectos, haciendo posible el despliegue de estos desde el mismo Github. Soporta una gran variedad de lenguajes de programación y sistemas operativos.
+|GitHub Actions | Plataforma que automatiza proyectos, permitiendo el despliegue desde GitHub. Es compatible con diversos lenguajes y sistemas operativos.
+
+|Integración continua/despliegue continuo (CI/CD) | CI/CD es una práctica de desarrollo de software que combina la integración continua (CI) y la implementación continua (CD). La CI implica la integración automática y frecuente de cambios de código en un repositorio compartido, mientras que la CD automatiza el proceso de implementación de esos cambios en entornos de producción.
+
+|Interfaz de Usuario (UI) | La Interfaz de Usuario (UI) se refiere a la parte visual y tangible de un sistema informático a través de la cual los usuarios interactúan con él. Esto incluye elementos como botones, menús, formularios y cualquier otro componente con el que los usuarios puedan interactuar para utilizar el sistema.
+
+|Express (en el contexto de Node.js) | Express es un framework de desarrollo web para Node.js, que proporciona una serie de características y herramientas para crear aplicaciones web y APIs de manera más fácil y rápida.
 
 |===

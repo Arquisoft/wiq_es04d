@@ -13,7 +13,7 @@ image::blockview0.drawio.png["Whitebox Overall System"]
 
 Bloques de Construcción Contenidos::
 
-* wiq_es0d: la aplicación web. Los usuarios pueden usarla para jugar o pueden usar su API. Usa Wikidata para generar las preguntas.
+* Wiq_es0d: la aplicación web. Los usuarios pueden usarla para jugar o pueden usar su API. Usa Wikidata para generar las preguntas.
 
 === Nivel 2
 

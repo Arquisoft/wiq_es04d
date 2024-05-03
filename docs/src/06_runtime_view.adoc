@@ -6,7 +6,7 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 === Escenario de Ejecución 1
 Jugar una partida cuando la base de datos tiene suficientes preguntas. El proceso de mostrar una pregunta y procesar la respuesta se repite para cada pregunta de la partida. En este escenario se asume que son 3 preguntas por partida.
-La pregunta n es la última pregunta.
+La pregunta "n" es la última pregunta.
 
 [plantuml,"Sequence diagram",png]
 
