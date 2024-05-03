@@ -7,28 +7,28 @@ ifndef::imagesdir[:imagesdir: ../images]
 |===
 |Término | Definición
 
-|React | Biblioteca de JavaScript que facilita la creación de interfaces de usuario de manera sencilla y eficiente. Se integra fácilmente en el código.
+|React | Biblioteca de JavaScript diseñada para crear interfaces de usuario de forma eficiente y sencilla. Se integra fácilmente en proyectos existentes.
 
-|Node.js | Entorno de ejecución de JavaScript, destacado en la creación de servidores web. Su programación es dirigida por eventos, es multiplataforma, de código abierto y compatible con la concurrencia.
+|Node.js | Entorno de ejecución para JavaScript orientado al desarrollo de servidores web. Es dirigido por eventos, multiplataforma, de código abierto y maneja la concurrencia de manera eficaz.
 
-|Microservicio | Enfoque arquitectónico donde el software se divide en servicios pequeños, conectados mediante APIs (En nuestro caso usamos un gateway). Son rápidos, simples de desarrollar y autónomos en ejecución.
+|Microservicio | Enfoque arquitectónico que divide un software en pequeños servicios independientes que se comunican a través de APIs. Son rápidos, simples de desarrollar y pueden ejecutarse de manera autónoma.
 
-|API | Interfaz de programación de aplicaciones, que facilita la comunicación entre diferentes servicios del proyecto, mejorando su eficiencia y agilidad.
+|API | Acrónimo de Interfaz de Programación de Aplicaciones. Facilita la comunicación entre diferentes partes de un software, permitiendo que los servicios interactúen de manera eficiente.
 
-|MongoDB | Tipo de base de datos NoSQL, compatible con múltiples lenguajes de programación y sistemas operativos. Almacena datos en archivos BSON, un formato derivado de JSON.
+|MongoDB | Base de datos NoSQL que es compatible con múltiples lenguajes de programación y sistemas operativos. Almacena datos en documentos BSON, un formato binario que extiende JSON.
 
-|BSON | Formato de archivo usado por MongoDB para almacenar datos de manera eficiente. No tiene un tipo MIME definido como JSON.
+|BSON | Formato binario utilizado por MongoDB para almacenar documentos de manera eficiente. A diferencia de JSON, BSON está optimizado para ser más rápido en la lectura y escritura.
 
-|Mongoose | Biblioteca que facilita la conexión entre Node.js y MongoDB, simplificando el acceso y la manipulación de datos en la base de datos.
+|Mongoose | Biblioteca que proporciona una solución sencilla para modelar datos en aplicaciones Node.js que utilizan MongoDB. Simplifica la manipulación y el acceso a los datos.
 
-|Docker | Plataforma que despliega aplicaciones en contenedores, similares a los contenedores de carga de los barcos. Es de código abierto y facilita el despliegue ordenado de aplicaciones.
+|Docker | Plataforma que permite empaquetar aplicaciones dentro de contenedores, asegurando que funcionen de manera uniforme en cualquier entorno. Es de código abierto y facilita el despliegue escalable de aplicaciones.
 
-|GitHub Actions | Plataforma que automatiza proyectos, permitiendo el despliegue desde GitHub. Es compatible con diversos lenguajes y sistemas operativos.
+|GitHub Actions | Herramienta de automatización que permite la ejecución de flujos de trabajo directamente desde un repositorio en GitHub. Soporta múltiples lenguajes y sistemas operativos, y es especialmente útil para la integración y despliegue continuo.
 
-|Integración continua/despliegue continuo (CI/CD) | CI/CD es una práctica de desarrollo de software que combina la integración continua (CI) y la implementación continua (CD). La CI implica la integración automática y frecuente de cambios de código en un repositorio compartido, mientras que la CD automatiza el proceso de implementación de esos cambios en entornos de producción.
+|Integración continua/despliegue continuo (CI/CD) | Metodología de desarrollo de software que integra la integración continua (CI), la cual implica integrar automáticamente y con frecuencia los cambios de código en un repositorio compartido, y el despliegue continuo (CD), que automatiza la implementación de esos cambios en entornos de producción.
 
-|Interfaz de Usuario (UI) | La Interfaz de Usuario (UI) se refiere a la parte visual y tangible de un sistema informático a través de la cual los usuarios interactúan con él. Esto incluye elementos como botones, menús, formularios y cualquier otro componente con el que los usuarios puedan interactuar para utilizar el sistema.
+|Interfaz de Usuario (UI) | Aspecto visual y funcional de un sistema informático a través del cual los usuarios interactúan. Incluye elementos como botones, menús y formularios, facilitando la interacción con el sistema.
 
-|Express (en el contexto de Node.js) | Express es un framework de desarrollo web para Node.js, que proporciona una serie de características y herramientas para crear aplicaciones web y APIs de manera más fácil y rápida.
+|Express (en el contexto de Node.js) | Framework de desarrollo web para Node.js, que ofrece herramientas y características que simplifican la creación de aplicaciones web y APIs de manera eficiente.
 
 |===

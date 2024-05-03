@@ -3,22 +3,20 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-introduction-and-goals]]
 == Introducción y Objetivos 🎇
 
-El proyecto de WIQ 04D es un proyecto desarrollado en la asignatura Arquitectura del Software. Consiste en la creación de una aplicación web al estilo "Saber y Ganar". Es decir, es un juego de preguntas de cultura general generadas de forma automática con ayuda de Wikidata, una base de conocimiento que puede ser leída y editada por humanos y por máquinas.
+El proyecto WIQ 04D es un desarrollo en el marco de la asignatura de Arquitectura del Software, que consiste en la creación de una aplicación web similar al estilo de "Saber y Ganar". Este es un juego de preguntas de cultura general que se generan automáticamente con la ayuda de Wikidata, una base de conocimientos accesible tanto para humanos como para máquinas.
 
 Los desarrolladores de la aplicación son Zohaib Akhtar Kausar, Yago Navajas González y Santiago López Laso.
 
 === Requisitos Funcionales
 
 ****
-* Los usuarios deberán iniciar sesión en la página; esto servirá para tener registro de una serie de parámetros, como puede ser las veces que se ha jugado. 
-* Se podrán responder preguntas autogeneradas y se mostrará si han acertado o fallado, así como la respuesta correcta.
+* Los usuarios deben iniciar sesión en la página, lo cual permitirá registrar parámetros como la cantidad de veces que han jugado.
+* Se podrán responder preguntas autogeneradas y se indicará si las respuestas son correctas o incorrectas, junto con la respuesta correcta.
 * Las preguntas deberán ser respondidas dentro de un tiempo límite.
-* Las preguntas seguirán la misma estructura: 1 pregunta correcta y 3 incorrectas, generadas automáticamente.
-* Los usuarios podrán consultar datos sobre sus cuentas, como las veces que han jugado o el número de preguntas que han acertado o fallado.
-* Existirá un ranking que ordenará a los 10 mejores jugadores según una métrica determinada.
-* Se podrá acceder a los servicios de la aplicación a través de una API REST
-
-
+* Las preguntas seguirán la estructura de una pregunta correcta y tres incorrectas, generadas automáticamente.
+* Los usuarios podrán consultar datos sobre sus cuentas, como la cantidad de veces que han jugado y el número de preguntas acertadas o falladas.
+* Habrá un ranking que clasificará a los 10 mejores jugadores según una métrica determinada.
+* Se podrá acceder a los servicios de la aplicación a través de una API REST.
 ****
 
 === Atributos de Calidad
@@ -26,25 +24,24 @@ Los desarrolladores de la aplicación son Zohaib Akhtar Kausar, Yago Navajas Gon
 [options="header",cols="1,2,2"]
 |===
 | Prioridad | Objetivo | Descripción
-| 1 | Usabilidad | Todos los usuarios deben poder usar la aplicación sin tener en cuenta sus limitaciones.
-| 2 | Rendimiento | Los tiempos entre operaciones han de ser asumibles, aun teniendo varios usuarios usando la aplicación a la vez.
-| 3 | Seguridad |  Los datos sensibles de los usuarios deben estar restringidos al mismo usuario.
-| 4 | Mantenibilidad | El código y documentación de la aplicación ha de estar conformado de tal forma que sea factible hacer cambios y ampliaciones en la aplicación.
-| 5 | Portabilidad | La aplicación web es compatible con los navegadores web más utilizados (Chrome, Firefox, Safari, Edge).
+| 1 | Usabilidad | La aplicación debe ser accesible y fácil de usar para todos los usuarios, independientemente de sus limitaciones.
+| 2 | Rendimiento | Los tiempos de respuesta deben ser adecuados, incluso con múltiples usuarios accediendo a la aplicación simultáneamente.
+| 3 | Seguridad | Los datos sensibles de los usuarios deben estar protegidos y accesibles únicamente para cada usuario.
+| 4 | Mantenibilidad | El código y la documentación de la aplicación deben estar organizados de manera que faciliten futuras modificaciones y ampliaciones.
+| 5 | Portabilidad | La aplicación web debe ser compatible con los navegadores más utilizados como Chrome, Firefox, Safari y Edge.
 |===
-
 
 === Stakeholders
 
 [options="header",cols="1,2,2"]
 |===
-|Role/Name|Contact|Expectations
+| Rol/Nombre | Contacto | Expectativas
 | Equipo de Desarrollo | Yago Navajas González +
 Zohaib Akhtar Kausar +
-Santiago López Laso  | Los estudiantes que llevarán a cabo el desarrollo de la aplicación. Serán los encargados de la arquitectura, la documentación y la codificación.
-| Profesores | Jose Emilio Labra Gayo | Supervisores de los avances y encargados de evaluar la aplicación final y el desarrollo de la misma.
-| Usuario | Jugador de la aplicación | Personas que puedan interactuar tanto con el registro de usuarios como con el juego en sí y completar correctamente una partida.
-| HappySw | Empresa responsable | Empresa contratada, cuyo trabajo será el desarrollo del juego de la mano del equipo de desarrollo.
-| Wikidata | Proveedor de la información de las preguntas | Si la aplicación tiene éxito, para Wikidata es publicidad gratis. Por tanto, le interesa este proyecto.
+Santiago López Laso  | Estudiantes encargados del desarrollo de la aplicación, incluyendo la arquitectura, la documentación y la codificación.
+| Profesores | Jose Emilio Labra Gayo | Supervisores de los avances y encargados de evaluar la aplicación final y su desarrollo.
+| Usuarios | Jugadores de la aplicación | Personas que interactuarán con el registro de usuarios y el juego, y deberán ser capaces de completar una partida correctamente.
+| HappySw | Empresa responsable | Empresa contratada para colaborar en el desarrollo del juego junto al equipo de desarrollo.
+| Wikidata | Proveedor de la información para las preguntas | Interesado en el éxito de la aplicación como forma de obtener publicidad gratuita.
 | RTVE | Empleador | Interesados en la creación del juego e impulsores de su desarrollo.
 |===

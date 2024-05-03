@@ -5,18 +5,17 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 === Decisiones tecnológicas
 
-* Se usará la biblioteca de JavaScript React para facilitar la implementación de la interfaz.
-* Se usará una arquitectura basada en microservicios para los diferentes componentes del proyecto como la generación de preguntas o el registro de usuarios en el sistema.
-* Para el alojamiento de la página web se usará una máquina virtual Azure con el crédito de estudiante proporcionado.
-* Se usará GitHub Actions para el despliegue del proyecto, pero de forma automática en vez de desplegarlo todo a mano. Cabe destacar que también están implementados unos tests para asegurar el correcto despliegue del proyecto.
-* Se harán pruebas de usabilidad para comprobar la usabilidad de la aplicación.
-* Se harán pruebas de carga para comprobar el rendimiento de la aplicación.
+* Se utilizará la biblioteca de JavaScript, React, para facilitar la implementación de la interfaz de usuario.
+* Se adoptará una arquitectura basada en microservicios para los diferentes componentes del proyecto, como la generación de preguntas y el registro de usuarios.
+* Para el alojamiento de la página web, se utilizará una máquina virtual de Azure aprovechando el crédito para estudiantes proporcionado.
+* Se empleará GitHub Actions para el despliegue automático del proyecto, complementado con tests para asegurar su correcta ejecución.
+* Se realizarán pruebas de usabilidad para verificar la facilidad de uso de la aplicación.
+* Se efectuarán pruebas de carga para evaluar el rendimiento de la aplicación.
 
 === Decisiones organizativas
 
-* Este grupo (wiq_es04d) ha sido formado a partir de un grupo ya existente (wiq_es04c) pasando de 5 integrantes a 3. Se ha decidido volver al proyecto inicial cuando se dio la situación de ruptura del grupo para empezar de 0.
+* Este grupo (wiq_es04d) se formó a partir de un grupo preexistente (wiq_es04c), reduciendo su tamaño de cinco a tres integrantes. Se decidió retomar el proyecto inicial tras la disolución del grupo anterior, empezando de cero.
 
-* No existe una división clara entre las funcionalidades que desempeña cada usuario, todos hacen de todo.
+* No se ha establecido una división clara de roles específicos; todos los integrantes participan en todas las áreas.
 
-* Se realizará al menos una reunión a la semana en clase para organizar y llevar recuento del trabajo realizado y que será lo siguiente en lo que se va a trabajar. Se pueden realizar reuniones adicionales fuera de clase.
-
+* Se llevará a cabo al menos una reunión semanal en clase para organizar y revisar el progreso del trabajo, así como planificar las siguientes tareas. Se podrán realizar reuniones adicionales fuera del horario de clase.

@@ -5,40 +5,37 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 === Experiencia de Usuario 
 
-La Experiencia de Usuario en nuestra aplicación es la impresión general que los usuarios tienen al interactuar con ella. Se refiere a cómo se sienten y qué piensan cuando utilizan nuestra aplicación web. Esto incluye aspectos como la facilidad para registrarse o iniciar sesión, o lo intuitivo que es el juego de preguntas.
+La Experiencia de Usuario en nuestra aplicación refleja la impresión general que los usuarios tienen al interactuar con ella. Se refiere a cómo se sienten y qué piensan al utilizar nuestra aplicación web, incluyendo aspectos como la facilidad para registrarse, iniciar sesión y lo intuitivo del juego de preguntas.
 
-Para nuestra aplicación, la Experiencia de Usuario significa comprender profundamente las necesidades y expectativas de nuestros usuarios. Siguiendo la regla de "Keep It Simple Stupid" (KISS), hemos diseñado cada aspecto de la interfaz para que sea lo más sencillo y directo posible, facilitando una experiencia efectiva y agradable. Esto implica asegurar que la navegación sea intuitiva, que la información esté presentada de manera clara y accesible, que las acciones sean fáciles de realizar y que el sistema responda de manera rápida y confiable a las interacciones del usuario.
+Para nuestra aplicación, la Experiencia de Usuario implica comprender profundamente las necesidades y expectativas de nuestros usuarios. Siguiendo la regla de "Keep It Simple Stupid" (KISS), hemos diseñado cada aspecto de la interfaz para que sea lo más sencillo y directo posible, facilitando una experiencia efectiva y agradable. Esto implica asegurar que la navegación sea intuitiva, que la información esté clara y accesible, que las acciones sean fáciles de realizar y que el sistema responda de manera rápida y confiable a las interacciones del usuario.
 
-Nos esforzamos por crear una experiencia de usuario cómoda y accesible, donde cada detalle esté cuidadosamente diseñado para brindar una experiencia fluida y satisfactoria. Nuestro objetivo es ofrecer un juego entretenido y funcional, manteniendo siempre la simplicidad en cada elemento.
+Nos esforzamos por crear una experiencia de usuario cómoda y accesible, donde cada detalle está cuidadosamente diseñado para brindar una experiencia fluida y satisfactoria. Nuestro objetivo es ofrecer un juego entretenido y funcional, manteniendo la simplicidad en cada elemento.
 
 === Arquitectura
 
-Utilizaremos una arquitectura basada en microservicios para mantener la independencia entre las distintas partes de la aplicación. Esta estructura ofrece una arquitectura flexible y modular, con beneficios significativos en términos de escalabilidad, flexibilidad tecnológica, agilidad en el desarrollo, resistencia a fallos y mantenimiento del software.
-
+Utilizaremos una arquitectura basada en microservicios para mantener la independencia entre las distintas partes de la aplicación. Esta estructura ofrece una arquitectura flexible y modular, con beneficios significativos en términos de escalabilidad, flexibilidad tecnológica, agilidad en el desarrollo, resistencia a fallos y facilidad de mantenimiento.
 
 === Desarrollo
 
-En el desarrollo de nuestra aplicación, nos centramos en varios aspectos para garantizar su eficacia:
+En el desarrollo de nuestra aplicación, nos centramos en varios aspectos clave para garantizar su eficacia:
 
-* Mantenibilidad del código: Escribimos nuestro código de manera clara y organizada, siguiendo las mejores prácticas de desarrollo, para facilitar su mantenimiento y futuras actualizaciones.
+* **Mantenibilidad del código:** Escribimos nuestro código de manera clara y organizada, siguiendo las mejores prácticas de desarrollo para facilitar su mantenimiento y futuras actualizaciones.
 
-* Automatización de pruebas: Implementamos pruebas automatizadas para garantizar que nuestra aplicación funcione correctamente en diferentes situaciones y escenarios. Esto nos ayuda a identificar y corregir errores de manera oportuna, manteniendo la calidad del software.
+* **Automatización de pruebas:** Implementamos pruebas automatizadas para asegurar que nuestra aplicación funcione correctamente bajo diferentes situaciones y escenarios. Esto nos ayuda a identificar y corregir errores de manera oportuna, manteniendo la calidad del software.
 
-* Integración continua: La implementación exitosa de CI/CD proporciona un camino continuo hacia la entrega de software de alta calidad, permitiendo la automatización de pruebas, integración y despliegue, agilizando así el ciclo de vida del desarrollo y garantizando una entrega rápida y confiable de valor al cliente.
+* **Integración continua:** La implementación exitosa de CI/CD proporciona un camino continuo hacia la entrega de software de alta calidad, permitiendo la automatización de pruebas, integración y despliegue, agilizando así el ciclo de vida del desarrollo y garantizando una entrega rápida y confiable de valor al cliente.
 
-* Optimización de rendimiento: Nos esforzamos por mejorar el rendimiento de nuestra aplicación, optimizando el tiempo de carga, la velocidad de respuesta y el consumo de recursos.
-
-En resumen, en el desarrollo de nuestra aplicación nos esforzamos por mantener un código mantenible, implementar pruebas automatizadas, lograr una integración continua eficiente y optimizar el rendimiento. Esto nos permite ofrecer una aplicación confiable y de alta calidad a nuestros usuarios.
+* **Optimización de rendimiento:** Nos esforzamos por mejorar el rendimiento de nuestra aplicación, optimizando el tiempo de carga, la velocidad de respuesta y el consumo de recursos.
 
 === Gestión del proyecto
 
 En la gestión de nuestro proyecto, nos enfocamos en garantizar un entorno de producción estable y eficiente:
 
-* Gestión de infraestructura: Utilizamos una máquina virtual de Azure para administrar la infraestructura de nuestra aplicación, garantizando así su disponibilidad y un rendimiento óptimo.
+* **Gestión de infraestructura:** Utilizamos una máquina virtual de Azure para administrar la infraestructura de nuestra aplicación, garantizando su disponibilidad y rendimiento óptimo.
 
-* Gestión de versiones: Gestionamos las versiones utilizando etiquetas (tags) en nuestro proyecto de GitHub, que luego se despliegan en la máquina virtual, asegurando actualizaciones controladas y sin interrupciones en el servicio.
+* **Gestión de versiones:** Gestionamos las versiones utilizando etiquetas (tags) en nuestro proyecto de GitHub, que luego se despliegan en la máquina virtual, asegurando actualizaciones controladas y sin interrupciones en el servicio.
 
-* Desarrollo del equipo: Nuestro equipo ha progresado en el proyecto mediante el autoaprendizaje de las tecnologías utilizadas. Esto garantiza una comprensión profunda de la aplicación y contribuye a mantener un entorno operativo eficiente.
+* **Desarrollo del equipo:** Nuestro equipo ha progresado en el proyecto mediante el autoaprendizaje de las tecnologías utilizadas, garantizando una comprensión profunda de la aplicación y manteniendo un entorno operativo eficiente.
 
 === Seguridad
 

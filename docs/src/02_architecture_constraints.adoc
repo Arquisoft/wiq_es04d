@@ -4,9 +4,9 @@ ifndef::imagesdir[:imagesdir: ../images]
 == Restricciones de arquitectura ⛔
 [options="header",cols="1,2"]
 |===
-|Restricción|Descripción
-|Wikidata|Se debe usar Wikidata para obtener la información de las preguntas. El número de consultas en un tiempo específico es la mayor limitación de la API, junto con la disponibilidad de los datos. Esto puede afectar a tiempos de carga, por ejemplo.
-|Git|Conflictos al realizar trabajo por separado por parte de más de un miembro sobre un mismo recurso.
-|GitHub|La falta de experiencia puede conducir a problemas en la gestión del proyecto así como en su despliegue y lo que ello conlleva.
-|Integración continua/despliegue continuo (CI/CD)|Restricciones en la configuración de pipelines de CI/CD para automatizar las pruebas, compilaciones y despliegues de la aplicación en el servidor Docker, lo que podría afectar la velocidad y la frecuencia de las entregas de nuevas características o correcciones de errores.
+| Restricción | Descripción
+| Wikidata | El uso de Wikidata para obtener información para las preguntas es obligatorio. Las principales limitaciones de esta API incluyen el número máximo de consultas por unidad de tiempo y la disponibilidad de datos, lo que puede repercutir en los tiempos de carga.
+| Git | Posibilidad de conflictos cuando varios miembros del equipo trabajan simultáneamente en el mismo recurso, requiriendo una gestión cuidadosa de las ramificaciones y fusiones.
+| GitHub | La falta de experiencia con GitHub puede conducir a problemas en la gestión del proyecto y en el despliegue del mismo, impactando la eficacia del trabajo en equipo y la entrega de resultados.
+| Integración continua/despliegue continuo (CI/CD) | Restricciones en la configuración de pipelines de CI/CD pueden limitar la capacidad para automatizar pruebas, compilaciones y despliegues en un servidor Docker, afectando la velocidad y frecuencia de actualizaciones y correcciones.
 |===

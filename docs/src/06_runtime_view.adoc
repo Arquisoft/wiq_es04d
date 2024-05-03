@@ -3,19 +3,15 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-runtime-view]]
 == Vista de Ejecución 📽️
 
-
 === Escenario de Ejecución 1
-Jugar una partida cuando la base de datos tiene suficientes preguntas. El proceso de mostrar una pregunta y procesar la respuesta se repite para cada pregunta de la partida. En este escenario se asume que son 3 preguntas por partida.
-La pregunta "n" es la última pregunta.
+Este escenario describe el proceso de jugar una partida cuando la base de datos cuenta con suficientes preguntas disponibles. El proceso implica mostrar una pregunta y procesar la respuesta del usuario. Esto se repite para cada una de las 3 preguntas en la partida. La pregunta "n" representa la última pregunta de la serie.
 
 [plantuml,"Sequence diagram",png]
-
-image::Diagrama de secuencia plantuml 1.png["Diagrama de secuencia 1"]
-
+image::Diagrama de secuencia plantuml 1.png["Diagrama de secuencia 1", width="600", height="400"]
 
 === Escenario de Ejecución 2             
-Jugar una partida cuando la base de datos no tiene suficientes preguntas.
-Antes de "acceder al juego", la ejecución es la misma que el escenario de ejecución 1.
-A partir de "mostrar primera pregunta", la ejecución es la misma que el escenario de ejecución 1.
+Este escenario aborda una partida cuando la base de datos no tiene suficientes preguntas.
+Hasta el momento de "acceder al juego", la ejecución sigue el mismo flujo que el escenario de ejecución 1.
+Desde "mostrar primera pregunta", la ejecución continúa conforme al escenario de ejecución 1.
 
-image::Diagrama de secuencia plantuml 2.png["Diagrama de secuencia 2"]
+image::Diagrama de secuencia plantuml 2.png["Diagrama de secuencia 2", width="600", height="400"]
