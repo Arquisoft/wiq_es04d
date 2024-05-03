@@ -1,4 +1,4 @@
-# WIQ ¿A qué estás esperando?
+# WIQ ¿A qué estás esperando? 
 
 [![Desplegar en lanzamiento](https://github.com/Arquisoft/wiq_es04d/actions/workflows/release.yml/badge.svg)](https://github.com/Arquisoft/wiq_es04d/actions/workflows/release.yml)
 [![Estado de la Puerta de Calidad](https://sonarcloud.io/api/project_badges/measure?project=Arquisoft_wiq_es04d&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Arquisoft_wiq_es04d)
