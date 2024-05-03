@@ -3,39 +3,34 @@ ifndef::imagesdir[:imagesdir: ../images]
 == Requisitos de Calidad 🌟
 
 === Árbol de Calidad
+image::10_Arbol_de_calidad.jpg[Árbol de Calidad, align="center"]
 
 El árbol de calidad se organiza con "calidad" como raíz, desglosándose en varias ramas principales, que representan categorías de calidad relevantes para el proyecto WIQ. Estas ramas incluyen:
 
 - *Usabilidad*: Se refiere a la facilidad con la que los usuarios pueden utilizar un sistema para alcanzar sus objetivos de manera eficiente y satisfactoria. La usabilidad implica interfaces intuitivas, accesibilidad y una experiencia de usuario agradable.
 - *Rendimiento*: Evalúa la eficiencia del sistema en términos de velocidad de respuesta, consumo de recursos y escalabilidad. Un buen rendimiento asegura que el sistema puede manejar cargas de trabajo elevadas con tiempos de respuesta rápidos.
 - *Seguridad*: Implica proteger la información y los sistemas contra accesos no autorizados, divulgación, alteración o destrucción, garantizando la confidencialidad, integridad y disponibilidad de los datos.
-- *Fiabilidad*: La capacidad del sistema de funcionar correctamente y sin fallos durante un período determinado bajo condiciones específicas. La fiabilidad se centra en la consistencia del rendimiento y la prevención de fallos.
 - *Mantenibilidad*: Se refiere a la facilidad con la que un sistema puede ser modificado para corregir fallos, mejorar su funcionamiento o adaptarse a un entorno cambiante. Una alta mantenibilidad facilita las actualizaciones y reduce los costos a largo plazo.
-- *Portabilidad*: La capacidad de un sistema para ser utilizado en diferentes entornos operativos con mínimas modificaciones. La portabilidad permite que el software sea compatible con diversos dispositivos, sistemas operativos o navegadores web.
+- *Portabilidad*: La capacidad de un sistema para ser utilizado en diferentes entornos operativos con mínimas modificaciones. La portabilidad permite que el software sea compatible con diversos dispositivos, sistemas operativos o navegadores webs.
 
-image::10_Arbol_de_calidad.jpg[Árbol de Calidad,align="center"]
 
 === Escenarios de Calidad
 
 ==== Usabilidad 
 
-- *Escenario*: Un nuevo usuario puede registrarse e iniciar a jugar en menos de 5 minutos después de su primer acceso al sitio web. La interfaz intuitiva y la guía de inicio rápido facilitan este proceso. 
+- *Escenario*: Un nuevo usuario puede registrarse e iniciar a jugar en menos de 2 minutos después de su primer acceso al sitio web. La interfaz intuitiva y la guía de inicio rápido facilitan este proceso.
 
 ==== Rendimiento 
 
-- *Escenario*: El sistema responde a las solicitudes de los usuarios en menos de 2 segundos bajo condiciones normales de carga, asegurando una experiencia de juego fluida. 
+- *Escenario*: El sistema responde a las solicitudes de los usuarios en menos de 0,5 segundos bajo condiciones normales de carga, asegurando una experiencia de juego fluida.
 
 ==== Seguridad 
 
-- *Escenario*: Todos los datos personales de los usuarios están cifrados tanto en tránsito como en reposo, utilizando estándares de seguridad actuales para prevenir accesos no autorizados. 
+- *Escenario*: Todos los datos personales de los usuarios están cifrados tanto en tránsito como en reposo, utilizando estándares de seguridad actuales para prevenir accesos no autorizados.
 
 ==== Mantenibilidad 
 
 - *Escenario*: El sistema permite la adición de nuevas funcionalidades (como tipos de preguntas o temáticas) sin necesidad de una reestructuración mayor, promoviendo una arquitectura modular.
-
-==== Fiabilidad 
-
-- *Escenario*: En caso de fallo del sistema, este debe ser capaz de recuperarse y volver a estar operativo en menos de 5 minutos, garantizando una alta disponibilidad.
 
 ==== Portabilidad
 

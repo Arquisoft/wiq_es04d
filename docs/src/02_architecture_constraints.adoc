@@ -2,26 +2,11 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 [[section-architecture-constraints]]
 == Restricciones de arquitectura ⛔
-
-
-=== Restricciones Técnicas
 [options="header",cols="1,2"]
 |===
 |Restricción|Descripción
-|API Wikidata|El número de consultas en un tiempo espcifico es la mayor limitacion de la API, junto con la disponibilidad de los datos. Esto puede afectar a tiempos de carga, por ejemplo.
-|Git|Conflictos al realizar trabajo por separado por parte de mas de un miembro sobre un mismo recurso.
-|GitHub|La falta de experiencia puede conducir a problemas en la gestion del proyecto asi como en su despliegue y lo que ello conlleva.
+|Wikidata|Se debe usar Wikidata para obtener la información de las preguntas. El número de consultas en un tiempo específico es la mayor limitación de la API, junto con la disponibilidad de los datos. Esto puede afectar a tiempos de carga, por ejemplo.
+|Git|Conflictos al realizar trabajo por separado por parte de más de un miembro sobre un mismo recurso.
+|GitHub|La falta de experiencia puede conducir a problemas en la gestión del proyecto así como en su despliegue y lo que ello conlleva.
 |Integración continua/despliegue continuo (CI/CD)|Restricciones en la configuración de pipelines de CI/CD para automatizar las pruebas, compilaciones y despliegues de la aplicación en el servidor Docker, lo que podría afectar la velocidad y la frecuencia de las entregas de nuevas características o correcciones de errores.
-|Máquina Virtual Azure|Esta plataforma impone límites a la cantidad de recursos que podemos usar con la licencia de estudiantes, por lo que debemos ir con cuidado de cuando tenemos la máquina encendida para no agotar el crédito.
-|===
-
-
-=== Resticciones organizacionales
-[options="header",cols="1,2"]
-|===
-|Restricción | Descripción
-|Horarios y Disponibilidad| Los diferentes compromisos personales y académicos de los miembros del grupo pueden dificultar la coordinación de horarios para reuniones y sesiones de trabajo en equipo.
-|Expectativas y motivación| Los miembros del equipo tienen distintas expectativas sobre el trabajo y esto afecta a la dedicacion que realizan.
-|Politicas de la Universidad|Las entregas de otra asignaturas se interponen en la realización del trabajo y puede derivar en una falta de tiempo para realizarlo.
-|Diferencias en el nivel de habilidades técnicas|A pesar de no ser muy acusadas si que existen diferencias que pueden afectar en una distribucion igualitaria del trabajo.
 |===

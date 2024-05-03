@@ -2,20 +2,55 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 [[section-deployment-view]]
 
-
 == Vista de Despliegue 👀
 
+=== Diagrama de Despliegue
+Este diagrama ilustra cómo interactúan los diferentes servicios del sistema.
 
-Los servicios que se van a desplegar son los siguientes:
+image::07_diagrama_de_despliegue.jpg["Diagrama de despliegue"]
 
-* User service: Servicio Express que maneja la inserción de nuevos usuarios en el sistema.
-* Auth service: Servicio Express que maneja la autenticación de usuarios.
-* Question service: Servicio Express que maneja la generación de preguntas y las llamadas a la API de Wikidata.
-* Webapp: Aplicación web React que utiliza el servicio de puerta de enlace para permitir funciones básicas de inicio de sesión y nuevos usuarios.
-* History service: Servicio Express que maneja el historial de juegos jugados por los usuarios.
-* Gateway service: Servicio Express expuesto al público que sirve como proxy a los anteriores.
+La arquitectura del sistema está compuesta por varios servicios, cada uno contenerizado usando Docker y desplegados en una máquina virtual de Azure. A continuación se describen los servicios principales y su función dentro del sistema:
 
-El diagrama de despliegue es el siguiente:
+=== Servicios
 
-image::07_diagrama_de_despliegue.png["Diagrama de despliegue"]
+1. *WebApp* +
+Tecnología: React +
+Descripción: Interfaz de usuario que proporciona funcionalidades de inicio de sesión, registro, juego y revisión de historial y ranking. +
+Interacción: Comunica con el Gateway Service para todas las operaciones.
 
+2. *Gateway Service* +
+Tecnología: Express +
+Descripción: Actúa como un proxy para los servicios internos, exponiendo una API unificada hacia la WebApp.
+
+3. *User Service* +
+Tecnología: Express +
+Descripción: Maneja operaciones relacionadas con usuarios, incluyendo inserción de nuevos registros. +
+Base de Datos: MongoDB (Colección: userdb).
+
+4. *Auth Service* +
+Tecnología: Express +
+Descripción: Procesa la autenticación de usuarios. +
+Base de Datos: MongoDB (Colección: userdb).
+
+5. *Question Service* +
+Tecnología: Express +
+Descripción: Genera preguntas y realiza consultas a la API de Wikidata. +
+Base de Datos: MongoDB (Colección: questiondb).
+
+6. *History Service* +
+Tecnología: Express +
+Descripción: Administra el historial de juegos de los usuarios y maneja el ranking. +
+Base de Datos: MongoDB (Colección: historydb).
+
+7. *MongoDB* +
+Descripción: Base de datos no relacional que almacena datos de usuarios, preguntas y historiales de juego.
+
+=== Monitoreo
+
+1. *Prometheus* +
+Descripción: Sistema de monitoreo y alerta que recolecta métricas de los diferentes servicios. Utilizado para mantener la visibilidad del rendimiento y la salud operativa de los servicios dentro de la arquitectura del sistema. +
++
+Configuración: Configurado para realizar scraping cada 5 segundos al servicio Gateway, que es el punto central de comunicación y datos para la aplicación. La configuración específica define un solo trabajo de scraping que apunta al servicio Gateway en el puerto 8000. Esta configuración está diseñada para ser simple y directa, enfocada en la recolección eficiente de métricas críticas.
+
+2. *Grafana* +
+Descripción: Herramienta de visualización y análisis que transforma los datos recolectados por Prometheus en dashboards interactivos y detallados.

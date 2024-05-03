@@ -2,57 +2,48 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 [[section-concepts]]
 == Conceptos Transversales 🧭
-=== Modelo de Dominio 
-Representación UML de las entidades que conforman el sistema. 
-
-image::08_diagrama_modelo_dominio(V2).png["Modelo de dominio simple provisional"]
-
 
 === Experiencia de Usuario 
 
-La Experiencia de Usuario en nuestra aplicación es la impresión general que los usuarios tienen al interactuar con ella. Se trata de cómo se sienten y qué piensan cuando utilizan nuestra aplicación web. Esto incluye aspectos como la facilidad para registrarse o iniciar sesion o lo intiutivo que es la parte del juego de preguntas.
+La Experiencia de Usuario en nuestra aplicación es la impresión general que los usuarios tienen al interactuar con ella. Se refiere a cómo se sienten y qué piensan cuando utilizan nuestra aplicación web. Esto incluye aspectos como la facilidad para registrarse o iniciar sesión, o lo intuitivo que es el juego de preguntas.
 
-Para nuestra aplicacion, la Experiencia de Usuario significa entender profundamente las necesidades y expectativas de nuestros usuarios y diseñar cada aspecto de la interfaz para satisfacer esas necesidades de la manera más efectiva y agradable posible. Esto implica asegurarse de que la navegación sea intuitiva, que la información esté presentada de manera clara y accesible, que las acciones sean fáciles de realizar y que el sistema responda de manera rapida y confiable a las interacciones del usuario.
+Para nuestra aplicación, la Experiencia de Usuario significa comprender profundamente las necesidades y expectativas de nuestros usuarios. Siguiendo la regla de "Keep It Simple Stupid" (KISS), hemos diseñado cada aspecto de la interfaz para que sea lo más sencillo y directo posible, facilitando una experiencia efectiva y agradable. Esto implica asegurar que la navegación sea intuitiva, que la información esté presentada de manera clara y accesible, que las acciones sean fáciles de realizar y que el sistema responda de manera rápida y confiable a las interacciones del usuario.
 
-Nos esforzamos por crear una experiencia de usuario comoda y accesible, donde cada detalle esté cuidadosamente diseñado para brindar una experiencia fluida y satisfactoria. Nuestro objetivo es ofrecer un juego entretenido, a la par que funcional y educativo.
+Nos esforzamos por crear una experiencia de usuario cómoda y accesible, donde cada detalle esté cuidadosamente diseñado para brindar una experiencia fluida y satisfactoria. Nuestro objetivo es ofrecer un juego entretenido y funcional, manteniendo siempre la simplicidad en cada elemento.
 
+=== Arquitectura
 
-=== Arquitectura y Patrones de Diseño
+Utilizaremos una arquitectura basada en microservicios para mantener la independencia entre las distintas partes de la aplicación. Esta estructura ofrece una arquitectura flexible y modular, con beneficios significativos en términos de escalabilidad, flexibilidad tecnológica, agilidad en el desarrollo, resistencia a fallos y mantenimiento del software.
 
-Se usará una aquitectura basada en microservicios, para mantener la independencia entre las distintas partes de la aplicación. Esto nos permite tener una arquitectura flexible y modular que puede brindar beneficios significativos en términos de escalabilidad, flexibilidad tecnológica, agilidad en el desarrollo, resistencia a fallos y mantenibilidad del software.
 
 === Desarrollo
 
-En el desarrollo de nuestra aplicación, nos centramos en varios aspectos para garantizar su eficacia y fiabilidad:
+En el desarrollo de nuestra aplicación, nos centramos en varios aspectos para garantizar su eficacia:
 
-* Arquitectura escalable: Diseñamos la arquitectura de nuestra aplicación de manera que pueda crecer y adaptarse a medida que aumenta el número de usuarios y funciones. Esto nos permite mantener un rendimiento óptimo incluso en momentos de alta demanda.
-
-* Mantenibilidad del código: Escribimos nuestro código de manera clara y organizada, siguiendo las mejores prácticas de desarrollo, para facilitar su mantenimiento y futuras actualizaciones. Esto incluye el uso de comentarios claros, la modularización del código y la adopción de patrones de diseño eficientes.
+* Mantenibilidad del código: Escribimos nuestro código de manera clara y organizada, siguiendo las mejores prácticas de desarrollo, para facilitar su mantenimiento y futuras actualizaciones.
 
 * Automatización de pruebas: Implementamos pruebas automatizadas para garantizar que nuestra aplicación funcione correctamente en diferentes situaciones y escenarios. Esto nos ayuda a identificar y corregir errores de manera oportuna, manteniendo la calidad del software.
 
-* Integración continua: La implementación exitosa de CI/CD proporciona un camino continuo hacia la entrega de software de alta calidad, permitiendo la automatización de pruebas, integración y despliegue, agilizando así el ciclo de vida del desarrollo y garantizando una entrega rápida y confiable de valor al cliente,
+* Integración continua: La implementación exitosa de CI/CD proporciona un camino continuo hacia la entrega de software de alta calidad, permitiendo la automatización de pruebas, integración y despliegue, agilizando así el ciclo de vida del desarrollo y garantizando una entrega rápida y confiable de valor al cliente.
 
-* Optimización de rendimiento: Nos esforzamos por mejorar el rendimiento de nuestra aplicación, optimizando el tiempo de carga, la velocidad de respuesta y el consumo de recursos. Esto garantiza una experiencia fluida para los usuarios, incluso en dispositivos y conexiones de red menos potentes.
+* Optimización de rendimiento: Nos esforzamos por mejorar el rendimiento de nuestra aplicación, optimizando el tiempo de carga, la velocidad de respuesta y el consumo de recursos.
 
-En resumen, en el desarrollo de nuestra aplicación nos esforzamos por crear una arquitectura escalable, un código mantenible, pruebas automatizadas y un rendimiento aceptable . Esto nos permite ofrecer una aplicación confiable y de alta calidad a nuestros usuarios.
+En resumen, en el desarrollo de nuestra aplicación nos esforzamos por mantener un código mantenible, implementar pruebas automatizadas, lograr una integración continua eficiente y optimizar el rendimiento. Esto nos permite ofrecer una aplicación confiable y de alta calidad a nuestros usuarios.
 
-=== Operaciones
+=== Gestión del proyecto
 
-En las operaciones de nuestra aplicación, nos enfocamos en garantizar un entorno de producción estable y eficiente:
+En la gestión de nuestro proyecto, nos enfocamos en garantizar un entorno de producción estable y eficiente:
 
-* Gestión de infraestructura: Administramos la infraestructura de nuestra aplicacion con servicios en la nube, para garantizar su disponibilidad y rendimiento óptimo.
+* Gestión de infraestructura: Utilizamos una máquina virtual de Azure para administrar la infraestructura de nuestra aplicación, garantizando así su disponibilidad y un rendimiento óptimo.
 
-* Gestión de versiones: Utilizamos herramientas de control de versiones para gestionar el ciclo de vida del software y asegurarnos de que las actualizaciones se implementen de manera controlada y sin interrupciones en el servicio.
+* Gestión de versiones: Gestionamos las versiones utilizando etiquetas (tags) en nuestro proyecto de GitHub, que luego se despliegan en la máquina virtual, asegurando actualizaciones controladas y sin interrupciones en el servicio.
 
-* Capacitación de los integrantes del grupo: Brindamos capacitación regular al personal de operaciones para garantizar que estén familiarizados con el proyecto lo que ayuda a mantener un entorno operativo eficiente.
-
-En resumen, en las operaciones de nuestra aplicación nos enfocamos en garantizar la disponibilidad y el rendimiento. Implementamos prácticas y herramientas que nos permiten monitorear, gestionar y mantener nuestra aplicación de manera efectiva y eficiente.
+* Desarrollo del equipo: Nuestro equipo ha progresado en el proyecto mediante el autoaprendizaje de las tecnologías utilizadas. Esto garantiza una comprensión profunda de la aplicación y contribuye a mantener un entorno operativo eficiente.
 
 === Seguridad
 
-Nos comprometemos a proteger la información personal y sensible de nuestros usuarios, así como a prevenir vulnerabilidades que pueda comprometer su seguridad mientras utilizan nuestra aplicación web dentro de nuetras capacidades y conocimientos.
+Nos comprometemos a proteger la información personal y sensible de nuestros usuarios, así como a prevenir vulnerabilidades que puedan comprometer su seguridad mientras utilizan nuestra aplicación web, dentro de nuestras capacidades y conocimientos.
 
-Para ello, implementamos medidas de seguridad, como la encriptación de datos y la autenticación de usuarios mediante contraseñass.
+Para ello, implementamos medidas de seguridad como la encriptación de datos y la autenticación de usuarios mediante contraseñas.
 
 Queremos que nuestros usuarios se sientan seguros y protegidos mientras utilizan nuestra aplicación.

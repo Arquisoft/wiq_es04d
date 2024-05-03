@@ -1,0 +1,38 @@
+@startuml Diagrama de secuencia plantuml
+actor Usuario
+participant webapp
+participant gatewayservice
+participant authservice
+participant questionservice
+database mongodb
+Usuario -> webapp: inicio sesión
+webapp --> Usuario: pedir nombre/contraseña
+Usuario -> webapp: dar nombre/contraseña
+webapp -> gatewayservice: verificar usuario
+gatewayservice -> authservice: verificar usuario
+authservice -> mongodb: verificar usuario
+mongodb --> authservice: verificación correcta
+authservice --> gatewayservice: verificación correcta
+gatewayservice --> webapp: verificación correcta
+webapp --> Usuario: inicio sesión correcto
+Usuario -> webapp: acceder al juego
+webapp -> gatewayservice: pedir preguntas
+gatewayservice -> questionservice: pedir preguntas
+questionservice -> mongodb: pedir preguntas
+mongodb --> questionservice: dar preguntas
+questionservice --> gatewayservice: dar preguntas
+gatewayservice --> webapp: dar preguntas
+webapp --> Usuario: mostrar primera pregunta
+Usuario -> webapp: responder
+webapp -> webapp: verificar respuesta
+webapp --> Usuario: indicar si es respuesta correcta o incorrecta
+webapp --> Usuario: mostrar siguiente pregunta
+Usuario -> webapp: responder
+webapp -> webapp: verificar respuesta
+webapp --> Usuario: indicar si es respuesta correcta o incorrecta
+webapp --> Usuario: mostrar pregunta n
+Usuario -> webapp: responder pregunta n
+webapp -> webapp: verificar respuesta
+webapp --> Usuario: indicar si es respuesta correcta o incorrecta
+webapp --> Usuario: mostrar número de aciertos y fallos
+@enduml
