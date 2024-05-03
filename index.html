@@ -550,7 +550,7 @@ See <a href="https://arc42.org" class="bare">https://arc42.org</a>.</p>
 <h2 id="section-introduction-and-goals">1. Introducción y Objetivos 🎇</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>El proyecto de WIQ 04D es un proyecto desarrollado en la asignatura Arquitectura del Software. Consiste en la creación de una aplicación web al estilo "Saber y Ganar". Es decir, es un juego de preguntas de cultura general generadas de forma automática con ayuda de Wikidata, una base de conocimiento que puede ser leída y editada por humanos y por máquinas.</p>
+<p>El proyecto WIQ 04D es un desarrollo en el marco de la asignatura de Arquitectura del Software, que consiste en la creación de una aplicación web similar al estilo de "Saber y Ganar". Este es un juego de preguntas de cultura general que se generan automáticamente con la ayuda de Wikidata, una base de conocimientos accesible tanto para humanos como para máquinas.</p>
 </div>
 <div class="paragraph">
 <p>Los desarrolladores de la aplicación son Zohaib Akhtar Kausar, Yago Navajas González y Santiago López Laso.</p>
@@ -562,25 +562,25 @@ See <a href="https://arc42.org" class="bare">https://arc42.org</a>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Los usuarios deberán iniciar sesión en la página; esto servirá para tener registro de una serie de parámetros, como puede ser las veces que se ha jugado.</p>
+<p>Los usuarios deben iniciar sesión en la página, lo cual permitirá registrar parámetros como la cantidad de veces que han jugado.</p>
 </li>
 <li>
-<p>Se podrán responder preguntas autogeneradas y se mostrará si han acertado o fallado, así como la respuesta correcta.</p>
+<p>Se podrán responder preguntas autogeneradas y se indicará si las respuestas son correctas o incorrectas, junto con la respuesta correcta.</p>
 </li>
 <li>
 <p>Las preguntas deberán ser respondidas dentro de un tiempo límite.</p>
 </li>
 <li>
-<p>Las preguntas seguirán la misma estructura: 1 pregunta correcta y 3 incorrectas, generadas automáticamente.</p>
+<p>Las preguntas seguirán la estructura de una pregunta correcta y tres incorrectas, generadas automáticamente.</p>
 </li>
 <li>
-<p>Los usuarios podrán consultar datos sobre sus cuentas, como las veces que han jugado o el número de preguntas que han acertado o fallado.</p>
+<p>Los usuarios podrán consultar datos sobre sus cuentas, como la cantidad de veces que han jugado y el número de preguntas acertadas o falladas.</p>
 </li>
 <li>
-<p>Existirá un ranking que ordenará a los 10 mejores jugadores según una métrica determinada.</p>
+<p>Habrá un ranking que clasificará a los 10 mejores jugadores según una métrica determinada.</p>
 </li>
 <li>
-<p>Se podrá acceder a los servicios de la aplicación a través de una API REST</p>
+<p>Se podrá acceder a los servicios de la aplicación a través de una API REST.</p>
 </li>
 </ul>
 </div>
@@ -606,27 +606,27 @@ See <a href="https://arc42.org" class="bare">https://arc42.org</a>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Usabilidad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Todos los usuarios deben poder usar la aplicación sin tener en cuenta sus limitaciones.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación debe ser accesible y fácil de usar para todos los usuarios, independientemente de sus limitaciones.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Rendimiento</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Los tiempos entre operaciones han de ser asumibles, aun teniendo varios usuarios usando la aplicación a la vez.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Los tiempos de respuesta deben ser adecuados, incluso con múltiples usuarios accediendo a la aplicación simultáneamente.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Seguridad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Los datos sensibles de los usuarios deben estar restringidos al mismo usuario.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Los datos sensibles de los usuarios deben estar protegidos y accesibles únicamente para cada usuario.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Mantenibilidad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">El código y documentación de la aplicación ha de estar conformado de tal forma que sea factible hacer cambios y ampliaciones en la aplicación.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">El código y la documentación de la aplicación deben estar organizados de manera que faciliten futuras modificaciones y ampliaciones.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Portabilidad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación web es compatible con los navegadores web más utilizados (Chrome, Firefox, Safari, Edge).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación web debe ser compatible con los navegadores más utilizados como Chrome, Firefox, Safari y Edge.</p></td>
 </tr>
 </tbody>
 </table>
@@ -641,9 +641,9 @@ See <a href="https://arc42.org" class="bare">https://arc42.org</a>.</p>
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Role/Name</th>
-<th class="tableblock halign-left valign-top">Contact</th>
-<th class="tableblock halign-left valign-top">Expectations</th>
+<th class="tableblock halign-left valign-top">Rol/Nombre</th>
+<th class="tableblock halign-left valign-top">Contacto</th>
+<th class="tableblock halign-left valign-top">Expectativas</th>
 </tr>
 </thead>
 <tbody>
@@ -652,27 +652,27 @@ See <a href="https://arc42.org" class="bare">https://arc42.org</a>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Yago Navajas González<br>
 Zohaib Akhtar Kausar<br>
 Santiago López Laso</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Los estudiantes que llevarán a cabo el desarrollo de la aplicación. Serán los encargados de la arquitectura, la documentación y la codificación.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Estudiantes encargados del desarrollo de la aplicación, incluyendo la arquitectura, la documentación y la codificación.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Profesores</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Jose Emilio Labra Gayo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Supervisores de los avances y encargados de evaluar la aplicación final y el desarrollo de la misma.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Supervisores de los avances y encargados de evaluar la aplicación final y su desarrollo.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Usuario</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Jugador de la aplicación</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Personas que puedan interactuar tanto con el registro de usuarios como con el juego en sí y completar correctamente una partida.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usuarios</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jugadores de la aplicación</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Personas que interactuarán con el registro de usuarios y el juego, y deberán ser capaces de completar una partida correctamente.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">HappySw</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Empresa responsable</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Empresa contratada, cuyo trabajo será el desarrollo del juego de la mano del equipo de desarrollo.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Empresa contratada para colaborar en el desarrollo del juego junto al equipo de desarrollo.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Wikidata</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Proveedor de la información de las preguntas</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Si la aplicación tiene éxito, para Wikidata es publicidad gratis. Por tanto, le interesa este proyecto.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Proveedor de la información para las preguntas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interesado en el éxito de la aplicación como forma de obtener publicidad gratuita.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RTVE</p></td>
@@ -702,19 +702,19 @@ Santiago López Laso</p></td>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Wikidata</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Se debe usar Wikidata para obtener la información de las preguntas. El número de consultas en un tiempo específico es la mayor limitación de la API, junto con la disponibilidad de los datos. Esto puede afectar a tiempos de carga, por ejemplo.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">El uso de Wikidata para obtener información para las preguntas es obligatorio. Las principales limitaciones de esta API incluyen el número máximo de consultas por unidad de tiempo y la disponibilidad de datos, lo que puede repercutir en los tiempos de carga.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Git</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Conflictos al realizar trabajo por separado por parte de más de un miembro sobre un mismo recurso.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Posibilidad de conflictos cuando varios miembros del equipo trabajan simultáneamente en el mismo recurso, requiriendo una gestión cuidadosa de las ramificaciones y fusiones.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GitHub</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">La falta de experiencia puede conducir a problemas en la gestión del proyecto así como en su despliegue y lo que ello conlleva.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La falta de experiencia con GitHub puede conducir a problemas en la gestión del proyecto y en el despliegue del mismo, impactando la eficacia del trabajo en equipo y la entrega de resultados.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Integración continua/despliegue continuo (CI/CD)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Restricciones en la configuración de pipelines de CI/CD para automatizar las pruebas, compilaciones y despliegues de la aplicación en el servidor Docker, lo que podría afectar la velocidad y la frecuencia de las entregas de nuevas características o correcciones de errores.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Restricciones en la configuración de pipelines de CI/CD pueden limitar la capacidad para automatizar pruebas, compilaciones y despliegues en un servidor Docker, afectando la velocidad y frecuencia de actualizaciones y correcciones.</p></td>
 </tr>
 </tbody>
 </table>
@@ -743,22 +743,22 @@ Santiago López Laso</p></td>
 <div class="ulist">
 <ul>
 <li>
-<p>Se usará la biblioteca de JavaScript React para facilitar la implementación de la interfaz.</p>
+<p>Se utilizará la biblioteca de JavaScript, React, para facilitar la implementación de la interfaz de usuario.</p>
 </li>
 <li>
-<p>Se usará una arquitectura basada en microservicios para los diferentes componentes del proyecto como la generación de preguntas o el registro de usuarios en el sistema.</p>
+<p>Se adoptará una arquitectura basada en microservicios para los diferentes componentes del proyecto, como la generación de preguntas y el registro de usuarios.</p>
 </li>
 <li>
-<p>Para el alojamiento de la página web se usará una máquina virtual Azure con el crédito de estudiante proporcionado.</p>
+<p>Para el alojamiento de la página web, se utilizará una máquina virtual de Azure aprovechando el crédito para estudiantes proporcionado.</p>
 </li>
 <li>
-<p>Se usará GitHub Actions para el despliegue del proyecto, pero de forma automática en vez de desplegarlo todo a mano. Cabe destacar que también están implementados unos tests para asegurar el correcto despliegue del proyecto.</p>
+<p>Se empleará GitHub Actions para el despliegue automático del proyecto, complementado con tests para asegurar su correcta ejecución.</p>
 </li>
 <li>
-<p>Se harán pruebas de usabilidad para comprobar la usabilidad de la aplicación.</p>
+<p>Se realizarán pruebas de usabilidad para verificar la facilidad de uso de la aplicación.</p>
 </li>
 <li>
-<p>Se harán pruebas de carga para comprobar el rendimiento de la aplicación.</p>
+<p>Se efectuarán pruebas de carga para evaluar el rendimiento de la aplicación.</p>
 </li>
 </ul>
 </div>
@@ -768,13 +768,13 @@ Santiago López Laso</p></td>
 <div class="ulist">
 <ul>
 <li>
-<p>Este grupo (wiq_es04d) ha sido formado a partir de un grupo ya existente (wiq_es04c) pasando de 5 integrantes a 3. Se ha decidido volver al proyecto inicial cuando se dio la situación de ruptura del grupo para empezar de 0.</p>
+<p>Este grupo (wiq_es04d) se formó a partir de un grupo preexistente (wiq_es04c), reduciendo su tamaño de cinco a tres integrantes. Se decidió retomar el proyecto inicial tras la disolución del grupo anterior, empezando de cero.</p>
 </li>
 <li>
-<p>No existe una división clara entre las funcionalidades que desempeña cada usuario, todos hacen de todo.</p>
+<p>No se ha establecido una división clara de roles específicos; todos los integrantes participan en todas las áreas.</p>
 </li>
 <li>
-<p>Se realizará al menos una reunión a la semana en clase para organizar y llevar recuento del trabajo realizado y que será lo siguiente en lo que se va a trabajar. Se pueden realizar reuniones adicionales fuera de clase.</p>
+<p>Se llevará a cabo al menos una reunión semanal en clase para organizar y revisar el progreso del trabajo, así como planificar las siguientes tareas. Se podrán realizar reuniones adicionales fuera del horario de clase.</p>
 </li>
 </ul>
 </div>
@@ -871,25 +871,24 @@ Santiago López Laso</p></td>
 <div class="sect2">
 <h3 id="_escenario_de_ejecución_1">6.1. Escenario de Ejecución 1</h3>
 <div class="paragraph">
-<p>Jugar una partida cuando la base de datos tiene suficientes preguntas. El proceso de mostrar una pregunta y procesar la respuesta se repite para cada pregunta de la partida. En este escenario se asume que son 3 preguntas por partida.
-La pregunta "n" es la última pregunta.</p>
+<p>Este escenario describe el proceso de jugar una partida cuando la base de datos cuenta con suficientes preguntas disponibles. El proceso implica mostrar una pregunta y procesar la respuesta del usuario. Esto se repite para cada una de las 3 preguntas en la partida. La pregunta "n" representa la última pregunta de la serie.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/Diagrama%20de%20secuencia%20plantuml%201.png" alt="Diagrama de secuencia 1">
+<img src="./images/Diagrama%20de%20secuencia%20plantuml%201.png" alt="Diagrama de secuencia 1" width="600" height="400">
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_escenario_de_ejecución_2">6.2. Escenario de Ejecución 2</h3>
 <div class="paragraph">
-<p>Jugar una partida cuando la base de datos no tiene suficientes preguntas.
-Antes de "acceder al juego", la ejecución es la misma que el escenario de ejecución 1.
-A partir de "mostrar primera pregunta", la ejecución es la misma que el escenario de ejecución 1.</p>
+<p>Este escenario aborda una partida cuando la base de datos no tiene suficientes preguntas.
+Hasta el momento de "acceder al juego", la ejecución sigue el mismo flujo que el escenario de ejecución 1.
+Desde "mostrar primera pregunta", la ejecución continúa conforme al escenario de ejecución 1.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/Diagrama%20de%20secuencia%20plantuml%202.png" alt="Diagrama de secuencia 2">
+<img src="./images/Diagrama%20de%20secuencia%20plantuml%202.png" alt="Diagrama de secuencia 2" width="600" height="400">
 </div>
 </div>
 <div style="page-break-after: always;"></div>
@@ -986,44 +985,41 @@ Descripción: Herramienta de visualización y análisis que transforma los datos
 <div class="sect2">
 <h3 id="_experiencia_de_usuario">8.1. Experiencia de Usuario</h3>
 <div class="paragraph">
-<p>La Experiencia de Usuario en nuestra aplicación es la impresión general que los usuarios tienen al interactuar con ella. Se refiere a cómo se sienten y qué piensan cuando utilizan nuestra aplicación web. Esto incluye aspectos como la facilidad para registrarse o iniciar sesión, o lo intuitivo que es el juego de preguntas.</p>
+<p>La Experiencia de Usuario en nuestra aplicación refleja la impresión general que los usuarios tienen al interactuar con ella. Se refiere a cómo se sienten y qué piensan al utilizar nuestra aplicación web, incluyendo aspectos como la facilidad para registrarse, iniciar sesión y lo intuitivo del juego de preguntas.</p>
 </div>
 <div class="paragraph">
-<p>Para nuestra aplicación, la Experiencia de Usuario significa comprender profundamente las necesidades y expectativas de nuestros usuarios. Siguiendo la regla de "Keep It Simple Stupid" (KISS), hemos diseñado cada aspecto de la interfaz para que sea lo más sencillo y directo posible, facilitando una experiencia efectiva y agradable. Esto implica asegurar que la navegación sea intuitiva, que la información esté presentada de manera clara y accesible, que las acciones sean fáciles de realizar y que el sistema responda de manera rápida y confiable a las interacciones del usuario.</p>
+<p>Para nuestra aplicación, la Experiencia de Usuario implica comprender profundamente las necesidades y expectativas de nuestros usuarios. Siguiendo la regla de "Keep It Simple Stupid" (KISS), hemos diseñado cada aspecto de la interfaz para que sea lo más sencillo y directo posible, facilitando una experiencia efectiva y agradable. Esto implica asegurar que la navegación sea intuitiva, que la información esté clara y accesible, que las acciones sean fáciles de realizar y que el sistema responda de manera rápida y confiable a las interacciones del usuario.</p>
 </div>
 <div class="paragraph">
-<p>Nos esforzamos por crear una experiencia de usuario cómoda y accesible, donde cada detalle esté cuidadosamente diseñado para brindar una experiencia fluida y satisfactoria. Nuestro objetivo es ofrecer un juego entretenido y funcional, manteniendo siempre la simplicidad en cada elemento.</p>
+<p>Nos esforzamos por crear una experiencia de usuario cómoda y accesible, donde cada detalle está cuidadosamente diseñado para brindar una experiencia fluida y satisfactoria. Nuestro objetivo es ofrecer un juego entretenido y funcional, manteniendo la simplicidad en cada elemento.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_arquitectura">8.2. Arquitectura</h3>
 <div class="paragraph">
-<p>Utilizaremos una arquitectura basada en microservicios para mantener la independencia entre las distintas partes de la aplicación. Esta estructura ofrece una arquitectura flexible y modular, con beneficios significativos en términos de escalabilidad, flexibilidad tecnológica, agilidad en el desarrollo, resistencia a fallos y mantenimiento del software.</p>
+<p>Utilizaremos una arquitectura basada en microservicios para mantener la independencia entre las distintas partes de la aplicación. Esta estructura ofrece una arquitectura flexible y modular, con beneficios significativos en términos de escalabilidad, flexibilidad tecnológica, agilidad en el desarrollo, resistencia a fallos y facilidad de mantenimiento.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_desarrollo">8.3. Desarrollo</h3>
 <div class="paragraph">
-<p>En el desarrollo de nuestra aplicación, nos centramos en varios aspectos para garantizar su eficacia:</p>
+<p>En el desarrollo de nuestra aplicación, nos centramos en varios aspectos clave para garantizar su eficacia:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Mantenibilidad del código: Escribimos nuestro código de manera clara y organizada, siguiendo las mejores prácticas de desarrollo, para facilitar su mantenimiento y futuras actualizaciones.</p>
+<p><strong>Mantenibilidad del código:</strong> Escribimos nuestro código de manera clara y organizada, siguiendo las mejores prácticas de desarrollo para facilitar su mantenimiento y futuras actualizaciones.</p>
 </li>
 <li>
-<p>Automatización de pruebas: Implementamos pruebas automatizadas para garantizar que nuestra aplicación funcione correctamente en diferentes situaciones y escenarios. Esto nos ayuda a identificar y corregir errores de manera oportuna, manteniendo la calidad del software.</p>
+<p><strong>Automatización de pruebas:</strong> Implementamos pruebas automatizadas para asegurar que nuestra aplicación funcione correctamente bajo diferentes situaciones y escenarios. Esto nos ayuda a identificar y corregir errores de manera oportuna, manteniendo la calidad del software.</p>
 </li>
 <li>
-<p>Integración continua: La implementación exitosa de CI/CD proporciona un camino continuo hacia la entrega de software de alta calidad, permitiendo la automatización de pruebas, integración y despliegue, agilizando así el ciclo de vida del desarrollo y garantizando una entrega rápida y confiable de valor al cliente.</p>
+<p><strong>Integración continua:</strong> La implementación exitosa de CI/CD proporciona un camino continuo hacia la entrega de software de alta calidad, permitiendo la automatización de pruebas, integración y despliegue, agilizando así el ciclo de vida del desarrollo y garantizando una entrega rápida y confiable de valor al cliente.</p>
 </li>
 <li>
-<p>Optimización de rendimiento: Nos esforzamos por mejorar el rendimiento de nuestra aplicación, optimizando el tiempo de carga, la velocidad de respuesta y el consumo de recursos.</p>
+<p><strong>Optimización de rendimiento:</strong> Nos esforzamos por mejorar el rendimiento de nuestra aplicación, optimizando el tiempo de carga, la velocidad de respuesta y el consumo de recursos.</p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>En resumen, en el desarrollo de nuestra aplicación nos esforzamos por mantener un código mantenible, implementar pruebas automatizadas, lograr una integración continua eficiente y optimizar el rendimiento. Esto nos permite ofrecer una aplicación confiable y de alta calidad a nuestros usuarios.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1034,13 +1030,13 @@ Descripción: Herramienta de visualización y análisis que transforma los datos
 <div class="ulist">
 <ul>
 <li>
-<p>Gestión de infraestructura: Utilizamos una máquina virtual de Azure para administrar la infraestructura de nuestra aplicación, garantizando así su disponibilidad y un rendimiento óptimo.</p>
+<p><strong>Gestión de infraestructura:</strong> Utilizamos una máquina virtual de Azure para administrar la infraestructura de nuestra aplicación, garantizando su disponibilidad y rendimiento óptimo.</p>
 </li>
 <li>
-<p>Gestión de versiones: Gestionamos las versiones utilizando etiquetas (tags) en nuestro proyecto de GitHub, que luego se despliegan en la máquina virtual, asegurando actualizaciones controladas y sin interrupciones en el servicio.</p>
+<p><strong>Gestión de versiones:</strong> Gestionamos las versiones utilizando etiquetas (tags) en nuestro proyecto de GitHub, que luego se despliegan en la máquina virtual, asegurando actualizaciones controladas y sin interrupciones en el servicio.</p>
 </li>
 <li>
-<p>Desarrollo del equipo: Nuestro equipo ha progresado en el proyecto mediante el autoaprendizaje de las tecnologías utilizadas. Esto garantiza una comprensión profunda de la aplicación y contribuye a mantener un entorno operativo eficiente.</p>
+<p><strong>Desarrollo del equipo:</strong> Nuestro equipo ha progresado en el proyecto mediante el autoaprendizaje de las tecnologías utilizadas, garantizando una comprensión profunda de la aplicación y manteniendo un entorno operativo eficiente.</p>
 </li>
 </ul>
 </div>
@@ -1205,23 +1201,23 @@ Descripción: Herramienta de visualización y análisis que transforma los datos
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Tiempo de entrega</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Estamos limitados por el plazo de entrega y también por el tiempo que dedicaremos a trabajar en otras asignaturas.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Estamos limitados por el plazo de entrega del proyecto y el tiempo que podemos dedicar mientras trabajamos en otras asignaturas.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Proyecto grande y trabajo en equipo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">La coordinación y comunicación en un equipo pueden ser desafiantes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La coordinación y comunicación dentro de un equipo grande pueden ser desafiantes.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Diseño inadecuado o enfoque incorrecto</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">La presencia de errores en etapas tempranas puede ser devastadora, ya que estas son cruciales. Un mal diseño detectado en etapas avanzadas podría ser irreparable, subrayando la importancia de una planificación y visión previsoras.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Los errores en las etapas tempranas pueden tener consecuencias devastadoras, y un mal diseño descubierto tarde podría ser difícil de corregir. Esto subraya la importancia de una planificación cuidadosa y una visión previsora.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Falta de familiaridad con las tecnologías</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">El equipo comienza con conocimiento limitado sobre las herramientas necesarias, lo que puede resultar en un uso subóptimo de estas.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">El equipo comienza con un conocimiento limitado sobre las herramientas necesarias, lo que puede resultar en un uso subóptimo de estas.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Errores de implementación</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Errores no críticos en la lógica de negocio pueden permanecer ocultos por largo tiempo, afectando la calidad del sistema.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Los errores no críticos en la lógica de negocio pueden permanecer ocultos durante mucho tiempo, afectando la calidad del sistema.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Comunicación deficiente entre miembros</p></td>
@@ -1229,15 +1225,15 @@ Descripción: Herramienta de visualización y análisis que transforma los datos
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Distribución desigual del trabajo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Una asignación desequilibrada puede sobrecargar a algunos miembros mientras deja a otros con menos responsabilidades.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Una asignación desequilibrada del trabajo puede sobrecargar a algunos miembros mientras deja a otros con menos responsabilidades.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Reducción del tamaño del equipo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">La salida inesperada de miembros puede desafiar la continuidad y el avance del proyecto, requiriendo adaptaciones rápidas y eficientes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La salida inesperada de miembros del equipo puede desafiar la continuidad y el avance del proyecto, requiriendo adaptaciones rápidas y eficientes.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Incumplimiento de normas</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Si el proyecto no cumple con las regulaciones o estándares de seguridad pertinentes, podría enfrentar sanciones legales o multas.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La falta de cumplimiento con regulaciones o estándares de seguridad pertinentes podría resultar en sanciones legales o multas.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1258,23 +1254,23 @@ Descripción: Herramienta de visualización y análisis que transforma los datos
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Uso del proyecto base creado por los profesores</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Para evitar la creación del proyecto desde cero, hemos decidido utilizar el proyecto ya creado por los profesores. Esto implica revisar y comprender el código existente, así como ampliarlo con nuestro propio código, lo que puede llevar a errores y pérdida de tiempo. Además, requiere aprender nuevas tecnologías y cómo utilizarlas.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hemos optado por utilizar el proyecto base creado por los profesores para evitar empezar desde cero. Esto requiere revisar y comprender el código existente y expandirlo con nuestro propio código, lo cual puede introducir errores y llevar tiempo. Además, implica aprender nuevas tecnologías y su aplicación.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Uso de React</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">El uso de este framework puede facilitar el desarrollo en algunas etapas, pero también puede complicarlo al no estar familiarizados con esta tecnología y todas sus características.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aunque React puede facilitar el desarrollo en ciertas etapas, nuestra falta de familiaridad con este framework y sus características puede complicar el proceso.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Dependencias desactualizadas</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Utilizar versiones obsoletas de bibliotecas, frameworks o plataformas puede resultar en vulnerabilidades de seguridad o limitaciones de rendimiento que deben abordarse en el futuro.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">El uso de versiones antiguas de bibliotecas, frameworks o plataformas puede resultar en vulnerabilidades de seguridad y limitaciones de rendimiento que necesitarán ser abordadas en el futuro.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Falta de una abundancia de pruebas automatizadas</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A medida que avanza el proyecto, la falta de pruebas puede acumular deuda técnica al no poder realizarse cambios de manera rápida y eficaz sin la capacidad de probarlos de inmediato.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Falta de pruebas automatizadas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La escasez de pruebas automatizadas a medida que el proyecto avanza puede acumular deuda técnica, ya que impide realizar cambios rápidos y efectivos sin la capacidad de probarlos de inmediato.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Empezar desde el principio de nuevo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Debido a problemas, el grupo ha tenido que reiniciar el proyecto desde cero, lo que ha provocado un retraso significativo con todas las implicaciones que esto conlleva.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Empezar desde cero</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Debido a problemas previos, el equipo ha tenido que reiniciar el proyecto desde cero, lo cual ha provocado un retraso significativo y las implicaciones correspondientes.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1299,51 +1295,51 @@ Descripción: Herramienta de visualización y análisis que transforma los datos
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>React</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Biblioteca de JavaScript que facilita la creación de interfaces de usuario de manera sencilla y eficiente. Se integra fácilmente en el código.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Biblioteca de JavaScript diseñada para crear interfaces de usuario de forma eficiente y sencilla. Se integra fácilmente en proyectos existentes.</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Node.js</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Entorno de ejecución de JavaScript, destacado en la creación de servidores web. Su programación es dirigida por eventos, es multiplataforma, de código abierto y compatible con la concurrencia.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Entorno de ejecución para JavaScript orientado al desarrollo de servidores web. Es dirigido por eventos, multiplataforma, de código abierto y maneja la concurrencia de manera eficaz.</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Microservicio</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Enfoque arquitectónico donde el software se divide en servicios pequeños, conectados mediante APIs (En nuestro caso usamos un gateway). Son rápidos, simples de desarrollar y autónomos en ejecución.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Enfoque arquitectónico que divide un software en pequeños servicios independientes que se comunican a través de APIs. Son rápidos, simples de desarrollar y pueden ejecutarse de manera autónoma.</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>API</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Interfaz de programación de aplicaciones, que facilita la comunicación entre diferentes servicios del proyecto, mejorando su eficiencia y agilidad.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Acrónimo de Interfaz de Programación de Aplicaciones. Facilita la comunicación entre diferentes partes de un software, permitiendo que los servicios interactúen de manera eficiente.</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>MongoDB</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Tipo de base de datos NoSQL, compatible con múltiples lenguajes de programación y sistemas operativos. Almacena datos en archivos BSON, un formato derivado de JSON.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Base de datos NoSQL que es compatible con múltiples lenguajes de programación y sistemas operativos. Almacena datos en documentos BSON, un formato binario que extiende JSON.</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>BSON</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Formato de archivo usado por MongoDB para almacenar datos de manera eficiente. No tiene un tipo MIME definido como JSON.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Formato binario utilizado por MongoDB para almacenar documentos de manera eficiente. A diferencia de JSON, BSON está optimizado para ser más rápido en la lectura y escritura.</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Mongoose</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Biblioteca que facilita la conexión entre Node.js y MongoDB, simplificando el acceso y la manipulación de datos en la base de datos.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Biblioteca que proporciona una solución sencilla para modelar datos en aplicaciones Node.js que utilizan MongoDB. Simplifica la manipulación y el acceso a los datos.</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Docker</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Plataforma que despliega aplicaciones en contenedores, similares a los contenedores de carga de los barcos. Es de código abierto y facilita el despliegue ordenado de aplicaciones.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Plataforma que permite empaquetar aplicaciones dentro de contenedores, asegurando que funcionen de manera uniforme en cualquier entorno. Es de código abierto y facilita el despliegue escalable de aplicaciones.</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>GitHub Actions</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Plataforma que automatiza proyectos, permitiendo el despliegue desde GitHub. Es compatible con diversos lenguajes y sistemas operativos.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Herramienta de automatización que permite la ejecución de flujos de trabajo directamente desde un repositorio en GitHub. Soporta múltiples lenguajes y sistemas operativos, y es especialmente útil para la integración y despliegue continuo.</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Integración continua/despliegue continuo (CI/CD)</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CI/CD es una práctica de desarrollo de software que combina la integración continua (CI) y la implementación continua (CD). La CI implica la integración automática y frecuente de cambios de código en un repositorio compartido, mientras que la CD automatiza el proceso de implementación de esos cambios en entornos de producción.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Metodología de desarrollo de software que integra la integración continua (CI), la cual implica integrar automáticamente y con frecuencia los cambios de código en un repositorio compartido, y el despliegue continuo (CD), que automatiza la implementación de esos cambios en entornos de producción.</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Interfaz de Usuario (UI)</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>La Interfaz de Usuario (UI) se refiere a la parte visual y tangible de un sistema informático a través de la cual los usuarios interactúan con él. Esto incluye elementos como botones, menús, formularios y cualquier otro componente con el que los usuarios puedan interactuar para utilizar el sistema.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Aspecto visual y funcional de un sistema informático a través del cual los usuarios interactúan. Incluye elementos como botones, menús y formularios, facilitando la interacción con el sistema.</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Express (en el contexto de Node.js)</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Express es un framework de desarrollo web para Node.js, que proporciona una serie de características y herramientas para crear aplicaciones web y APIs de manera más fácil y rápida.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Framework de desarrollo web para Node.js, que ofrece herramientas y características que simplifican la creación de aplicaciones web y APIs de manera eficiente.</em></p></td>
 </tr>
 </tbody>
 </table>
