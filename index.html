@@ -485,12 +485,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#section-concepts">8. Conceptos Transversales 🧭</a>
 <ul class="sectlevel2">
-<li><a href="#_modelo_de_dominio">8.1. Modelo de Dominio</a></li>
-<li><a href="#_experiencia_de_usuario">8.2. Experiencia de Usuario</a></li>
-<li><a href="#_arquitectura_y_patrones_de_diseño">8.3. Arquitectura y Patrones de Diseño</a></li>
-<li><a href="#_desarrollo">8.4. Desarrollo</a></li>
-<li><a href="#_operaciones">8.5. Operaciones</a></li>
-<li><a href="#_seguridad">8.6. Seguridad</a></li>
+<li><a href="#_experiencia_de_usuario">8.1. Experiencia de Usuario</a></li>
+<li><a href="#_arquitectura">8.2. Arquitectura</a></li>
+<li><a href="#_desarrollo">8.3. Desarrollo</a></li>
+<li><a href="#_gestión_del_proyecto">8.4. Gestión del proyecto</a></li>
+<li><a href="#_seguridad">8.5. Seguridad</a></li>
 </ul>
 </li>
 <li><a href="#section-design-decisions">9. Decisiones de Arquitectura 🗣️</a></li>
@@ -500,13 +499,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_escenarios_de_calidad">10.2. Escenarios de Calidad</a></li>
 </ul>
 </li>
-<li><a href="#section-technical-risks">11. Riesgos y Deuda Técnina ⚠️</a>
+<li><a href="#section-technical-risks">11. Riesgos y Deuda Técnica ⚠️</a>
 <ul class="sectlevel2">
 <li><a href="#_riesgos">11.1. Riesgos</a></li>
-<li><a href="#_deuda_tecnica">11.2. Deuda Tecnica</a></li>
+<li><a href="#_deuda_técnica">11.2. Deuda Técnica</a></li>
 </ul>
 </li>
-<li><a href="#section-glossary">12. Glosario ⁉️</a></li>
+<li><a href="#section-glossary">12. Glosario</a></li>
 <li><a href="#section-pruebas">13. Pruebas 🔍</a>
 <ul class="sectlevel2">
 <li><a href="#_pruebas_de_cobertura_tests_unitarios">13.1. Pruebas de Cobertura (Tests Unitarios)</a></li>
@@ -554,7 +553,7 @@ See <a href="https://arc42.org" class="bare">https://arc42.org</a>.</p>
 <p>El proyecto de WIQ 04D es un proyecto desarrollado en la asignatura Arquitectura del Software. Consiste en la creación de una aplicación web al estilo "Saber y Ganar". Es decir, es un juego de preguntas de cultura general generadas de forma automática con ayuda de Wikidata, una base de conocimiento que puede ser leída y editada por humanos y por máquinas.</p>
 </div>
 <div class="paragraph">
-<p>Los desarrolladores de la aplicacion son por Zohaib Akhtar Kausar, Yago Navajas González y Santiago López Laso.</p>
+<p>Los desarrolladores de la aplicación son Zohaib Akhtar Kausar, Yago Navajas González y Santiago López Laso.</p>
 </div>
 <div class="sect2">
 <h3 id="_requisitos_funcionales">1.1. Requisitos Funcionales</h3>
@@ -566,22 +565,22 @@ See <a href="https://arc42.org" class="bare">https://arc42.org</a>.</p>
 <p>Los usuarios deberán iniciar sesión en la página; esto servirá para tener registro de una serie de parámetros, como puede ser las veces que se ha jugado.</p>
 </li>
 <li>
-<p>Se podrán responder preguntas autogeneradas y se verá si han acertado o fallado, así como la respuesta correcta.</p>
+<p>Se podrán responder preguntas autogeneradas y se mostrará si han acertado o fallado, así como la respuesta correcta.</p>
 </li>
 <li>
-<p>Las preguntas deberán ser respondidas en un tiempo límite.</p>
+<p>Las preguntas deberán ser respondidas dentro de un tiempo límite.</p>
 </li>
 <li>
 <p>Las preguntas seguirán la misma estructura: 1 pregunta correcta y 3 incorrectas, generadas automáticamente.</p>
 </li>
 <li>
-<p>Los usuarios podrán consultar datos sobre su cuentas, como pueden ser las veces que han jugado o el número de preguntas que han acertado o fallado.</p>
+<p>Los usuarios podrán consultar datos sobre sus cuentas, como las veces que han jugado o el número de preguntas que han acertado o fallado.</p>
 </li>
 <li>
-<p>Existirá un ranking que ordenará a los 10 mejores jugadores en función de una métrica.</p>
+<p>Existirá un ranking que ordenará a los 10 mejores jugadores según una métrica determinada.</p>
 </li>
 <li>
-<p>Se podrán acceder a los servicios de la aplicación a traves de una API REST.</p>
+<p>Se podrá acceder a los servicios de la aplicación a través de una API REST</p>
 </li>
 </ul>
 </div>
@@ -620,14 +619,9 @@ See <a href="https://arc42.org" class="bare">https://arc42.org</a>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Los datos sensibles de los usuarios deben estar restringidos al mismo usuario.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Mantenibilidad</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">El código y documentación de la aplicación ha de estar conformado de tal forma que sea factible hacer cambios y ampliaciones en la aplicación.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Fiabilidad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Los datos usados en la aplicación deben ser los correctos.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
@@ -808,7 +802,7 @@ Santiago López Laso</p></td>
 <div class="ulist">
 <ul>
 <li>
-<p>wiq_es0d: la aplicación web. Los usuarios pueden usarla para jugar o pueden usar su API. Usa Wikidata para generar las preguntas.</p>
+<p>Wiq_es0d: la aplicación web. Los usuarios pueden usarla para jugar o pueden usar su API. Usa Wikidata para generar las preguntas.</p>
 </li>
 </ul>
 </div>
@@ -878,7 +872,7 @@ Santiago López Laso</p></td>
 <h3 id="_escenario_de_ejecución_1">6.1. Escenario de Ejecución 1</h3>
 <div class="paragraph">
 <p>Jugar una partida cuando la base de datos tiene suficientes preguntas. El proceso de mostrar una pregunta y procesar la respuesta se repite para cada pregunta de la partida. En este escenario se asume que son 3 preguntas por partida.
-La pregunta n es la última pregunta.</p>
+La pregunta "n" es la última pregunta.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -990,91 +984,74 @@ Descripción: Herramienta de visualización y análisis que transforma los datos
 <h2 id="section-concepts">8. Conceptos Transversales 🧭</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_modelo_de_dominio">8.1. Modelo de Dominio</h3>
+<h3 id="_experiencia_de_usuario">8.1. Experiencia de Usuario</h3>
 <div class="paragraph">
-<p>Representación UML de las entidades que conforman el sistema.</p>
+<p>La Experiencia de Usuario en nuestra aplicación es la impresión general que los usuarios tienen al interactuar con ella. Se refiere a cómo se sienten y qué piensan cuando utilizan nuestra aplicación web. Esto incluye aspectos como la facilidad para registrarse o iniciar sesión, o lo intuitivo que es el juego de preguntas.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="./images/08_diagrama_modelo_dominio(V2).png" alt="Modelo de dominio simple provisional">
+<div class="paragraph">
+<p>Para nuestra aplicación, la Experiencia de Usuario significa comprender profundamente las necesidades y expectativas de nuestros usuarios. Siguiendo la regla de "Keep It Simple Stupid" (KISS), hemos diseñado cada aspecto de la interfaz para que sea lo más sencillo y directo posible, facilitando una experiencia efectiva y agradable. Esto implica asegurar que la navegación sea intuitiva, que la información esté presentada de manera clara y accesible, que las acciones sean fáciles de realizar y que el sistema responda de manera rápida y confiable a las interacciones del usuario.</p>
 </div>
+<div class="paragraph">
+<p>Nos esforzamos por crear una experiencia de usuario cómoda y accesible, donde cada detalle esté cuidadosamente diseñado para brindar una experiencia fluida y satisfactoria. Nuestro objetivo es ofrecer un juego entretenido y funcional, manteniendo siempre la simplicidad en cada elemento.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_experiencia_de_usuario">8.2. Experiencia de Usuario</h3>
+<h3 id="_arquitectura">8.2. Arquitectura</h3>
 <div class="paragraph">
-<p>La Experiencia de Usuario en nuestra aplicación es la impresión general que los usuarios tienen al interactuar con ella. Se trata de cómo se sienten y qué piensan cuando utilizan nuestra aplicación web. Esto incluye aspectos como la facilidad para registrarse o iniciar sesion o lo intiutivo que es la parte del juego de preguntas.</p>
-</div>
-<div class="paragraph">
-<p>Para nuestra aplicacion, la Experiencia de Usuario significa entender profundamente las necesidades y expectativas de nuestros usuarios y diseñar cada aspecto de la interfaz para satisfacer esas necesidades de la manera más efectiva y agradable posible. Esto implica asegurarse de que la navegación sea intuitiva, que la información esté presentada de manera clara y accesible, que las acciones sean fáciles de realizar y que el sistema responda de manera rapida y confiable a las interacciones del usuario.</p>
-</div>
-<div class="paragraph">
-<p>Nos esforzamos por crear una experiencia de usuario comoda y accesible, donde cada detalle esté cuidadosamente diseñado para brindar una experiencia fluida y satisfactoria. Nuestro objetivo es ofrecer un juego entretenido, a la par que funcional y educativo.</p>
+<p>Utilizaremos una arquitectura basada en microservicios para mantener la independencia entre las distintas partes de la aplicación. Esta estructura ofrece una arquitectura flexible y modular, con beneficios significativos en términos de escalabilidad, flexibilidad tecnológica, agilidad en el desarrollo, resistencia a fallos y mantenimiento del software.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_arquitectura_y_patrones_de_diseño">8.3. Arquitectura y Patrones de Diseño</h3>
+<h3 id="_desarrollo">8.3. Desarrollo</h3>
 <div class="paragraph">
-<p>Se usará una aquitectura basada en microservicios, para mantener la independencia entre las distintas partes de la aplicación. Esto nos permite tener una arquitectura flexible y modular que puede brindar beneficios significativos en términos de escalabilidad, flexibilidad tecnológica, agilidad en el desarrollo, resistencia a fallos y mantenibilidad del software.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_desarrollo">8.4. Desarrollo</h3>
-<div class="paragraph">
-<p>En el desarrollo de nuestra aplicación, nos centramos en varios aspectos para garantizar su eficacia y fiabilidad:</p>
+<p>En el desarrollo de nuestra aplicación, nos centramos en varios aspectos para garantizar su eficacia:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Arquitectura escalable: Diseñamos la arquitectura de nuestra aplicación de manera que pueda crecer y adaptarse a medida que aumenta el número de usuarios y funciones. Esto nos permite mantener un rendimiento óptimo incluso en momentos de alta demanda.</p>
-</li>
-<li>
-<p>Mantenibilidad del código: Escribimos nuestro código de manera clara y organizada, siguiendo las mejores prácticas de desarrollo, para facilitar su mantenimiento y futuras actualizaciones. Esto incluye el uso de comentarios claros, la modularización del código y la adopción de patrones de diseño eficientes.</p>
+<p>Mantenibilidad del código: Escribimos nuestro código de manera clara y organizada, siguiendo las mejores prácticas de desarrollo, para facilitar su mantenimiento y futuras actualizaciones.</p>
 </li>
 <li>
 <p>Automatización de pruebas: Implementamos pruebas automatizadas para garantizar que nuestra aplicación funcione correctamente en diferentes situaciones y escenarios. Esto nos ayuda a identificar y corregir errores de manera oportuna, manteniendo la calidad del software.</p>
 </li>
 <li>
-<p>Integración continua: La implementación exitosa de CI/CD proporciona un camino continuo hacia la entrega de software de alta calidad, permitiendo la automatización de pruebas, integración y despliegue, agilizando así el ciclo de vida del desarrollo y garantizando una entrega rápida y confiable de valor al cliente,</p>
+<p>Integración continua: La implementación exitosa de CI/CD proporciona un camino continuo hacia la entrega de software de alta calidad, permitiendo la automatización de pruebas, integración y despliegue, agilizando así el ciclo de vida del desarrollo y garantizando una entrega rápida y confiable de valor al cliente.</p>
 </li>
 <li>
-<p>Optimización de rendimiento: Nos esforzamos por mejorar el rendimiento de nuestra aplicación, optimizando el tiempo de carga, la velocidad de respuesta y el consumo de recursos. Esto garantiza una experiencia fluida para los usuarios, incluso en dispositivos y conexiones de red menos potentes.</p>
+<p>Optimización de rendimiento: Nos esforzamos por mejorar el rendimiento de nuestra aplicación, optimizando el tiempo de carga, la velocidad de respuesta y el consumo de recursos.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>En resumen, en el desarrollo de nuestra aplicación nos esforzamos por crear una arquitectura escalable, un código mantenible, pruebas automatizadas y un rendimiento aceptable . Esto nos permite ofrecer una aplicación confiable y de alta calidad a nuestros usuarios.</p>
+<p>En resumen, en el desarrollo de nuestra aplicación nos esforzamos por mantener un código mantenible, implementar pruebas automatizadas, lograr una integración continua eficiente y optimizar el rendimiento. Esto nos permite ofrecer una aplicación confiable y de alta calidad a nuestros usuarios.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_operaciones">8.5. Operaciones</h3>
+<h3 id="_gestión_del_proyecto">8.4. Gestión del proyecto</h3>
 <div class="paragraph">
-<p>En las operaciones de nuestra aplicación, nos enfocamos en garantizar un entorno de producción estable y eficiente:</p>
+<p>En la gestión de nuestro proyecto, nos enfocamos en garantizar un entorno de producción estable y eficiente:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Gestión de infraestructura: Administramos la infraestructura de nuestra aplicacion con servicios en la nube, para garantizar su disponibilidad y rendimiento óptimo.</p>
+<p>Gestión de infraestructura: Utilizamos una máquina virtual de Azure para administrar la infraestructura de nuestra aplicación, garantizando así su disponibilidad y un rendimiento óptimo.</p>
 </li>
 <li>
-<p>Gestión de versiones: Utilizamos herramientas de control de versiones para gestionar el ciclo de vida del software y asegurarnos de que las actualizaciones se implementen de manera controlada y sin interrupciones en el servicio.</p>
+<p>Gestión de versiones: Gestionamos las versiones utilizando etiquetas (tags) en nuestro proyecto de GitHub, que luego se despliegan en la máquina virtual, asegurando actualizaciones controladas y sin interrupciones en el servicio.</p>
 </li>
 <li>
-<p>Capacitación de los integrantes del grupo: Brindamos capacitación regular al personal de operaciones para garantizar que estén familiarizados con el proyecto lo que ayuda a mantener un entorno operativo eficiente.</p>
+<p>Desarrollo del equipo: Nuestro equipo ha progresado en el proyecto mediante el autoaprendizaje de las tecnologías utilizadas. Esto garantiza una comprensión profunda de la aplicación y contribuye a mantener un entorno operativo eficiente.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>En resumen, en las operaciones de nuestra aplicación nos enfocamos en garantizar la disponibilidad y el rendimiento. Implementamos prácticas y herramientas que nos permiten monitorear, gestionar y mantener nuestra aplicación de manera efectiva y eficiente.</p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="_seguridad">8.6. Seguridad</h3>
+<h3 id="_seguridad">8.5. Seguridad</h3>
 <div class="paragraph">
-<p>Nos comprometemos a proteger la información personal y sensible de nuestros usuarios, así como a prevenir vulnerabilidades que pueda comprometer su seguridad mientras utilizan nuestra aplicación web dentro de nuetras capacidades y conocimientos.</p>
+<p>Nos comprometemos a proteger la información personal y sensible de nuestros usuarios, así como a prevenir vulnerabilidades que puedan comprometer su seguridad mientras utilizan nuestra aplicación web, dentro de nuestras capacidades y conocimientos.</p>
 </div>
 <div class="paragraph">
-<p>Para ello, implementamos medidas de seguridad, como la encriptación de datos y la autenticación de usuarios mediante contraseñass.</p>
+<p>Para ello, implementamos medidas de seguridad como la encriptación de datos y la autenticación de usuarios mediante contraseñas.</p>
 </div>
 <div class="paragraph">
 <p>Queremos que nuestros usuarios se sientan seguros y protegidos mientras utilizan nuestra aplicación.</p>
@@ -1125,6 +1102,11 @@ Descripción: Herramienta de visualización y análisis que transforma los datos
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_árbol_de_calidad">10.1. Árbol de Calidad</h3>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./images/10_Arbol_de_calidad.jpg" alt="Árbol de Calidad">
+</div>
+</div>
 <div class="paragraph">
 <p>El árbol de calidad se organiza con "calidad" como raíz, desglosándose en varias ramas principales, que representan categorías de calidad relevantes para el proyecto WIQ. Estas ramas incluyen:</p>
 </div>
@@ -1140,20 +1122,12 @@ Descripción: Herramienta de visualización y análisis que transforma los datos
 <p><strong>Seguridad</strong>: Implica proteger la información y los sistemas contra accesos no autorizados, divulgación, alteración o destrucción, garantizando la confidencialidad, integridad y disponibilidad de los datos.</p>
 </li>
 <li>
-<p><strong>Fiabilidad</strong>: La capacidad del sistema de funcionar correctamente y sin fallos durante un período determinado bajo condiciones específicas. La fiabilidad se centra en la consistencia del rendimiento y la prevención de fallos.</p>
-</li>
-<li>
 <p><strong>Mantenibilidad</strong>: Se refiere a la facilidad con la que un sistema puede ser modificado para corregir fallos, mejorar su funcionamiento o adaptarse a un entorno cambiante. Una alta mantenibilidad facilita las actualizaciones y reduce los costos a largo plazo.</p>
 </li>
 <li>
-<p><strong>Portabilidad</strong>: La capacidad de un sistema para ser utilizado en diferentes entornos operativos con mínimas modificaciones. La portabilidad permite que el software sea compatible con diversos dispositivos, sistemas operativos o navegadores web.</p>
+<p><strong>Portabilidad</strong>: La capacidad de un sistema para ser utilizado en diferentes entornos operativos con mínimas modificaciones. La portabilidad permite que el software sea compatible con diversos dispositivos, sistemas operativos o navegadores webs.</p>
 </li>
 </ul>
-</div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="./images/10_Arbol_de_calidad.jpg" alt="Árbol de Calidad">
-</div>
 </div>
 </div>
 <div class="sect2">
@@ -1163,7 +1137,7 @@ Descripción: Herramienta de visualización y análisis que transforma los datos
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Escenario</strong>: Un nuevo usuario puede registrarse e iniciar a jugar en menos de 5 minutos después de su primer acceso al sitio web. La interfaz intuitiva y la guía de inicio rápido facilitan este proceso.</p>
+<p><strong>Escenario</strong>: Un nuevo usuario puede registrarse e iniciar a jugar en menos de 2 minutos después de su primer acceso al sitio web. La interfaz intuitiva y la guía de inicio rápido facilitan este proceso.</p>
 </li>
 </ul>
 </div>
@@ -1173,7 +1147,7 @@ Descripción: Herramienta de visualización y análisis que transforma los datos
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Escenario</strong>: El sistema responde a las solicitudes de los usuarios en menos de 2 segundos bajo condiciones normales de carga, asegurando una experiencia de juego fluida.</p>
+<p><strong>Escenario</strong>: El sistema responde a las solicitudes de los usuarios en menos de 0,5 segundos bajo condiciones normales de carga, asegurando una experiencia de juego fluida.</p>
 </li>
 </ul>
 </div>
@@ -1199,17 +1173,7 @@ Descripción: Herramienta de visualización y análisis que transforma los datos
 </div>
 </div>
 <div class="sect3">
-<h4 id="_fiabilidad">10.2.5. Fiabilidad</h4>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Escenario</strong>: En caso de fallo del sistema, este debe ser capaz de recuperarse y volver a estar operativo en menos de 5 minutos, garantizando una alta disponibilidad.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_portabilidad">10.2.6. Portabilidad</h4>
+<h4 id="_portabilidad">10.2.5. Portabilidad</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1223,7 +1187,7 @@ Descripción: Herramienta de visualización y análisis que transforma los datos
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-technical-risks">11. Riesgos y Deuda Técnina ⚠️</h2>
+<h2 id="section-technical-risks">11. Riesgos y Deuda Técnica ⚠️</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_riesgos">11.1. Riesgos</h3>
@@ -1279,7 +1243,7 @@ Descripción: Herramienta de visualización y análisis que transforma los datos
 </table>
 </div>
 <div class="sect2">
-<h3 id="_deuda_tecnica">11.2. Deuda Tecnica</h3>
+<h3 id="_deuda_técnica">11.2. Deuda Técnica</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1287,30 +1251,30 @@ Descripción: Herramienta de visualización y análisis que transforma los datos
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Deuda Técnina</th>
+<th class="tableblock halign-left valign-top">Deuda Técnica</th>
 <th class="tableblock halign-left valign-top">Descripción</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Uso del proyecto base creado por los profesores</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Para no tener que realizar la creacion del proyecto hemos decidido usar el proyecto ya creado. Esto implica tener que revisar codigo ya creado y entender su funcionamiento, asi como ampliarlo con codigo propio, dando lugar a errores y perdidas de tiempo. Tambien requiere tener que aprender tecnologias nuevas y como usarlas.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Para evitar la creación del proyecto desde cero, hemos decidido utilizar el proyecto ya creado por los profesores. Esto implica revisar y comprender el código existente, así como ampliarlo con nuestro propio código, lo que puede llevar a errores y pérdida de tiempo. Además, requiere aprender nuevas tecnologías y cómo utilizarlas.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Uso de React</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">El uso del framework nos puede facilitar el desarrolo en algunas etapas, pero nos lo puede complicar al no estar familiarizados con esta tecnologia y todas sus características.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">El uso de este framework puede facilitar el desarrollo en algunas etapas, pero también puede complicarlo al no estar familiarizados con esta tecnología y todas sus características.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Dependencias desactualizadas</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Usar versiones obsoletas de bibliotecas, frameworks o plataformas puede resultar en vulnerabilidades de seguridad o limitaciones de rendimiento que deben abordarse en el futuro.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Utilizar versiones obsoletas de bibliotecas, frameworks o plataformas puede resultar en vulnerabilidades de seguridad o limitaciones de rendimiento que deben abordarse en el futuro.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Falta de una abundancia de pruebas automatizada</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A medida que avanza el proyecto la falta de pruebas pude hacer que se acumule deuda tecnica al no poder realizarse cambios de manera rapida y eficaz sin, ya que no se podran probar de manera inmediata.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Falta de una abundancia de pruebas automatizadas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A medida que avanza el proyecto, la falta de pruebas puede acumular deuda técnica al no poder realizarse cambios de manera rápida y eficaz sin la capacidad de probarlos de inmediato.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Empezar desde el principio de nuevo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Debido a problemas este grupo ha tenido que volver a partir desde un proyecto desde 0 haciendo quecontemos con un retraso con lo que todo esto conlleva.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Debido a problemas, el grupo ha tenido que reiniciar el proyecto desde cero, lo que ha provocado un retraso significativo con todas las implicaciones que esto conlleva.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1319,7 +1283,7 @@ Descripción: Herramienta de visualización y análisis que transforma los datos
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-glossary">12. Glosario ⁉️</h2>
+<h2 id="section-glossary">12. Glosario</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1329,49 +1293,57 @@ Descripción: Herramienta de visualización y análisis que transforma los datos
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Término</th>
-<th class="tableblock halign-left valign-top">Definicion</th>
+<th class="tableblock halign-left valign-top">Definición</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>React</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Biblioteca de Javascript que se encarga en la creación de interfaces de usuario de una manera fácil. Es eficiente y se puede incorporar
-al código de una forma sencilla.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Biblioteca de JavaScript que facilita la creación de interfaces de usuario de manera sencilla y eficiente. Se integra fácilmente en el código.</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Node.js</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Entorno que usa Javascript, donde destaca en la creación de servidores web. Su programación es dirigida por eventos, es multi-plataforma, open-source
-y soporta la concurrencia.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Entorno de ejecución de JavaScript, destacado en la creación de servidores web. Su programación es dirigida por eventos, es multiplataforma, de código abierto y compatible con la concurrencia.</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Microservicio</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Enfoque arquitectónico, donde el software se va a dividir en servicios de tamaño pequeño, que estarán unidos por la intervención de API&#8217;s
-(en nuestro caso Wikidata). Son rápidos, sencillos a la hora de su desarrollo y autonómos cuando estos están en ejecución.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Enfoque arquitectónico donde el software se divide en servicios pequeños, conectados mediante APIs (En nuestro caso usamos un gateway). Son rápidos, simples de desarrollar y autónomos en ejecución.</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>API</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>También llamado Application Programming Interface, es un intermediario que ayuda a las diferentes aplicaciones del proyecto a posibilitar la comunicación
-entre ellas. Favorece a la eficiencia y agilidad del funcionamiento de dichas aplicaciones.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Interfaz de programación de aplicaciones, que facilita la comunicación entre diferentes servicios del proyecto, mejorando su eficiencia y agilidad.</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>MongoDB</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Es uno de los tantos tipos de bases de datos, como MariaDB. Usa NoSQL, soporta múltiples lenguajes de programación y también soporta su funcionamiento en gran variedad de sistemas operativos. Algo a tener en cuenta es que MongoDB realiza el guardado de datos de una forma distinta a la de las bases de datos de tipo relacional, con tablas de datos, este lo guarda en archivos BSON, que es un derivado de JSON.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Tipo de base de datos NoSQL, compatible con múltiples lenguajes de programación y sistemas operativos. Almacena datos en archivos BSON, un formato derivado de JSON.</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>BSON</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Conocido como Binary JSON, son los archivos que usa la base de datos MongoDB para almacenar los datos de una manera más ágil y sencilla que con las tablas. Una curiosidad de este tipo de archivo es que no tiene un tipo de MIME definido, mientras que JSON sí que lo tiene.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Formato de archivo usado por MongoDB para almacenar datos de manera eficiente. No tiene un tipo MIME definido como JSON.</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Mongoose</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Biblioteca que es encargada de crear una conexión con la base de datos MongoDB con el entorno de Node.js. Hace que el acceso y creación de los datos de MongoDB sea más fácil de realizar que con MongoDB en sí.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Biblioteca que facilita la conexión entre Node.js y MongoDB, simplificando el acceso y la manipulación de datos en la base de datos.</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Docker</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Aplicación que realiza el despliegue de cualquier aplicación en formato de contenedores, similares a los contenedores que tienen los barcos. Es open-source y permite que el proceso de desplegar una aplicación sea bastante más fácil y ordenado.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Plataforma que despliega aplicaciones en contenedores, similares a los contenedores de carga de los barcos. Es de código abierto y facilita el despliegue ordenado de aplicaciones.</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>GitHub Actions</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Plataforma que ayuda a automatizar los proyectos, haciendo posible el despliegue de estos desde el mismo Github. Soporta una gran variedad de lenguajes de programación y sistemas operativos.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Plataforma que automatiza proyectos, permitiendo el despliegue desde GitHub. Es compatible con diversos lenguajes y sistemas operativos.</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Integración continua/despliegue continuo (CI/CD)</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CI/CD es una práctica de desarrollo de software que combina la integración continua (CI) y la implementación continua (CD). La CI implica la integración automática y frecuente de cambios de código en un repositorio compartido, mientras que la CD automatiza el proceso de implementación de esos cambios en entornos de producción.</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Interfaz de Usuario (UI)</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>La Interfaz de Usuario (UI) se refiere a la parte visual y tangible de un sistema informático a través de la cual los usuarios interactúan con él. Esto incluye elementos como botones, menús, formularios y cualquier otro componente con el que los usuarios puedan interactuar para utilizar el sistema.</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Express (en el contexto de Node.js)</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Express es un framework de desarrollo web para Node.js, que proporciona una serie de características y herramientas para crear aplicaciones web y APIs de manera más fácil y rápida.</em></p></td>
 </tr>
 </tbody>
 </table>
@@ -1382,110 +1354,110 @@ entre ellas. Favorece a la eficiencia y agilidad del funcionamiento de dichas ap
 <h2 id="section-pruebas">13. Pruebas 🔍</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Para asegurarnos del correcto funcionamiento de la aplicación y encontrar mejores para la misma se han realizado pruebas de todo tipo aqui están los resultados obtenidos.</p>
+<p>Para asegurarnos del correcto funcionamiento de la aplicación y encontrar maneras de mejorarla, se han realizado pruebas de todo tipo. Aquí están los resultados obtenidos.</p>
 </div>
 <div class="sect2">
 <h3 id="_pruebas_de_cobertura_tests_unitarios">13.1. Pruebas de Cobertura (Tests Unitarios)</h3>
 <div class="paragraph">
-<p>Estas pruebas se han realizado para la comprobacion de cada componente de manera individual evaluando los diferentes casos de uso. Estas son las pruebas realizadas, divididas por componente.</p>
+<p>Estas pruebas se han realizado para la comprobación de cada componente de manera individual, evaluando los diferentes casos de uso. A continuación, se detallan las pruebas realizadas, divididas por componente.</p>
 </div>
 <div class="sect3">
 <h4 id="_tests_gateway_service">13.1.1. Tests Gateway Service</h4>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>should forward login request to auth service</strong>: Verifica que las solicitudes de inicio de sesión sean correctamente reenviadas al servicio de autenticación y que el token esperado sea retornado si las credenciales son correctas.</p>
+<p><strong>Should forward login request to auth service</strong>: Verifica que las solicitudes de inicio de sesión sean correctamente reenviadas al servicio de autenticación y que el token esperado sea retornado si las credenciales son correctas.</p>
 </li>
 <li>
-<p><strong>should forward add user request to user service</strong>:
+<p><strong>Should forward add user request to user service</strong>:
 Comprueba que las solicitudes para agregar un nuevo usuario sean reenviadas al servicio de usuarios y que se reciba un ID de usuario como respuesta.</p>
 </li>
 <li>
-<p><strong>should handle errors from the auth service on login</strong>:
+<p><strong>Should handle errors from the auth service on login</strong>:
 Asegura que se manejen adecuadamente los errores durante el proceso de inicio de sesión, como credenciales incorrectas, y que se retorne el mensaje de error apropiado.</p>
 </li>
 <li>
-<p><strong>should validate a token successfully</strong>:
+<p><strong>Should validate a token successfully</strong>:
 Verifica que el servicio pueda validar correctamente un token, devolviendo un estado de validez.</p>
 </li>
 <li>
-<p><strong>should handle validation error</strong>:
+<p><strong>Should handle validation error</strong>:
 Comprueba que se manejen correctamente los errores al validar tokens inválidos, retornando el mensaje de error adecuado.</p>
 </li>
 <li>
-<p><strong>should forward get random questions request to generate service</strong>:
+<p><strong>Should forward get random questions request to generate service</strong>:
 Asegura que las solicitudes para obtener preguntas aleatorias sean correctamente reenviadas al servicio de generación y que las preguntas esperadas sean retornadas.</p>
 </li>
 <li>
-<p><strong>should forward get questions request to generate service</strong>:
+<p><strong>Should forward get questions request to generate service</strong>:
 Verifica que las solicitudes para obtener preguntas sean correctamente reenviadas al servicio de generación y que se retornen las preguntas adecuadas.</p>
 </li>
 <li>
-<p><strong>should forward create question request to generate service</strong>:
+<p><strong>Should forward create question request to generate service</strong>:
 Comprueba que las solicitudes para crear una nueva pregunta sean correctamente reenviadas al servicio de generación y que se devuelva un estado de éxito y el ID de la pregunta.</p>
 </li>
 <li>
-<p><strong>should forward update question request to generate service</strong>:
+<p><strong>Should forward update question request to generate service</strong>:
 Asegura que las solicitudes para actualizar una pregunta existente sean reenviadas al servicio de generación y que se retorne un estado de "OK".</p>
 </li>
 <li>
-<p><strong>should forward save history request to history service</strong>:
+<p><strong>Should forward save history request to history service</strong>:
 Verifica que las solicitudes para guardar el historial de acciones del usuario sean correctamente reenviadas al servicio de historial y que se retorne un estado de éxito.</p>
 </li>
 <li>
-<p><strong>should forward get history request to history service</strong>:
+<p><strong>Should forward get history request to history service</strong>:
 Comprueba que las solicitudes para obtener el historial de un usuario sean correctamente reenviadas al servicio de historial y que se retornen los datos esperados.</p>
 </li>
 <li>
-<p><strong>should handle error getting random questions from generate service</strong>:
+<p><strong>Should handle error getting random questions from generate service</strong>:
 Asegura que se manejen correctamente los errores al obtener preguntas aleatorias del servicio de generación, retornando el mensaje de error apropiado.</p>
 </li>
 <li>
-<p><strong>should handle error getting questions from generate service</strong>:
+<p><strong>Should handle error getting questions from generate service</strong>:
 Verifica que se manejen correctamente los errores al obtener preguntas del servicio de generación, retornando el mensaje de error adecuado.</p>
 </li>
 <li>
-<p><strong>should handle error creating question in generate service</strong>:
+<p><strong>Should handle error creating question in generate service</strong>:
 Comprueba que se manejen correctamente los errores al crear una nueva pregunta en el servicio de generación, retornando el mensaje de error correspondiente.</p>
 </li>
 <li>
-<p><strong>should handle error updating question in generate service</strong>:
+<p><strong>Should handle error updating question in generate service</strong>:
 Asegura que se manejen correctamente los errores al actualizar una pregunta en el servicio de generación, retornando el mensaje de error apropiado.</p>
 </li>
 <li>
-<p><strong>should handle error saving history in history service</strong>:
+<p><strong>Should handle error saving history in history service</strong>:
 Verifica que se manejen correctamente los errores al guardar el historial en el servicio de historial, retornando el mensaje de error adecuado.</p>
 </li>
 <li>
-<p><strong>should handle error getting history from history service with query</strong>:
+<p><strong>Should handle error getting history from history service with query</strong>:
 Comprueba que se manejen correctamente los errores al obtener el historial desde el servicio de historial, usando una consulta específica y retornando el mensaje de error correspondiente.</p>
 </li>
 <li>
-<p><strong>should handle error deleting non-existent user in user service</strong>:
+<p><strong>Should handle error deleting non-existent user in user service</strong>:
 Este test verifica que el servicio de gateway maneje adecuadamente la solicitud para eliminar un usuario que no existe en el servicio de usuarios, asegurando que se propague el mensaje de error correcto y se devuelva el código de estado adecuado.</p>
 </li>
 <li>
-<p><strong>should propagate parameters correctly on user update request</strong>:
+<p><strong>Should propagate parameters correctly on user update request</strong>:
 Este test asegura que los cambios en los datos de un usuario a través de una solicitud PATCH sean correctamente propagados al servicio de usuarios, validando así que los parámetros se transmitan correctamente y se obtenga una respuesta de éxito.</p>
 </li>
 <li>
-<p><strong>should ensure data consistency when retrieving user history</strong>:
+<p><strong>Should ensure data consistency when retrieving user history</strong>:
 Este test verifica que el servicio de gateway proporcione una respuesta consistente y completa cuando se solicita el historial de un usuario específico, validando que todos los campos esperados estén presentes y sean correctos.</p>
 </li>
 <li>
-<p><strong>should forward delete user request to user service and handle response</strong>:
+<p><strong>Should forward delete user request to user service and handle response</strong>:
 Este test verifica que el endpoint de eliminación de usuario (DELETE /user/:id) funcione correctamente, reenviando la solicitud al servicio de usuarios y gestionando la respuesta adecuadamente.</p>
 </li>
 <li>
-<p><strong>should forward delete question request to generate service and handle response</strong>:
+<p><strong>Should forward delete question request to generate service and handle response</strong>:
 Comprueba que el endpoint para eliminar preguntas (DELETE /question/:id) reenvíe correctamente la solicitud al servicio de generación de preguntas y maneje las respuestas adecuadamente.</p>
 </li>
 <li>
-<p><strong>should forward get ranking request to history service and return rankings</strong>:
+<p><strong>Should forward get ranking request to history service and return rankings</strong>:
 Asegura que el endpoint para obtener el ranking de usuarios (GET /getranking) reenvíe correctamente la solicitud al servicio de historial y reciba la lista de rankings esperada.</p>
 </li>
 <li>
-<p><strong>should handle error deleting user from user service</strong>:
+<p><strong>Should handle error deleting user from user service</strong>:
 Este test verifica que el servicio de gateway maneje correctamente los errores retornados por el servicio de usuarios al intentar eliminar un usuario que no existe o cuando hay un fallo en la operación.</p>
 </li>
 </ul>
@@ -1538,7 +1510,7 @@ Este test evalúa si la función wikiCall realiza correctamente una solicitud HT
 <p>Preparación de Datos Simulados: Configura un mock de node-fetch para simular una respuesta exitosa de la API de Wikidata. Esto implica establecer un JSON de respuesta que imita los datos que se esperarían de una consulta SPARQL real.</p>
 </li>
 <li>
-<p>Ejecución y Validación de la Consulta: Ejecuta wikiCall con una consulta SPARQL de prueba para verificar si procesa esta consulta adecuadamente y si retorna los datos correctos. Se espera que la función transforme la respuesta simulada en el formato adecuado para su uso posterior, en este caso, un arreglo que contiene un objeto vacío que representa una fila de resultado SPARQL.</p>
+<p>Ejecución y Validación de la Consulta: Ejecuta wikiCall con una consulta SPARQL de prueba para verificar si procesa esta consulta adecuadamente y si retorna los datos correctos. Se espera que la función transforme la respuesta simulada en el formato adecuado para su uso posterior, en este caso, un arreglo que contiene un objeto vacío que representa una fila de resultados SPARQL.</p>
 </li>
 <li>
 <p>Verificación de la Llamada a fetch: Confirma que node-fetch se llamó exactamente una vez y con los parámetros correctos, incluyendo la URL de Wikidata con la consulta SPARQL codificada y los headers apropiados para aceptar JSON de resultados SPARQL.</p>
@@ -1551,7 +1523,7 @@ Este test evalúa si la función wikiCall realiza correctamente una solicitud HT
 <div class="ulist">
 <ul>
 <li>
-<p><strong>debería obtener preguntas de Wikidata y formatearlas correctamente</strong>:
+<p><strong>Debería obtener preguntas de Wikidata y formatearlas correctamente</strong>:
 Este test verifica que el método getQuestions de WikiQuery realice correctamente la llamada a wikiCall para obtener datos de Wikidata, y que luego formatee estos datos en el formato esperado para preguntas. Se realiza una configuración previa para simular respuestas de wikiCall que contienen preguntas y respuestas en un formato específico. El test comprueba que:</p>
 </li>
 <li>
@@ -1582,15 +1554,15 @@ Este test verifica que el endpoint /login permita a un usuario existente realiza
 </li>
 <li>
 <p><strong>Should reject login with incorrect credentials</strong>:
-Este test se asegura de que el endpoint /login rechace el intento de inicio de sesión cuando las credenciales son incorrectas. En este caso, se envía una contraseña errónea para un nombre de usuario existente. El test verifica que el servidor responda con un estado 401 y que el cuerpo de la respuesta contenga el mensaje de error 'Invalid credentials', indicando que las credenciales proporcionadas no son válidas.</p>
+Este test se asegura de que el endpoint /login rechace el intento de inicio de sesión cuando las credenciales son incorrectas. En este caso, se envía una contraseña errónea para un nombre de usuario existente. El test verifica que el servidor responda con un estado 401 y que el cuerpo dé la respuesta contenga el mensaje de error 'Invalid credentials', indicando que las credenciales proporcionadas no son válidas.</p>
 </li>
 <li>
 <p><strong>Should require username and password fields for login</strong>:
-Este test evalúa que el endpoint /login requiera tanto el nombre de usuario como la contraseña para procesar una solicitud de inicio de sesión. Aquí se envía solo el nombre de usuario sin proporcionar una contraseña. El test verifica que el servidor responda con un estado 500 y que el cuerpo de la respuesta contenga un mensaje de error, indicando que la solicitud está incompleta o mal formada.</p>
+Este test evalúa que el endpoint /login requiera tanto el nombre de usuario como la contraseña para procesar una solicitud de inicio de sesión. Aquí se envía solo el nombre de usuario sin proporcionar una contraseña. El test verifica que el servidor responda con un estado 500 y que el cuerpo dé la respuesta contenga un mensaje de error, indicando que la solicitud está incompleta o mal formada.</p>
 </li>
 <li>
 <p><strong>Should validate a JWT token</strong>:
-Este test primero realiza un inicio de sesión válido para obtener un token JWT y luego verifica la validez de ese token a través de otro endpoint. Tras obtener el token, se realiza una solicitud de validación para dicho token y se verifica que el servidor responda con un estado 200 y que el cuerpo de la respuesta indique que el token es válido (valid: true).</p>
+Este test primero realiza un inicio de sesión válido para obtener un token JWT y luego verifica la validez de ese token a través de otro endpoint. Tras obtener el token, se realiza una solicitud de validación para dicho token y se verifica que el servidor responda con un estado 200 y que el cuerpo dé la respuesta indique que el token es válido (valid: true).</p>
 </li>
 <li>
 <p><strong>Should reject an invalid JWT token</strong>:
@@ -1607,46 +1579,46 @@ Este test verifica la funcionalidad del sistema para rechazar tokens JWT que no 
 <p><strong>POST /savehistory</strong>:</p>
 </li>
 <li>
-<p>should save history entry for a new user that plays a game: Este test verifica que el endpoint /savehistory pueda crear una nueva entrada de historial para un usuario que no existía previamente en la base de datos. Evalúa si la entrada se almacena correctamente y si los datos devueltos en la respuesta coinciden con los datos enviados, incluyendo la correcta diferenciación entre preguntas acertadas y falladas.</p>
+<p>Should save history entry for a new user that plays a game: Este test verifica que el endpoint /savehistory pueda crear una nueva entrada de historial para un usuario que no existía previamente en la base de datos. Evalúa si la entrada se almacena correctamente y si los datos devueltos en la respuesta coinciden con los datos enviados, incluyendo la correcta diferenciación entre preguntas acertadas y falladas.</p>
 </li>
 <li>
-<p>should update history entry for an existing user: Este test comprueba que el endpoint /savehistory actualice correctamente una entrada de historial existente para un usuario, sumando correctamente las nuevas jugadas, preguntas jugadas, preguntas acertadas y preguntas falladas a los totales previos.</p>
+<p>Should update history entry for an existing user: Este test comprueba que el endpoint /savehistory actualice correctamente una entrada de historial existente para un usuario, sumando correctamente las nuevas jugadas, preguntas jugadas, preguntas acertadas y preguntas falladas a los totales previos.</p>
 </li>
 <li>
-<p>should reject history entry with missing data: Este test verifica que el endpoint /savehistory maneje adecuadamente situaciones donde los datos esenciales como NumPreguntasJugadas o NumAcertadas no se proporcionen en la solicitud. Se espera que el servidor responda con un código de estado 400 y un mensaje de error claro indicando qué dato falta.</p>
+<p>Should reject history entry with missing data: Este test verifica que el endpoint /savehistory maneje adecuadamente situaciones donde los datos esenciales como NumPreguntasJugadas o NumAcertadas no se proporcionen en la solicitud. Se espera que el servidor responda con un código de estado 400 y un mensaje de error claro indicando qué dato falta.</p>
 </li>
 <li>
 <p><strong>GET /gethistory</strong>:</p>
 </li>
 <li>
-<p>should get history entry for an existing user: Este test verifica que el endpoint /gethistory (con un query param) recupere correctamente la entrada de historial de un usuario existente. Evalúa si los datos devueltos coinciden exactamente con los que están almacenados en la base de datos.</p>
+<p>Should get history entry for an existing user: Este test verifica que el endpoint /gethistory (con un query param) recupere correctamente la entrada de historial de un usuario existente. Evalúa si los datos devueltos coinciden exactamente con los que están almacenados en la base de datos.</p>
 </li>
 <li>
-<p>should create new history entry for a non-existing user: Este test comprueba que el endpoint /gethistory sea capaz de manejar solicitudes para usuarios no existentes correctamente, retornando una entrada de historial con contadores en cero.</p>
+<p>Should create new history entry for a non-existing user: Este test comprueba que el endpoint /gethistory sea capaz de manejar solicitudes para usuarios no existentes correctamente, retornando una entrada de historial con contadores en cero.</p>
 </li>
 <li>
-<p>should handle non-existent username on get history: Este test verifica que el endpoint /gethistory responda adecuadamente cuando se consulta el historial de un usuario que no existe. Se espera que el servidor responda con un código de estado 404.</p>
+<p>Should handle non-existent username on get history: Este test verifica que el endpoint /gethistory responda adecuadamente cuando se consulta el historial de un usuario que no existe. Se espera que el servidor responda con un código de estado 404.</p>
 </li>
 <li>
 <p><strong>GET /gethistory/:username</strong>:</p>
 </li>
 <li>
-<p>should get history entry for an existing user: Similar al test anterior bajo el endpoint /gethistory, pero esta vez utilizando una ruta con parámetro. Verifica si la solicitud a /gethistory/:username recupera correctamente la entrada de historial para un usuario específico usando la identificación del usuario en la URL, asegurándose de que todos los datos devueltos coincidan con los almacenados.</p>
+<p>Should get history entry for an existing user: Similar al test anterior bajo el endpoint /gethistory, pero esta vez utilizando una ruta con parámetro. Verifica si la solicitud a /gethistory/:username recupera correctamente la entrada de historial para un usuario específico usando la identificación del usuario en la URL, asegurándose de que todos los datos devueltos coincidan con los almacenados.</p>
 </li>
 <li>
 <p><strong>GET /getranking</strong>:</p>
 </li>
 <li>
-<p>should handle insufficient data for rankings: Verifica que cuando no hay datos suficientes para calcular un ranking, el servicio devuelve correctamente un arreglo vacío, lo cual es importante para evitar errores en la visualización del cliente cuando no hay datos disponibles.</p>
+<p>Should handle insufficient data for rankings: Verifica que cuando no hay datos suficientes para calcular un ranking, el servicio devuelve correctamente un arreglo vacío, lo cual es importante para evitar errores en la visualización del cliente cuando no hay datos disponibles.</p>
 </li>
 <li>
-<p>should return a correct ranking of players based on their scores: Asegura que el servicio calcula y devuelve el ranking de los jugadores de manera correcta basándose en sus respuestas acertadas y el total de preguntas jugadas, ordenando los jugadores según sus rendimientos.</p>
+<p>Should return a correct ranking of players based on their scores: Asegura que el servicio calcula y devuelve el ranking de los jugadores de manera correcta basándose en sus respuestas acertadas y el total de preguntas jugadas, ordenando los jugadores según sus rendimientos.</p>
 </li>
 <li>
-<p>should correctly calculate posterior probabilities in rankings: Este test evalúa si se calcula adecuadamente las probabilidades a posteriori basadas en las estadísticas de juego de los jugadores, asegurando que los resultados del ranking sean justos y precisos.</p>
+<p>Should correctly calculate posterior probabilities in rankings: Este test evalúa si se calcula adecuadamente las probabilidades a posteriori basadas en las estadísticas de juego de los jugadores, asegurando que los resultados del ranking sean justos y precisos.</p>
 </li>
 <li>
-<p>should handle server error during ranking calculation: Este test asegura que /getranking maneje correctamente los errores internos durante el cálculo del ranking, devolviendo un estado de error 500 para indicar problemas en el proceso.</p>
+<p>Should handle server error during ranking calculation: Este test asegura que /getranking maneje correctamente los errores internos durante el cálculo del ranking, devolviendo un estado de error 500 para indicar problemas en el proceso.</p>
 </li>
 </ul>
 </div>
@@ -1656,35 +1628,35 @@ Este test verifica la funcionalidad del sistema para rechazar tokens JWT que no 
 <div class="ulist">
 <ul>
 <li>
-<p><strong>should add a new user on POST /adduser</strong>:
-Esta prueba verifica que un usuario nuevo se pueda añadir correctamente mediante el endpoint /adduser. Al enviar una solicitud POST con un nombre de usuario y contraseña válidos, se espera que el servidor responda con un código de estado 200 y que el cuerpo de la respuesta contenga el nombre de usuario que fue añadido.</p>
+<p><strong>Should add a new user on POST /adduser</strong>:
+Esta prueba verifica que un usuario nuevo se pueda añadir correctamente mediante el endpoint /adduser. Al enviar una solicitud POST con un nombre de usuario y contraseña válidos, se espera que el servidor responda con un código de estado 200 y que el cuerpo dé la respuesta contenga el nombre de usuario que fue añadido.</p>
 </li>
 <li>
-<p><strong>should reject a user without a username</strong>:
+<p><strong>Should reject a user without a username</strong>:
 Prueba la validación del campo requerido para el nombre de usuario. Al intentar registrar un usuario sin proporcionar un nombre de usuario, se espera que el servidor responda con un código de estado 400 y un mensaje de error indicando que falta el campo requerido "username".</p>
 </li>
 <li>
-<p><strong>should reject a user without a password</strong>:
+<p><strong>Should reject a user without a password</strong>:
 Verifica que el servicio rechace las solicitudes para crear un usuario que no incluyan una contraseña. Si se envía una solicitud sin una contraseña, el servidor debe responder con un código de estado 400 y un mensaje de error que indique que falta el campo requerido "password".</p>
 </li>
 <li>
-<p><strong>should not allow adding a user with an existing username</strong>:
-Asegura que no se pueda registrar más de un usuario con el mismo nombre de usuario. l intentar añadir un usuario que ya existe en la base de datos, el servidor debe responder con un código de estado 400 y un mensaje indicando que el usuario ya existe.</p>
+<p><strong>Should not allow adding a user with an existing username</strong>:
+Asegura que no se pueda registrar más de un usuario con el mismo nombre de usuario. Al intentar añadir un usuario que ya existe en la base de datos, el servidor debe responder con un código de estado 400 y un mensaje indicando que el usuario ya existe.</p>
 </li>
 <li>
-<p><strong>should get all users correctly</strong>:
-Este test verifica que el endpoint /user funcione correctamente al recuperar todos los usuarios registrados. Se espera que el servidor responda con un código de estado 200 y que el cuerpo de la respuesta contenga una lista de usuarios, mostrando únicamente sus nombres de usuario y fechas de creación.</p>
+<p><strong>Should get all users correctly</strong>:
+Este test verifica que el endpoint /user funcione correctamente al recuperar todos los usuarios registrados. Se espera que el servidor responda con un código de estado 200 y que el cuerpo dé la respuesta contenga una lista de usuarios, mostrando únicamente sus nombres de usuario y fechas de creación.</p>
 </li>
 <li>
-<p><strong>should update an existing user</strong>:
-Este test verifica que el endpoint /user/:id actualice correctamente un usuario existente. Al enviar una solicitud PATCH con un nuevo nombre de usuario, se espera que el servidor responda con un código de estado 200 y que el cuerpo de la respuesta refleje la actualización.</p>
+<p><strong>Should update an existing user</strong>:
+Este test verifica que el endpoint /user/:id actualice correctamente un usuario existente. Al enviar una solicitud PATCH con un nuevo nombre de usuario, se espera que el servidor responda con un código de estado 200 y que el cuerpo dé la respuesta refleje la actualización.</p>
 </li>
 <li>
-<p><strong>should handle deletion of a non-existent user correctly</strong>:
+<p><strong>Should handle deletion of a non-existent user correctly</strong>:
 Este test asegura que el servidor responda correctamente cuando se intenta eliminar un usuario que no existe. Al enviar una solicitud DELETE a /user/:id con un ID inexistente, se espera que el servidor responda con un código de estado 404 y un mensaje de error indicando que el usuario no fue encontrado.</p>
 </li>
 <li>
-<p><strong>should handle internal server error when getting users</strong>:
+<p><strong>Should handle internal server error when getting users</strong>:
 Verifica que el servicio maneje correctamente los errores internos al intentar obtener la lista de usuarios. Si ocurre un error interno (simulado mediante un fallo en la conexión a la base de datos, por ejemplo), se espera que el servidor responda con un código de estado 500.</p>
 </li>
 </ul>
@@ -1693,7 +1665,7 @@ Verifica que el servicio maneje correctamente los errores internos al intentar o
 <div class="sect3">
 <h4 id="_tests_componentes_react">13.1.7. Tests Componentes React</h4>
 <div class="paragraph">
-<p>Estas pruebas han sido diseñadas para mejorar el coverage de la aplicacion y no tienen mayor objetivo que comprobar que los componentes se cargan de manera correcta, sin probar la funcionalidad, ya que de esta sen encargan los servicios, estos componentes son:</p>
+<p>Estas pruebas han sido diseñadas para mejorar el coverage de la aplicación y no tienen mayor objetivo que comprobar que los componentes se cargan de manera correcta, sin probar la funcionalidad, ya que de esta sen encargan los servicios, estos componentes son:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1707,7 +1679,7 @@ Verifica que el servicio maneje correctamente los errores internos al intentar o
 <p>Ayuda</p>
 </li>
 <li>
-<p>Creditos</p>
+<p>Créditos</p>
 </li>
 <li>
 <p>Página de Error (404)</p>
@@ -1746,7 +1718,7 @@ Verifica que el servicio maneje correctamente los errores internos al intentar o
 <div class="sect2">
 <h3 id="_pruebas_e2e">13.2. Pruebas e2e</h3>
 <div class="paragraph">
-<p>Estas pruebas estan enfocadas en el correcto funcionamiento de la aplicacion cuando el usuario interactua con ella. Haciendo que las páginas muestren los resultados esperados y redirijan de manera correcta.</p>
+<p>Estas pruebas están enfocadas en el correcto funcionamiento de la application cuando el usuario interactúa con ella. Haciendo que las páginas muestren los resultados esperados y redirijan de manera correcta.</p>
 </div>
 <div class="paragraph">
 <p>Las features son:</p>
@@ -1803,16 +1775,16 @@ Verifica que el servicio maneje correctamente los errores internos al intentar o
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p>Feature: Seeing the loged user history</p>
+<p>Feature: Seeing the logged user history</p>
 </div>
 <div class="paragraph">
-<p>Scenario: The user is not loged in the site
-  Given A not loged user
+<p>Scenario: The user is not logged in the site
+  Given A not logged user
   When Press history
-  Then Redirected to login</p>
+  Then Redirected to log in</p>
 </div>
 <div class="paragraph">
-<p>Scenario: The user register in the site so he can see history
+<p>Scenario: The user register in the site, so he can see history
   Given A unregistered user, fill the register
   When I press history
   Then I see my history</p>
@@ -1824,13 +1796,13 @@ Verifica que el servicio maneje correctamente los errores internos al intentar o
 <h3 id="_pruebas_de_carga">13.3. Pruebas de carga</h3>
 <div class="paragraph">
 <p>Se enfocarán en evaluar cómo se comporta nuestro sistema bajo condiciones de alto tráfico y uso intensivo. Este tipo de pruebas es crucial para identificar cuellos de botella y asegurar que nuestra aplicación pueda manejar eficientemente el volumen de usuarios y transacciones esperado en producción, sin comprometer el rendimiento ni la estabilidad.
-Se han realizado 2 pruebas de carga con diferente numero de usuarios simultaneos.
-Las pruebas seguirán el siguiente procedimiento sencillo, pero que servirá para probar los servicios y como se comportan ante el estres generado por muchos usuarios:</p>
+Se han realizado 2 pruebas de carga con diferente número de usuarios simultáneos.
+Las pruebas seguirán el siguiente procedimiento sencillo, pero que servirá para probar los servicios y como se comportan ante el estrés generado por muchos usuarios:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>El usuario se logea en la pagina</p>
+<p>El usuario inicia sesión en la página</p>
 </li>
 <li>
 <p>Juega una partida completa</p>
@@ -1847,7 +1819,7 @@ Las pruebas seguirán el siguiente procedimiento sencillo, pero que servirá par
 <p>Esto se realiza en el transcurso de 1 minuto.</p>
 </div>
 <div class="paragraph">
-<p>Aqui los resultados de la primera prueba con 240 usuarios.</p>
+<p>Aquí los resultados de la primera prueba con 240 usuarios.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1863,8 +1835,7 @@ Las pruebas seguirán el siguiente procedimiento sencillo, pero que servirá par
 </div>
 </div>
 <div class="paragraph">
-<p>Podemos observar que la primera prueba la soporta de manera mas o menos asumible. Sin embargo, la segunda prueba ya esta sorpasando el limite de usuarios concurrentes y empiezan a fallar los servicios.
-Esto se debe principalmente a las bajas prestaciones de la maquina virtual, marcadas por el credito disponible como estudiantes que nos proporciona Azure.</p>
+<p>Podemos observar que la primera prueba la soporta de manera más o menos asumible. Sin embargo, en la segunda prueba ya se está superando el límite de usuarios concurrentes y comienzan a fallar los servicios. Esto se debe principalmente a las limitadas prestaciones de la máquina virtual, determinadas por el crédito disponible para estudiantes que nos proporciona Azure.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1873,26 +1844,26 @@ Esto se debe principalmente a las bajas prestaciones de la maquina virtual, marc
 <p>En este apartado, nos centraremos en las pruebas de usabilidad, un componente esencial para asegurar que nuestro sistema sea intuitivo, eficiente y accesible para todos los usuarios. Este tipo de pruebas evalúa la interacción entre el usuario y la aplicación, con el objetivo de identificar áreas de mejora en la interfaz de usuario que faciliten una mejor experiencia general.</p>
 </div>
 <div class="paragraph">
-<p>Las pruebas se han dividido en iteraciones. En cada interacion hay 3 fases.</p>
+<p>Las pruebas se han dividido en iteraciones. En cada iteración hay 3 fases.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Fase de pruebas, con un grupo de usuarios variado (no muy extenso) en cuanto a conocimientos y soltura en el area de la informática donde los desarrolladores toman nota de las dificultades de los usuarios, sin intervenir, a no ser que sea estrictamente necesario.</p>
+<p>Fase de pruebas, con un grupo de usuarios variado (no muy extenso) en cuanto a conocimientos y soltura en el área de la informática donde los desarrolladores toman nota de las dificultades de los usuarios, sin intervenir, a no ser que sea estrictamente necesario.</p>
 </li>
 <li>
-<p>Fase de estudio de los resultado. El equipo de desarrolladores se reune y decide que mejoras se han de implementar basadas en las observacions de la fase anterior.</p>
+<p>Fase de estudio de los resultados. El equipo de desarrolladores se reúne y decide que mejoras se han de implementar basadas en las observaciones de la fase anterior.</p>
 </li>
 <li>
-<p>Fase de Implementación. Las mejoras decididas se implementan y se repite el proceso, para comprobar que hay una mejoria en la usabilidad.</p>
+<p>Fase de Implementación. Las mejoras decididas se implementan y se repite el proceso, para comprobar que hay una mejoría en la usabilidad.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>Debido al escaso tiempo de desarrollo tan solo se relizaran 2 iteracciones de estas pruebas. A continuación se detallan paso a paso se desarrollaron las pruebas.</p>
+<p>Debido al escaso tiempo de desarrollo tan solo se realizarán 2 Iteraciones de estas pruebas. A continuación se detallan paso a paso se desarrollaron las pruebas.</p>
 </div>
 <div class="sect3">
-<h4 id="_1ª_iteracción">13.4.1. 1ª Iteracción</h4>
+<h4 id="_1ª_iteración">13.4.1. 1ª Iteración</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1906,13 +1877,13 @@ Esto se debe principalmente a las bajas prestaciones de la maquina virtual, marc
 <p>El diseño de la página es bastante intuitivo en especial para los usuarios que tiene alto conocimiento. Los usuarios con bajo conocimiento necesitaron de una pequeña intervención por parte del observador.</p>
 </li>
 <li>
-<p>A los usuarios de nivel bajo se les hace difícil tener que registrarse y a continuación, tener que logearse en la página.</p>
+<p>A los usuarios de nivel bajo se les hace difícil tener que registrarse y a continuación, tener que iniciar sesión en la página.</p>
 </li>
 <li>
 <p>Los usuarios se quejan de que no se muestre cuando se acierta o se falla una pregunta.</p>
 </li>
 <li>
-<p>Los usuario de nivel alto destacan que no hay restricciones en el nombre de usuario y la contraseña.</p>
+<p>Los usuarios de nivel alto destacan que no hay restricciones en el nombre de usuario y la contraseña.</p>
 </li>
 <li>
 <p>Dificultad en las preguntas.</p>
@@ -1928,7 +1899,7 @@ Esto se debe principalmente a las bajas prestaciones de la maquina virtual, marc
 <div class="ulist">
 <ul>
 <li>
-<p>Agregar una página de ayuda para los usuarios que no sepan que pasos seguir para jugar. Ya sea tener que registrase en la página, como jugar o como usar la API (aunque la API tenga su documentacion).</p>
+<p>Agregar una página de ayuda para los usuarios que no sepan qué pasos seguir para jugar. Ya sea tener que registrarse en la página, como jugar o como usar la API (aunque la API tenga su documentación).</p>
 </li>
 <li>
 <p>Añadir un pequeño aviso que te diga cuando se acierta o se falla la pregunta. Cuando se falla también se mostrará la respuesta correcta.</p>
@@ -1937,7 +1908,7 @@ Esto se debe principalmente a las bajas prestaciones de la maquina virtual, marc
 <p>Añadir restricciones a la creación de usuarios. Nombre de usuario de mínimo 4 caracteres y contraseña con mínimo una letra mayúscula y un número.</p>
 </li>
 <li>
-<p>Se han revisado las plantillas de preguntas con mayor dificultad y se han añadido alguna mas sencilla.</p>
+<p>Se han revisado las plantillas de preguntas con mayor dificultad y se han añadido alguna más sencilla.</p>
 </li>
 <li>
 <p>Se ha corregido los errores de formato de las respuestas donde existen fechas.</p>
@@ -1949,18 +1920,18 @@ Esto se debe principalmente a las bajas prestaciones de la maquina virtual, marc
 </div>
 </div>
 <div class="sect3">
-<h4 id="_2ª_iteracción">13.4.2. 2ª Iteracción</h4>
+<h4 id="_2ª_iteración">13.4.2. 2ª Iteración</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Para la segunda iteraccion se ha contado con un grupo más reducido por incompatibilidad en los horarios. Sin embargo, seguimos contando con un usuario de cada nivel. Los resultados observados de esta segunda y última iteración se detallan a continuación.</p>
+<p>Para la segunda iteración se ha contado con un grupo más reducido por incompatibilidad en los horarios. Sin embargo, seguimos contando con un usuario de cada nivel. Los resultados observados de esta segunda y última iteración se detallan a continuación.</p>
 </li>
 <li>
 <p>Las observaciones han cambiado y se han solucionado prácticamente todos los problemas de la primera versión, sin embargo, han aparecido problemáticas nuevas.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>La observación mas importante de todos los usuarios es que no se puede recuperar la contraseña en caso de que se le olvide al usuario.</p>
+<p>La observación más importante de todos los usuarios es que no se puede recuperar la contraseña en caso de que se le olvide al usuario.</p>
 </li>
 <li>
 <p>El cálculo del Ranking es poco intuitivo.</p>
@@ -1969,7 +1940,7 @@ Esto se debe principalmente a las bajas prestaciones de la maquina virtual, marc
 <p>Los usuarios poco habituados a los juegos destacan que la velocidad de la entrada al juego es demasiado rápida y no da tiempo a entrar en contexto.</p>
 </li>
 <li>
-<p>Posibilidad de borrar usuarios desde la API sin tener permisos especiales. Esta problemática afecta a los usuarios mas avanzados.</p>
+<p>Posibilidad de borrar usuarios desde la API sin tener permisos especiales. Esta problemática afecta a los usuarios más avanzados.</p>
 </li>
 <li>
 <p>Repetición de las respuestas en la pregunta.</p>
@@ -1978,14 +1949,14 @@ Esto se debe principalmente a las bajas prestaciones de la maquina virtual, marc
 </div>
 </li>
 <li>
-<p>Debido a la falta de tiempo no se podrán implementar todas las mejoras que habia planteadas, sin embargo, estas son las decisiones de mejora tomadas por el equipo de desarrolladores.</p>
+<p>Debido a la falta de tiempo no se podrán implementar todas las mejoras que había planteadas, sin embargo, estas son las decisiones de mejora tomadas por el equipo de desarrolladores.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>La única mejora implementada, es evitar en la lógica de generación de preguntas que existan respuestas repetidas.</p>
+<p>La única mejora implementada es evitar en la lógica de generación de preguntas que existan respuestas repetidas.</p>
 </li>
 <li>
-<p>Crear un sistema de recupearación de contraseña, a traves del correo electrónico, por lo habría que modificar el registro de usuarios.</p>
+<p>Crear un sistema de recuperación de contraseña, a través del correo electrónico, por lo que habría que modificar el registro de usuarios.</p>
 </li>
 <li>
 <p>Monitorizar el cálculo del Ranking y valorar en el futuro si es correcto o hay que cambiarlo.</p>
@@ -1994,7 +1965,7 @@ Esto se debe principalmente a las bajas prestaciones de la maquina virtual, marc
 <p>Introducir una cuenta atrás cuando le das a jugar una partida nueva para que al usuario de tiempo a entrar en contexto.</p>
 </li>
 <li>
-<p>Añadir permisos de usuario para realizar acciones especiales en la página y asi poder borrar o editar usuario a traves de la API.</p>
+<p>Añadir permisos de usuario para realizar acciones especiales en la página y asi poder borrar o editar usuario a través de la API.</p>
 </li>
 </ul>
 </div>
@@ -2003,10 +1974,10 @@ Esto se debe principalmente a las bajas prestaciones de la maquina virtual, marc
 </div>
 </div>
 <div class="sect3">
-<h4 id="_3ª_iteraccion">13.4.3. ¿3ª Iteraccion?</h4>
+<h4 id="_3ª_iteración">13.4.3. ¿3ª Iteración?</h4>
 <div class="paragraph">
 <p>Para probar la versión final de la aplicación que se entregará a los profesores, se ha realizado una última prueba para comprobar el correcto funcionamiento de todo con un par de usuarios ajeno a la aplicación. Su nivel es medio y alto.
-Han destacado que todo es correcto en general (Obviando los puntos de la 2ª iteracción).</p>
+Han destacado que todo es correcto en general (Obviando los puntos de la 2ª iteración).</p>
 </div>
 </div>
 <div class="sect3">
@@ -2022,7 +1993,7 @@ Han destacado que todo es correcto en general (Obviando los puntos de la 2ª ite
 <div id="footer">
 <div id="footer-text">
 Version 8.2 EN<br>
-Last updated 2024-05-02 23:17:27 +0200
+Last updated 2024-05-03 18:39:21 +0200
 </div>
 </div>
 </body>
