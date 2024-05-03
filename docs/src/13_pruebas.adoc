@@ -305,7 +305,7 @@ Debido al escaso tiempo de desarrollo tan solo se realizarán 2 Iteraciones de e
 - Introducir una cuenta atrás cuando le das a jugar una partida nueva para que al usuario de tiempo a entrar en contexto.
 - Añadir permisos de usuario para realizar acciones especiales en la página y asi poder borrar o editar usuario a través de la API.
 
-==== ¿3ª Iteración?
+==== 3ª Iteración
 Para probar la versión final de la aplicación que se entregará a los profesores, se ha realizado una última prueba para comprobar el correcto funcionamiento de todo con un par de usuarios ajeno a la aplicación. Su nivel es medio y alto.
 Han destacado que todo es correcto en general (Obviando los puntos de la 2ª iteración).
 
