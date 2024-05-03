@@ -1,0 +1,25 @@
+@startuml Diagrama de secuencia plantuml
+actor Usuario
+participant webapp
+participant gatewayservice
+participant authservice
+participant questionservice
+actor wikidata as "Wikidata"
+database mongodb
+Usuario -> webapp: acceder al juego
+webapp -> gatewayservice: pedir preguntas
+gatewayservice -> questionservice: pedir preguntas
+questionservice -> mongodb: pedir preguntas
+mongodb --> questionservice: no hay suficientes preguntas
+webapp --> webapp: retraso preguntas
+webapp --> Usuario: mensaje de espera
+questionservice -> wikidata: hacer consulta
+wikidata --> questionservice: devolver resultados
+questionservice -> questionservice: transformar resultados en preguntas
+questionservice -> mongodb: guardar preguntas
+mongodb --> questionservice: dar preguntas
+questionservice --> gatewayservice: dar preguntas
+gatewayservice --> webapp: dar preguntas
+webapp --> Usuario: quitar mensaje de espera
+webapp --> Usuario: mostrar primera pregunta
+@enduml
